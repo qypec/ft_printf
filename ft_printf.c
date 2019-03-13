@@ -4,7 +4,8 @@
 
 #include "header.h"
 
-static void fetching_args(char *step, va_list arg);
+static void		conclusion(char *step, va_list arg);
+static int		fetching_args(char **step, va_list arg);
 
 int		ft_printf(const char *format, ...)
 {
@@ -13,25 +14,42 @@ int		ft_printf(const char *format, ...)
 	char *str;
 
 	va_start(arg, (char *)format);
-	fetching_args((char *)format, arg);
+	if (validity((char *)format, arg) == -1)
+		return (-1);
+	// conclusion((char *)format, arg)
 	va_end(arg);
 	
 	return (0);
 }
 
-static void fetching_args(char *step, va_list arg)
+static void		conclusion(char *step, va_list arg)
 {
 	while (*step != '\0')
 	{
-		if (*step != '%')
-			step++;
-		else
+		while (*step != '%' && *step != '\0')
 		{
-			
+			ft_putchar(*step);
+			step++;
 		}
-		step++;
-
+		if (*step == '\0')
+			break;
+		if (*step == '%')
+		{
+			step++;
+			if (fetching_args(&step, arg) == 0)
+				step++;
+		}
 	}
+}
+
+static int		fetching_args(char **step, va_list arg)
+{
+	if (**step == '%')
+	{
+		ft_putchar('%');
+		return (0);
+	}
+	return (1);
 }
 
 int main()
@@ -39,6 +57,6 @@ int main()
 	// char *a;
 
 	// printf("настоящий printf = %p\n\n", a);
-	printf("%d\n", ft_printf("не настоящий printf"));
+	/*printf("%d\n", */ft_printf("hello printf %d hello printf");
 
 }

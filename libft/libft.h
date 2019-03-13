@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 12:05:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/01/20 03:25:33 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/03/13 15:29:12 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,6 @@ int					ft_pow(int num, int power);
 int					ft_isspace(int c);
 int					ft_numblen(int n);
 char				**ft_matrixfree(char ***ret, int len);
+int					ft_strlenchr(const char *s, int c);
 
 #endif

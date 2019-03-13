@@ -7,5 +7,6 @@
 
 int		ft_printf(const char *format, ...);
 void	fetching_csp(char *step, va_list arg);
+int		validity(char *step, va_list arg);
 
 #endif
