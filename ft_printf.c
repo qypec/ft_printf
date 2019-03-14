@@ -14,16 +14,29 @@ int		ft_printf(const char *format, ...)
 	char *str;
 
 	va_start(arg, (char *)format);
-	if (validity((char *)format, arg) == -1)
-		return (-1);
-	// conclusion((char *)format, arg)
+	conclusion((char *)format, arg)
 	va_end(arg);
 	
 	return (0);
 }
 
+static char		*read_specifier(const char *step)
+{
+	char	*specifier;
+	int		len;
+
+	len = ft_strlenchr(step, '%');
+	specifier = (char *)malloc(sizeof(char) * (len + 1));
+	specifier = ft_strncpy(specifier, step, len + 1);
+	// if (specifier[len] == '%')
+	// 	specifier[len] = '\0';
+	return (specifier);
+}
+
 static void		conclusion(char *step, va_list arg)
 {
+	char *specifier;
+
 	while (*step != '\0')
 	{
 		while (*step != '%' && *step != '\0')
@@ -35,9 +48,7 @@ static void		conclusion(char *step, va_list arg)
 			break;
 		if (*step == '%')
 		{
-			step++;
-			if (fetching_args(&step, arg) == 0)
-				step++;
+			specifier = read_specifier(step++);
 		}
 	}
 }
@@ -57,6 +68,6 @@ int main()
 	// char *a;
 
 	// printf("настоящий printf = %p\n\n", a);
-	/*printf("%d\n", */ft_printf("hello printf %d hello printf");
+	printf("validity = %d\n", ft_printf("hello printf %    d"));
 
 }

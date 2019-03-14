@@ -3,6 +3,10 @@
 
 #include "header.h"
 
+
+static char		*check_for_spaces(char *specifier);
+static int		check_for_cspdiouxX(char *specifier);
+
 static char		*read_specifier(const char *step)
 {
 	char	*specifier;
@@ -24,18 +28,33 @@ int				validity(char *step, va_list arg)
 		step++;
 	if (*step == '%')
 		specifier = read_specifier(step + 1);
-	printf("%s\n", specifier);
+	printf("specifier = %s\n", specifier);
+	specifier = check_for_spaces(specifier);
+	// if (check_for_spaces(&specifier) == -1)
+	// 	return (-1);
+	printf("symbol = %c\n", *specifier);
+	// if (check_for_cspdiouxX(specifier) == -1)
+	// 	return (-1);
+
+	return (1);
+}
+
+static char		*check_for_spaces(char *specifier)
+{
 	if (*specifier == ' ')
 	{
 		while (*specifier == ' ')
 			specifier++;
 		if (*specifier == '\0')
-			return (-1);
+			exit(-1);
 	}
-	if (*specifier == )
-
-	return (1);
+	return (specifier);
 }
+
+// static int		check_for_cspdiouxX(char *specifier)
+// {
+// 	if (*specifier)
+// }
 
 
 //	%% 

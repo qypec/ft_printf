@@ -2,5 +2,5 @@
 
 int main()
 {
-	printf("%%%%%\n");
+	printf("%d\n", printf("%s \n", "%lld  "));
 }
