@@ -3,13 +3,45 @@
 
 #include "header.h"
 
+// int		is_servicesymbol(char *traverse)
+// {
+// 	if (ft_isdigit(*traverse) != 1 && *traverse != ' ' && *traverse != 'L')
+// 		return (0);
+// 	if (*traverse != '#' && *traverse != '-' && *traverse != '+')
+// 		return (0);
+// 	if (*traverse == 'l')
+// 	{
+// 		if (*(traverse + 1) == 'l' && *(traverse + 2) == 'l')
+// 			return (0);
+// 	}
+// 	if (*traverse == 'h')
+// 	{
+// 		if (*(traverse + 1) == 'h' && *(traverse + 2) == 'h')
+// 			return (0);
+// 	}
+// 	return (1);
+// }
+
+// int		is_perсent_again(char *traverse)
+// {
+// 	while (*traverse != '%')
+// 	{
+// 		if (is_servicesymbol(traverse) == 1)
+// 			traverse++;
+// 		else
+// 			return (0);
+// 	}
+// 	return (1);
+// }
+
 char	*print_before_specifier(char *traverse)
 {
-	while (*traverse != '\0')
+	while (*traverse != '%' && *traverse != '\0')
 	{
-
+		ft_putchar(*traverse);
 		traverse++;
 	}
+	return (traverse);
 }
 
 int		ft_printf(const char *format, ...)
@@ -17,46 +49,32 @@ int		ft_printf(const char *format, ...)
 	va_list 		arg;
 	t_spec			*spec;
 	char 			*traverse;
+	int				len;
 
-	traverse = format;
+	traverse = (char *)format;
+	len = 0;
 	va_start(arg, (char *)format);
 	while (*traverse != '\0')
 	{
-		traverse = print_before_specifier(traverse);
-		spec = struct_specifier(traverse);
-		print_arg(spec, arg);
-		traverse = move_after_specifier(traverse);
+		traverse = print_before_specifier(traverse); /* печатает символы до % */
+		len += traverse - format;
+		if (*traverse == '\0')
+			return (len);
+		// spec = struct_specifier(traverse); /* записывает в структуру спецификатор */
+		// traverse = move_after_specifier(traverse);
+		// len += print_arg(spec, arg); /*  */
 		// freestruct(spec);
 	}
-
-	// if (spec->symb == 'd' || spec->symb == 'i' || spec->symb == 'o' || spec->symb == 'x')
-	// {
-
-	// }
-	// else if (spec->symb == 'c')
-	// {
-
-	// }
-	// else if (spec->symb == 's')
-	// {
-
-	// }
-	// while (traverse != NULL)
-	// {
-		// while (*traverse != '%')
-		// {
-			// ft_putchar(*traverse);
-			// traverse++;
-		// }
-	va_end(arg);	
-	return (0);
+	va_end(arg);
+	return (len);
 }
 
 int main()
 {
 	// char *a;
-
-	// printf("настоящий printf = %p\n\n", a);
-	printf("validity = %d\n", ft_printf("hello printf %    d"));
+	printf("настоящий:\n");
+	printf("len = %d\n", printf("hello printf "));
+	printf("own:\n");
+	printf("len = %d\n", ft_printf("hello printf "));
 
 }
