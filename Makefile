@@ -1,2 +1,2 @@
 all:
-	gcc ft_printf.c validity.c libft/*.c
+	gcc -o ft_printf ft_printf.c libft/*.c

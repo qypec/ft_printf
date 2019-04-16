@@ -5,8 +5,9 @@
 # include <unistd.h>
 # include <stdarg.h>
 
-int		ft_printf(const char *format, ...);
-void	fetching_csp(char *step, va_list arg);
-int		validity(char *step, va_list arg);
+typedef struct		s_spec
+{
+	char			symb;
+}					t_spec;
 
 #endif

@@ -2,5 +2,5 @@
 
 int main()
 {
-	printf("%d\n", printf("%s \n", "%lld  "));
+	printf("%   15ld\n", 100000000000000000);
 }
