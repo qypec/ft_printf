@@ -2,5 +2,6 @@
 
 int main()
 {
-	printf("%  ll%\n");
+	printf("% l%");
+	printf("");
 }

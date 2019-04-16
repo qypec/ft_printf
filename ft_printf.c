@@ -47,7 +47,7 @@ char	*print_before_specifier(char *traverse)
 int		ft_printf(const char *format, ...)
 {
 	va_list 		arg;
-	t_spec			*spec;
+	t_spec			spec;
 	char 			*traverse;
 	int				len;
 
@@ -60,7 +60,11 @@ int		ft_printf(const char *format, ...)
 		len += traverse - format;
 		if (*traverse == '\0')
 			return (len);
-		// spec = struct_specifier(traverse); /* записывает в структуру спецификатор */
+		if ((spec = struct_specifier(traverse, &spec)) == NULL) /* записывает в структуру спецификатор */
+		{
+			// bust
+			return (len);
+		}
 		// traverse = move_after_specifier(traverse);
 		// len += print_arg(spec, arg); /*  */
 		// freestruct(spec);

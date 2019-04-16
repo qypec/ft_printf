@@ -8,6 +8,8 @@
 typedef struct		s_spec
 {
 	char			symb;
+	int				space;
+	char			*typeflag;
 }					t_spec;
 
 #endif
