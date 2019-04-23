@@ -57,8 +57,8 @@ int		ft_printf(const char *format, ...)
 	// while (*traverse != '\0')
 	// {
 		traverse = print_before_specifier(traverse); /* печатает символы до % */
-		printf("trav = %s\n", traverse);
-		// len += traverse - format;
+		// printf("trav = %s\n", traverse);
+		len += traverse - format;
 		// if (*traverse == '\0')
 		// 	return (len);
 		// if ((spec = struct_specifier(traverse, &spec)) == NULL) /* записывает в структуру спецификатор */
@@ -80,6 +80,6 @@ int main()
 	printf("настоящий:\n");
 	printf("len = %d\n", printf("hello printf "));
 	printf("own:\n");
-	printf("len = %d\n", ft_printf("hello printf %", 3));
+	printf("len = %d\n", ft_printf("hello printf "));
 
 }
