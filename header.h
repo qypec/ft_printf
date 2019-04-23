@@ -10,8 +10,17 @@
 typedef struct		s_spec
 {
 	char			symb;
+	int				width;
 	int				space;
-	char			*typeflag;
+	int				sharp;
+	int				plus;
+	int				minus;
+	int				zero;
+	int				float_point;
+	int				ll;
+	int				l;
+	int				hh;
+	int				h;
 }					t_spec;
 
 #endif
