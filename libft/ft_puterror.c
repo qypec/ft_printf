@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_puterror.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/23 19:18:31 by yquaro            #+#    #+#             */
-/*   Updated: 2019/03/15 17:14:23 by yquaro           ###   ########.fr       */
+/*   Created: 2019/04/03 18:57:09 by yquaro            #+#    #+#             */
+/*   Updated: 2019/04/21 13:56:54 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
 
-void	*ft_memalloc(size_t size)
+void	ft_puterror(const char *s)
 {
-	void *arr;
+	int i;
 
-	arr = malloc(size);
-	if (arr == NULL)
-		return (NULL);
-	else
-		return (ft_memset(arr, 0, size));
+	i = 0;
+	if (!s)
+		return ;
+	while (s[i] != '\0')
+	{
+		write(2, &s[i], 1);
+		i++;
+	}
 }

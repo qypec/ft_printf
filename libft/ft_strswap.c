@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strfind.c                                       :+:      :+:    :+:   */
+/*   ft_strswap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/10 17:13:16 by yquaro            #+#    #+#             */
-/*   Updated: 2018/12/10 17:16:18 by yquaro           ###   ########.fr       */
+/*   Created: 2019/04/17 19:57:50 by yquaro            #+#    #+#             */
+/*   Updated: 2019/04/21 13:58:33 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strfind(const char *str, char c)
+char	**ft_strswap(char **matrix, int first, int second)
 {
-	int i;
+	char	*tmp;
 
-	i = 0;
-	if (str == NULL)
-		return (0);
-	while (str[i] != '\0')
-	{
-		if (str[i] == c)
-			return (1);
-		i++;
-	}
-	if (str[i] == c)
-		return (1);
-	return (0);
+	tmp = ft_strdup(matrix[first]);
+	ft_strdel(&matrix[first]);
+	matrix[first] = ft_strdup(matrix[second]);
+	ft_strdel(&matrix[second]);
+	matrix[second] = ft_strdup(tmp);
+	ft_strdel(&tmp);
+	return (matrix);
 }

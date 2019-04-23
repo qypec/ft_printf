@@ -1,24 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_addsymbend.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/23 19:18:31 by yquaro            #+#    #+#             */
-/*   Updated: 2019/03/15 17:14:23 by yquaro           ###   ########.fr       */
+/*   Created: 2019/04/18 17:50:41 by yquaro            #+#    #+#             */
+/*   Updated: 2019/04/20 16:43:22 by wconnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memalloc(size_t size)
+char		*ft_addsymbend(char *str, char c, int num)
 {
-	void *arr;
+	int		i;
+	int		j;
+	int		len;
+	char	*newstr;
 
-	arr = malloc(size);
-	if (arr == NULL)
+	i = 0;
+	j = 0;
+	if (num < 0)
 		return (NULL);
-	else
-		return (ft_memset(arr, 0, size));
+	len = ft_strlen(str) + num;
+	newstr = (char *)ft_memalloc(len);
+	while (str[j] != '\0')
+	{
+		newstr[i] = str[j];
+		j++;
+		i++;
+	}
+	while (i < len)
+	{
+		newstr[i] = c;
+		i++;
+	}
+	newstr[i] = '\0';
+	ft_strdel(&str);
+	return (newstr);
 }
