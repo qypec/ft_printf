@@ -1,7 +1,7 @@
 
 # CFLAGS =  -Wall -Wextra -Werror 
 NAME = ft_printf
-SRC = ft_printf.c
+SRC = ft_printf.c print_int.c print_arg.c
 OBJS = ft_printf.o
 
 all: $(NAME)
