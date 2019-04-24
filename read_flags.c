@@ -1,13 +1,21 @@
 #include "header.h"
 
-t_spec	*read_calculatesymb(char с, t_spec *spec)
+static t_spec	*nullify_llhh_bigl(t_spec *spec)
 {
-	// if (valid_calculatesymb(*traverse, spec) == 0) /* проверит нет ли уже такого флага в структуре */
-		// return (NULL);
+	spec->l = 0;
+	spec->h = 0;
+	spec->ll = 0;
+	spec->hh = 0;
+	spec->big_l = 0;
+	return (spec);
+}
+
+t_spec			*read_calculatesymb(char с, t_spec *spec)
+{
 	if (с == '#')
 		spec->sharp = 1;
 	if (с == '0')
-		spec->sharp = 1;
+		spec->zero = 1;
 	if (с == '+')
 		spec->plus = 1;
 	if (с == '-')
@@ -15,35 +23,44 @@ t_spec	*read_calculatesymb(char с, t_spec *spec)
 	return (spec);
 }
 
-t_spec	*read_lh_bigl(char *traverse, t_spec *spec)
+t_spec			*read_lh_bigl(char *traverse, t_spec *spec)
 {
-	// if (valid_lhL(*traverse, spec) == 0) /* проверит нет ли уже такого флага в структуре */
-		// return (NULL);
-	if (*traverse == 'L')
+	if (*traverse == 'L' && spec->symb != 'd')
 	{
+		spec = nullify_llhh_bigl(spec);
 		spec->big_l = 1;
 		return (spec);
 	}
 	if (*(traverse + 1) == *traverse)
 	{
-		// if (*(traverse + 2) == *traverse)
-			// return (NULL);
 		if (*traverse == 'l')
+		{
+			spec = nullify_llhh_bigl(spec);
 			spec->ll = 1;
+		}
 		if (*traverse == 'h')
+		{
+			spec = nullify_llhh_bigl(spec);
 			spec->hh = 1;
+		}
 	}
 	else
 	{
 		if (*traverse == 'l')
+		{
+			spec = nullify_llhh_bigl(spec);
 			spec->l = 1;
+		}
 		if (*traverse == 'h')
+		{
+			spec = nullify_llhh_bigl(spec);
 			spec->h = 1;
+		}
 	}
 	return (spec);
 }
 
-t_spec	*read_digit(char *traverse, t_spec *spec, const char *flag)
+t_spec			*read_digit(char *traverse, t_spec *spec, const char *flag)
 {
 	int		num;
 	int		i;
@@ -52,7 +69,7 @@ t_spec	*read_digit(char *traverse, t_spec *spec, const char *flag)
 
 	i = 0;
 	j = 0;
-	if (spec->width != 0 && spec->precision != 0)
+	if (ft_isdigit(*traverse) != 1)
 		return (spec);
 	while (ft_isdigit(traverse[j]) == 1)
 	{
