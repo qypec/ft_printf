@@ -67,10 +67,10 @@ int		ft_printf(const char *format, ...)
 int main()
 {
 	// char a = 'a';
-	int a = 2147483647;
-	int b = 2147483647;
+	long long int a = 9223372036854775807;
+	long long int b = 9223372036854775807;
 	printf("настоящий:\n");
-	printf("\nlen = %d\n", printf("%ld", a + 1));
+	printf("\nlen = %d\n", printf("%lld", a + 3));
 	printf("\nown:\n");
-	printf("\nlen = %d\n", ft_printf("%ld", b + 1));
+	printf("\nlen = %d\n", ft_printf("%lld", b + 3));
 }

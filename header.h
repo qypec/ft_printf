@@ -28,7 +28,7 @@ int					print_arg(t_spec *spec, va_list arg);
 int					print_int(t_spec *spec, va_list arg);
 int 				print_di (t_spec *spec, va_list arg);
 int					print_d(int number, t_spec *spec);
-int 				*width(long long number, t_spec *spec, long long int index, int width);
+int 				*width(long long number, t_spec *spec, unsigned long int index, int width);
 int					print_o(t_spec *spec, va_list arg);
 int					printWidthEnd(int *p);
 int					printWidth(int *p);
@@ -54,6 +54,7 @@ int 				print_dl(t_spec *spec, long int num);
 t_spec				*read_lh_bigl(char *traverse, t_spec *spec);
 t_spec				*read_calculatesymb(char с, t_spec *spec);
 t_spec				*read_digit(char *traverse, t_spec *spec, const char *flag);
+int					print_dll(t_spec *spec, long long num);
 
 void				print_struct(t_spec	*spec);
 #endif

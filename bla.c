@@ -23,6 +23,6 @@ int main()
 {
 	long int a = 9223372036854775807;
 
-	printf ("%o",a);
+	printf ("%lo",a);
 	return (0);
 }

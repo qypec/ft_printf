@@ -1,6 +1,6 @@
 #include "header.h"
 
-int *width(long long number, t_spec *spec, long long int index, int width)
+int *width(long long number, t_spec *spec, unsigned long int index, int width)
  {
     int *p;
     if (number < 0)
@@ -85,10 +85,9 @@ int printWidth(int *p)
         size = print_dl(spec, va_arg(arg, long int));
      }
 
-    //  if ((spec->symb == 'd' || spec->symb == 'i' || spec->symb == 'u') && spec->l != 1 && spec->ll == 1)
-    //  {
-    //     number = va_arg(arg, int);
-    //     size = print_dll(number, spec);
-    //  }
+     if ((spec->symb == 'd' || spec->symb == 'i' || spec->symb == 'u') && spec->l != 1 && spec->ll == 1)
+     {
+        size = print_dll(spec, va_arg(arg, long long int));
+     }
      return (size);
  }
