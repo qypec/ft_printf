@@ -64,13 +64,13 @@ int		ft_printf(const char *format, ...)
 	return (*len);
 }
 
-int main()
-{
-	// char a = 'a';
-	int a = 2147483647;
-	int b = 2147483647;
-	printf("настоящий:\n");
-	printf("\nlen = %d\n", printf("%ld", a + 1));
-	printf("\nown:\n");
-	printf("\nlen = %d\n", ft_printf("%ld", b + 1));
-}
+// int main()
+// {
+// 	// char a = 'a';
+// 	int a = 2147483647;
+// 	int b = 2147483647;
+// 	printf("настоящий:\n");
+// 	printf("\nlen = %d\n", printf("%ld", a + 1));
+// 	printf("\nown:\n");
+// 	printf("\nlen = %d\n", ft_printf("%ld", b + 1));
+// }
