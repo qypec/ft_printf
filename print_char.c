@@ -18,6 +18,74 @@ int print_c(t_spec *spec, va_list arg)
     return (size);
 } 
 
+int *width_s(char *str,t_spec *spec, int index, int width)
+{  
+    int *p;
+    
+    if (!(p = (int *)malloc (sizeof(int) * 3)))
+        return (NULL);
+    p[0] = 0; // do
+    p[1] = 0; // posle
+    p[2] = 0; // zero posle
+    p[3] = 0; // size sembol
+    while (str[width])
+    {
+        width++;
+    }
+    if (spec->minus == 1 && spec->width != 0)
+        if ((spec->width - width) > 0)
+            p[1] = spec->width - width;
+    if (spec->plus == 1 || (spec->width != 0 && spec->minus != 1))
+        if ((spec->width - width) > 0)
+            p[0] = spec->width - width;
+    if (spec->float_point > 0)
+        if ((spec->float_point - width) > 0)
+            p[2] = spec->float_point - width;
+    p[3] = width;
+    return (p);
+}
+int printWidth_s(int *p)
+{
+    int index;
+
+    index = 0;
+    if (p[0] > 0)
+    {
+        while (index < p[0])
+        {
+            ft_putchar(' ');
+            index++;
+        }
+    }
+    return (index);
+}
+
+int print_s(t_spec *spec, va_list arg)
+{
+    int size;
+    char *str;
+    int *p;
+    char *ptr;
+    int i;
+
+    size = 0;
+    str =(char *) va_arg(arg, void *);
+    p = width_s(str, spec, 0, 0);
+    size = printWidth_s(p);
+    if (spec->float_point > 0)
+    {
+        ptr = ft_strncpy(ft_strnew(spec->float_point), str, spec->float_point);
+        ft_putstr(ptr);
+        free(ptr);
+        size +=spec->float_point;
+    }
+    else 
+        ft_putstr(str);
+        size += p[3];
+    free(str);
+    return (size);
+}
+
 int print_char(t_spec *spec, va_list arg)
 {
     int size;
@@ -26,7 +94,7 @@ int print_char(t_spec *spec, va_list arg)
     if (spec->symb == 'c')
         size = print_c(spec, arg);
     if (spec->symb == 's')
-    ;
+        size = print_s(spec, arg);
     if (spec->symb == 'p')
     ;
     return (size);

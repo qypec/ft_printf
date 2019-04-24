@@ -46,6 +46,7 @@ t_spec				struct_specifier(char *traverse, t_spec *spec);
 int					is_cspdioux_bigx_fegbrk(char c);
 int					is_lh_bigl(char c);
 int					is_calculatesymb(char c);
+int					*width_s(char *str,t_spec *spec, int index, int width);
 
 t_spec				*read_lh_bigl(char *traverse, t_spec *spec);
 t_spec				*read_calculatesymb(char с, t_spec *spec);

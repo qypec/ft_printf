@@ -21,8 +21,9 @@
 
 int main()
 {
-	char c = 'A';
+	char s[] = "denis hello world";
+	char c = 'a';
 	int a = 13445;
-	printf ("%5p",&c);
+	printf ("\nsize = %d",printf ("%-30s",s));
 	return (0);
 }
