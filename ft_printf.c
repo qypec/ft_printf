@@ -66,9 +66,11 @@ int		ft_printf(const char *format, ...)
 
 int main()
 {
-	char a = 'a';
+	// char a = 'a';
+	int a = 2147483647;
+	int b = 2147483647;
 	printf("настоящий:\n");
-	printf("\nlen = %d\n", printf("hello printf |%5c|", a));
+	printf("\nlen = %d\n", printf("%ld", a + 1));
 	printf("\nown:\n");
-	printf("\nlen = %d\n", ft_printf("hello printf |%5.6c|", a));
+	printf("\nlen = %d\n", ft_printf("%ld", b + 1));
 }

@@ -7,7 +7,7 @@ int		ft_abs(int nb)
 	return (nb);
 }
 
- int        ft_itoa_help(int tmp, int base, int flag)
+ int        ft_itoa_help(long long int tmp, int base, int flag)
  {
      int                  size; 
 
@@ -20,12 +20,12 @@ int		ft_abs(int nb)
     
  }
 
-char	*ft_itoa_base(int value, int base)
+char	*ft_itoa_base(long long int value, int base)
 {
-	char	*str;
-	int		size;
-	int		flag;
-	int		tmp;
+	char				*str;
+	int					size;
+	int					flag;
+	long long int		tmp;
 	
     flag = 0;
 	if (base < 2 || base > 16)

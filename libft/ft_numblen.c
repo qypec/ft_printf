@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_numblen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/08 14:41:41 by yquaro            #+#    #+#             */
-/*   Updated: 2018/12/08 14:42:30 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/24 20:51:28 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_numblen(int n)
+int		ft_numblen(long long int n)
 {
 	int i;
 

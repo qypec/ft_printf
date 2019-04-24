@@ -21,9 +21,8 @@
 
 int main()
 {
-	char s[] = "denis hello world";
-	char c = 'a';
-	int a = 13445;
-	printf ("\nsize = %d",printf ("%-30s",s));
+	long int a = 9223372036854775807;
+
+	printf ("%o",a);
 	return (0);
 }

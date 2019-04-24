@@ -86,6 +86,27 @@ int print_s(t_spec *spec, va_list arg)
     return (size);
 }
 
+int print_p(t_spec *spec, va_list arg)
+{
+    int size;
+    int *p;
+    long long int num;
+    char *str;
+
+    size = 0;
+    num = va_arg(arg, long long int);
+    p = width(num, spec, 0, 0);
+    str = ft_itoa_base(num, 16);
+    size = printWidth(p);
+    ft_putstr("0x");
+    ft_putstr(str);
+    size +=printWidthEnd(p);
+    size += ft_strlen(str) + 2;
+    free(str);
+    free(p);
+    return (size);
+}
+
 int print_char(t_spec *spec, va_list arg)
 {
     int size;
@@ -96,6 +117,6 @@ int print_char(t_spec *spec, va_list arg)
     if (spec->symb == 's')
         size = print_s(spec, arg);
     if (spec->symb == 'p')
-    ;
+        size = print_p(spec, arg);
     return (size);
 }

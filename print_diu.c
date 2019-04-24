@@ -1,16 +1,15 @@
 #include "header.h"
 
-int *width(int number, t_spec *spec, int index, int width)
+int *width(long long number, t_spec *spec, long long int index, int width)
  {
     int *p;
-    
-    index = number;
+    if (number < 0)
+        index = -number;
+    else 
+        index = number;
     if (!(p = (int *)malloc (sizeof(int) * 3)))
         return (NULL);
-    p[0] = 0; // do
-    p[1] = 0; // posle
-    p[2] = 0; // zero posle
-    p[3] = 0; // size sembol
+    p[0] = p[1] = p[2] = p[3] = 0; 
     while (index > 0)
     {
         index = index / 10;
@@ -75,10 +74,21 @@ int printWidth(int *p)
 
      size = 0;
 
-     if (spec->symb == 'd' || spec->symb == 'i' || (spec->symb == 'u'))
+     if ((spec->symb == 'd' || spec->symb == 'i' || spec->symb == 'u') && spec->l != 1 && spec->ll != 1)
      {
         number = va_arg(arg, int);
         size = print_d(number, spec);
      }
+
+     if ((spec->symb == 'd' || spec->symb == 'i' || spec->symb == 'u') && spec->l == 1 && spec->ll != 1)
+     {
+        size = print_dl(spec, va_arg(arg, long int));
+     }
+
+    //  if ((spec->symb == 'd' || spec->symb == 'i' || spec->symb == 'u') && spec->l != 1 && spec->ll == 1)
+    //  {
+    //     number = va_arg(arg, int);
+    //     size = print_dll(number, spec);
+    //  }
      return (size);
  }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 12:05:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/20 16:43:22 by wconnell         ###   ########.fr       */
+/*   Updated: 2019/04/24 20:51:55 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
-char				*ft_itoa(int n);
+char				*ft_itoa(long long int n);
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
 void				ft_puterror(const char *s);
@@ -87,7 +87,7 @@ int					ft_height(char *s, char c);
 int					ft_abs(int num);
 int					ft_pow(int num, int power);
 int					ft_isspace(int c);
-int					ft_numblen(int n);
+int					ft_numblen(long long int n);
 char				**ft_matrixfree(char ***ret);
 char				**ft_strswap(char **matrix, int first, int second);
 void				ft_putmatrix(char **str);

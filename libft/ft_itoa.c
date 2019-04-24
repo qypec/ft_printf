@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 19:30:17 by yquaro            #+#    #+#             */
-/*   Updated: 2018/12/08 14:42:33 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/24 20:52:31 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char		*ft_itoa_neg(int nn)
+static char		*ft_itoa_neg(long long int nn)
 {
-	int			len;
-	char		*str;
-	int			i;
-	int long	n;
+	long long int			len;
+	char					*str;
+	long long int			i;
+	long long int 			n;
 
 	n = nn;
 	n = -n;
@@ -37,11 +37,11 @@ static char		*ft_itoa_neg(int nn)
 	return (str);
 }
 
-char			*ft_itoa(int n)
+char			*ft_itoa(long long int n)
 {
-	int		len;
+	long long int		len;
 	char	*str;
-	int		i;
+	long long int		i;
 
 	if (n < 0)
 		return (str = ft_itoa_neg(n));
