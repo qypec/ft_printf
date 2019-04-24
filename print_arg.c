@@ -1,10 +1,10 @@
  #include "header.h"
 
-// 'd' // 'i' // 'o' // 'u' // 'X' // 'x' int
+// 'd' // 'i' // 'o' // 'u' // 'X' // 'x' int ++
 
 // f // e // 'g'  float
 
-// 'c' // 's' // // 'p'  string and char and point 
+// 'c' // 's' // // 'p'  string and char and point  
  
 // 'к'     
 // 'k'   
@@ -20,8 +20,8 @@ int     print_arg(t_spec *spec, va_list arg)
         size = print_int(spec, arg);
     // if (spec->symb == 'f' || spec->symb == 'e' || spec->symb == 'g')
     //     size = print_float(spec, arg);
-    // if (spec->symb == 'c' || spec->symb == 's' || spec->symb == 'p')
-    //     size = print_char(spec, arg);
+    if (spec->symb == 'c' || spec->symb == 's' || spec->symb == 'p')
+        size = print_char(spec, arg);
     
     return (size);   
 }

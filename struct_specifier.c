@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   struct_specifier.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 14:54:09 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/23 17:39:54 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/24 15:14:08 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+// ERROR not processing float_point;
 
 t_spec	struct_specifier(char *traverse, t_spec *spec)
 {
@@ -46,6 +47,7 @@ t_spec	struct_specifier(char *traverse, t_spec *spec)
 		// bust
 		exit(-1);
 	}
+	//spec->float_point = 5;
 	spec->symb = *traverse;
 	return (*spec);
 }

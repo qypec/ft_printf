@@ -58,7 +58,7 @@ int		ft_printf(const char *format, ...)
 		spec = struct_specifier(++traverse, &spec);  /* записывает в структуру спецификатор */
 		traverse = move_after_specifier(traverse);
 
-		len += print_arg(&spec, arg); /*  */
+		*len += print_arg(&spec, arg); /*  */
 	}
 	va_end(arg);
 	return (*len);
@@ -66,8 +66,9 @@ int		ft_printf(const char *format, ...)
 
 int main()
 {
+	char a = 'a';
 	printf("настоящий:\n");
-	printf("\nlen = %d\n", printf("hello printf "));
-	printf("own:\n");
-	printf("\nlen = %d\n", ft_printf("hello printf |%5d|", 4));
+	printf("\nlen = %d\n", printf("hello printf |%5c|", a));
+	printf("\nown:\n");
+	printf("\nlen = %d\n", ft_printf("hello printf |%5c|", a));
 }

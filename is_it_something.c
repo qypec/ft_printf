@@ -2,7 +2,7 @@
 
 int		is_calculatesymb(char c)
 {
-	if (c == '#' || c == '0' || c == '-' || c == '+')
+	if (c == '#' || c == '0' || c == '-' || c == '+' || c == '.')
 		return (1);
 	return (0);
 }
