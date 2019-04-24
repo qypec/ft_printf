@@ -38,9 +38,9 @@ int *width_s(char *str,t_spec *spec, int index, int width)
     if (spec->plus == 1 || (spec->width != 0 && spec->minus != 1))
         if ((spec->width - width) > 0)
             p[0] = spec->width - width;
-    if (spec->float_point > 0)
-        if ((spec->float_point - width) > 0)
-            p[2] = spec->float_point - width;
+    if (spec->precision > 0)
+        if ((spec->precision - width) > 0)
+            p[2] = spec->precision - width;
     p[3] = width;
     return (p);
 }
@@ -72,12 +72,12 @@ int print_s(t_spec *spec, va_list arg)
     str =(char *) va_arg(arg, void *);
     p = width_s(str, spec, 0, 0);
     size = printWidth_s(p);
-    if (spec->float_point > 0)
+    if (spec->precision > 0)
     {
-        ptr = ft_strncpy(ft_strnew(spec->float_point), str, spec->float_point);
+        ptr = ft_strncpy(ft_strnew(spec->precision), str, spec->precision);
         ft_putstr(ptr);
         free(ptr);
-        size +=spec->float_point;
+        size +=spec->precision;
     }
     else 
         ft_putstr(str);
