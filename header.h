@@ -16,7 +16,7 @@ typedef struct		s_spec
 	int				plus;
 	int				minus;
 	int				zero;
-	int				float_point;
+	int				precision;
 	int				big_l;
 	int				ll;
 	int				l;
@@ -49,7 +49,7 @@ int					is_calculatesymb(char c);
 
 t_spec				*read_lh_bigl(char *traverse, t_spec *spec);
 t_spec				*read_calculatesymb(char с, t_spec *spec);
-t_spec				*read_digit(char *traverse, t_spec *spec);
+t_spec				*read_digit(char *traverse, t_spec *spec, const char *flag);
 
 void				print_struct(t_spec	*spec);
 #endif

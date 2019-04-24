@@ -7,7 +7,7 @@ OBJS = ft_printf.o struct_specifier.o is_it_something.o read_flags.o print_int.o
 all: $(NAME)
 $(NAME):
 	make -C libft/ re
-	gcc -g -o $(NAME) $(SRC) -I libft/includes/ -L libft/ -lft
+	gcc -o $(NAME) $(SRC) -I libft/includes/ -L libft/ -lft
 clean:
 	make -C libft/ clean
 	/bin/rm -f $(OBJS)

@@ -43,7 +43,7 @@ t_spec	*read_lh_bigl(char *traverse, t_spec *spec)
 	return (spec);
 }
 
-t_spec	*read_digit(char *traverse, t_spec *spec)
+t_spec	*read_digit(char *traverse, t_spec *spec, const char *flag)
 {
 	int		num;
 	int		i;
@@ -52,7 +52,7 @@ t_spec	*read_digit(char *traverse, t_spec *spec)
 
 	i = 0;
 	j = 0;
-	if (spec->width != 0)
+	if (spec->width != 0 && spec->precision != 0)
 		return (spec);
 	while (ft_isdigit(traverse[j]) == 1)
 	{
@@ -62,7 +62,10 @@ t_spec	*read_digit(char *traverse, t_spec *spec)
 	str = (char *)ft_memalloc(i + 1);
 	str = ft_strncpy(str, traverse, i);
 	num = ft_atoi(str);
-	spec->width = num;
+	if (ft_strcmp(flag, "width") == 0)
+		spec->width = num;
+	if (ft_strcmp(flag, "precision") == 0)
+		spec->precision = num;
 	ft_strdel(&str);
 	return (spec);
 }

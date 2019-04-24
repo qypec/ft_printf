@@ -22,9 +22,9 @@ int *width(int number, t_spec *spec, int index, int width)
     if (spec->plus == 1 || (spec->width != 0 && spec->minus != 1))
         if ((spec->width - width) > 0)
             p[0] = spec->width - width;
-    if (spec->float_point > 0)
-        if ((spec->float_point - width) > 0)
-            p[2] = spec->float_point - width;
+    if (spec->precision > 0)
+        if ((spec->precision - width) > 0)
+            p[2] = spec->precision - width;
     p[3] = width;
     return (p);
 }

@@ -10,7 +10,7 @@ void	print_struct(t_spec	*spec)
 	printf("plus = %d\n", spec->plus);
 	printf("minus = %d\n", spec->minus);
 	printf("zero = %d\n", spec->zero);
-	printf("float_point = %d\n", spec->float_point);
+	printf("precision = %d\n", spec->precision);
 	printf("L = %d\n", spec->big_l);
 	printf("ll = %d\n", spec->ll);
 	printf("l = %d\n", spec->l);
@@ -57,7 +57,7 @@ int		ft_printf(const char *format, ...)
 			return (*len);
 		spec = struct_specifier(++traverse, &spec);  /* записывает в структуру спецификатор */
 		traverse = move_after_specifier(traverse);
-
+		// print_struct(&spec);
 		*len += print_arg(&spec, arg); /*  */
 	}
 	va_end(arg);
@@ -70,5 +70,5 @@ int main()
 	printf("настоящий:\n");
 	printf("\nlen = %d\n", printf("hello printf |%5c|", a));
 	printf("\nown:\n");
-	printf("\nlen = %d\n", ft_printf("hello printf |%5c|", a));
+	printf("\nlen = %d\n", ft_printf("hello printf |%5.6c|", a));
 }

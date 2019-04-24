@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   struct_specifier.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 14:54:09 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/24 15:14:08 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/04/24 16:41:29 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-// ERROR not processing float_point;
+// ERROR not processing precision;
 
 t_spec	struct_specifier(char *traverse, t_spec *spec)
 {
@@ -30,7 +30,12 @@ t_spec	struct_specifier(char *traverse, t_spec *spec)
 		}
 		if (ft_isdigit(*traverse) == 1)
 		{
-			spec = read_digit(traverse, spec);
+			spec = read_digit(traverse, spec, "width");
+			traverse++;
+		}
+		if (*traverse == '.')
+		{
+			spec = read_digit(++traverse, spec, "precision");
 			traverse++;
 		}
 		if (is_lh_bigl(*traverse) == 1)
@@ -47,7 +52,6 @@ t_spec	struct_specifier(char *traverse, t_spec *spec)
 		// bust
 		exit(-1);
 	}
-	//spec->float_point = 5;
 	spec->symb = *traverse;
 	return (*spec);
 }
