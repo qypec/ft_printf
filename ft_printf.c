@@ -70,5 +70,5 @@ int main()
 	printf("настоящий:\n");
 	printf("\nlen = %d\n", printf("hello printf |%5c|", a));
 	printf("\nown:\n");
-	printf("\nlen = %d\n", ft_printf("hello printf |%5.6c|", a));
+	printf("\nlen = %d\n", ft_printf("hello printf |%LL1+ lL7#.6 ll.2hhhLLf|", 10));
 }
