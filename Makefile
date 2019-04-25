@@ -2,8 +2,8 @@
 # CFLAGS =  -Wall -Wextra -Werror 
 NAME = libftprintf.a
 LIBFTLIB = libft/libft.a
-SRC = ft_printf.c struct_specifier.c is_it_something.c read_flags.c print_int.c print_arg.c print_diu.c ft_itoa_base.c print_char.c print_dl_dll.c
-OBJS = ft_printf.o struct_specifier.o is_it_something.o read_flags.o print_int.o print_arg.o print_diu.o ft_itoa_base.o print_char.o print_dl_dll.o libft/ft_*.o
+SRC = ft_printf.c struct_specifier.c parse.c is_it_something.c read_flags.c read_date.c print_date.c print_int.c print_arg.c print_diu.c ft_itoa_base.c print_char.c print_dl_dll.c
+OBJS = ft_printf.o struct_specifier.o parse.o is_it_something.o read_flags.o read_date.o print_date.o print_int.o print_arg.o print_diu.o ft_itoa_base.o print_char.o print_dl_dll.o libft/ft_*.o
 
 all: $(NAME)
 $(NAME):

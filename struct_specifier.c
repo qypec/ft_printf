@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 14:54:09 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/24 20:19:35 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/25 09:53:42 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_spec		struct_specifier(char *traverse, t_spec *spec)
 	if (traverse[i] != '\0')
 		spec->symb = traverse[i];
 	if (spec->symb == 'k')
-		return (spec);
+		return (*spec);
 	spec = parse_space(traverse, spec);
 	spec = parse_calculatesymb(traverse, spec);
 	spec = parse_width(traverse, spec);

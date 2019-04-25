@@ -15,14 +15,9 @@ typedef struct		s_date
 	int				weekday;
 	int				month;
 	int				day;
-	// char			deldate;
 	int				hour;
 	int				min;
 	int				sec;
-	// char			deltime;
-
-}					t_date;
-
 }					t_date;
 
 typedef struct		s_spec
@@ -40,10 +35,9 @@ typedef struct		s_spec
 	int				l;
 	int				hh;
 	int				h;
-	int				k;
 }					t_spec;
 
-int					print_arg(t_spec *spec, va_list arg);
+int     			print_arg(char *traverse, t_spec *spec, va_list arg);
 int					print_int(t_spec *spec, va_list arg);
 int 				print_di (t_spec *spec, va_list arg);
 int					print_d(int number, t_spec *spec);
@@ -74,5 +68,18 @@ t_spec				*read_lh_bigl(char *traverse, t_spec *spec);
 t_spec				*read_calculatesymb(char с, t_spec *spec);
 t_spec				*read_digit(char *traverse, t_spec *spec, const char *flag);
 
-void				print_struct(t_spec	*spec);
+t_spec				*parse_precision(char *traverse, t_spec *spec);
+t_spec				*parse_width(char *traverse, t_spec *spec);
+t_spec				*parse_calculatesymb(char *traverse, t_spec *spec);
+t_spec				*parse_space(char *traverse, t_spec *spec);
+t_spec				*parse_lh_bigl(char *traverse, t_spec *spec);
+
+int					print_date(char *traverse, va_list arg);
+
+t_date				*read_year(char *traverse, t_date *pattern);
+t_date				*read_ddwd(char *traverse, t_date *pattern);
+t_date				*read_month(char *traverse, t_date *pattern);
+t_date				*read_hhmm(char *traverse, t_date *pattern);
+t_date				*read_sec(char *traverse, t_date *pattern);
+
 #endif
