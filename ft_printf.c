@@ -66,11 +66,11 @@ int		ft_printf(const char *format, ...)
 
 int main()
 {
-	// char a = 'a';
-	int a = 2147483647;
-	int b = 2147483647;
+	time_t ttime;
+
+	ttime = time(NULL);
 	printf("настоящий:\n");
 	printf("\nlen = %d\n", printf("%5%"));
 	printf("\nown:\n");
-	printf("\nlen = %d\n", ft_printf("%WD MM DD hh:mm:SS YYYYk"));
+	printf("\nlen = %d\n", ft_printf("%WD-MM-DD mm:hh:SS YYk", ttime));
 }

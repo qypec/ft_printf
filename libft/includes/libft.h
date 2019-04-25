@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 12:05:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/24 20:51:55 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/04/25 11:41:28 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,17 @@
 
 # include <stddef.h>
 # include <stdlib.h>
+
+typedef struct		s_ctime
+{
+	char			*weekday;
+	char			*month;
+	char			*day;
+	char			*hour;
+	char			*min;
+	char			*sec;
+	char			*year;
+}					t_ctime;
 
 typedef struct		s_list
 {

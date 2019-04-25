@@ -26,7 +26,7 @@ t_date	parse_date(char *traverse, t_date *pattern)
 
 int		print_date(char *traverse, va_list arg)
 {
-	const time_t	ttime;
+	time_t	ttime;
 	char			*date;
 	t_date			pattern;
 	int				size;
@@ -34,9 +34,12 @@ int		print_date(char *traverse, va_list arg)
 	pattern = (t_date){0, 0, 0, 0, 0, 0, 0, 0};
 	pattern = parse_date(traverse, &pattern);
 	print_strdate(&pattern);
-	size = 0;
-	// ttime = va_arg(arg, const time_t);
-	// date = ft_ctime(ttime);
+	// size = 0;
+	ttime = va_arg(arg, const time_t);
+	// printf("time = %lld\n", (long long int)ttime);
+	date = ft_ctime(ttime);
+	printf("\nctime = %s\n", ctime(ttime));
+	printf("ft_ctime = %s\n\n", date);
 	// date = date_to_format()
 	// ft_putstr(date);
 	// size = ft_strlen(date) - 1;
