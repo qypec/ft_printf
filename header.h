@@ -5,7 +5,25 @@
 # include "libft.h"
 # include <unistd.h>
 # include <stdarg.h>
+# include <time.h>
 # define TAB  "0123456789abcdef"
+
+typedef struct		s_date
+{
+	int				year4;
+	int				year2;
+	int				weekday;
+	int				month;
+	int				day;
+	// char			deldate;
+	int				hour;
+	int				min;
+	int				sec;
+	// char			deltime;
+
+}					t_date;
+
+}					t_date;
 
 typedef struct		s_spec
 {
@@ -22,6 +40,7 @@ typedef struct		s_spec
 	int				l;
 	int				hh;
 	int				h;
+	int				k;
 }					t_spec;
 
 int					print_arg(t_spec *spec, va_list arg);

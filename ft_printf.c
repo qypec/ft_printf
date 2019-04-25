@@ -51,14 +51,14 @@ int		ft_printf(const char *format, ...)
 	va_start(arg, (char *)format);
 	while (*traverse != '\0')
 	{
-		spec = (t_spec){(char)48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		spec = (t_spec){(char)48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		traverse = print_before_specifier(traverse, len); /* печатает символы до % */
 		if (*traverse == '\0')
 			return (*len);
 		spec = struct_specifier(++traverse, &spec);  /* записывает в структуру спецификатор */
 		traverse = move_after_specifier(traverse);
 		// print_struct(&spec);
-		*len += print_arg(&spec, arg); /*  */
+		*len += print_arg(traverse, &spec, arg); /*  */
 	}
 	va_end(arg);
 	return (*len);
@@ -72,5 +72,5 @@ int main()
 	printf("настоящий:\n");
 	printf("\nlen = %d\n", printf("%5%"));
 	printf("\nown:\n");
-	printf("\nlen = %d\n", ft_printf("%5%"));
+	printf("\nlen = %d\n", ft_printf("%WD MM DD hh:mm:ss YYYYk"));
 }

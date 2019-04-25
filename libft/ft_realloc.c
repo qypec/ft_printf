@@ -12,23 +12,29 @@
 
 #include "libft.h"
 
-void	*ft_realloc(void *str, size_t size)
+char	*ft_realloc(char *str, size_t size)
 {
-	unsigned char	*new_str;
-	size_t			length;
-	size_t			i;
+	char	*new_str;
+	size_t	length;
+	size_t	len;
+	size_t	i;
 
+	if (str == NULL)
+		return (NULL);
 	i = 0;
-	new_str = (unsigned char *)str;
-	length = ft_strlen(str) + size + 1;
-	new_str = (unsigned char *)malloc(sizeof(unsigned char) * length);
-	while (new_str[i] != '\0')
+	len = ft_strlen(str);
+	length = len + size;
+	new_str = (char *)malloc(sizeof(char) * length);
+	while (i < len)
+	{
+		new_str[i] = str[i];
 		i++;
+	}
 	while (i < length)
 	{
 		new_str[i] = '\0';
 		i++;
 	}
-	new_str[i] = '\0';
+	ft_strdel(&str);
 	return (new_str);
 }
