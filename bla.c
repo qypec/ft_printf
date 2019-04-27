@@ -21,8 +21,20 @@
 
 int main()
 {
-	long int a = 9223372036854775807;
+	long long int a = 25500000;
+	long long int b = (int)a;
+	char one = a;
+	char unsigned two = a;
+	long long int  index = 9223372036854775807;
+	int width = 0;
 
-	printf ("%lo",a);
+	while (index > 0)
+	{
+		index = index / 16;
+		width++;
+	}
+
+	printf ("%d\n",width);
+	printf ("%lld\n",a);
 	return (0);
 }

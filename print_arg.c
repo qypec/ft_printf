@@ -14,7 +14,7 @@
 int     print_arg(t_spec *spec, va_list arg)
 {
     int size;
-     
+
     size = 0;
     if (spec->symb == 'd' || spec->symb == 'i' || spec->symb == 'o' || spec->symb == 'u' || spec->symb == 'x' || spec->symb == 'X')
         size = print_int(spec, arg);

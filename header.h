@@ -23,20 +23,25 @@ typedef struct		s_spec
 	int				hh;
 	int				h;
 }					t_spec;
+/* reduction */
+long long int reduction_signed(t_spec *spec, long long int num);
+unsigned long long reduction_unsigned(t_spec *spec, unsigned long long int num);
+int *width(long long number, t_spec *spec, unsigned long int index, int width, int base);
 
 int					print_arg(t_spec *spec, va_list arg);
 int					print_int(t_spec *spec, va_list arg);
-int 				print_di (t_spec *spec, va_list arg);
+int 				assembly_int(t_spec *spec, va_list arg, int base);
 int					print_d(int number, t_spec *spec);
-int 				*width(long long number, t_spec *spec, unsigned long int index, int width);
-int					print_o(t_spec *spec, va_list arg);
+
 int					printWidthEnd(int *p);
-int					printWidth(int *p);
+int 				printWidth(int *p, t_spec *spec);
 char				*ft_itoa_base(long long int value, int base);
 int       			ft_itoa_help(long long int tmp, int base, int flag);
 int					ft_abs(int nb);
+int					isplay_u(t_spec *spec, unsigned long long int num);
+int 				display_int(t_spec *spec, long long int num, int base);
+char				*register_x(char *str, t_spec *spec);
 //x - X
-int					print_x(t_spec *spec, va_list arg);
 char				*printX(char *str, t_spec *spec);
 t_spec				struct_specifier(char *traverse, t_spec *spec);
 
@@ -54,7 +59,6 @@ int 				print_dl(t_spec *spec, long int num);
 t_spec				*read_lh_bigl(char *traverse, t_spec *spec);
 t_spec				*read_calculatesymb(char с, t_spec *spec);
 t_spec				*read_digit(char *traverse, t_spec *spec, const char *flag);
-int					print_dll(t_spec *spec, long long num);
 
 void				print_struct(t_spec	*spec);
 #endif
