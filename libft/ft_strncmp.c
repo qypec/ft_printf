@@ -6,11 +6,11 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 21:45:17 by yquaro            #+#    #+#             */
-/*   Updated: 2018/12/01 20:31:06 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/25 12:30:22 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "includes/libft.h"
 
 int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {

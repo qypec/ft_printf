@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 12:05:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/25 11:41:28 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/26 21:56:21 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,19 @@
 typedef struct		s_ctime
 {
 	char			*weekday;
+	int				weekday_n;
 	char			*month;
+	int				month_n;
 	char			*day;
+	int				day_n;
 	char			*hour;
+	int				hour_n;
 	char			*min;
+	int				min_n;
 	char			*sec;
+	int				sec_n;
 	char			*year;
+	int				year_n;
 }					t_ctime;
 
 typedef struct		s_list

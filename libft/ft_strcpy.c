@@ -6,11 +6,11 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 13:15:43 by yquaro            #+#    #+#             */
-/*   Updated: 2018/12/01 17:37:43 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/25 12:30:37 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "includes/libft.h"
 
 char	*ft_strcpy(char *dst, const char *src)
 {
