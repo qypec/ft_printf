@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 12:05:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/26 21:56:21 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/27 10:20:50 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void				*ft_memcpy(void *dst, const void *src, size_t n);
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void				*ft_memmove(void *dst, const void *src, size_t len);
 void				*ft_memchr(const void *arr, int c, size_t n);
+int					*ft_memint(int *dest, int c, int n);
 int					ft_memcmp(const void *arr1, const void *arr2, size_t n);
 size_t				ft_strlen(const char *str);
 char				*ft_strdup(const char *str);
