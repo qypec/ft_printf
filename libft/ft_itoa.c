@@ -7,6 +7,7 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 19:30:17 by yquaro            #+#    #+#             */
 /*   Updated: 2019/04/25 12:31:00 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/24 21:36:23 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +18,7 @@ static char		*ft_itoa_neg(long long int nn)
 	long long int			len;
 	char					*str;
 	long long int			i;
-	long long int 			n;
+	unsigned long int 			n;
 
 	n = nn;
 	n = -n;

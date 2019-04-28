@@ -28,7 +28,7 @@ int		print_percent(t_spec *spec)
 int     print_arg(char *traverse, t_spec *spec, va_list arg)
 {
     int size;
-     
+
     size = 0;
     if (spec->symb == 'k')
     	size = print_date(traverse, arg);

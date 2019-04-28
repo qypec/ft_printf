@@ -38,7 +38,7 @@ char	*print_before_specifier(char *traverse, int *len)
 	return (traverse);
 }
 
-int		ft_printf(const char *format, ...)
+int		*ft_printf(const char *format, ...)
 {
 	va_list 		arg;
 	t_spec			spec;
@@ -54,7 +54,7 @@ int		ft_printf(const char *format, ...)
 		spec = (t_spec){(char)48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		traverse = print_before_specifier(traverse, len); /* печатает символы до % */
 		if (*traverse == '\0')
-			return (*len);
+			return (len);
 		spec = struct_specifier(++traverse, &spec);  /* записывает в структуру спецификатор */
 		// print_struct(&spec);
 		*len += print_arg(traverse, &spec, arg); /*  */
@@ -68,9 +68,22 @@ int main()
 {
 	time_t ttime;
 
-	ttime = time(NULL);
+	// ttime = time(NULL);
+	// printf("настоящий:\n");
+	// printf("\nlen = %d\n", printf("%5%"));
+	// printf("\nown:\n");
+	// printf("\nlen = %d\n", ft_printf("%WD-MM-DD mm:hh:SS YYk", ttime));
+
+	// char a = 'a';
+	long long int a = 6278;
+	long long int b = 9223372036854775807;
+	char str [] = "Hello#0-+ world#0-+ ";
+	int *len;
+	char xx = 65;
+	// a =  (unsigned char)a;
 	printf("настоящий:\n");
-	printf("\nlen = %d\n", printf("%5%"));
+	printf("\nlen = %d\n", printf(" %x", -42));
 	printf("\nown:\n");
-	printf("\nlen = %d\n", ft_printf("%WD-MM-DD mm:hh:SS YYk", ttime));
+	printf("\nlen = %d\n",*(len =  ft_printf("%x ", -42)));
+	free(len);
 }
