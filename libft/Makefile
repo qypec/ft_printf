@@ -6,17 +6,18 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/20 19:26:56 by yquaro            #+#    #+#              #
-#    Updated: 2019/04/24 22:22:14 by yquaro           ###   ########.fr        #
+#    Updated: 2019/04/27 13:26:21 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+# CFLAGS =  -Wall -Wextra -Werror 
 NAME = libft.a
 SRC = ft_*.c
 OBJ = *.o
 
 all: $(NAME)
 $(NAME): $(SRC)
-	gcc -Wall -Wextra -Werror -c -g $(SRC) -I includes/
+	gcc -c -g $(SRC) -I includes/
 	ar rcs $(NAME) $(OBJ)
 clean:
 	/bin/rm -f $(OBJ)
