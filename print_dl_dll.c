@@ -10,6 +10,9 @@ long long int reduction_signed(t_spec *spec, long long int num)
         num = (short)(num);
     if (spec->hh == 1)
         num = (char)num;
+    if (num < 0)
+        if (spec->symb == 'x' || spec->symb == 'X')
+            num += 4294967296;
     return (num);
 }
 
@@ -91,6 +94,7 @@ int display_u(t_spec *spec, unsigned long long int num, int base)
     int *p;
     char *str;
 
+    p = NULL;
     size = 0;
     p = width_u(num, spec, 0, 0);
     num = reduction_unsigned(spec, num);

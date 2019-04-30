@@ -26,15 +26,15 @@ int main()
 	char one = a;
 	char unsigned two = a;
 	long long int  index = 9223372036854775807;
-	int width = 0;
-
-	while (index > 0)
-	{
-		index = index / 16;
-		width++;
-	}
-
-	printf ("%d\n",width);
-	printf ("%lld\n",a);
+	unsigned width = -42;
+	unsigned int str;
+	// while (index > 0)
+	// {
+	// 	index = index / 16;
+	// 	width++;
+	// }
+	str = width;
+	printf ("%x\n",str);
+	printf ("%d\n",str);
 	return (0);
 }

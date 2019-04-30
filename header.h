@@ -2,7 +2,7 @@
 # define HEADER_H
 
 # include <stdio.h>
-# include "libft.h"
+# include "libft/includes/libft.h"
 # include <unistd.h>
 # include <stdarg.h>
 # define TAB  "0123456789abcdef"
@@ -24,14 +24,15 @@ typedef struct		s_spec
 	int				h;
 }					t_spec;
 /* reduction */
-long long int reduction_signed(t_spec *spec, long long int num);
-unsigned long long reduction_unsigned(t_spec *spec, unsigned long long int num);
-int *width(long long number, t_spec *spec, unsigned long int index, int width, int base);
+long long int 		reduction_signed(t_spec *spec, long long int num);
+unsigned long long 	reduction_unsigned(t_spec *spec, unsigned long long int num);
+int 				*width(long long number, t_spec *spec, unsigned long int index, int width, int base);
 
 int					print_arg(t_spec *spec, va_list arg);
 int					print_int(t_spec *spec, va_list arg);
 int 				assembly_int(t_spec *spec, va_list arg, int base);
 int					print_d(int number, t_spec *spec);
+int					print_u(t_spec *spec, va_list arg, int base);
 
 int					printWidthEnd(int *p);
 int 				printWidth(int *p, t_spec *spec);
@@ -52,6 +53,7 @@ int					is_cspdioux_bigx_fegbrk(char c);
 int					is_lh_bigl(char c);
 int					is_calculatesymb(char c);
 int					*width_s(char *str,t_spec *spec, int index, int width);
+int					*width_u(unsigned long long number, t_spec *spec, unsigned long long int index, int width);
 
 // l and ll 
 int 				print_dl(t_spec *spec, long int num);

@@ -38,31 +38,35 @@ char	*print_before_specifier(char *traverse, int *len)
 	return (traverse);
 }
 
-int		*ft_printf(const char *format, ...)
+int		ft_printf(const char *format, ...)
 {
 	va_list 		arg;
 	t_spec			spec;
 	char 			*traverse;
-	int				*len;
+	int				len;
 
-	len = (int *)ft_memalloc(1);
-	*len = 0;
+	//len = (int *)ft_memalloc(1);
+	len = 0;
 	traverse = (char *)format;
 	va_start(arg, (char *)format);
 	while (*traverse != '\0')
 	{
 		spec = (t_spec){(char)48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		traverse = print_before_specifier(traverse, len); /* печатает символы до % */
+		traverse = print_before_specifier(traverse, &len); /* печатает символы до % */
 		if (*traverse == '\0')
 			return (len);
 		spec = struct_specifier(++traverse, &spec);  /* записывает в структуру спецификатор */
 		traverse = move_after_specifier(traverse);
 		// print_struct(&spec);
-		*len += print_arg(&spec, arg); /*  */
+	//	print_struct(&spec);
+		/*ошибка в парсе  zero == 1 а должен (zero == 0) !!!*/
+
+		len += print_arg(&spec, arg); /*  */
 	}
 	va_end(arg);
-	return (*len);
+	return (len);
 }
+ 
 
 int main()
 {
@@ -74,8 +78,8 @@ int main()
 	char xx = 65;
 	// a =  (unsigned char)a;
 	printf("настоящий:\n");
-	printf("\nlen = %d\n", printf(" %x", -42));
+	printf("\nlen = %d\n", printf("%-10.5d", 4242));
 	printf("\nown:\n");
-	printf("\nlen = %d\n",*(len =  ft_printf("%x ", -42)));
-	free(len);
+	printf("\nlen = %d\n",len =  ft_printf("%-10.5d", 4242));
 }
+// /**/

@@ -29,15 +29,15 @@ int *width_s(char *str,t_spec *spec, int index, int width)
     p[2] = 0; // zero posle
     p[3] = 0; // size sembol
     while (str[width])
-    {
         width++;
-    }
     if (spec->minus == 1 && spec->width != 0)
         if ((spec->width - width) > 0)
             p[1] = spec->width - width;
     if (spec->plus == 1 || (spec->width != 0 && spec->minus != 1))
         if ((spec->width - width) > 0)
             p[0] = spec->width - width;
+        if (((spec->width - spec->precision) > 0) && spec->precision != 0)
+            p[0] = spec->width - spec->precision;
     if (spec->precision > 0)
         if ((spec->precision - width) > 0)
             p[2] = spec->precision - width;
@@ -77,7 +77,8 @@ int print_s(t_spec *spec, va_list arg)
         ptr = ft_strncpy(ft_strnew(spec->precision), str, spec->precision);
         ft_putstr(ptr);
         free(ptr);
-        size +=spec->precision;
+        if (p[3] > 0)
+            size +=spec->precision;
     }
     else 
     {
