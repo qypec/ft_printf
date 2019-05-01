@@ -3,7 +3,7 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 12:05:21 by yquaro            #+#    #+#             */
 /*   Updated: 2019/04/24 21:36:23 by oargrave         ###   ########.fr       */
@@ -15,6 +15,24 @@
 
 # include <stddef.h>
 # include <stdlib.h>
+
+typedef struct		s_ctime
+{
+	char			*weekday;
+	int				weekday_n;
+	char			*month;
+	int				month_n;
+	char			*day;
+	int				day_n;
+	char			*hour;
+	int				hour_n;
+	char			*min;
+	int				min_n;
+	char			*sec;
+	int				sec_n;
+	char			*year;
+	int				year_n;
+}					t_ctime;
 
 typedef struct		s_list
 {
@@ -29,6 +47,7 @@ void				*ft_memcpy(void *dst, const void *src, size_t n);
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void				*ft_memmove(void *dst, const void *src, size_t len);
 void				*ft_memchr(const void *arr, int c, size_t n);
+int					*ft_memint(int *dest, int c, int n);
 int					ft_memcmp(const void *arr1, const void *arr2, size_t n);
 size_t				ft_strlen(const char *str);
 char				*ft_strdup(const char *str);

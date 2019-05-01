@@ -1,6 +1,6 @@
 #include "header.h"
 
-void	print_struct(t_spec	*spec)
+void	print_struct(t_spec	*spec) /* на время отладки */
 {
 	printf("\n");
 	printf("symb = %c\n", spec->symb);
@@ -56,30 +56,27 @@ int		ft_printf(const char *format, ...)
 		if (*traverse == '\0')
 			return (len);
 		spec = struct_specifier(++traverse, &spec);  /* записывает в структуру спецификатор */
-		traverse = move_after_specifier(traverse);
 		// print_struct(&spec);
-	//	print_struct(&spec);
-		/*ошибка в парсе  zero == 1 а должен (zero == 0) !!!*/
-
-		len += print_arg(&spec, arg); /*  */
+		len += print_arg(traverse, &spec, arg); /*  */
+		traverse = move_after_specifier(traverse);
 	}
 	va_end(arg);
 	return (len);
 }
  
 
-// int main()
-// {
-// 	// char a = 'a';
-// 	long long int a = 6278;
-// 	long long int b = 9223372036854775807;
-// 	char str [] = "Hello#0-+ world#0-+ ";
-// 	int *len;
-// 	char xx = 65;
-// 	// a =  (unsigned char)a;
-// 	printf("настоящий:\n");
-// 	printf("\nlen = %d\n", printf("%-10.5d", 4242));
-// 	printf("\nown:\n");
-// 	printf("\nlen = %d\n",len =  ft_printf("%-10.5d", 4242));
-// }
-// // /**/
+int main()
+{
+	// char a = 'a';
+	long long int a = 6278;
+	long long int b = 9223372036854775807;
+	char str [] = "Hello#0-+ world#0-+ ";
+	int *len;
+	char xx = 65;
+	// a =  (unsigned char)a;
+	printf("настоящий:\n");
+	printf("\nlen = %d\n", printf("%-10.5d", 4242));
+	printf("\nown:\n");
+	printf("\nlen = %d\n",len =  ft_printf("%-10.5d", 4242));
+}
+// /**/

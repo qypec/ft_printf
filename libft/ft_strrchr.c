@@ -6,11 +6,11 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:43:09 by yquaro            #+#    #+#             */
-/*   Updated: 2018/12/01 17:43:53 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/25 12:30:17 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "includes/libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {
