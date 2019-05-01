@@ -21,7 +21,7 @@ void	print_struct(t_spec	*spec) /* на время отладки */
 
 char	*move_after_specifier(char *traverse)
 {
-	while (is_cspdioux_bigx_fegbrk(*traverse) != 1)
+	while (is_cspdioux_bigx_fegbrk(*traverse) != 1 && *traverse != '\0')
 		traverse++;
 	traverse++;
 	return (traverse);
@@ -45,7 +45,6 @@ int		ft_printf(const char *format, ...)
 	char 			*traverse;
 	int				len;
 
-	//len = (int *)ft_memalloc(1);
 	len = 0;
 	traverse = (char *)format;
 	va_start(arg, (char *)format);
@@ -56,8 +55,8 @@ int		ft_printf(const char *format, ...)
 		if (*traverse == '\0')
 			return (len);
 		spec = struct_specifier(++traverse, &spec);  /* записывает в структуру спецификатор */
-		// print_struct(&spec);
-		len += print_arg(traverse, &spec, arg); /*  */
+		print_struct(&spec);
+		len += print_arg(traverse, &spec, arg);
 		traverse = move_after_specifier(traverse);
 	}
 	va_end(arg);
@@ -67,16 +66,6 @@ int		ft_printf(const char *format, ...)
 
 int main()
 {
-	// char a = 'a';
-	long long int a = 6278;
-	long long int b = 9223372036854775807;
-	char str [] = "Hello#0-+ world#0-+ ";
-	int *len;
-	char xx = 65;
-	// a =  (unsigned char)a;
-	printf("настоящий:\n");
-	printf("\nlen = %d\n", printf("%-10.5d", 4242));
-	printf("\nown:\n");
-	printf("\nlen = %d\n",len =  ft_printf("%-10.5d", 4242));
+	ft_printf("%%");
+	return (0);
 }
-// /**/

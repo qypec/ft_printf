@@ -32,11 +32,14 @@ int		print_percent(t_spec *spec)
 	int num;
 
 	num = 0;
-	while (num < spec->width - 1)
-	{
-		ft_putchar(' ');
-		num++;
-	}
+    if (spec->width != 0)
+    {
+    	while (num < spec->width - 1)
+    	{
+    		ft_putchar(' ');
+    		num++;
+    	}
+    }
 	ft_putchar('%');
 	return (num + 1);
 }
