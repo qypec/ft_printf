@@ -11,6 +11,22 @@
 // '%'  
 // 'b' 
 
+int print_interest(t_spec *spec, va_list arg)
+{
+    int *p;
+    int size;
+
+    size = 0;
+    p = width(1, spec, 0, 0, 10);
+    size = printWidth(p, spec);
+    ft_putchar('%');
+    size = size +  1 + printWidthEnd(p);
+    free(p);
+    return (size);
+}
+
+
+
 int		print_percent(t_spec *spec)
 {
 	int num;
@@ -40,6 +56,8 @@ int     print_arg(char *traverse, t_spec *spec, va_list arg)
         size = print_int(spec, arg);
     if (spec->symb == 'c' || spec->symb == 's' || spec->symb == 'p')
         size = print_char(spec, arg);
+    if (spec->symb == '%')
+        size = print_interest(spec, arg);
           // if (spec->symb == 'f' || spec->symb == 'e' || spec->symb == 'g')
     //     size = print_float(spec, arg);
     
