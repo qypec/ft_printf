@@ -68,18 +68,18 @@ int		ft_printf(const char *format, ...)
 }
  
 
-int main()
-{
-	// char a = 'a';
-	long long int a = 6278;
-	long long int b = 9223372036854775807;
-	char str [] = "Hello#0-+ world#0-+ ";
-	int *len;
-	char xx = 65;
-	// a =  (unsigned char)a;
-	printf("настоящий:\n");
-	printf("\nlen = %d\n", printf("%-10.5d", 4242));
-	printf("\nown:\n");
-	printf("\nlen = %d\n",len =  ft_printf("%-10.5d", 4242));
-}
-// /**/
+// int main()
+// {
+// 	// char a = 'a';
+// 	long long int a = 6278;
+// 	long long int b = 9223372036854775807;
+// 	char str [] = "Hello#0-+ world#0-+ ";
+// 	int *len;
+// 	char xx = 65;
+// 	// a =  (unsigned char)a;
+// 	printf("настоящий:\n");
+// 	printf("\nlen = %d\n", printf("%-10.5d", 4242));
+// 	printf("\nown:\n");
+// 	printf("\nlen = %d\n",len =  ft_printf("%-10.5d", 4242));
+// }
+// // /**/
