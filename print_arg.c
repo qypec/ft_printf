@@ -28,10 +28,12 @@ int		print_percent(t_spec *spec)
 int     print_arg(char *traverse, t_spec *spec, va_list arg)
 {
     int size;
-     
+
     size = 0;
-    if (spec->symb == 'k')
-    	size = print_date(traverse, arg);
+    if (spec->symb == 'q')
+        size = print_matrix(traverse, arg);
+    // if (spec->symb == 'k')
+    // 	size = print_date(traverse, arg);
     if (spec->symb == '%')
     	size = print_percent(spec);
     if (spec->symb == 'd' || spec->symb == 'i' || spec->symb == 'o' || spec->symb == 'u' || spec->symb == 'x' || spec->symb == 'X')

@@ -66,11 +66,24 @@ int		ft_printf(const char *format, ...)
 
 int main()
 {
-	time_t ttime;
+	// time_t ttime;
+	// ttime = time(NULL);
+	// printf("настоящий:\n");
+	// printf("\nlen = %d\n", printf("%5%"));
+	// printf("\nown:\n");
+	// printf("\nlen = %d\n", ft_printf("%WD-MM-DD mm:hh:SS YYk", ttime));
 
-	ttime = time(NULL);
-	printf("настоящий:\n");
-	printf("\nlen = %d\n", printf("%5%"));
-	printf("\nown:\n");
-	printf("\nlen = %d\n", ft_printf("%WD-MM-DD mm:hh:SS YYk", ttime));
+	char **matr;
+	int		i;
+
+	i = 0;
+	matr = (char **)ft_memalloc(4);
+	while (i < 3)
+	{
+		matr[i] = ft_strdup(ft_itoa(i));
+		i++;
+	}
+	matr[i] = NULL;
+
+	ft_printf("%q", matr);
 }

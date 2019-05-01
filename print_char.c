@@ -8,13 +8,13 @@ int print_c(t_spec *spec, va_list arg)
     char symbol;
 
     symbol =(char) va_arg(arg, int);
-    p = width (1, spec, 0, 0);
-    size = printWidth(p);
+    p = width (1, spec, 0, 0, 10);
+    size = printWidth(p, spec);
     ft_putchar(symbol);
     size += printWidthEnd(p) + p[3];
 
 
-
+    free (p);
     return (size);
 } 
 
@@ -22,7 +22,7 @@ int *width_s(char *str,t_spec *spec, int index, int width)
 {  
     int *p;
     
-    if (!(p = (int *)malloc (sizeof(int) * 3)))
+    if (!(p = (int *)malloc (sizeof(int) * 4)))
         return (NULL);
     p[0] = 0; // do
     p[1] = 0; // posle
@@ -80,9 +80,11 @@ int print_s(t_spec *spec, va_list arg)
         size +=spec->precision;
     }
     else 
+    {
         ft_putstr(str);
         size += p[3];
-    free(str);
+    }
+    free(p);
     return (size);
 }
 
@@ -95,10 +97,9 @@ int print_p(t_spec *spec, va_list arg)
 
     size = 0;
     num = va_arg(arg, long long int);
-    p = width(num, spec, 0, 0);
+    p = width(num, spec, 0, 0, 16);
     str = ft_itoa_base(num, 16);
-    size = printWidth(p);
-    ft_putstr("0x");
+    size = printWidth(p, spec);
     ft_putstr(str);
     size +=printWidthEnd(p);
     size += ft_strlen(str) + 2;
