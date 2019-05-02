@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 14:54:09 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/02 19:26:09 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/02 20:11:55 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,10 @@ t_spec		struct_specifier(char *traverse, t_spec *spec)
 			i += move_after_digits(traverse + i);
 		}
 		if (is_calculatesymb(traverse[i]) == 1) /* если засек +-0#, заполняет ими структуру */
+		{
 			spec = read_calculatesymb(traverse[i++], spec);
+			continue ;
+		}
 		if (ft_isdigit(traverse[i]) == 1) /* если точки нет, значит цифры - это просто ширина */
 		{
 			spec = read_digit(traverse + i, spec, "width");
@@ -74,8 +77,9 @@ t_spec		struct_specifier(char *traverse, t_spec *spec)
 			spec = read_lh_bigl(traverse + i, spec);
 			i += move_after_lh_bigl(spec);
 		}
-		if (is_nonsymb(*traverse) == 1)
-			break ;
+		if (is_nonsymb(traverse[i]) == 1)
+			i++;
+		// printf("hello");
 		// *traverse = '\0';
 	}
 	if (traverse[i] != '\0')

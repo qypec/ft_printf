@@ -20,8 +20,6 @@ t_spec			*read_calculatesymb(char с, t_spec *spec)
 		spec->plus = 1;
 	if (с == '-')
 		spec->minus = 1;
-	if (spec->plus == 1 && spec->minus == 1) /* если и плюс и минус, то плюс нам не нужен */
-		spec->plus = 0;
 	return (spec);
 }
 
