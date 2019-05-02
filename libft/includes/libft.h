@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 12:05:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/01 17:02:45 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/04/20 16:43:22 by wconnell         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,6 @@
 
 # include <stddef.h>
 # include <stdlib.h>
-# include <time.h>
-
-typedef struct		s_ctime
-{
-	char			*weekday;
-	int				weekday_n;
-	char			*month;
-	int				month_n;
-	char			*day;
-	int				day_n;
-	char			*hour;
-	int				hour_n;
-	char			*min;
-	int				min_n;
-	char			*sec;
-	int				sec_n;
-	char			*year;
-	int				year_n;
-}					t_ctime;
 
 typedef struct		s_list
 {
@@ -48,7 +29,6 @@ void				*ft_memcpy(void *dst, const void *src, size_t n);
 void				*ft_memccpy(void *dst, const void *src, int c, size_t n);
 void				*ft_memmove(void *dst, const void *src, size_t len);
 void				*ft_memchr(const void *arr, int c, size_t n);
-int					*ft_memint(int *dest, int c, int n);
 int					ft_memcmp(const void *arr1, const void *arr2, size_t n);
 size_t				ft_strlen(const char *str);
 char				*ft_strdup(const char *str);
@@ -86,7 +66,7 @@ char				*ft_strsub(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s);
 char				**ft_strsplit(char const *s, char c);
-char				*ft_itoa(long long int n);
+char				*ft_itoa(int n);
 void				ft_putchar(char c);
 void				ft_putstr(char const *s);
 void				ft_puterror(const char *s);
@@ -107,7 +87,7 @@ int					ft_height(char *s, char c);
 int					ft_abs(int num);
 int					ft_pow(int num, int power);
 int					ft_isspace(int c);
-int					ft_numblen(long long int n);
+int					ft_numblen(int n);
 char				**ft_matrixfree(char ***ret);
 char				**ft_strswap(char **matrix, int first, int second);
 void				ft_putmatrix(char **str);

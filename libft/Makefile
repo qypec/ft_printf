@@ -6,21 +6,35 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/20 19:26:56 by yquaro            #+#    #+#              #
-#    Updated: 2019/04/27 13:26:21 by yquaro           ###   ########.fr        #
+#    Updated: 2019/05/02 17:44:37 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# CFLAGS =  -Wall -Wextra -Werror 
-NAME = libft.a
-SRC = ft_*.c
-OBJ = *.o
+# (ar rc)
+# The c option makes you create a library if it is not available,
+# and the r (replace) option replaces old object files with new versions.
 
-all: $(NAME)
-$(NAME): $(SRC)
-	gcc -c -g $(SRC) -I includes/
-	ar rcs $(NAME) $(OBJ)
+# (ranlib)
+# Adds a character index to the archive
+
+FLAGS = -Wall -Wextra -Werror
+SOURCE = ft_*.c
+OBJS = *.o
+OBJDIR = .obj
+LIBNAME = libft.a
+
+all: $(LIBNAME)
+$(LIBNAME):
+	gcc -c -g $(FLAGS) $(SOURCE)
+	mkdir $(OBJDIR)
+	mv $(OBJS) $(OBJDIR)
+	ar rc $(LIBNAME) $(OBJDIR)/$(OBJS)
+	ranlib $(LIBNAME)
+
 clean:
-	/bin/rm -f $(OBJ)
+	rm -rf $(OBJDIR)
+
 fclean: clean
-	/bin/rm -f $(NAME)
+	rm -f $(LIBNAME)
+
 re: fclean all

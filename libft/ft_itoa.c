@@ -6,19 +6,18 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 19:30:17 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/25 12:31:00 by yquaro           ###   ########.fr       */
-/*   Updated: 2019/04/24 21:36:23 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/05/01 19:04:20 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-static char		*ft_itoa_neg(long long int nn)
+static char		*ft_itoa_neg(int nn)
 {
-	long long int			len;
-	char					*str;
-	long long int			i;
-	unsigned long int 			n;
+	int			len;
+	char		*str;
+	int			i;
+	int long	n;
 
 	n = nn;
 	n = -n;
@@ -38,11 +37,11 @@ static char		*ft_itoa_neg(long long int nn)
 	return (str);
 }
 
-char			*ft_itoa(long long int n)
+char			*ft_itoa(int n)
 {
-	long long int		len;
+	int		len;
 	char	*str;
-	long long int		i;
+	int		i;
 
 	if (n < 0)
 		return (str = ft_itoa_neg(n));

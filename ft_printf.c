@@ -23,6 +23,8 @@ char	*move_after_specifier(char *traverse)
 {
 	while (is_cspdioux_bigx_fegbrk(*traverse) != 1 && *traverse != '\0')
 		traverse++;
+	if (*traverse == '\0')
+		return (traverse);
 	traverse++;
 	return (traverse);
 }
@@ -61,11 +63,4 @@ int		ft_printf(const char *format, ...)
 	}
 	va_end(arg);
 	return (len);
-}
- 
-
-int main()
-{
-	ft_printf("%lx", 4294967296);
-	return (0);
 }

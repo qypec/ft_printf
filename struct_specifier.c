@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 14:54:09 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/02 16:06:44 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/02 19:26:09 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,22 @@ int			move_after_digits(char *traverse)
 	return (i);
 }
 
+int			is_nonsymb(char c)
+{
+	if (is_calculatesymb(c) == 1 || is_lh_bigl(c) == 1)
+		return (0);
+	if (is_cspdioux_bigx_fegbrk(c) == 1 || c == '.' || c == ' ')
+		return (0);
+	return (1);
+}
+
 t_spec		struct_specifier(char *traverse, t_spec *spec)
 {
 	int i;
 
 	i = 0;
-	if (spec->symb == 'k') /* флаг для вывода даты. У нее свои особенности, так что флаги типа ll и прочие ей не нужны */
-		return (*spec);
+	// if (spec->symb == 'k')  флаг для вывода даты. У нее свои особенности, так что флаги типа ll и прочие ей не нужны 
+	// 	return (*spec);
 	while (is_cspdioux_bigx_fegbrk(traverse[i]) != 1 && traverse[i] != '\0')
 	{
 		if (traverse[i] == ' ')
@@ -65,6 +74,9 @@ t_spec		struct_specifier(char *traverse, t_spec *spec)
 			spec = read_lh_bigl(traverse + i, spec);
 			i += move_after_lh_bigl(spec);
 		}
+		if (is_nonsymb(*traverse) == 1)
+			break ;
+		// *traverse = '\0';
 	}
 	if (traverse[i] != '\0')
 		spec->symb = traverse[i];

@@ -6,35 +6,29 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 14:55:09 by yquaro            #+#    #+#             */
-/*   Updated: 2019/04/25 12:30:41 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/01 19:04:31 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-char	*ft_realloc(char *str, size_t size)
+void	*ft_realloc(void *str, size_t size)
 {
-	char	*new_str;
-	size_t	length;
-	size_t	len;
-	size_t	i;
+	unsigned char	*new_str;
+	size_t			length;
+	size_t			i;
 
-	if (str == NULL)
-		return (NULL);
 	i = 0;
-	len = ft_strlen(str);
-	length = len + size;
-	new_str = (char *)malloc(sizeof(char) * length);
-	while (i < len)
-	{
-		new_str[i] = str[i];
+	new_str = (unsigned char *)str;
+	length = ft_strlen(str) + size + 1;
+	new_str = (unsigned char *)malloc(sizeof(unsigned char) * length);
+	while (new_str[i] != '\0')
 		i++;
-	}
 	while (i < length)
 	{
 		new_str[i] = '\0';
 		i++;
 	}
-	ft_strdel(&str);
+	new_str[i] = '\0';
 	return (new_str);
 }

@@ -44,6 +44,7 @@ int *width(long long number, t_spec *spec, unsigned long int index, int width, i
 int print_u(t_spec *spec, va_list arg, int base);
 int *width_u(unsigned long long number, t_spec *spec, unsigned long long int index, int width);
 
+int					ft_printf(const char *format, ...);
 
 int     			print_arg(char *traverse, t_spec *spec, va_list arg);
 int					print_int(t_spec *spec, va_list arg);
