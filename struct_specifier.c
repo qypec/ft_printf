@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 14:54:09 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/01 22:06:35 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/02 16:06:44 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int			move_after_digits(char *traverse)
 		traverse++;
 		i++;
 	}
-	return (0);
+	return (i);
 }
 
 t_spec		struct_specifier(char *traverse, t_spec *spec)
@@ -43,20 +43,23 @@ t_spec		struct_specifier(char *traverse, t_spec *spec)
 		return (*spec);
 	while (is_cspdioux_bigx_fegbrk(traverse[i]) != 1 && traverse[i] != '\0')
 	{
-		if (traverse[i++] == ' ')
+		if (traverse[i] == ' ')
+		{
+			i++;
 			spec->space = 1;
+		}
 		if (traverse[i] == '.') /* если точка, то начинается точность */
 		{
 			spec = read_digit(traverse + (++i), spec, "precision");
 			i += move_after_digits(traverse + i);
 		}
+		if (is_calculatesymb(traverse[i]) == 1) /* если засек +-0#, заполняет ими структуру */
+			spec = read_calculatesymb(traverse[i++], spec);
 		if (ft_isdigit(traverse[i]) == 1) /* если точки нет, значит цифры - это просто ширина */
 		{
 			spec = read_digit(traverse + i, spec, "width");
 			i += move_after_digits(traverse + i);
 		}
-		if (is_calculatesymb(traverse[i]) == 1) /* если засек +-0#, заполняет ими структуру */
-			spec = read_calculatesymb(traverse[i++], spec);
 		if (is_lh_bigl(traverse[i]) == 1)
 		{
 			spec = read_lh_bigl(traverse + i, spec);

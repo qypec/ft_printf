@@ -55,7 +55,7 @@ int		ft_printf(const char *format, ...)
 		if (*traverse == '\0')
 			return (len);
 		spec = struct_specifier(++traverse, &spec);  /* записывает в структуру спецификатор */
-		print_struct(&spec);
+		// print_struct(&spec);
 		len += print_arg(traverse, &spec, arg);
 		traverse = move_after_specifier(traverse);
 	}
@@ -66,6 +66,6 @@ int		ft_printf(const char *format, ...)
 
 int main()
 {
-	ft_printf("%%");
+	ft_printf("%lx", 4294967296);
 	return (0);
 }
