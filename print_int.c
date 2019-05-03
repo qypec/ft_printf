@@ -84,21 +84,16 @@ int *width(long long number, t_spec *spec, unsigned long int index, int width, i
         width++;
     }
     if (spec->minus == 1 && spec->width != 0)
-    {
         if ((spec->width - width) > 0)
             p[1] = spec->width - width;
-    }
     if (spec->plus == 1 || (spec->width != 0 && spec->minus != 1))
-    {
         if ((spec->width - width) > 0)
             p[0] = spec->width - width;
-    }
-    
     if (spec->precision > 0)
-    {
         if ((spec->precision - width) > 0)
             p[2] = spec->precision - spec->width;
-    }
+    // if (spec->sharp == 1 && (spec->symb == 'x' || spec->symb == 'X'))
+    //     p[0] = p[0] - 2;
     p[3] = width;
     return (p);
 }
@@ -134,37 +129,39 @@ int *width_u(unsigned long long number, t_spec *spec, unsigned long long int ind
     return (p);
 }
 
-int printWidth(int *p, t_spec *spec)
+int printWidth(int *p, t_spec *spec, long long int num)
 {
-    int index;
+    int size;
 
-    index = 0;
-
-    if (spec->sharp == 1 && spec->symb == 'x')
+    size = 0;
+    if (spec->space)
+    {
+        ft_putchar(' ');
+        size++;
+    }
+    if (spec->sharp == 1 && (spec->symb == 'x' || spec->symb == 'X') && (spec->zero ))
+    {  
+         ft_putstr("0x");
+         size +=2;
+    }
+    p[0] -= 2;
+    if (p[0] > 0)
+        while (p[0] != 0)
+            {
+                if (spec->zero == 1)
+                    ft_putchar('0');
+                else 
+                    ft_putchar(' ');
+                p[0]--;
+                size++;
+            }
+    if (spec->zero == 0)
     {
         ft_putstr("0x");
-        index += 2;
+        size += 2;
     }
-    if (spec->sharp == 1 && spec->symb == 'X')
-    {
-        ft_putstr("0X");
-        index += 2;
-    }
-    if (((p[0] > 0) && (p[2] == 0)) && spec->zero != 1)
-    {
-        while (index < p[0])
-        {
-            ft_putchar(' ');
-            index++;
-        }
-    }
-    else
-        while (index < p[2])
-        {
-            ft_putchar('0');
-            index++;
-        }
-    return (index);
+
+    return (size);
 }
 
 

@@ -9,7 +9,7 @@ int print_c(t_spec *spec, va_list arg)
 
     symbol =(char) va_arg(arg, int);
     p = width (1, spec, 0, 0, 10);
-    size = printWidth(p, spec);
+    size = printWidth(p, spec, 0);
     ft_putchar(symbol);
     size += printWidthEnd(p) + p[3];
 
@@ -100,7 +100,7 @@ int print_p(t_spec *spec, va_list arg)
     num = va_arg(arg, long long int);
     p = width(num, spec, 0, 0, 16);
     str = ft_itoa_base(num, 16);
-    size = printWidth(p, spec);
+    size = printWidth(p, spec, 0);
     ft_putstr(str);
     size +=printWidthEnd(p);
     size += ft_strlen(str) + 2;

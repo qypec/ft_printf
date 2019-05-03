@@ -37,7 +37,7 @@ int display_int(t_spec *spec, long long int num, int base)
 
     num = reduction_signed(spec, num);
     p = width(num, spec, 0, 0, base);
-    size = printWidth(p, spec);
+    size = printWidth(p, spec, num);
     str = ft_itoa_base(num, base);
     if (spec->symb == 'X' || spec->symb == 'x')
         str = register_x(str, spec);
@@ -98,7 +98,7 @@ int display_u(t_spec *spec, unsigned long long int num, int base)
     size = 0;
     p = width_u(num, spec, 0, 0);
     num = reduction_unsigned(spec, num);
-    size = printWidth(p, spec);
+    size = printWidth(p, spec, num);
     str = ft_itoa_u(num);
     ft_putstr(str);
     size += printWidthEnd(p);

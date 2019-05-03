@@ -53,7 +53,7 @@ int					print_d(int number, t_spec *spec);
 int					print_u(t_spec *spec, va_list arg, int base);
 
 int					printWidthEnd(int *p);
-int 				printWidth(int *p, t_spec *spec);
+int 				printWidth(int *p, t_spec *spec, long long int num);
 char				*ft_itoa_base(long long int value, int base);
 int       			ft_itoa_help(long long int tmp, int base, int flag);
 int					ft_abs(int nb);
