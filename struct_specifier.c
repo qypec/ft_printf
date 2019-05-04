@@ -6,11 +6,31 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 14:54:09 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/02 20:11:55 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/04 20:37:47 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+
+const char	find_symb(char *traverse)
+{
+	int i;
+
+	i = 0;
+	while (is_cspdioux_bigx_fegbrk(traverse[i]) != 1 && traverse[i] != '\0')
+	{
+		if (traverse[i] == '|')
+		{
+			i++;
+			while (traverse[i] != '|')
+				i++;
+		}
+		i++;
+	}
+	if (traverse[i] == '\0')
+		return ((char)48);
+	return (traverse[i]);
+}
 
 int			move_after_lh_bigl(t_spec *spec)
 {
@@ -48,8 +68,9 @@ t_spec		struct_specifier(char *traverse, t_spec *spec)
 	int i;
 
 	i = 0;
-	// if (spec->symb == 'k')  флаг для вывода даты. У нее свои особенности, так что флаги типа ll и прочие ей не нужны 
-	// 	return (*spec);
+	spec->symb = find_symb(traverse);
+	if (spec->symb == 'k') /* флаг для вывода даты. У нее свои особенности, так что флаги типа ll и прочие ей не нужны */
+		return (*spec);
 	while (is_cspdioux_bigx_fegbrk(traverse[i]) != 1 && traverse[i] != '\0')
 	{
 		if (traverse[i] == ' ')

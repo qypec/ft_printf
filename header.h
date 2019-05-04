@@ -8,18 +8,6 @@
 # include <time.h>
 # define TAB  "0123456789abcdef"
 
-typedef struct		s_date
-{
-	int				year4;
-	int				year2;
-	int				weekday;
-	int				month;
-	int				day;
-	int				hour;
-	int				min;
-	int				sec;
-}					t_date;
-
 typedef struct		s_spec
 {
 	char			symb;
@@ -88,12 +76,6 @@ t_spec				*parse_lh_bigl(char *traverse, t_spec *spec);
 
 int					print_date(char *traverse, va_list arg);
 
-t_date				*read_year(char *traverse, t_date *pattern);
-t_date				*read_ddwd(char *traverse, t_date *pattern);
-t_date				*read_month(char *traverse, t_date *pattern);
-t_date				*read_hhmm(char *traverse, t_date *pattern);
-t_date				*read_sec(char *traverse, t_date *pattern);
-
-int		print_matrix(char *traverse, va_list arg);
+int					print_matrix(char *traverse, va_list arg);
 
 #endif

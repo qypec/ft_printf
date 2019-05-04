@@ -2,10 +2,13 @@
 
 int main()
 {
-	printf("real:\n");
-	printf("%-5.10o", 2500);
-	printf("\nown:\n");
-	ft_printf("%-5.10o", 2500);
+	time_t	ttime;
+
+	ttime = time(NULL);
+	// printf("real:\n");
+	// printf("%-5.10o", 2500);
+	// printf("\nown:\n");
+	ft_printf("%|MNH| |DD| |WDA|h|:|mm|:|ss| |YYYY|k", ttime);
 	printf("\n");
 	return (0);
 }

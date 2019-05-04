@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 12:05:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/04 18:47:52 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/04 21:19:06 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,6 @@ char				*ft_strencut(char *str, int n, char *choice);
 char				*ft_addsymb(char *str, char c, int num);
 char				*ft_addsymbend(char *str, char c, int num);
 char				*ft_strglue(char *str, const char *left, const char *right);
+char				*ft_stradd(char *str, char c);
 
 #endif

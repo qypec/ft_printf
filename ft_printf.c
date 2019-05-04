@@ -22,7 +22,15 @@ void	print_struct(t_spec	*spec) /* на время отладки */
 char	*move_after_specifier(char *traverse)
 {
 	while (is_cspdioux_bigx_fegbrk(*traverse) != 1 && *traverse != '\0')
+	{
+		if (*traverse == '|')
+		{
+			traverse++;
+			while (*traverse != '|')
+				traverse++;
+		}
 		traverse++;
+	}
 	if (*traverse == '\0')
 		return (traverse);
 	traverse++;
