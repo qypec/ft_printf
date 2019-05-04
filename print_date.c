@@ -27,6 +27,9 @@ static void			print_struct(t_cdate *date)
 
 static char 	*whatsparam(char *str, char *buff, t_cdate *date)
 {
+	int len;
+
+	len = 0;
 	if (ft_strcmp(buff, "WDA") == 0)
 		str = ft_strglue(str, date->weekday, "\0");
 	else if (ft_strcmp(buff, "MNH") == 0)
@@ -41,6 +44,12 @@ static char 	*whatsparam(char *str, char *buff, t_cdate *date)
 		str = ft_strglue(str, date->sec, "\0");
 	else if (ft_strcmp(buff, "YYYY") == 0)
 		str = ft_strglue(str, date->year, "\0");
+	else
+	{
+		len = ft_strlen(buff);
+		while (len--)
+			str = ft_strglue(str, "x", "\0");
+	}
 	return (str);
 }
 
@@ -67,6 +76,8 @@ static char		*fill_str(char *traverse, int size, t_cdate *date)
 				buff[j] = traverse[i];
 				i++;
 				j++;
+				if (j >= 5)
+					return ("overflow");
 			}
 			str = whatsparam(str, buff, date);
 			buff = ft_memset(buff, 0, 5);

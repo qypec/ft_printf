@@ -8,7 +8,7 @@ int main()
 	// printf("real:\n");
 	// printf("%-5.10o", 2500);
 	// printf("\nown:\n");
-	ft_printf("%|MNH| |DD| |WDA|h|:|mm|:|ss| |YYYY|k", ttime);
+	// ft_printf("%|MNH| |DD| |WDA| |hh|:|mm|:|ss| |YYYY|k", ttime);
 	printf("\n");
 	return (0);
 }
