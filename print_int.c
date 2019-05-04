@@ -10,28 +10,11 @@
  
 
 
-int printWidthEnd(int *p)
-{
-    int index; 
-
-    index = 0;
-    if (p[1] > 0)
-        while (index < p[1])
-        {
-            ft_putchar(' ');
-            index++;
-        }
-    return (index);
-}
- 
-
-
-char *register_x(char *str, t_spec *spec)
+static char *register_x(char *str, t_spec *spec)
 {
     int index;
 
     index = 0;
-    
     if (spec->symb == 'x')
         while (str[index])
         {
@@ -49,134 +32,44 @@ char *register_x(char *str, t_spec *spec)
     return (str);
 }
 
-
-int print_int(t_spec *spec, va_list arg)
+void display_int(t_spec *spec, long long int num, int base)
 {
-    int size;
+    int *p;
+    char *str;
+
+    num = reduction_signed(spec, num);
+    p = width(num, spec, 0, base);
+    printWidth(p, spec, num);
+    str = ft_itoa_base(num, base);
+    if (spec->symb == 'X' || spec->symb == 'x')
+        str = register_x(str, spec);
+    if (spec->plus == 1 && num >= 0)
+    {
+        ft_putchar('+');
+        size_len++;
+    }
+    ft_putstr(str);
+    printWidthEnd(p);
+    ft_strlen(str);
+    free(p);
+    free(str);
+}
+
+void assembly_int(t_spec *spec, va_list arg)
+{
+    long long int check;
+    long long int a;
     int base;
 
     base = 10;
-    if (spec->symb == 'X' || spec->symb == 'x')
+    if (spec->symb == 'x' || spec->symb == 'X')
         base = 16;
     if (spec->symb == 'o')
         base = 8;
-    size = assembly_int(spec, arg, base);
-    return (size);
-}
-
-int *width(long long number, t_spec *spec, unsigned long int index, int width, int base)
- {
-    int *p;
-
-    if (number < 0)
-        index = -number;
-    else 
-        index = number;
-    if (!(p = (int *)malloc(sizeof(int) * 4)))
-        return (NULL);
-    p[0] = 0;
-    p[1] = 0;
-    p[2] = 0;
-    p[3] = 0; 
-    while (index > 0)
-    {
-        index = index / base;
-        width++;
-    }
-    if (spec->minus == 1 && spec->width != 0)
-        if ((spec->width - width) > 0)
-            p[1] = spec->width - width;
-    if (spec->plus == 1 || (spec->width != 0 && spec->minus != 1))
-        if ((spec->width - width) > 0)
-            p[0] = spec->width - width;
-    if (spec->precision > 0)
-        if ((spec->precision - width) > 0)
-            p[2] = spec->precision - spec->width;
-    // if (spec->sharp == 1 && (spec->symb == 'x' || spec->symb == 'X'))
-    //     p[0] = p[0] - 2;
-    p[3] = width;
-    return (p);
-}
-
-int *width_u(unsigned long long number, t_spec *spec, unsigned long long int index, int width)
- {
-    int *p;
-    
-    index = number;
-    if (!(p = (int *)malloc (sizeof(int) * 4)))
-        return (NULL);
-    p[0] = 0; 
-    p[1] = 0;
-    p[2] = 0;
-    p[3] = 0; 
-    while (index > 0)
-    {
-        index = index / 10;
-        width++;
-    }
-    if (spec->minus == 1 && spec->width != 0)
-        if ((spec->width - width) > 0)
-            p[1] = spec->width - width;
-    if (spec->plus == 1 || (spec->width != 0 && spec->minus != 1))
-        if ((spec->width - width) > 0)
-            p[0] = spec->width - width;
-    if (spec->precision > 0)
-        if ((spec->precision - width) > 0)
-            p[2] = spec->precision - width;
-    if (spec->zero == 1)
-        p[2] = spec->width - width; 
-    p[3] = width;
-    return (p);
-}
-
-int printWidth(int *p, t_spec *spec, long long int num)
-{
-    int size;
-
-    size = 0;
-    if (spec->space)
-    {
-        ft_putchar(' ');
-        size++;
-    }
-    if (spec->sharp == 1 && (spec->symb == 'x' || spec->symb == 'X') && (spec->zero ))
-    {  
-         ft_putstr("0x");
-         size +=2;
-    }
-    p[0] -= 2;
-    if (p[0] > 0)
-        while (p[0] != 0)
-            {
-                if (spec->zero == 1)
-                    ft_putchar('0');
-                else 
-                    ft_putchar(' ');
-                p[0]--;
-                size++;
-            }
-    if (spec->zero == 0)
-    {
-        ft_putstr("0x");
-        size += 2;
-    }
-
-    return (size);
-}
-
-
-
-int assembly_int(t_spec *spec, va_list arg, int base)
-{
-    int size;
-    long long int check;
-    long long int a;
-    
-    size = 0;
     if (spec->symb == 'u')
     {
-        size = print_u(spec, arg, base);
-        return (size);
+        print_u(spec, arg, base);
+        return ;
     }
     if (spec->l == 1)
         check = va_arg(arg, long int);
@@ -184,7 +77,26 @@ int assembly_int(t_spec *spec, va_list arg, int base)
         check = va_arg(arg, long long int);
     if (spec->l == 0 && spec->ll == 0)
         check = va_arg(arg, int);
-    
-    size = display_int(spec, check, base);
-    return (size);
- }
+    display_int(spec, check, base);
+    return ;
+}
+
+
+
+
+int *width(long long number, t_spec *spec, unsigned long int index,  int base)
+{
+
+
+   return (0);
+}
+
+
+
+int printWidth(int *p, t_spec *spec, long long int num)
+{
+    return (0);
+}
+
+
+

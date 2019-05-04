@@ -3,9 +3,9 @@
 int main()
 {
 	printf("real:\n");
-	printf("%#08x", 42);
+	printf (" |len = %d|",printf("%-10.5o", 2500));
 	printf("\nown:\n");
-	ft_printf("%#08x", 42);
+	ft_printf(" |len = %d|", ft_printf("%-10.5o", 2500));
 	printf("\n");
 	return (0);
 }

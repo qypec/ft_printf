@@ -29,25 +29,7 @@ unsigned long long reduction_unsigned(t_spec *spec, unsigned long long int num)
     return (num);
 }
 
-int display_int(t_spec *spec, long long int num, int base)
-{
-    int size;
-    int *p;
-    char *str;
 
-    num = reduction_signed(spec, num);
-    p = width(num, spec, 0, 0, base);
-    size = printWidth(p, spec, num);
-    str = ft_itoa_base(num, base);
-    if (spec->symb == 'X' || spec->symb == 'x')
-        str = register_x(str, spec);
-    ft_putstr(str);
-    size += printWidthEnd(p);
-    size += ft_strlen(str);
-    free(p);
-    free(str);
-    return (size);
-}
 
 int		ft_numblen_u(unsigned long long int n)
 {

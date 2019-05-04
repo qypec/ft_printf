@@ -2,6 +2,6 @@
 
 int main ()
 {
-    printf ("%#.10x\n", 42);
+    printf ("%10.5d\n", 155);
     return (0);
 }
