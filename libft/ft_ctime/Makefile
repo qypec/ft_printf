@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/04/20 19:26:56 by yquaro            #+#    #+#              #
-#    Updated: 2019/05/04 19:34:43 by yquaro           ###   ########.fr        #
+#    Created: 2019/05/01 17:26:14 by yquaro            #+#    #+#              #
+#    Updated: 2019/05/04 19:19:14 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,27 +15,13 @@
 # and the r (replace) option replaces old object files with new versions.
 
 # (ranlib)
-# Adds a character index to the archive
+# adds a character index to the archive
 
 FLAGS = -Wall -Wextra -Werror
-SOURCE = ft_*.c
-OBJS = *.o
-OBJDIR = .obj
-NAME = libft.a
+SOURCE = ft_uctime.c ft_ctime.c getdata.c getmonth.c get_temporarydata.c struct_to_str.c
+OBJS = ft_uctime.o ft_ctime.o getdata.o getmonth.o get_temporarydata.o struct_to_str.o
+OBJDIR = ../.obj
 
-all: $(NAME)
-$(NAME):
+all: 
 	gcc -c $(FLAGS) $(SOURCE)
-	mkdir $(OBJDIR)
 	mv $(OBJS) $(OBJDIR)
-	make -C ft_ctime/ all
-	ar rc $(NAME) $(OBJDIR)/$(OBJS)
-	ranlib $(NAME)
-
-clean:
-	rm -rf $(OBJDIR)
-
-fclean: clean
-	rm -f $(NAME)
-
-re: fclean all
