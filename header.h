@@ -18,6 +18,14 @@ typedef struct		s_width
 	int				width_right;
 }					t_widt;
 
+typedef struct s_name
+{
+	char 			*str;
+	int				size_len;
+	int				error;
+	struct s_name 	*next;
+} t_name;
+
 typedef struct		s_date
 {
 	int				year4;
