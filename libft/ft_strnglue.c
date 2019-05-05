@@ -1,34 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_strnglue.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 12:29:42 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/05 18:35:54 by yquaro           ###   ########.fr       */
+/*   Created: 2019/05/05 18:59:24 by yquaro            #+#    #+#             */
+/*   Updated: 2019/05/05 19:01:28 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+char	*ft_strnglue(char *str, const char *left, const char *right, size_t n)
 {
-	unsigned char	*str_dst;
-	unsigned char	*str_src;
-	size_t			i;
+	int i;
+	int	counter;
 
+	if (str == NULL || left == NULL || right == NULL)
+		return (NULL);
 	i = 0;
-	str_dst = (unsigned char *)dst;
-	str_src = (unsigned char *)src;
-	if (str_dst == str_src)
-		return (str_dst);
-	while (i < n)
+	counter = n;
+	while (left[i] != '\0')
 	{
-		if (str_src[i] == '\0')
-			str_dst[i] = '\0';
-		str_dst[i] = str_src[i];
+		str[counter] = left[i];
 		i++;
+		counter++;
 	}
-	return (str_dst);
+	i = 0;
+	while (right[i] != '\0')
+	{
+		str[counter] = right[i];
+		i++;
+		counter++;
+	}
+	str[counter] = '\0';
+	return (str);
 }

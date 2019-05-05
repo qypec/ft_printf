@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 18:43:32 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/04 19:35:51 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/05 19:00:26 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@ char	*ft_strglue(char *str, const char *left, const char *right)
 	int i;
 	int	counter;
 
-	i = 0;
-	counter = 0;
 	if (str == NULL || left == NULL || right == NULL)
 		return (NULL);
+	i = 0;
+	counter = 0;
 	while (str[counter] != '\0')
 		counter++;
 	while (left[i] != '\0')
