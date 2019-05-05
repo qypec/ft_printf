@@ -8,35 +8,24 @@
 # include <time.h>
 # define TAB  "0123456789abcdef"
 # define RESERVE 15
+# define BUFF_SIZE 50
 
-long int				size_len;
-struct s_width				*Width;
+struct s_width		*Width;
 
-typedef struct				s_width
+typedef struct		s_width
 {
 	int				width_left;
 	int				width_right;
 }					t_widt;
 
-typedef struct				 s_name
+typedef struct		s_output
 {
-	char 				*str;
-	int				size_len;
+	char 			*str;
+	size_t			size;
 	int				error;
-	struct s_name 	*next;
-} t_name;
+}					t_output;
 
-typedef struct		s_date
-{
-	int				year4;
-	int				year2;
-	int				weekday;
-	int				month;
-	int				day;
-	int				hour;
-	int				min;
-	int				sec;
-}					t_date;
+t_output			*gl_output;
 
 typedef struct		s_spec
 {
@@ -104,5 +93,7 @@ int					print_date(char *traverse, va_list arg);
 void				bust_printf(int errorcode);
 
 int					print_matrix(char *traverse, va_list arg);
+
+void				init_bufferoutput(void);
 
 #endif

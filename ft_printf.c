@@ -56,19 +56,21 @@ int		ft_printf(const char *format, ...)
 	int				len;
 
 	len = 0;
-	traverse = (char *)format;
-	va_start(arg, (char *)format);
-	while (*traverse != '\0')
-	{
-		spec = (t_spec){(char)48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
-		traverse = print_before_specifier(traverse, &len); /* печатает символы до % */
-		if (*traverse == '\0')
-			return (len);
-		spec = struct_specifier(++traverse, &spec);  /* записывает в структуру спецификатор */
-		// print_struct(&spec);
-		len += print_arg(traverse, &spec, arg);
-		traverse = move_after_specifier(traverse);
-	}
+	init_bufferoutput();
+	printf("global = %s\n", gl_output->str);
+	// traverse = (char *)format;
+	// va_start(arg, (char *)format);
+	// while (*traverse != '\0')
+	// {
+	// 	spec = (t_spec){(char)48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+	// 	traverse = print_before_specifier(traverse, &len); /* печатает символы до % */
+	// 	if (*traverse == '\0')
+	// 		return (len);
+	// 	spec = struct_specifier(++traverse, &spec);  /* записывает в структуру спецификатор */
+	// 	// print_struct(&spec);
+	// 	len += print_arg(traverse, &spec, arg);
+	// 	traverse = move_after_specifier(traverse);
+	// }
 	va_end(arg);
 	return (len);
 }
