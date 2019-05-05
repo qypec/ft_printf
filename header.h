@@ -90,7 +90,7 @@ t_spec			*parse_calculatesymb(char *traverse, t_spec *spec);
 t_spec			*parse_space(char *traverse, t_spec *spec);
 t_spec			*parse_lh_bigl(char *traverse, t_spec *spec);
 
-int					print_date(char *traverse, va_list arg);
+void				print_date(char *traverse, va_list arg);
 void				bust_printf(int errorcode);
 
 void				init_bufferoutput(void);

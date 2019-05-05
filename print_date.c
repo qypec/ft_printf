@@ -11,19 +11,19 @@
 /* ************************************************************************** */
 #include "header.h"
 
-static void			print_struct(t_cdate *date)
-{
-	printf("---------------------------------------------\n");
-	printf("print struct:\n\n");
-	printf("weekday = %s\nweekday_n = %d\n\n", date->weekday, date->weekday_n);
-	printf("month = %s\nmonth_n = %d\n\n", date->month, date->month_n);
-	printf("day = %s\nday_n = %d\n\n", date->day, date->day_n);
-	printf("hour = %s\nhour_n = %d\n\n", date->hour, date->hour_n);
-	printf("min = %s\nmin = %d\n\n", date->min, date->min_n);
-	printf("sec = %s\nsec_n = %d\n\n", date->sec, date->sec_n);
-	printf("year = %s\nyear_n = %d\n\n", date->year, date->year_n);
-	printf("---------------------------------------------\n\n");
-}
+// static void			print_struct(t_cdate *date)
+// {
+// 	printf("---------------------------------------------\n");
+// 	printf("print struct:\n\n");
+// 	printf("weekday = %s\nweekday_n = %d\n\n", date->weekday, date->weekday_n);
+// 	printf("month = %s\nmonth_n = %d\n\n", date->month, date->month_n);
+// 	printf("day = %s\nday_n = %d\n\n", date->day, date->day_n);
+// 	printf("hour = %s\nhour_n = %d\n\n", date->hour, date->hour_n);
+// 	printf("min = %s\nmin = %d\n\n", date->min, date->min_n);
+// 	printf("sec = %s\nsec_n = %d\n\n", date->sec, date->sec_n);
+// 	printf("year = %s\nyear_n = %d\n\n", date->year, date->year_n);
+// 	printf("---------------------------------------------\n\n");
+// }
 
 static char 	*whatsparam(char *str, char *buff, t_cdate *date)
 {
@@ -131,7 +131,7 @@ static int		calculate_size(char *traverse)
 	return (size);
 }
 
-int		print_date(char *traverse, va_list arg)
+void			print_date(char *traverse, va_list arg)
 {
 	time_t		ttime;
 	t_cdate		*date;
@@ -144,10 +144,13 @@ int		print_date(char *traverse, va_list arg)
 	if ((size = calculate_size(traverse)) > 256)
 	{
 		ft_puterror("ERROR: too big argument with flag %k");
-		return (0);
+		free_uctime(date);
+		return ;
 	}
 	str = fill_str(traverse, size, date);
-	ft_putstr(str);
+	is_it_buffer_overflow(size);
+	gl_output->str = ft_strnglue(gl_output->str, str, "\0", gl_output->size);
+	gl_output->size += size;
 	ft_strdel(&str);
-	return (size);
+	free_uctime(date);
 }
