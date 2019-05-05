@@ -114,19 +114,18 @@ int lenbase(unsigned long long int num, int base)
 int *width(long long number, t_spec *spec, unsigned long int index,  int base)
 {
 	int width;
-	
+
 	width = 0;
-	//0x and 0X and 0 
+	// 0x and 0X and 0 
 	// # 
 	if (number < 0)
 		index = -number;
 	else
 		index = number;
 	width = lenbase(index, base);
-	if (spec->zero == 1)
-		;
-	if (spec->sharp == 1)
-		;
+	if (spec->width > width || spec->minus == 0)
+		Width->width_left = spec->width - width;
+	
 	return (0);
 }
 
