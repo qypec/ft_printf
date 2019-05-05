@@ -8,7 +8,6 @@
 # include <time.h>
 # define TAB  "0123456789abcdef"
 # define RESERVE 15
-# define BUFF_SIZE 50
 
 struct s_width		*Width;
 
@@ -24,6 +23,7 @@ typedef struct		s_output
 	size_t			size;
 	int				overflow_counter;
 	int				error;
+	int				buffsize;
 }					t_output;
 
 t_output			*gl_output;
