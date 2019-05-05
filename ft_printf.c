@@ -19,6 +19,12 @@ void			print_struct(t_spec	*spec) /* на время отладки */
 	printf("\n");
 }
 
+void			free_bufferoutput(void)
+{
+	ft_strdel(&(gl_output->str));
+	free(gl_output);
+}
+
 char			*move_after_specifier(char *traverse)
 {
 	while (is_cspdioux_bigx_fegbrk(*traverse) != 1 && *traverse != '\0')
@@ -52,6 +58,7 @@ int				ft_printf(const char *format, ...)
 	va_list 		arg;
 	t_spec			spec;
 	char 			*traverse;
+	size_t			size;
 
 	init_bufferoutput();
 	traverse = (char *)format;
@@ -60,14 +67,16 @@ int				ft_printf(const char *format, ...)
 	{
 		spec = (t_spec){(char)48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		traverse = take_str_before_persent(traverse); /* берет символы до % */
-		printf("gl_output->str = %s\n", gl_output->str);
-		// if (*traverse == '\0')
-		// 	return (len);
-		// spec = struct_specifier(++traverse, &spec);   записывает в структуру спецификатор 
+		if (*traverse == '\0')
+			break ;
+		// spec = struct_specifier(++traverse, &spec);  /* записывает в структуру спецификатор */
 		// // print_struct(&spec);
 		// len += print_arg(traverse, &spec, arg);
 		// traverse = move_after_specifier(traverse);
 	}
 	va_end(arg);
-	return (gl_output->size);
+	size = gl_output->size;
+	printf("%s\n", gl_output->str);
+	free_bufferoutput();
+	return (size);
 }
