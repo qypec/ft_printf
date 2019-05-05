@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 20:41:12 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/04 21:42:42 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/05 15:47:29 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "header.h"
@@ -53,41 +53,54 @@ static char 	*whatsparam(char *str, char *buff, t_cdate *date)
 	return (str);
 }
 
+static char		*read_segment_of_date(char *traverse, char *str, t_cdate *date)
+{
+	char	*buff;
+	int		i;
+
+	i = 0;
+	buff = (char *)ft_memalloc(sizeof(char) * 6);
+	while (traverse[i] != '|' && traverse[i] != '\0')
+	{
+		buff[i] = traverse[i];
+		i++;
+		if (i >= 5)
+		{
+			buff = ft_memcpy(buff, "|...|", 6);
+			str = ft_strglue(str, buff, "\0");
+			ft_strdel(&buff);
+			bust_printf(1);
+			return (str);
+		}
+	}
+	str = whatsparam(str, buff, date);
+	ft_strdel(&buff);
+	return (str);
+}
+
 static char		*fill_str(char *traverse, int size, t_cdate *date)
 {
 	char	*str;
 	int		i;
 	int		j;
-	char	*buff;
 
 	i = 0;
 	j = 0;
-	buff = (char *)ft_memalloc(sizeof(char) * 5);
-	str = (char *)ft_memalloc(sizeof(char) * size);
+	str = (char *)ft_memalloc(sizeof(char) * (size + RESERVE));
 	while (traverse[i] != '|' && traverse[i] != '\0')
 		i++;
 	while (is_cspdioux_bigx_fegbrk(traverse[i]) != 1 && traverse[i] != '\0')
 	{
 		if (traverse[i] == '|')
 		{
-			i++;
-			while (traverse[i] != '|')
-			{
-				buff[j] = traverse[i];
+			str = read_segment_of_date(traverse + (++i), str, date);
+			while (traverse[i] != '|' && traverse[i] != '\0')
 				i++;
-				j++;
-				if (j >= 5)
-					return ("overflow");
-			}
-			str = whatsparam(str, buff, date);
-			buff = ft_memset(buff, 0, 5);
-			j = 0;
 		}
 		if (traverse[i] != '|')
 			str = ft_stradd(str, traverse[i]);
 		i++;
 	}
-	ft_strdel(&buff);
 	return (str);
 }
 
@@ -105,7 +118,7 @@ static int		calculate_size(char *traverse)
 		if (traverse[i] == '|')
 		{
 			i++;
-			while (traverse[i] != '|')
+			while (traverse[i] != '|' && traverse[i] != '\0')
 			{
 				i++;
 				size++;
@@ -126,13 +139,15 @@ int		print_date(char *traverse, va_list arg)
 	char		*str;
 
 	size = 0;
-	// print_strdate(&pattern);
 	ttime = va_arg(arg, const time_t);
 	date = ft_uctime(&ttime);
-	size = calculate_size(traverse);
-	// printf("size = %d\n", size);
+	if ((size = calculate_size(traverse)) > 256)
+	{
+		ft_puterror("ERROR: too big argument with flag %k");
+		return (0);
+	}
 	str = fill_str(traverse, size, date);
 	ft_putstr(str);
-	// print_struct(date);
+	ft_strdel(&str);
 	return (size);
 }

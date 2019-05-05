@@ -7,6 +7,7 @@
 # include <stdarg.h>
 # include <time.h>
 # define TAB  "0123456789abcdef"
+# define RESERVE 15
 
 typedef struct		s_spec
 {
@@ -75,6 +76,7 @@ t_spec				*parse_space(char *traverse, t_spec *spec);
 t_spec				*parse_lh_bigl(char *traverse, t_spec *spec);
 
 int					print_date(char *traverse, va_list arg);
+void				bust_printf(int errorcode);
 
 int					print_matrix(char *traverse, va_list arg);
 
