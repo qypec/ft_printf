@@ -15,7 +15,7 @@ void  print_percent(t_spec *spec)
 {
     int *p;
     
-    p = width(1, spec, 0, 0, 10);
+    width(1, spec, 0, 10);
     size_len = printWidth(p, spec, 0);
     ft_putchar('%');
     size_len = size_len +  1 + printWidthEnd(p);

@@ -55,6 +55,21 @@ void display_int(t_spec *spec, long long int num, int base)
     free(str);
 }
 
+int printWidthEnd(int *p)
+{
+	return (1);
+}
+
+int                                     *width_u(unsigned long long number, t_spec *spec, unsigned long long int index, int width)
+{
+	int *p;
+	p = malloc(sizeof(int) * 4);
+	p[0] = p[1] = p[2] = p[3] = 0;
+	return (p);
+}
+
+
+
 void assembly_int(t_spec *spec, va_list arg)
 {
     long long int check;
@@ -81,20 +96,44 @@ void assembly_int(t_spec *spec, va_list arg)
     return ;
 }
 
+int lenbase(unsigned long long int num, int base)
+{
+	int size;
 
+	size = 0;
+	while (num > 0)
+	{
+		num /= base;
+		size++;
+	}
+
+	return (size);
+}
 
 
 int *width(long long number, t_spec *spec, unsigned long int index,  int base)
 {
-
-
-   return (0);
+	int width;
+	
+	width = 0;
+	//0x and 0X and 0 
+	// # 
+	if (number < 0)
+		index = -number;
+	else
+		index = number;
+	width = lenbase(index, base);
+	if (spec->zero == 1)
+		;
+	if (spec->sharp == 1)
+		;
+	return (0);
 }
-
 
 
 int printWidth(int *p, t_spec *spec, long long int num)
 {
+	
     return (0);
 }
 

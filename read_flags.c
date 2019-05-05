@@ -10,15 +10,15 @@ static t_spec	*nullify_llhh_bigl(t_spec *spec)
 	return (spec);
 }
 
-t_spec			*read_calculatesymb(char с, t_spec *spec)
+t_spec			*read_calculatesymb(char c, t_spec *spec)
 {
-	if (с == '#')
+	if (c == '#')
 		spec->sharp = 1;
-	if (с == '0')
+	if (c == '0')
 		spec->zero = 1;
-	if (с == '+')
+	if (c == '+')
 		spec->plus = 1;
-	if (с == '-')
+	if (c == '-')
 		spec->minus = 1;
 	return (spec);
 }
