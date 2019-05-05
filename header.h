@@ -3,11 +3,11 @@
 
 # include <stdio.h>
 # include "libft/includes/libft.h"
-`# include <unistd.h>
+# include <unistd.h>
 # include <stdarg.h>
 # include <time.h>
 # define TAB  "0123456789abcdef"
-
+# define RESERVE 15
 
 long int				size_len;
 struct s_width				*Width;
@@ -100,14 +100,9 @@ t_spec			*parse_calculatesymb(char *traverse, t_spec *spec);
 t_spec			*parse_space(char *traverse, t_spec *spec);
 t_spec			*parse_lh_bigl(char *traverse, t_spec *spec);
 
-int			print_date(char *traverse, va_list arg);
+int					print_date(char *traverse, va_list arg);
+void				bust_printf(int errorcode);
 
-t_date			*read_year(char *traverse, t_date *pattern);
-t_date			*read_ddwd(char *traverse, t_date *pattern);
-t_date			*read_month(char *traverse, t_date *pattern);
-t_date			*read_hhmm(char *traverse, t_date *pattern);
-t_date			*read_sec(char *traverse, t_date *pattern);
-
-int			print_matrix(char *traverse, va_list arg);
+int					print_matrix(char *traverse, va_list arg);
 
 #endif

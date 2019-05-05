@@ -27,8 +27,8 @@ int     print_arg(char *traverse, t_spec *spec, va_list arg)
 
     if (spec->symb == 'q')
         size_len = print_matrix(traverse, arg);
-    // if (spec->symb == 'k')
-    // 	size = print_date(traverse, arg);
+    if (spec->symb == 'k')
+    	size_len = print_date(traverse, arg);
     if (spec->symb == '%')
         print_percent(spec);
     if (spec->symb == 'd' || spec->symb == 'i' || spec->symb == 'o' || spec->symb == 'u' || spec->symb == 'x' || spec->symb == 'X')

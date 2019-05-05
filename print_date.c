@@ -1,48 +1,153 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_date.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/04 20:41:12 by yquaro            #+#    #+#             */
+/*   Updated: 2019/05/05 15:47:29 by yquaro           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 #include "header.h"
 
-void	print_strdate(t_date *pattern) /* на время отладки */
+static void			print_struct(t_cdate *date)
 {
-	printf("\n");
-	printf("year4 = %d\n", pattern->year4);
-	printf("year2 = %d\n", pattern->year2);
-	printf("weekday = %d\n", pattern->weekday);
-	printf("month = %d\n", pattern->month);
-	printf("day = %d\n", pattern->day);
-	printf("hour = %d\n", pattern->hour);
-	printf("min = %d\n", pattern->min);
-	printf("sec = %d\n", pattern->sec);
-	printf("\n");
+	printf("---------------------------------------------\n");
+	printf("print struct:\n\n");
+	printf("weekday = %s\nweekday_n = %d\n\n", date->weekday, date->weekday_n);
+	printf("month = %s\nmonth_n = %d\n\n", date->month, date->month_n);
+	printf("day = %s\nday_n = %d\n\n", date->day, date->day_n);
+	printf("hour = %s\nhour_n = %d\n\n", date->hour, date->hour_n);
+	printf("min = %s\nmin = %d\n\n", date->min, date->min_n);
+	printf("sec = %s\nsec_n = %d\n\n", date->sec, date->sec_n);
+	printf("year = %s\nyear_n = %d\n\n", date->year, date->year_n);
+	printf("---------------------------------------------\n\n");
 }
 
-t_date	parse_date(char *traverse, t_date *pattern)
+static char 	*whatsparam(char *str, char *buff, t_cdate *date)
 {
-	pattern = read_year(traverse, pattern);
-	pattern = read_ddwd(traverse, pattern);
-	pattern = read_month(traverse, pattern);
-	pattern = read_hhmm(traverse, pattern);
-	pattern = read_sec(traverse, pattern);
-	return (*pattern);
+	int len;
+
+	len = 0;
+	if (ft_strcmp(buff, "WDA") == 0)
+		str = ft_strglue(str, date->weekday, "\0");
+	else if (ft_strcmp(buff, "MNH") == 0)
+		str = ft_strglue(str, date->month, "\0");
+	else if (ft_strcmp(buff, "DD") == 0)
+		str = ft_strglue(str, date->day, "\0");
+	else if (ft_strcmp(buff, "hh") == 0)
+		str = ft_strglue(str, date->hour, "\0");
+	else if (ft_strcmp(buff, "mm") == 0)
+		str = ft_strglue(str, date->min, "\0");
+	else if (ft_strcmp(buff, "ss") == 0)
+		str = ft_strglue(str, date->sec, "\0");
+	else if (ft_strcmp(buff, "YYYY") == 0)
+		str = ft_strglue(str, date->year, "\0");
+	else
+	{
+		len = ft_strlen(buff);
+		while (len--)
+			str = ft_strglue(str, "x", "\0");
+	}
+	return (str);
+}
+
+static char		*read_segment_of_date(char *traverse, char *str, t_cdate *date)
+{
+	char	*buff;
+	int		i;
+
+	i = 0;
+	buff = (char *)ft_memalloc(sizeof(char) * 6);
+	while (traverse[i] != '|' && traverse[i] != '\0')
+	{
+		buff[i] = traverse[i];
+		i++;
+		if (i >= 5)
+		{
+			buff = ft_memcpy(buff, "|...|", 6);
+			str = ft_strglue(str, buff, "\0");
+			ft_strdel(&buff);
+			bust_printf(1);
+			return (str);
+		}
+	}
+	str = whatsparam(str, buff, date);
+	ft_strdel(&buff);
+	return (str);
+}
+
+static char		*fill_str(char *traverse, int size, t_cdate *date)
+{
+	char	*str;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	str = (char *)ft_memalloc(sizeof(char) * (size + RESERVE));
+	while (traverse[i] != '|' && traverse[i] != '\0')
+		i++;
+	while (is_cspdioux_bigx_fegbrk(traverse[i]) != 1 && traverse[i] != '\0')
+	{
+		if (traverse[i] == '|')
+		{
+			str = read_segment_of_date(traverse + (++i), str, date);
+			while (traverse[i] != '|' && traverse[i] != '\0')
+				i++;
+		}
+		if (traverse[i] != '|')
+			str = ft_stradd(str, traverse[i]);
+		i++;
+	}
+	return (str);
+}
+
+static int		calculate_size(char *traverse)
+{
+	int i;
+	int	size;
+
+	i = 0;
+	size = 0;
+	while (traverse[i] != '|' && traverse[i] != '\0')
+		i++;
+	while (is_cspdioux_bigx_fegbrk(traverse[i]) != 1 && traverse[i] != '\0')
+	{
+		if (traverse[i] == '|')
+		{
+			i++;
+			while (traverse[i] != '|' && traverse[i] != '\0')
+			{
+				i++;
+				size++;
+			}
+			i++;
+		}
+		i++;
+		size++;
+	}
+	return (size);
 }
 
 int		print_date(char *traverse, va_list arg)
 {
 	time_t		ttime;
-	t_ctime		*date;
-	t_date		pattern;
+	t_cdate		*date;
 	int			size;
+	char		*str;
 
-	pattern = (t_date){0, 0, 0, 0, 0, 0, 0, 0};
-	pattern = parse_date(traverse, &pattern);
-	// print_strdate(&pattern);
-	// size = 0;
+	size = 0;
 	ttime = va_arg(arg, const time_t);
-	date = ft_ctime(&ttime);
-	printf("date->weekday = %s\n", date->weekday);
-	// printf("\nctime = %s\n", ctime(ttime));
-	// date = date_to_format()
-	// ft_putstr(date);
-	// size = ft_strlen(date) - 1;
-	// pattern = (t_date){0, 0, 0, 0, (char)48, 0, 0, 0, 0, (char)48};
-	// ft_strdel(&date);
+	date = ft_uctime(&ttime);
+	if ((size = calculate_size(traverse)) > 256)
+	{
+		ft_puterror("ERROR: too big argument with flag %k");
+		return (0);
+	}
+	str = fill_str(traverse, size, date);
+	ft_putstr(str);
+	ft_strdel(&str);
 	return (size);
 }

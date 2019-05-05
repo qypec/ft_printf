@@ -6,7 +6,7 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/20 19:26:56 by yquaro            #+#    #+#              #
-#    Updated: 2019/05/02 17:44:37 by yquaro           ###   ########.fr        #
+#    Updated: 2019/05/04 21:28:56 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,20 +21,21 @@ FLAGS = -Wall -Wextra -Werror
 SOURCE = ft_*.c
 OBJS = *.o
 OBJDIR = .obj
-LIBNAME = libft.a
+NAME = libft.a
 
-all: $(LIBNAME)
-$(LIBNAME):
-	gcc -c -g $(FLAGS) $(SOURCE)
+all: $(NAME)
+$(NAME):
+	gcc -c $(FLAGS) $(SOURCE)
 	mkdir $(OBJDIR)
 	mv $(OBJS) $(OBJDIR)
-	ar rc $(LIBNAME) $(OBJDIR)/$(OBJS)
-	ranlib $(LIBNAME)
+	make -C ft_ctime/ all
+	ar rc $(NAME) $(OBJDIR)/$(OBJS)
+	ranlib $(NAME)
 
 clean:
 	rm -rf $(OBJDIR)
 
 fclean: clean
-	rm -f $(LIBNAME)
+	rm -f $(NAME)
 
 re: fclean all
