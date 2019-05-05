@@ -57,4 +57,5 @@ void		update_glbuffer(char *str)
 	size = ft_strlen(str);
 	is_it_buffer_overflow(size);
 	gl_output->str = ft_strnglue(gl_output->str, str, "\0", gl_output->size);
+	gl_output->size += size;
 }

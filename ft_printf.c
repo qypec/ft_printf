@@ -69,10 +69,10 @@ int				ft_printf(const char *format, ...)
 		traverse = take_str_before_persent(traverse); /* берет символы до % */
 		if (*traverse == '\0')
 			break ;
-		// spec = struct_specifier(++traverse, &spec);  /* записывает в структуру спецификатор */
+		spec = struct_specifier(++traverse, &spec);  /* записывает в структуру спецификатор */
 		// // print_struct(&spec);
-		// len += print_arg(traverse, &spec, arg);
-		// traverse = move_after_specifier(traverse);
+		print_arg(traverse, &spec, arg);
+		traverse = move_after_specifier(traverse);
 	}
 	va_end(arg);
 	size = gl_output->size;
