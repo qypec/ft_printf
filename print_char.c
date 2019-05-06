@@ -9,9 +9,9 @@ int print_c(va_list arg)
 
     symbol =(char) va_arg(arg, int);
     width (1, 0, 10);
-    size = printWidth(p, 0);
+    printWidth(0);
     ft_putchar(symbol);
-    size += printWidthEnd(p) + p[3];
+    printWidthEnd();
 
 
     free (p);
@@ -91,22 +91,21 @@ int print_s(va_list arg)
 
 int print_p(va_list arg)
 {
-    int size;
-    int *p;
-    long long int num;
-    char *str;
-
-    size = 0;
-    num = va_arg(arg, long long int);
-    width(num,  0, 16);
-    str = ft_itoa_base(num, 16);
-    size = printWidth(p,  0);
-    ft_putstr(str);
-    size +=printWidthEnd(p);
-    size += ft_strlen(str) + 2;
-    free(str);
-    free(p);
-    return (size);
+	int size;
+	int *p;
+	long long int num;
+	char *str;	
+	size = 0;
+	num = va_arg(arg, long long int);
+	width(num,  0, 16);
+	str = ft_itoa_base(num, 16);
+	printWidth(num);
+	ft_putstr(str);
+	printWidthEnd();
+	size += ft_strlen(str) + 2;
+	free(str);
+	free(p);
+	return (size);
 }
 
 int print_char(va_list arg)

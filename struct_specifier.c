@@ -6,7 +6,7 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 14:54:09 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/06 14:14:09 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/05/06 19:21:16 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ void		struct_specifier(char *traverse)
 			read_digit(traverse + i, "width");
 			i += move_after_digits(traverse + i);
 		}
+		if (traverse[i] == 'j')
+			g_spec->j = 1;
 		if (is_lh_bigl(traverse[i]) == 1)
 		{
 			read_lh_bigl(traverse + i);

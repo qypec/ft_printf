@@ -11,8 +11,10 @@
 
 typedef struct		s_width
 {
-	int				width_left;
-	int				width_right;
+	int				space_left;
+	int				zero;
+	int				space_right;
+	int				width;
 }					t_widt;
 
 typedef struct		s_output
@@ -38,6 +40,7 @@ typedef struct		s_spec
 	int				big_l;
 	int				ll;
 	int				l;
+	int				j;
 	int				hh;
 	int				h;
 }					t_spec;
@@ -52,7 +55,7 @@ struct s_spec		*g_spec;
 
 long long int		reduction_signed(long long int num);
 unsigned long long	reduction_unsigned(unsigned long long int num);
-int					*width(long long number, unsigned long int index, int base);
+void				width(long long number, unsigned long int index, int base);
 int					print_u(va_list arg, int base);
 int					*width_u(unsigned long long number, unsigned long long int index, int width);
 int					ft_printf(const char *format, ...);
@@ -60,14 +63,14 @@ int					print_arg(char *traverse, va_list arg);
 void				print_int(va_list arg);
 int					print_d(int number);
 int					print_u(va_list arg, int base);
-int					printWidthEnd(int *p);
-int					printWidth(int *p, long long int num);
+void				printWidthEnd();
+void				printWidth(long long int num);
 char				*ft_itoa_base(long long int value, int base);
 int					ft_itoa_help(long long int tmp, int base, int flag);
 int					ft_abs(int nb);
 int					isplay_u(unsigned long long int num);
 void				display_int(long long int num, int base);
-void				assembly_int(va_list arg);
+void				assembl_int(va_list arg);
 
 //x - X
 char				*printX(char *str);

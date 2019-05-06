@@ -41,10 +41,10 @@ int		print_arg(char *traverse, va_list arg)
 		print_date(traverse, arg);
 	if ( g_spec->symb == '%')
 		width_processing("%");
-	// if ( g_spec->symb == 'd' ||  g_spec->symb == 'i' ||  g_spec->symb == 'o' ||  g_spec->symb == 'u' ||  g_spec->symb == 'x' ||  g_spec->symb == 'X')
-	// 	assembly_int(arg);
+	if ( g_spec->symb == 'd' ||  g_spec->symb == 'i' ||  g_spec->symb == 'o' ||  g_spec->symb == 'u' ||  g_spec->symb == 'x' ||  g_spec->symb == 'X')
+		assembl_int(arg);
 	// if ( g_spec->symb == 'c' ||  g_spec->symb == 's' ||  g_spec->symb == 'p')
-		// size_len = print_char(spec, arg);
+	// 	size_len = print_char(spec, arg);
 		// if ( g_spec->symb == 'f' ||  g_spec->symb == 'e' ||  g_spec->symb == 'g')
 	//		size = print_float(spec, arg);
 	return (0);

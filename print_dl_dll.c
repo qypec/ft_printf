@@ -4,11 +4,11 @@ long long int reduction_signed(long long int num)
 {
     if ( g_spec->l)
         num = (long int)num;
-    if ( g_spec->l == 0 &&  g_spec->ll == 0)
+    else if ( g_spec->l == 0 &&  g_spec->ll == 0)
         num = (int)num;
-    if ( g_spec->h == 1)
+    else if ( g_spec->h == 1)
         num = (short)(num);
-    if ( g_spec->hh == 1)
+    else if (g_spec->hh == 1)
         num = (char)num;
     if (num < 0)
         if ( g_spec->symb == 'x' ||  g_spec->symb == 'X')
@@ -80,10 +80,10 @@ int display_u(unsigned long long int num, int base)
     size = 0;
     p = width_u(num, 0, 0);
     num = reduction_unsigned(num);
-    size = printWidth(p,  num);
+    printWidth(num);
     str = ft_itoa_u(num);
     ft_putstr(str);
-    size += printWidthEnd(p);
+    printWidthEnd(p);
     size += ft_strlen(str);
     free(p);
     free(str);

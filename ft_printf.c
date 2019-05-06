@@ -53,6 +53,7 @@ int				ft_printf(const char *format, ...)
 	t_spec			spec;
 	char 			*traverse;
 	size_t			size;
+	g_width = malloc(sizeof(g_width));
 
 	init_bufferoutput();
 	traverse = (char *)format;
@@ -61,6 +62,10 @@ int				ft_printf(const char *format, ...)
 	{
 		spec = (t_spec){(char)48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		g_spec = &spec;
+		g_width->zero = 0;
+		g_width->space_left = 0;
+		g_width->space_right = 0;
+		g_width->width = 0;
 		traverse = take_str_before_persent(traverse); /* берет символы до % */
 		if (*traverse == '\0')
 			break ;
