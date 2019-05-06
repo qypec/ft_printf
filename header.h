@@ -8,6 +8,14 @@
 # include <time.h>
 # define TAB  "0123456789abcdef"
 # define RESERVE 15
+# define COLOR_RED "\x1b[31m"
+# define COLOR_GREEN "\x1b[32m"
+# define COLOR_YELLOW "\x1b[33m"
+# define COLOR_BLUE "\x1b[34m"
+# define COLOR_MAGENTA "\x1b[35m"
+# define COLOR_CYAN "\x1b[36m"
+# define COLOR_RESET "\x1b[0m"
+# define COLOR_SIZE 5
 
 struct s_width		*Width;
 
@@ -101,6 +109,8 @@ void				free_bufferoutput(void);
 void				addsymb_glbuffer(char c);
 void				update_glbuffer(char *str);
 void				addstr_glbuffer(char *str, size_t size);
+
+char				*take_color(char *traverse);
 
 
 #endif

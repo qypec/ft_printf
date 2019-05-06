@@ -41,6 +41,10 @@ static char		*take_str_before_persent(char *traverse)
 {
 	while (*traverse != '%' && *traverse != '\0')
 	{
+		if (*traverse == '{')
+			traverse = take_color(traverse);
+		if (*traverse == '\0')
+			break ;
 		addsymb_glbuffer(*traverse);
 		traverse++;
 	}
@@ -63,10 +67,10 @@ int				ft_printf(const char *format, ...)
 		traverse = take_str_before_persent(traverse); /* берет символы до % */
 		if (*traverse == '\0')
 			break ;
-		spec = struct_specifier(++traverse, &spec);  /* записывает в структуру спецификатор */
-		// print_struct(&spec);
-		print_arg(traverse, &spec, arg);
-		traverse = move_after_specifier(traverse);
+		// spec = struct_specifier(++traverse, &spec);  /* записывает в структуру спецификатор */
+		// // print_struct(&spec);
+		// print_arg(traverse, &spec, arg);
+		// traverse = move_after_specifier(traverse);
 	}
 	va_end(arg);
 	size = g_output->size;
