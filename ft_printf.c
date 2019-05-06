@@ -69,8 +69,8 @@ int				ft_printf(const char *format, ...)
 		traverse = move_after_specifier(traverse);
 	}
 	va_end(arg);
-	size = gl_output->size;
-	printf("%s\n", gl_output->str);
+	size = g_output->size;
+	write(1, g_output->str, g_output->size);
 	free_bufferoutput();
 	return (size);
 }

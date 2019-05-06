@@ -26,7 +26,7 @@ typedef struct		s_output
 	int				buffsize;
 }					t_output;
 
-t_output			*gl_output;
+t_output			*g_output;
 
 typedef struct		s_spec
 {
