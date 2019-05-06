@@ -1,30 +1,30 @@
 #include "header.h"
 
-long long int reduction_signed(t_spec *spec, long long int num)
+long long int reduction_signed(long long int num)
 {
-    if (spec->l)
+    if ( g_spec->l)
         num = (long int)num;
-    if (spec->l == 0 && spec->ll == 0)
+    if ( g_spec->l == 0 &&  g_spec->ll == 0)
         num = (int)num;
-    if (spec->h == 1)
+    if ( g_spec->h == 1)
         num = (short)(num);
-    if (spec->hh == 1)
+    if ( g_spec->hh == 1)
         num = (char)num;
     if (num < 0)
-        if (spec->symb == 'x' || spec->symb == 'X')
+        if ( g_spec->symb == 'x' ||  g_spec->symb == 'X')
             num += 4294967296;
     return (num);
 }
 
-unsigned long long reduction_unsigned(t_spec *spec, unsigned long long int num)
+unsigned long long reduction_unsigned(unsigned long long int num)
 {
-    if (spec->l == 1)
+    if ( g_spec->l == 1)
         num = (unsigned long int)num;
-    if (spec->ll == 0 && spec-> ll == 0)
+    if ( g_spec->ll == 0 &&  g_spec-> ll == 0)
         num = (unsigned int)num;
-    if (spec->h == 1)
+    if ( g_spec->h == 1)
         num = (unsigned short)num;
-    if (spec->hh == 1)
+    if ( g_spec->hh == 1)
         num = (unsigned char)num;
     return (num);
 }
@@ -70,7 +70,7 @@ char			*ft_itoa_u(unsigned long long int n)
 	return (str);
 }
 
-int display_u(t_spec *spec, unsigned long long int num, int base)
+int display_u(unsigned long long int num, int base)
 {
     int size;
     int *p;
@@ -78,9 +78,9 @@ int display_u(t_spec *spec, unsigned long long int num, int base)
 
     p = NULL;
     size = 0;
-    p = width_u(num, spec, 0, 0);
-    num = reduction_unsigned(spec, num);
-    size = printWidth(p, spec, num);
+    p = width_u(num, 0, 0);
+    num = reduction_unsigned(num);
+    size = printWidth(p,  num);
     str = ft_itoa_u(num);
     ft_putstr(str);
     size += printWidthEnd(p);
@@ -89,18 +89,19 @@ int display_u(t_spec *spec, unsigned long long int num, int base)
     free(str);
     return (size);
 }
-int print_u(t_spec *spec, va_list arg, int base)
+
+int print_u(va_list arg, int base)
 {
     int size;
     unsigned long long int num;
 
     size = 0;
-    if (spec->ll == 1)
+    if ( g_spec->ll == 1)
         num = va_arg(arg, unsigned long long int);
-    if (spec->l == 1)
+    if ( g_spec->l == 1)
         num = va_arg(arg, unsigned long);
-    if (spec->ll == 0 && spec->l == 0)
+    if ( g_spec->ll == 0 &&  g_spec->l == 0)
         num = va_arg(arg, unsigned int);
-    size = display_u(spec, num, base);
+    size = display_u( num, base);
     return (size);
 }

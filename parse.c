@@ -9,18 +9,18 @@ static char	*move_after_digit(char *traverse)
 	return (traverse);
 }
 
-t_spec		*parse_precision(char *traverse, t_spec *spec)
+void parse_precision(char *traverse)
 {
 	while (is_cspdioux_bigx_fegbrk(*traverse) != 1 && *traverse != '\0')
 	{
 		if (*traverse == '.')
-			spec = read_digit(++traverse, spec, "precision");
+			read_digit(++traverse, "precision");
 		traverse = move_after_digit(traverse);
 	}
-	return (spec);
+	return ;
 }
 
-t_spec		*parse_width(char *traverse, t_spec *spec)
+void parse_width(char *traverse)
 {
 	while (is_cspdioux_bigx_fegbrk(*traverse) != 1 && *traverse != '\0')
 	{
@@ -30,50 +30,46 @@ t_spec		*parse_width(char *traverse, t_spec *spec)
 			continue ;
 		}
 		if (ft_isdigit(*traverse) == 1)
-			spec = read_digit(traverse, spec, "width");
+			read_digit(traverse, "width");
 		traverse = move_after_digit(traverse);
 	}
-	return (spec);
 }
 
-t_spec		*parse_calculatesymb(char *traverse, t_spec *spec)
+void parse_calculatesymb(char *traverse)
 {
 	while (is_cspdioux_bigx_fegbrk(*traverse) != 1 && *traverse != '\0')
 	{
 		if (is_calculatesymb(*traverse) == 1)
-			spec = read_calculatesymb(*traverse, spec);
+			read_calculatesymb(*traverse);
 		traverse++;
 	}
-	return (spec);
 }
 
-t_spec		*parse_space(char *traverse, t_spec *spec)
+void parse_space(char *traverse)
 {
 	while (is_cspdioux_bigx_fegbrk(*traverse) != 1 && *traverse != '\0')
 	{
 		if (*traverse == ' ')
 		{
-			spec->space = 1;
+			 g_spec->space = 1;
 			traverse++;
 			while (*traverse == ' ')
 				traverse++;
 		}
 		traverse++;
 	}
-	return (spec);
 }
 
-t_spec		*parse_lh_bigl(char *traverse, t_spec *spec)
+void parse_lh_bigl(char *traverse)
 {
 	while (is_cspdioux_bigx_fegbrk(*traverse) != 1 && *traverse != '\0')
 	{
 		if (is_lh_bigl(*traverse) == 1)
 		{
-			spec = read_lh_bigl(traverse, spec);
-			if (spec->ll == 1 || spec->hh == 1)
+			read_lh_bigl(traverse);
+			if ( g_spec->ll == 1 ||  g_spec->hh == 1)
 				traverse++;
 		}
 		traverse++;
 	}
-	return (spec);
 }

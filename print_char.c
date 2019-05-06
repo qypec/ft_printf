@@ -1,15 +1,15 @@
 #include "header.h"
 
 // // 'c' // 's' // // 'p'  string and char and point
-int print_c(t_spec *spec, va_list arg)
+int print_c(va_list arg)
 {
     int size;
     int *p;
     char symbol;
 
     symbol =(char) va_arg(arg, int);
-    width (1, spec, 0, 10);
-    size = printWidth(p, spec, 0);
+    width (1, 0, 10);
+    size = printWidth(p, 0);
     ft_putchar(symbol);
     size += printWidthEnd(p) + p[3];
 
@@ -18,7 +18,7 @@ int print_c(t_spec *spec, va_list arg)
     return (size);
 } 
 
-int *width_s(char *str,t_spec *spec, int index, int width)
+int *width_s(char *str, int index, int width)
 {  
     int *p;
     
@@ -30,17 +30,17 @@ int *width_s(char *str,t_spec *spec, int index, int width)
     p[3] = 0; // size sembol
     while (str[width])
         width++;
-    if (spec->minus == 1 && spec->width != 0)
-        if ((spec->width - width) > 0)
-            p[1] = spec->width - width;
-    if (spec->plus == 1 || (spec->width != 0 && spec->minus != 1))
-        if ((spec->width - width) > 0)
-            p[0] = spec->width - width;
-        if (((spec->width - spec->precision) > 0) && spec->precision != 0)
-            p[0] = spec->width - spec->precision;
-    if (spec->precision > 0)
-        if ((spec->precision - width) > 0)
-            p[2] = spec->precision - width;
+    if ( g_spec->minus == 1 &&  g_spec->width != 0)
+        if (( g_spec->width - width) > 0)
+            p[1] =  g_spec->width - width;
+    if ( g_spec->plus == 1 || ( g_spec->width != 0 &&  g_spec->minus != 1))
+        if (( g_spec->width - width) > 0)
+            p[0] =  g_spec->width - width;
+        if ((( g_spec->width -  g_spec->precision) > 0) &&  g_spec->precision != 0)
+            p[0] =  g_spec->width -  g_spec->precision;
+    if ( g_spec->precision > 0)
+        if (( g_spec->precision - width) > 0)
+            p[2] =  g_spec->precision - width;
     p[3] = width;
     return (p);
 }
@@ -60,7 +60,7 @@ int printWidth_s(int *p)
     return (index);
 }
 
-int print_s(t_spec *spec, va_list arg)
+int print_s(va_list arg)
 {
     int size;
     char *str;
@@ -70,15 +70,15 @@ int print_s(t_spec *spec, va_list arg)
 
     size = 0;
     str =(char *) va_arg(arg, void *);
-    p = width_s(str, spec, 0, 0);
+    p = width_s(str,  0, 0);
     size = printWidth_s(p);
-    if (spec->precision > 0)
+    if ( g_spec->precision > 0)
     {
-        ptr = ft_strncpy(ft_strnew(spec->precision), str, spec->precision);
+        ptr = ft_strncpy(ft_strnew( g_spec->precision), str,  g_spec->precision);
         ft_putstr(ptr);
         free(ptr);
         if (p[3] > 0)
-            size +=spec->precision;
+            size += g_spec->precision;
     }
     else 
     {
@@ -89,7 +89,7 @@ int print_s(t_spec *spec, va_list arg)
     return (size);
 }
 
-int print_p(t_spec *spec, va_list arg)
+int print_p(va_list arg)
 {
     int size;
     int *p;
@@ -98,9 +98,9 @@ int print_p(t_spec *spec, va_list arg)
 
     size = 0;
     num = va_arg(arg, long long int);
-    width(num, spec, 0, 16);
+    width(num,  0, 16);
     str = ft_itoa_base(num, 16);
-    size = printWidth(p, spec, 0);
+    size = printWidth(p,  0);
     ft_putstr(str);
     size +=printWidthEnd(p);
     size += ft_strlen(str) + 2;
@@ -109,16 +109,16 @@ int print_p(t_spec *spec, va_list arg)
     return (size);
 }
 
-int print_char(t_spec *spec, va_list arg)
+int print_char(va_list arg)
 {
     int size;
 
     size = 0;
-    if (spec->symb == 'c')
-        size = print_c(spec, arg);
-    if (spec->symb == 's')
-        size = print_s(spec, arg);
-    if (spec->symb == 'p')
-        size = print_p(spec, arg);
+    if ( g_spec->symb == 'c')
+        size = print_c( arg);
+    if ( g_spec->symb == 's')
+        size = print_s( arg);
+    if ( g_spec->symb == 'p')
+        size = print_p( arg);
     return (size);
 }

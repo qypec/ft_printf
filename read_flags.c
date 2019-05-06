@@ -1,66 +1,64 @@
 #include "header.h"
 
-static t_spec	*nullify_llhh_bigl(t_spec *spec)
+static void	nullify_llhh_bigl( )
 {
-	spec->l = 0;
-	spec->h = 0;
-	spec->ll = 0;
-	spec->hh = 0;
-	spec->big_l = 0;
-	return (spec);
+	 g_spec->l = 0;
+	 g_spec->h = 0;
+	 g_spec->ll = 0;
+	 g_spec->hh = 0;
+	 g_spec->big_l = 0;
 }
 
-t_spec			*read_calculatesymb(char c, t_spec *spec)
+void			read_calculatesymb(char c)
 {
 	if (c == '#')
-		spec->sharp = 1;
+		 g_spec->sharp = 1;
 	if (c == '0')
-		spec->zero = 1;
+		 g_spec->zero = 1;
 	if (c == '+')
-		spec->plus = 1;
+		 g_spec->plus = 1;
 	if (c == '-')
-		spec->minus = 1;
-	return (spec);
+		 g_spec->minus = 1;
 }
 
-t_spec			*read_lh_bigl(char *traverse, t_spec *spec)
+void			read_lh_bigl(char *traverse)
 {
-	if (*traverse == 'L' && spec->symb != 'd')
+	if (*traverse == 'L' &&  g_spec->symb != 'd')
 	{
-		spec = nullify_llhh_bigl(spec);
-		spec->big_l = 1;
-		return (spec);
+		nullify_llhh_bigl();
+		g_spec->big_l = 1;
+		return ;
 	}
 	if (*(traverse + 1) == *traverse)
 	{
 		if (*traverse == 'l')
 		{
-			spec = nullify_llhh_bigl(spec);
-			spec->ll = 1;
+			nullify_llhh_bigl();
+			g_spec->ll = 1;
 		}
 		if (*traverse == 'h')
 		{
-			spec = nullify_llhh_bigl(spec);
-			spec->hh = 1;
+			nullify_llhh_bigl();
+			g_spec->hh = 1;
 		}
 	}
 	else
 	{
 		if (*traverse == 'l')
 		{
-			spec = nullify_llhh_bigl(spec);
-			spec->l = 1;
+			nullify_llhh_bigl();
+			g_spec->l = 1;
 		}
 		if (*traverse == 'h')
 		{
-			spec = nullify_llhh_bigl(spec);
-			spec->h = 1;
+			nullify_llhh_bigl();
+			g_spec->h = 1;
 		}
 	}
-	return (spec);
+	return ;
 }
 
-t_spec			*read_digit(char *traverse, t_spec *spec, const char *flag)
+void			read_digit(char *traverse, const char *flag)
 {
 	int		num;
 	int		i;
@@ -70,7 +68,7 @@ t_spec			*read_digit(char *traverse, t_spec *spec, const char *flag)
 	i = 0;
 	j = 0;
 	if (ft_isdigit(*traverse) != 1)
-		return (spec);
+		return ;
 	while (ft_isdigit(traverse[j]) == 1)
 	{
 		i++;
@@ -80,9 +78,9 @@ t_spec			*read_digit(char *traverse, t_spec *spec, const char *flag)
 	str = ft_strncpy(str, traverse, i);
 	num = ft_atoi(str);
 	if (ft_strcmp(flag, "width") == 0)
-		spec->width = num;
+		 g_spec->width = num;
 	if (ft_strcmp(flag, "precision") == 0)
-		spec->precision = num;
+		 g_spec->precision = num;
 	ft_strdel(&str);
-	return (spec);
+	return ;
 }

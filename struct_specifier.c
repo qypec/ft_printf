@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_specifier.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 14:54:09 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/06 12:07:43 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/06 14:14:09 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ const char	find_symb(char *traverse)
 	return (traverse[i]);
 }
 
-int			move_after_lh_bigl(t_spec *spec)
+int			move_after_lh_bigl( )
 {
-	if (spec->big_l == 1 || spec->l == 1 || spec->h == 1)
+	if ( g_spec->big_l == 1 ||  g_spec->l == 1 ||  g_spec->h == 1)
 		return (1);
-	if (spec->ll == 1 || spec->hh == 1)
+	if ( g_spec->ll == 1 ||  g_spec->hh == 1)
 		return (2);
 	return (0);
 }
@@ -63,49 +63,49 @@ int			is_nonsymb(char c)
 	return (1);
 }
 
-t_spec		struct_specifier(char *traverse, t_spec *spec)
+void		struct_specifier(char *traverse)
 {
 	int i;
 
 	i = 0;
-	spec->symb = find_symb(traverse);
-	if (spec->symb == 'k') /* флаг для вывода даты. У нее свои особенности, так что флаги типа ll и прочие ей не нужны */
-		return (*spec);
+	 g_spec->symb = find_symb(traverse);
+	if ( g_spec->symb == 'k') /* флаг для вывода даты. У нее свои особенности, так что флаги типа ll и прочие ей не нужны */
+		return ;
 	while (is_cspdioux_bigx_fegbrk(traverse[i]) != 1 && traverse[i] != '\0')
 	{
 		if (traverse[i] == ' ')
 		{
 			i++;
-			spec->space = 1;
+			 g_spec->space = 1;
 		}
 		if (traverse[i] == '.') /* если точка, то начинается точность */
 		{
-			spec = read_digit(traverse + (++i), spec, "precision");
+			read_digit(traverse + (++i), "precision");
 			i += move_after_digits(traverse + i);
 		}
 		if (is_calculatesymb(traverse[i]) == 1) /* если засек +-0#, заполняет ими структуру */
 		{
-			spec = read_calculatesymb(traverse[i++], spec);
+			read_calculatesymb(traverse[i++]);
 			continue ;
 		}
 		if (ft_isdigit(traverse[i]) == 1) /* если точки нет, значит цифры - это просто ширина */
 		{
-			spec = read_digit(traverse + i, spec, "width");
+			read_digit(traverse + i, "width");
 			i += move_after_digits(traverse + i);
 		}
 		if (is_lh_bigl(traverse[i]) == 1)
 		{
-			spec = read_lh_bigl(traverse + i, spec);
-			i += move_after_lh_bigl(spec);
+			read_lh_bigl(traverse + i);
+			i += move_after_lh_bigl();
 		}
 		if (is_nonsymb(traverse[i]) == 1)
 			i++;
 	}
 	if (traverse[i] != '\0')
-		spec->symb = traverse[i];
-	if (spec->minus == 1)
-		spec->zero = 0;
-	if (spec->zero == 1)
-		spec->space = 0;
-	return (*spec);
+		 g_spec->symb = traverse[i];
+	if ( g_spec->minus == 1)
+		 g_spec->zero = 0;
+	if ( g_spec->zero == 1)
+		 g_spec->space = 0;
+	return ;
 }

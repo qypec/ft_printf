@@ -3,19 +3,19 @@
 void			print_struct(t_spec	*spec) /* на время отладки */
 {
 	printf("\n");
-	printf("symb = %c\n", spec->symb);
-	printf("width = %d\n", spec->width);
-	printf("space = %d\n", spec->space);
-	printf("sharp = %d\n", spec->sharp);
-	printf("plus = %d\n", spec->plus);
-	printf("minus = %d\n", spec->minus);
-	printf("zero = %d\n", spec->zero);
-	printf("precision = %d\n", spec->precision);
-	printf("L = %d\n", spec->big_l);
-	printf("ll = %d\n", spec->ll);
-	printf("l = %d\n", spec->l);
-	printf("hh = %d\n", spec->hh);
-	printf("h = %d\n", spec->h);
+	printf("symb = %c\n",  g_spec->symb);
+	printf("width = %d\n",  g_spec->width);
+	printf("space = %d\n",  g_spec->space);
+	printf("sharp = %d\n",  g_spec->sharp);
+	printf("plus = %d\n",  g_spec->plus);
+	printf("minus = %d\n",  g_spec->minus);
+	printf("zero = %d\n",  g_spec->zero);
+	printf("precision = %d\n",  g_spec->precision);
+	printf("L = %d\n",  g_spec->big_l);
+	printf("ll = %d\n",  g_spec->ll);
+	printf("l = %d\n",  g_spec->l);
+	printf("hh = %d\n",  g_spec->hh);
+	printf("h = %d\n",  g_spec->h);
 	printf("\n");
 }
 
@@ -60,12 +60,13 @@ int				ft_printf(const char *format, ...)
 	while (*traverse != '\0')
 	{
 		spec = (t_spec){(char)48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		g_spec = &spec;
 		traverse = take_str_before_persent(traverse); /* берет символы до % */
 		if (*traverse == '\0')
 			break ;
-		spec = struct_specifier(++traverse, &spec);  /* записывает в структуру спецификатор */
+		struct_specifier(++traverse);  /* записывает в структуру спецификатор */
 		// print_struct(&spec);
-		print_arg(traverse, &spec, arg);
+		print_arg(traverse, arg);
 		traverse = move_after_specifier(traverse);
 	}
 	va_end(arg);
