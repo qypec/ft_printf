@@ -1,19 +1,19 @@
 #include "header.h"
 
-long long int reduction_signed(long long int num)
+long long int	reduction_signed(long long int num)
 {
-    if ( g_spec->l)
-        num = (long int)num;
-    else if ( g_spec->l == 0 &&  g_spec->ll == 0)
-        num = (int)num;
-    else if ( g_spec->h == 1)
-        num = (short)(num);
-    else if (g_spec->hh == 1)
-        num = (char)num;
-    if (num < 0)
-        if ( g_spec->symb == 'x' ||  g_spec->symb == 'X')
-            num += 4294967296;
-    return (num);
+	if ( g_spec->l)
+		num = (long int)num;
+	if ( g_spec->l == 0 &&  g_spec->ll == 0 && g_spec->h == 0 && g_spec->hh == 1)
+		num = (int)num;
+	if ( g_spec->h == 1)
+		num = (short)(num);
+	if (g_spec->hh == 1)
+		num = (char)num;
+	if (num < 0)
+		if (g_spec->symb == 'x' ||  g_spec->symb == 'X')
+			num += 4294967296;
+	return (num);
 }
 
 unsigned long long reduction_unsigned(unsigned long long int num)
@@ -72,36 +72,27 @@ char			*ft_itoa_u(unsigned long long int n)
 
 int display_u(unsigned long long int num, int base)
 {
-    int size;
-    int *p;
-    char *str;
-
-    p = NULL;
-    size = 0;
-    p = width_u(num, 0, 0);
-    num = reduction_unsigned(num);
-    printWidth(num);
-    str = ft_itoa_u(num);
-    ft_putstr(str);
-    printWidthEnd(p);
-    size += ft_strlen(str);
-    free(p);
-    free(str);
-    return (size);
+	char *str;
+	
+	reduction_unsigned(num);
+	width_u(num, 0, 0);
+	printWidth(num);
+	str = ft_itoa_u(num);
+	update_glbuffer(str);
+	printWidthEnd();
+	free(str);
+	return (0);
 }
 
-int print_u(va_list arg, int base)
+void  print_u(va_list arg, int base)
 {
-    int size;
-    unsigned long long int num;
+	unsigned long long int num;
 
-    size = 0;
-    if ( g_spec->ll == 1)
-        num = va_arg(arg, unsigned long long int);
-    if ( g_spec->l == 1)
-        num = va_arg(arg, unsigned long);
-    if ( g_spec->ll == 0 &&  g_spec->l == 0)
-        num = va_arg(arg, unsigned int);
-    size = display_u( num, base);
-    return (size);
+	if ( g_spec->ll == 1)
+	    num = va_arg(arg, unsigned long long int);
+	if ( g_spec->l == 1)
+	    num = va_arg(arg, unsigned long);
+	if ( g_spec->ll == 0 &&  g_spec->l == 0)
+	    num = va_arg(arg, unsigned int);
+	display_u(num, base);
 }

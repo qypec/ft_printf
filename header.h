@@ -56,13 +56,12 @@ struct s_spec		*g_spec;
 long long int		reduction_signed(long long int num);
 unsigned long long	reduction_unsigned(unsigned long long int num);
 void				width(long long number, unsigned long int index, int base);
-int					print_u(va_list arg, int base);
 int					*width_u(unsigned long long number, unsigned long long int index, int width);
 int					ft_printf(const char *format, ...);
 int					print_arg(char *traverse, va_list arg);
 void				print_int(va_list arg);
 int					print_d(int number);
-int					print_u(va_list arg, int base);
+void				print_u(va_list arg, int base);
 void				printWidthEnd();
 void				printWidth(long long int num);
 char				*ft_itoa_base(long long int value, int base);
@@ -77,7 +76,7 @@ char				*printX(char *str);
 void				struct_specifier(char *traverse);
 
  // 'c' // 's' // // 'p'  string and char and point 
-int					print_char(va_list arg);
+void				print_char(va_list arg);
 int					is_cspdioux_bigx_fegbrk(char c);
 int					is_lh_bigl(char c);
 int					is_calculatesymb(char c);

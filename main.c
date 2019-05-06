@@ -15,8 +15,8 @@ int main()
 	// printf("len = |%d|",ft_printf("%+.10d", 48));
 	// printf("\n\n\n\n\n\n\n");
 	printf("\nreal:\n");
-	printf ("len = |%d|",printf("%0+5d", 42));
+	printf ("len = |%d|",printf("%lld", -9223372036854775808));
 	printf ("\nown\n");
-	printf("len = |%d|",ft_printf("%0+5d", 42));
+	printf("len = |%d|",ft_printf("%lld", -9223372036854775808));
 	return (0);
 }

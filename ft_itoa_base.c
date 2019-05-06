@@ -7,9 +7,10 @@ int		ft_abs(int nb)
 	return (nb);
 }
 
- int        ft_itoa_help(long long int tmp, int base, int flag)
+ int		ft_itoa_help(long long int tmp, int base, int flag)
  {
-     int                  size; 
+     int			size;
+
 
      size = 0;
      while (tmp /= base)
@@ -27,18 +28,18 @@ char	*ft_itoa_base(long long int value, int base)
 	int					flag;
 	long long int		tmp;
 	
-    flag = 0;
+	flag = 0;
+	 if (value  == -9223372036854775808)
+	 	return (ft_strcpy(ft_strnew(21),"9223372036854775808"));
 	if (base < 2 || base > 16)
 		return (0);
 	if (value < 0 && base == 10)
 		flag = 1;
 	tmp = value;
-    size = ft_itoa_help(tmp, base, flag);
+	size = ft_itoa_help(tmp, base, flag);
 	if (!(str = (char *)malloc(sizeof(char) * (size + 1))))
-        return (NULL);
+		return (NULL);
 	str[size] = '\0';
-	if (flag == 1)
-		str[0] = '-';
 	while (size > flag)
 	{
 		str[size - 1] = TAB[ft_abs(value % base)];

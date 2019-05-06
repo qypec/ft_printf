@@ -33,7 +33,7 @@ static char *register_x(char *str)
 
 void sign(long long int num)
 {
-	if (g_spec->plus == 1 && num >= 0)
+	if (g_spec->plus == 1 && num >= 0 && g_spec->symb != 'u')
 	{
 	    addsymb_glbuffer('+');
 		g_width->space_left--;
@@ -82,11 +82,8 @@ void display_int(long long int num, int base)
 	printWidth(num);
 	if (num < 0)
 		num = -num;
-	//if (num == 0)
-	//	addsymb_glbuffer('0');
-
 	str = ft_itoa_base(num, base);
-	if ( g_spec->symb == 'X' ||  g_spec->symb == 'x')
+	if (g_spec->symb == 'X' ||  g_spec->symb == 'x')
 	    str = register_x(str);
 	update_glbuffer(str);
 	printWidthEnd();
@@ -99,8 +96,6 @@ void  printWidthEnd()
 	char *str;
 
 	index =0;
-	// if (g_spec->width > g_spec->precision && g_spec->minus == 1)
-	// 	g_width->space_right = g_spec->width - g_spec->precision;
 	if (g_width->space_right > 0)
 	{
 		str = malloc(sizeof(char) * g_width->space_right + 1);
@@ -116,15 +111,62 @@ void  printWidthEnd()
 	return ;
 }
 
+int lenbase(unsigned long long int num, int base)
+{
+	int size;
+
+	size = 0;
+	while (num > 0)
+	{
+		num /= 10;
+		size++;
+	}
+	if (size == 0)
+		return (1);
+return (size);
+}
 int		*width_u(unsigned long long number, unsigned long long int index, int width)
 {
-	int *p;
-	p = malloc(sizeof(int) * 4);
-	p[0] = p[1] = p[2] = p[3] = 0;
-	return (p);
+	index = number;
+	g_width->width = lenbase(index, width);
+	if ((g_spec->precision - g_width->width) > 0)
+		number = (g_spec->precision - g_width->width); // precision
+	else 
+		number = 0;
+	if (g_spec->width > g_width->width && g_spec->minus == 0)
+		g_width->space_left =  g_spec->width - g_width->width;
+	else if (g_spec->minus == 1 && g_spec->width > g_spec->precision)
+		g_width->space_right = g_spec->width - g_width->width;
+	if (number != 0 && g_spec->precision > 0)
+	{
+		g_width->zero = number;
+		g_width->space_left -=number;
+		g_width->space_right -=number;
+	}
+	if (g_spec->zero == 1 && number == 0)
+	{
+		g_width->zero = g_width->space_left;
+		g_width->space_left = 0;
+	}
+	if (g_spec->space == 1 && g_spec->width == 0 && g_spec->precision == 0 && g_width->width <= 1)
+		g_width->space_left++;
+	if (g_spec->sharp == 1)
+	{
+		if (g_spec->symb == 'x' || g_spec->symb == 'X')
+		{
+			g_width->space_left -= 2;
+			g_width->zero -= 2;
+			g_width->space_right -= 2;
+		}
+		if (g_spec->symb == 'o')
+		{
+			g_width->space_left -= 1;
+			g_width->zero -= 1;
+			g_width->space_right -= 1;
+		}
+	}
+	return (0);
 }
-
-
 
 void assembl_int(va_list arg)
 {
@@ -153,22 +195,6 @@ void assembl_int(va_list arg)
 	return ;
 }
 
-int lenbase(unsigned long long int num, int base)
-{
-	int size;
-
-	size = 0;
-	while (num > 0)
-	{
-		num /= base;
-		size++;
-	}
-	if (size == 0)
-		return (1);
-return (size);
-}
-
-
 void	width(long long number, unsigned long int index,  int base)
 {
 	if (number < 0)
@@ -196,7 +222,6 @@ void	width(long long number, unsigned long int index,  int base)
 	}
 	if (g_spec->space == 1 && g_spec->width == 0 && g_spec->precision == 0)
 		g_width->space_left++;
-	// 6
 	if (g_spec->sharp == 1)
 	{
 		if (g_spec->symb == 'x' || g_spec->symb == 'X')
