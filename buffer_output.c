@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 17:27:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/05 21:53:52 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/06 12:32:37 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,8 @@ void		add_memory(size_t size)
 	gl_output->str = tmp;
 }
 
-void		addsymb_glbuffer(char c)
+void			free_bufferoutput(void)
 {
-	is_it_buffer_overflow(1);
-	gl_output->str = ft_strnadd(gl_output->str, c, gl_output->size);
-	gl_output->size += 1;
-}
-
-void		update_glbuffer(char *str)
-{
-	size_t size;
-
-	size = ft_strlen(str);
-	is_it_buffer_overflow(size);
-	gl_output->str = ft_strnglue(gl_output->str, str, "\0", gl_output->size);
-	gl_output->size += size;
+	ft_strdel(&(gl_output->str));
+	free(gl_output);
 }

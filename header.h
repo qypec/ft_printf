@@ -96,7 +96,11 @@ void				bust_printf(int errorcode);
 void				init_bufferoutput(void);
 void				is_it_buffer_overflow(size_t size);
 void				add_memory(size_t size);
+void				free_bufferoutput(void);
+
 void				addsymb_glbuffer(char c);
 void				update_glbuffer(char *str);
+void				addstr_glbuffer(char *str, size_t size);
+
 
 #endif

@@ -9,25 +9,39 @@
 // 'к'     
 // 'k'   
 // '%'  
-// 'b' 
+// 'b'
 
-// static void     print_percent(t_spec *spec)
-// {
-//     int *p;
-    
-//     width(1, spec, 0, 10);
-//     size_len = printWidth(p, spec, 0);
-//     ft_putchar('%');
-//     size_len = size_len +  1 + printWidthEnd(p);
-//     free(p);
-// }
+void            width_processing(t_spec *spec, char *str)
+{
+    int     size;
+    int     width;
+
+    width = 0;
+    size = ft_strlen(str);
+    if (spec->width - size >= 0)
+        width = spec->width - size;
+    if (spec->minus == 1)
+        addstr_glbuffer(str, size);
+    if (spec->zero == 1)
+    {
+        while (width--)
+            addsymb_glbuffer('0');
+    }
+    else
+    {
+        while (width--)
+            addsymb_glbuffer(' ');
+    }
+    if (spec->minus != 1)
+        addstr_glbuffer(str, size);
+}
 
 int             print_arg(char *traverse, t_spec *spec, va_list arg)
 {
     if (spec->symb == 'k')
     	print_date(traverse, arg);
-    // if (spec->symb == '%')
-    //     print_percent(spec);
+    if (spec->symb == '%')
+        width_processing(spec, "%");
     // if (spec->symb == 'd' || spec->symb == 'i' || spec->symb == 'o' || spec->symb == 'u' || spec->symb == 'x' || spec->symb == 'X')
         // assembly_int(spec, arg);
     // if (spec->symb == 'c' || spec->symb == 's' || spec->symb == 'p')

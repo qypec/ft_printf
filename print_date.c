@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 20:41:12 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/05 15:47:29 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/06 12:34:53 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "header.h"
@@ -148,9 +148,7 @@ void			print_date(char *traverse, va_list arg)
 		return ;
 	}
 	str = fill_str(traverse, size, date);
-	is_it_buffer_overflow(size);
-	gl_output->str = ft_strnglue(gl_output->str, str, "\0", gl_output->size);
-	gl_output->size += size;
+	addstr_glbuffer(str, size);
 	ft_strdel(&str);
 	free_uctime(date);
 }

@@ -19,12 +19,6 @@ void			print_struct(t_spec	*spec) /* на время отладки */
 	printf("\n");
 }
 
-void			free_bufferoutput(void)
-{
-	ft_strdel(&(gl_output->str));
-	free(gl_output);
-}
-
 char			*move_after_specifier(char *traverse)
 {
 	while (is_cspdioux_bigx_fegbrk(*traverse) != 1 && *traverse != '\0')
@@ -70,7 +64,7 @@ int				ft_printf(const char *format, ...)
 		if (*traverse == '\0')
 			break ;
 		spec = struct_specifier(++traverse, &spec);  /* записывает в структуру спецификатор */
-		// // print_struct(&spec);
+		// print_struct(&spec);
 		print_arg(traverse, &spec, arg);
 		traverse = move_after_specifier(traverse);
 	}
