@@ -16,9 +16,9 @@ int main()
 	// printf("\n\n\n\n\n\n\n");
 	int a = 10;
 	printf("\nreal:\n");
-	printf ("len = |%d|",printf("@moulitest: %5.d %5.0d", 0, 0));
+	printf ("len = |%d|",printf("%.2c", NULL));
 	printf ("\nown\n");
-	printf("len = |%d|",ft_printf("@moulitest: %5.d %5.0d", 0, 0));
+	printf("len = |%d|",ft_printf("%.2c", NULL));
 
 	return (0);
 }

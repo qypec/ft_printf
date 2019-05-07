@@ -83,17 +83,19 @@ void display_int(long long int num, int base)
 	num1 = num;
 	if (num < 0)
 		num = -num;
-	// if (num == 0)
-	// 	str = ft_strnew(0);
-	// else
-
+	if (num == 0 && g_spec->precision >= 0)
+		str = ft_strnew(0);
+	else
 		str = ft_itoa_base(num, base);
 	width(num, str);
 	printWidth(num1);
 	if (g_spec->symb == 'X' ||  g_spec->symb == 'x')
 	    str = register_x(str);
 	if (g_spec->precision >= 0 && num == 0)
-		printWidthEnd();
+		{
+			// addsymb_glbuffer(' ');
+			printWidthEnd();
+		}
 	else
 	{ 
 		update_glbuffer(str);
@@ -167,7 +169,7 @@ void	width(long long number, char *str)
 {
 	g_width->width = ft_strlen(str);
 	number = (g_spec->precision - g_width->width); // precision
-	if (number < 0  || g_spec->width == 0)
+	if (number < 0  ) //|| g_spec->width == 0)
 		number = 0;
 	if (g_spec->width > g_width->width && g_spec->minus == 0)
 		g_width->space_left =  g_spec->width - g_width->width;
@@ -184,7 +186,7 @@ void	width(long long number, char *str)
 		g_width->zero = g_width->space_left;
 		g_width->space_left = 0;
 	}
-	if (g_spec->space == 1 && g_spec->width == 0 && g_spec->precision == 0 && g_width == 0)
+	if (g_spec->space == 1 && g_spec->width <= 1 && str[0] != '-' && g_spec->symb != 'u' && g_spec->symb != 'c' && g_spec->symb != 'U') // check
 		g_width->space_left++;
 	if (g_spec->sharp == 1)
 	{
