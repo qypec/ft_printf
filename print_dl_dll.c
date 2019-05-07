@@ -3,16 +3,22 @@
 
 long long int	reduction_signed(long long int num)
 {
+	unsigned long long int z;
 	if ( g_spec->l)
 		num = (long int)num;
-	else if ( g_spec->l == 0 &&  g_spec->ll == 0 && g_spec->h == 0 && g_spec->hh == 1)
+	else if ( g_spec->l == 0 &&  g_spec->ll == 0 && g_spec->h == 0 && g_spec->hh == 0 && g_spec->j == 0 && g_spec->z == 0)
 		num = (int)num;
 	else if ( g_spec->h == 1)
 		num = (short)(num);
 	else if (g_spec->hh == 1)
 		num = (char)num;
 	else if (g_spec->j == 1)
+	{
+		if (num <= -4294967296)
+			z = num - (unsigned long long int)1844674407370955161; 
+	
 		return (num);
+	}
 	if (num < 0)
 	{
 			if (g_spec->symb == 'x' ||  g_spec->symb == 'X')
@@ -25,7 +31,7 @@ unsigned long long reduction_unsigned(unsigned long long int num)
 {
 	if ( g_spec->l == 1)
 		num = (unsigned long int)num;
-	if ( g_spec->ll == 0 &&  g_spec-> ll == 0 && g_spec->j == 0 && g_spec->h == 0 && g_spec->hh == 0 )
+	if ( g_spec->ll == 0 &&  g_spec-> l == 0 && g_spec->j == 0 && g_spec->h == 0 && g_spec->hh == 0)
 		num = (unsigned int)num;
 	if ( g_spec->h == 1)
 		num = (unsigned short)num;
@@ -80,7 +86,6 @@ int display_u(unsigned long long int num, int base)
 	char *str;
 	
 	reduction_unsigned(num);
-	// width_u(num, 0, 0);
 	str = ft_itoa_u(num);
 	width(num, str);
 	printWidth(num);

@@ -16,9 +16,9 @@ int main()
 	// printf("\n\n\n\n\n\n\n");
 	int a = 10;
 	printf("\nreal:\n");
-	printf ("len = |%d|",printf("%.2c", NULL));
+	printf ("len = |%d|", printf("%lu", -42));
 	printf ("\nown\n");
-	printf("len = |%d|",ft_printf("%.2c", NULL));
+	printf("len = |%d|", ft_printf("%lu", -42));
 
 	return (0);
 }

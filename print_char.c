@@ -6,15 +6,20 @@ void print_c(va_list arg)
 	char symbol;
 
 	symbol =(char) va_arg(arg, int);
-	width (1, " ");
-	printWidth(1);
-	// if (symbol == 0)
-	// 	printWidthEnd();
-	// else
-	// 	{
+	if (symbol == 0)
+	{
+		width (1, " ");
+		printWidth(1);
+		// printWidthEnd();
+		addsymb_glbuffer(symbol);
+	}
+	else
+		{
+			width (1, " ");
+			printWidth(1);
 			addsymb_glbuffer(symbol);
 			printWidthEnd();
-		// }
+		}
 } 
 
 int print_s(va_list arg)

@@ -93,7 +93,6 @@ void display_int(long long int num, int base)
 	    str = register_x(str);
 	if (g_spec->precision >= 0 && num == 0)
 		{
-			// addsymb_glbuffer(' ');
 			printWidthEnd();
 		}
 	else
@@ -238,6 +237,20 @@ void	printWidth(long long int num)
 	{
 		g_width->space_left = g_spec->width;
 		g_width->space_right = 0;
+	}
+	if (g_spec->symb == 'c' && g_width->width == 1)
+	{
+		if (g_spec->zero == 0 && g_spec->minus == 0)
+		{ 
+			g_width->zero = 0;
+			g_width->space_left = g_spec->width - g_width->width;
+		}
+		else if (g_spec->zero == 0 && g_spec->minus == 1)
+		{ 
+			g_width->zero = 0;
+			g_width->space_left = 0;
+			g_width->space_right = g_spec->width - g_width->width;
+		}
 	}
 	printwidthtwo(num);
 	if (g_width->zero > 0 && g_spec->symb != 's')
