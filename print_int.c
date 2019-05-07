@@ -145,7 +145,7 @@ void assembl_int(va_list arg)
 		base = 16;
 	if (g_spec->symb == 'o')
 		base = 8;
-	if (g_spec->symb == 'u' || g_spec->symb == 'U')
+	if (g_spec->symb == 'u' || g_spec->symb == 'U' || g_spec->j == 1)
 	{
 		print_u(arg, base);
 		return ;
@@ -156,8 +156,6 @@ void assembl_int(va_list arg)
 		check = va_arg(arg, long long int);
 	if (g_spec->l == 0 &&  g_spec->ll == 0 && g_spec->j == 0 && g_spec->z == 0)
 		check = va_arg(arg, int);
-	if (g_spec->j == 1)
-		check = va_arg(arg, uintmax_t);
 	if (g_spec->z == 1)
 		check = va_arg(arg, size_t);
 	display_int(check, base);
@@ -241,7 +239,7 @@ void	printWidth(long long int num)
 	if (g_spec->symb == 'c' && g_width->width == 1)
 	{
 		if (g_spec->zero == 0 && g_spec->minus == 0)
-		{ 
+		{
 			g_width->zero = 0;
 			g_width->space_left = g_spec->width - g_width->width;
 		}
