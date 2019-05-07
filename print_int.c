@@ -54,7 +54,7 @@ void sign(long long int num)
 void signX(long long int num)
 {
 	
-	if (g_spec->symb == 'x' || g_spec->symb == 'X')
+	if (g_spec->symb == 'x' || g_spec->symb == 'X' || g_spec->symb == 'p')
 	{
 		if (g_spec->sharp == 1 && num > 0)
 		{
@@ -63,6 +63,8 @@ void signX(long long int num)
 			else if (g_spec->symb == 'X')
 				addstr_glbuffer("0X", 2);
 		}
+		if (g_spec->symb == 'p')
+			addstr_glbuffer("0x", 2);
 	}
 	else if (g_spec->symb =='o')
 	{
@@ -75,38 +77,43 @@ void signX(long long int num)
 void display_int(long long int num, int base)
 {
 	char *str;
-
+	long long int num1;
 
 	num = reduction_signed(num);
-	width(num, 0, base);
-	printWidth(num);
+	num1 = num;
 	if (num < 0)
 		num = -num;
-	str = ft_itoa_base(num, base);
+	// if (num == 0)
+	// 	str = ft_strnew(0);
+	// else
+
+		str = ft_itoa_base(num, base);
+	width(num, str);
+	printWidth(num1);
 	if (g_spec->symb == 'X' ||  g_spec->symb == 'x')
 	    str = register_x(str);
-	update_glbuffer(str);
-	printWidthEnd();
+	if (g_spec->precision >= 0 && num == 0)
+		printWidthEnd();
+	else
+	{ 
+		update_glbuffer(str);
+		printWidthEnd();
+	}
 	free(str);
 }
 
 void  printWidthEnd()
 {
 	int index;
-	char *str;
 
 	index =0;
 	if (g_width->space_right > 0)
 	{
-		str = malloc(sizeof(char) * g_width->space_right + 1);
 		while (index < g_width->space_right)
 		{
-			str[index] = ' ';
+			addsymb_glbuffer(' ');
 			index++;
 		}
-		str[index] = '\0';
-		addstr_glbuffer(str, index);
-		free(str);
 	}
 	return ;
 }
@@ -125,48 +132,7 @@ int lenbase(unsigned long long int num, int base)
 		return (1);
 return (size);
 }
-int		*width_u(unsigned long long number, unsigned long long int index, int width)
-{
-	index = number;
-	g_width->width = lenbase(index, width);
-	if ((g_spec->precision - g_width->width) > 0)
-		number = (g_spec->precision - g_width->width); // precision
-	else 
-		number = 0;
-	if (g_spec->width > g_width->width && g_spec->minus == 0)
-		g_width->space_left =  g_spec->width - g_width->width;
-	else if (g_spec->minus == 1 && g_spec->width > g_spec->precision)
-		g_width->space_right = g_spec->width - g_width->width;
-	if (number != 0 && g_spec->precision > 0)
-	{
-		g_width->zero = number;
-		g_width->space_left -=number;
-		g_width->space_right -=number;
-	}
-	if (g_spec->zero == 1 && number == 0)
-	{
-		g_width->zero = g_width->space_left;
-		g_width->space_left = 0;
-	}
-	if (g_spec->space == 1 && g_spec->width == 0 && g_spec->precision == 0 && g_width->width <= 1)
-		g_width->space_left++;
-	if (g_spec->sharp == 1)
-	{
-		if (g_spec->symb == 'x' || g_spec->symb == 'X')
-		{
-			g_width->space_left -= 2;
-			g_width->zero -= 2;
-			g_width->space_right -= 2;
-		}
-		if (g_spec->symb == 'o')
-		{
-			g_width->space_left -= 1;
-			g_width->zero -= 1;
-			g_width->space_right -= 1;
-		}
-	}
-	return (0);
-}
+
 
 void assembl_int(va_list arg)
 {
@@ -178,7 +144,7 @@ void assembl_int(va_list arg)
 		base = 16;
 	if (g_spec->symb == 'o')
 		base = 8;
-	if (g_spec->symb == 'u')
+	if (g_spec->symb == 'u' || g_spec->symb == 'U')
 	{
 		print_u(arg, base);
 		return ;
@@ -187,29 +153,27 @@ void assembl_int(va_list arg)
 		check = va_arg(arg, long int);
 	if (g_spec->ll == 1)
 		check = va_arg(arg, long long int);
-	if (g_spec->l == 0 &&  g_spec->ll == 0 && g_spec->j == 0)
+	if (g_spec->l == 0 &&  g_spec->ll == 0 && g_spec->j == 0 && g_spec->z == 0)
 		check = va_arg(arg, int);
 	if (g_spec->j == 1)
 		check = va_arg(arg, uintmax_t);
+	if (g_spec->z == 1)
+		check = va_arg(arg, size_t);
 	display_int(check, base);
 	return ;
 }
 
-void	width(long long number, unsigned long int index,  int base)
+void	width(long long number, char *str)
 {
-	if (number < 0)
-		index = -number;
-	else
-		index = number;
-	g_width->width = lenbase(index, base);
+	g_width->width = ft_strlen(str);
 	number = (g_spec->precision - g_width->width); // precision
-	if (number < 0)
+	if (number < 0  || g_spec->width == 0)
 		number = 0;
 	if (g_spec->width > g_width->width && g_spec->minus == 0)
 		g_width->space_left =  g_spec->width - g_width->width;
 	else if (g_spec->minus == 1 && g_spec->width > g_spec->precision)
 		g_width->space_right = g_spec->width - g_width->width;
-	if (number != 0 && g_spec->precision > 0)
+	if (number != 0 )
 	{
 		g_width->zero = number;
 		g_width->space_left -=number;
@@ -220,7 +184,7 @@ void	width(long long number, unsigned long int index,  int base)
 		g_width->zero = g_width->space_left;
 		g_width->space_left = 0;
 	}
-	if (g_spec->space == 1 && g_spec->width == 0 && g_spec->precision == 0)
+	if (g_spec->space == 1 && g_spec->width == 0 && g_spec->precision == 0 && g_width == 0)
 		g_width->space_left++;
 	if (g_spec->sharp == 1)
 	{
@@ -236,7 +200,6 @@ void	width(long long number, unsigned long int index,  int base)
 			g_width->zero -= 1;
 			g_width->space_right -= 1;
 		}
-
 	}
 	return ;
 }
@@ -257,9 +220,9 @@ static void	printwidthtwo(long long int num)
 		}
 		sign(num);
 	}
-	else if(g_spec->symb != 'x' && g_spec->symb != 'X')
+	else if(g_spec->symb != 'x' && g_spec->symb != 'X' && g_spec->symb != 'p')
 		sign(num);
-	if (g_spec->symb == 'x' || g_spec->symb == 'X')
+	if (g_spec->symb == 'x' || g_spec->symb == 'X' || g_spec->symb == 'p')
 		signX(num);
 	if (g_spec->symb =='o')
 		signX(num);
@@ -269,8 +232,13 @@ void	printWidth(long long int num)
 {
 	int index;
 	
+	if (g_spec->symb == 's' && g_width->width == 0)
+	{
+		g_width->space_left = g_spec->width;
+		g_width->space_right = 0;
+	}
 	printwidthtwo(num);
-	if (g_width->zero > 0)
+	if (g_width->zero > 0 && g_spec->symb != 's')
 	{
 		index =0;
 		while(g_width->zero > index)

@@ -18,7 +18,7 @@ int		is_cspdioux_bigx_fegbrk(char c)
 {
 	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'o' || \
 	 	c == 'u' || c == 'x' || c == 'X' || c == 'f' || c == 'e' || c == 'g' || c == 'b' || \
-	 	c == 'r' || c == 'k' || c == '%')
+	 	c == 'r' || c == 'k' || c == '%' || c == 'U')
 		return (1);
 	else
 		return (0);

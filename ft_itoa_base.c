@@ -29,7 +29,7 @@ char	*ft_itoa_base(long long int value, int base)
 	long long int		tmp;
 	
 	flag = 0;
-	 if (value  == -9223372036854775808)
+	 if (value  < -9223372036854775807) // bag and error
 	 	return (ft_strcpy(ft_strnew(21),"9223372036854775808"));
 	if (base < 2 || base > 16)
 		return (0);

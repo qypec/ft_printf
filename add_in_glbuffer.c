@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   add_in_glbuffer.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:32:07 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/06 13:10:30 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/07 11:16:09 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ void		update_glbuffer(char *str)
 	size_t size;
 
 	size = ft_strlen(str);
+	if (size == 0)
+		return ;
 	is_it_buffer_overflow(size);
 	g_output->str = ft_strnglue(g_output->str, str, "\0", g_output->size);
 	g_output->size += size;

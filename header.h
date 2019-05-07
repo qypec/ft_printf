@@ -7,6 +7,7 @@
 # include <stdarg.h>
 # include <time.h>
 # define TAB  "0123456789abcdef"
+# define null "(null)"
 # define RESERVE 15
 
 typedef struct		s_width
@@ -43,6 +44,7 @@ typedef struct		s_spec
 	int				j;
 	int				hh;
 	int				h;
+	int				z;
 }					t_spec;
 
 // global 
@@ -55,7 +57,7 @@ struct s_spec		*g_spec;
 
 long long int		reduction_signed(long long int num);
 unsigned long long	reduction_unsigned(unsigned long long int num);
-void				width(long long number, unsigned long int index, int base);
+void				width(long long number, char *str);
 int					*width_u(unsigned long long number, unsigned long long int index, int width);
 int					ft_printf(const char *format, ...);
 int					print_arg(char *traverse, va_list arg);
@@ -81,7 +83,6 @@ int					is_cspdioux_bigx_fegbrk(char c);
 int					is_lh_bigl(char c);
 int					is_calculatesymb(char c);
 int					*width_u(unsigned long long number, unsigned long long int index, int width);
-int					*width_s(char *str, int index, int width);
 
 // l and ll 
 int					print_dl(long int num);

@@ -60,7 +60,7 @@ int				ft_printf(const char *format, ...)
 	va_start(arg, (char *)format);
 	while (*traverse != '\0')
 	{
-		spec = (t_spec){(char)48, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+		spec = (t_spec){(char)48, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0};
 		g_spec = &spec;
 		g_width->zero = 0;
 		g_width->space_left = 0;
@@ -70,7 +70,7 @@ int				ft_printf(const char *format, ...)
 		if (*traverse == '\0')
 			break ;
 		struct_specifier(++traverse);  /* записывает в структуру спецификатор */
-		// print_struct(&spec);
+		//print_struct(&spec);
 		print_arg(traverse, arg);
 		traverse = move_after_specifier(traverse);
 	}

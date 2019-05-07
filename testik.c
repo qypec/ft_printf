@@ -2,6 +2,6 @@
 
 int main ()
 {
-    printf ("%2.2d\n", 155);
+   	printf("%010.2c", NULL);
     return (0);
 }
