@@ -19,6 +19,5 @@ int main()
 	printf ("len = |%d|", printf("%.100f", 100.1));
 	printf ("\nown\n");
 	printf("len = |%d|",ft_printf("%.100f",100.1));
-
 	return (0);
 }

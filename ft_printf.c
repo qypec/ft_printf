@@ -41,6 +41,10 @@ static char		*take_str_before_persent(char *traverse)
 {
 	while (*traverse != '%' && *traverse != '\0')
 	{
+		if (*traverse == '{')
+			traverse = take_color(traverse);
+		if (*traverse == '\0')
+			break ;
 		addsymb_glbuffer(*traverse);
 		traverse++;
 	}

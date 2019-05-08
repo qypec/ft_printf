@@ -9,7 +9,20 @@
 # define TAB  "0123456789abcdef"
 # define null "(null)"
 # define RESERVE 15
+
 # define CONST_WIDRTH_DOUBLE 6
+
+# define COLOR_RED "\x1b[31m"
+# define COLOR_GREEN "\x1b[32m"
+# define COLOR_YELLOW "\x1b[33m"
+# define COLOR_BLUE "\x1b[34m"
+# define COLOR_MAGENTA "\x1b[35m"
+# define COLOR_CYAN "\x1b[36m"
+# define COLOR_RESET "\x1b[0m"
+# define COLOR_SIZE 5
+
+struct s_width		*Width;
+
 typedef struct		s_width
 {
 	int				space_left;
@@ -108,4 +121,8 @@ void				addstr_glbuffer(char *str, size_t size);
 
 void				print_float(double num);
 void				assembl_float(va_list arg);
+
+char				*take_color(char *traverse);
+
+
 #endif
