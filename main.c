@@ -16,9 +16,9 @@ int main()
 	// printf("\n\n\n\n\n\n\n");
 	int a = 10;
 	printf("\nreal:\n");
-	printf ("len = |%d|", printf("%jx", -4294967296));
+	printf ("len = |%d|", printf("%.100f", 100.1));
 	printf ("\nown\n");
-	printf("len = |%d|",ft_printf("%jx", -4294967296));
+	printf("len = |%d|",ft_printf("%.100f",100.1));
 
 	return (0);
 }

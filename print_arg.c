@@ -34,6 +34,45 @@ void            width_processing(char *str)
 	if ( g_spec->minus != 1)
 		addstr_glbuffer(str, size);
 }
+void print_float(double num)
+{
+	long long int	left;
+	char		*str;
+	int		a;
+	int		size;
+
+
+	size  = 6;
+	if (g_spec->precision > 0)
+		size = g_spec->precision;
+	else
+		size = CONST_WIDRTH_DOUBLE;
+	left =(long long int)num;
+	str = ft_itoa_base(left, 10);
+	update_glbuffer(str);
+	addsymb_glbuffer('.');
+	num -= left;
+	int index = 0;
+	while (num > 0 && index < size)
+	{
+		num = num * 10;
+		a =(int)num;
+		num = num - a;
+		str = ft_itoa_base(a, 10);
+		update_glbuffer(str);
+		index++;
+	}
+}
+
+
+void assembl_float(va_list arg)
+{
+	double  num;
+
+	if (g_spec->symb == 'f')
+		num = va_arg(arg, double);
+	print_float(num);
+}
 
 int		print_arg(char *traverse, va_list arg)
 {
@@ -45,7 +84,7 @@ int		print_arg(char *traverse, va_list arg)
 		assembl_int(arg);
 	if ( g_spec->symb == 'c' ||  g_spec->symb == 's' ||  g_spec->symb == 'p')
 		print_char(arg);
-		// if ( g_spec->symb == 'f' ||  g_spec->symb == 'e' ||  g_spec->symb == 'g')
-	//		size = print_float(spec, arg);
+	 if ( g_spec->symb == 'f' || g_spec->symb == 'e' ||  g_spec->symb == 'g')
+		assembl_float(arg);
 	return (0);
 }

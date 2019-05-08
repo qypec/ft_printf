@@ -21,7 +21,7 @@ void		addsymb_glbuffer(char c)
 
 void		update_glbuffer(char *str)
 {
-	size_t size;
+	size_t	size;
 
 	size = ft_strlen(str);
 	if (size == 0)

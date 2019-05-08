@@ -11,26 +11,23 @@ int		ft_abs(int nb)
  {
      int			size;
 
-
-     size = 0;
-     while (tmp /= base)
+	size = 0;
+	while (tmp /= base)
 		size++;
 	size = size + flag + 1;
+	return(size);
+}
 
-     return(size);
-    
- }
-
-char	*ft_itoa_base(long long int value, int base)
+char		*ft_itoa_base(long long int value, int base)
 {
 	char				*str;
-	int					size;
-	int					flag;
-	long long int		tmp;
+	int				size;
+	int				flag;
+	long long int			tmp;
 	
 	flag = 0;
-	 if (value  < -9223372036854775807) // bag and error
-	 	return (ft_strcpy(ft_strnew(21),"9223372036854775808"));
+	 if (value < -9223372036854775807) // bag and error
+		return (ft_strcpy(ft_strnew(21),"9223372036854775808"));
 	if (base < 2 || base > 16)
 		return (0);
 	if (value < 0 && base == 10)

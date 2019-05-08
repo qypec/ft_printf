@@ -9,7 +9,7 @@
 # define TAB  "0123456789abcdef"
 # define null "(null)"
 # define RESERVE 15
-
+# define CONST_WIDRTH_DOUBLE 6
 typedef struct		s_width
 {
 	int				space_left;
@@ -106,5 +106,6 @@ void				addsymb_glbuffer(char c);
 void				update_glbuffer(char *str);
 void				addstr_glbuffer(char *str, size_t size);
 
-
+void				print_float(double num);
+void				assembl_float(va_list arg);
 #endif
