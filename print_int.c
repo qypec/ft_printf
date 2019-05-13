@@ -184,7 +184,8 @@ void	width(long long number, char *str)
 		g_width->space_left = 0;
 	}
 	if (g_spec->space == 1 && g_spec->width <= 1 && str[0] != '-' && g_spec->symb != 'u' && g_spec->symb != 'c' && g_spec->symb != 'U') // check
-		g_width->space_left++;
+		if ( g_width->space_left <= 0 )
+			g_width->space_left =g_width->space_left * 0 + 1 ;
 	if (g_spec->sharp == 1)
 	{
 		if (g_spec->symb == 'x' || g_spec->symb == 'X')

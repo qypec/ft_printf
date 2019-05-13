@@ -6,12 +6,12 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <time.h>
+
+
 # define TAB  "0123456789abcdef"
 # define null "(null)"
 # define RESERVE 15
-
 # define CONST_WIDRTH_DOUBLE 6
-
 # define COLOR_RED "\x1b[31m"
 # define COLOR_GREEN "\x1b[32m"
 # define COLOR_YELLOW "\x1b[33m"
