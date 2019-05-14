@@ -74,7 +74,7 @@ int				ft_printf(const char *format, ...)
 		if (*traverse == '\0')
 			break ;
 		struct_specifier(++traverse);  /* записывает в структуру спецификатор */
-		//print_struct(&spec);
+		// print_struct(&spec);
 		print_arg(traverse, arg);
 		traverse = move_after_specifier(traverse);
 	}

@@ -32,11 +32,12 @@ int print_s(va_list arg)
 	str = (char *) va_arg(arg, void *);
 	if (str == NULL)
 		str = ft_strcpy(ft_strnew(6), null);
-	if (g_spec->precision > 0)
+	if (g_spec->precision >= 0 )
 	{
 		ptr = ft_strncpy(ft_strnew(g_spec->precision), str, g_spec->precision);
 		str = ptr;
 	}
+
 	width(1, str);
 	printWidth(1);
 	update_glbuffer(str);

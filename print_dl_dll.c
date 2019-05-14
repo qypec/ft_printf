@@ -21,7 +21,7 @@ long long int	reduction_signed(long long int num)
 	}
 	if (num < 0)
 	{
-		if (g_spec->symb == 'x' ||  g_spec->symb == 'X')
+		if (g_spec->symb == 'x' ||  g_spec->symb == 'X' || g_spec->symb == 'o')
 			num += 4294967296;
 	}
 	return (num);
@@ -68,6 +68,7 @@ char			*ft_itoa_u(unsigned long long int n)
 	if (n == 0)
 	{
 		str[0] = '0';
+		str[1] = '\0';
 		return (str);
 	}
 	i = len - 1;

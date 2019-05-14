@@ -10,193 +10,114 @@
 #include <unistd.h>
 #include <string.h>
 
-// int main()
+//fix parse size + espace + zero + prec:% 05.3d \n\n\n", nb
+
+
+
+// int main ()
 // {
-//     int READING_SIZE =  500;
-//     int        pipeans[2];
-//     int        pipecor[2];
-//     int        ians;
-//     int        icor;
-//     char    ans[READING_SIZE + 1];
-//     char    cor[READING_SIZE + 1];
-    
-//     if (pipe(pipeans) == -1)
-//         return (0);
-//     if (dup2(pipeans[1], 1) == -1)
-//         return (0);
-//     if (pipe(pipecor) == -1)
-//         return (0);
-//     if (dup2(pipecor[1], 2) == -1)
-//         return (0);
-    
-    
-//     int        nb;
-//     nb = 0;
-//     printf("space% d ", nb);
-//     printf("plus:%+d ", nb);
-//     printf("precision:%.5d ", nb);
-//     printf("space + prec:% .5d ", nb);
-//     printf("Plus + prec / grande:%+.5d ", nb);
-//     printf("Prec + 0:%0.5d ", nb);
-//     printf("Prec + minus:%-.5d ", nb);
-//     printf("size:%5d ", nb);
-//     printf("size + space:% 5d ", nb);
-//     printf("size + plus:%+5d ", nb);
-//     printf("size + minus:%-5d ", nb);
-//     printf("size + 0:%05d ", nb);
-//     printf("size + 0 + plus:%+05d ", nb);
-//     printf("size + 0 + plus:%0+5d ", nb);
-//     printf("size + 0 + prec:%05.3d ", nb);
-//     printf("size + minus + prec:%-5.3d ", nb);
-//     printf("size + plus + 0 + prec:%+05.3d ", nb);
-//     printf("size + espace + zero + prec:%0 5.3d ", nb);
-//     printf("size + espace + zero + prec:% 05.3d ", nb);
-//     printf("size + minus + plus + prec:%-+5.3d ", nb);
-    
-//     dprintf(2, "space% d ", nb);
-//     dprintf(2, "plus:%+d ", nb);
-//     dprintf(2, "precision:%.5d ", nb);
-//     dprintf(2, "space + prec:% .5d ", nb);
-//     dprintf(2, "Plus + prec / grande:%+.5d ", nb);
-//     dprintf(2, "Prec + 0:%0.5d ", nb);
-//     dprintf(2, "Prec + minus:%-.5d ", nb);
-//     dprintf(2, "size:%5d ", nb);
-//     dprintf(2, "size + space:% 5d ", nb);
-//     dprintf(2, "size + plus:%+5d ", nb);
-//     dprintf(2, "size + minus:%-5d ", nb);
-//     dprintf(2, "size + 0:%05d ", nb);
-//     dprintf(2, "size + 0 + plus:%+05d ", nb);
-//     dprintf(2, "size + 0 + plus:%0+5d ", nb);
-//     dprintf(2, "size + 0 + prec:%05.3d ", nb);
-//     dprintf(2, "size + minus + prec:%-5.3d ", nb);
-//     dprintf(2, "size + plus + 0 + prec:%+05.3d ", nb);
-//     dprintf(2, "size + espace + zero + prec:%0 5.3d ", nb);
-//     dprintf(2, "size + espace + zero + prec:% 05.3d ", nb);
-//     dprintf(2, "size + minus + plus + prec:%-+5.3d ", nb);
-    
-    
-    
-//     ians = read(pipeans[0], ans, 418);
-//     icor = read(pipecor[0], cor, 418);
-//     if ((nb = close(pipeans[0])) < 0)
-//         printf ("error3\n");
-//     if ((nb = close(pipecor[0])) < 0)
-//         printf ("error4\n");
-//     if ((nb = close(pipeans[1])) < 0)
-//         printf ("error1\n");
-//     if ((nb  = close(pipecor[1])) < 0)
-//         printf ("error2\n");
-//     ans[ians] = 0;
-//     cor[icor] = 0;
-    
-//     if (strcmp(cor, ans) == 0)
-//     {
-//         printf("good\n");
-//     }
-//     else
-//         printf ("\nERROR\n");
-    
-    
-//     return (0);
+// 	int  nb = -1235;
+// 	char	*str;
+// 	str = "NULL";
+// 	// printf("real:\n");
+// 	// printf("%5.5s\n\n\n", "hello world");
+// 	// printf("\nreal:\n");
+// 	// printf ("len = |%d|\n\n\n",printf("%+10.3d\n\n\n",48));
+// 	// printf ("\nown\n");
+// 	// printf("len = |%d|\n\n\n",ft_printf("%+10.3d\n\n\n", 48));
+// 	// printf("\n\n\n\n\n\n\n");
+// 	// nb = 56432;
+// 	printf("\nreal:\n");
+// 	printf ("len = |%d|\n\n\n",printf("% h"));
+// 	printf ("\nown\n");
+// 	printf("len = |%d|\n\n\n",ft_printf("% h"));
+
+
+
+// 	return (0);
 // }
 
 
 
 
 
-int print_stdout(void)
-{
 
-	printf ("NOT dup2\n");
-	return (0);
-}
+
 int main()
 {
-	// printf("real:\n");
-	// printf("%5.5s", "hello world");
-	// printf("\nreal:\n");
-	// printf ("len = |%d|",printf("%+10.3d",48));
-	// printf ("\nown\n");
-	// printf("len = |%d|",ft_printf("%+10.3d", 48));
-	// printf("\n\n\n\n\n\n\n");
-	// printf("\nreal:\n");
-	// printf ("len = |%d|",printf("% h"));
-	// printf ("\nown\n");
-	// printf("len = |%d|",ft_printf("% h"));
-	// printf("\n\n\n\n\n\n\n");
 	
-	
-	
-	
-	int READING_SIZE = 100000;
-	int INTERNAL_FAILURE = 1;
+	int		READING_SIZE = 100000;
+	int		INTERNAL_FAILURE = 1;
 	int		pipeans[2];
 	int		pipecor[2];
 	int		ians;
 	int		icor;
 	char	ans[READING_SIZE + 1];
 	char	cor[READING_SIZE + 1];
+	int 	save_out; 
 
+	save_out = dup(STDOUT_FILENO);
 	if (pipe(pipeans) == -1)
-		exit(INTERNAL_FAILURE);
+		return (0);
 	if (dup2(pipeans[1], 1) == -1)
-		exit(-1);
+		return (0);
 	if (pipe(pipecor) == -1)
-		exit(INTERNAL_FAILURE);
+		return (0);
 	if (dup2(pipecor[1], 2) == -1)
-		exit(-1);
-
+		return (0);
 
 	int		nb;
+
 	nb = 0;
-	ft_printf("space% d ", nb);
-	ft_printf("plus:%+d ", nb);
-	ft_printf("precision:%.5d ", nb);
-	ft_printf("space + prec:% .5d ", nb);
-	ft_printf("Plus + prec / grande:%+.5d ", nb);
-	ft_printf("Prec + 0:%0.5d ", nb);
-	ft_printf("Prec + minus:%-.5d ", nb);
-	ft_printf("size:%5d ", nb);
-	ft_printf("size + space:% 5d ", nb);
-	ft_printf("size + plus:%+5d ", nb);
-	ft_printf("size + minus:%-5d ", nb);
-	ft_printf("size + 0:%05d ", nb);
-	ft_printf("size + 0 + plus:%+05d ", nb);
-	ft_printf("size + 0 + plus:%0+5d ", nb);
-	ft_printf("size + 0 + prec:%05.3d ", nb);
-	ft_printf("size + minus + prec:%-5.3d ", nb);
-	ft_printf("size + plus + 0 + prec:%+05.3d ", nb);
-	ft_printf("size + espace + zero + prec:%0 5.3d ", nb);
-	ft_printf("size + espace + zero + prec:% 05.3d ", nb);
-	ft_printf("size + minus + plus + prec:%-+5.3d ", nb);
+	char	*str;
+	str = "NULL";
 
-	dprintf(2, "space% d ", nb);
-	dprintf(2, "plus:%+d ", nb);
-	dprintf(2, "precision:%.5d ", nb);
-	dprintf(2, "space + prec:% .5d ", nb);
-	dprintf(2, "Plus + prec / grande:%+.5d ", nb);
-	dprintf(2, "Prec + 0:%0.5d ", nb);
-	dprintf(2, "Prec + minus:%-.5d ", nb);
-	dprintf(2, "size:%5d ", nb);
-	dprintf(2, "size + space:% 5d ", nb);
-	dprintf(2, "size + plus:%+5d ", nb);
-	dprintf(2, "size + minus:%-5d ", nb);
-	dprintf(2, "size + 0:%05d ", nb);
-	dprintf(2, "size + 0 + plus:%+05d ", nb);
-	dprintf(2, "size + 0 + plus:%0+5d ", nb);
-	dprintf(2, "size + 0 + prec:%05.3d ", nb);
-	dprintf(2, "size + minus + prec:%-5.3d ", nb);
-	dprintf(2, "size + plus + 0 + prec:%+05.3d ", nb);
-	dprintf(2, "size + espace + zero + prec:%0 5.3d ", nb);
-	dprintf(2, "size + espace + zero + prec:% 05.3d ", nb);
-    dprintf(2, "size + minus + plus + prec:%-+5.3d ", nb);
+	ft_printf("test basique:%s\n", str);
+	ft_printf("precision / zero:%.0s\n", str);
+	ft_printf("precision / petite:%.5s\n", str);
+	ft_printf("precision / grande:%.15s\n", str);
+	ft_printf("prec + minus:%-.5s\n", str);
+	ft_printf("size / petite:%5s\n", str);
+	ft_printf("size / grande:%15s\n", str);
+	ft_printf("Minus + size / petite:%-5s\n", str);
+	ft_printf("Minus + size / grande:%-15s\n", str);
+	ft_printf("Minus + size + prec:%-15.5s\n", str);
+	ft_printf("NULL:%12s\n", NULL);
+	ft_printf("NULL:%1s\n", NULL);
+	ft_printf("NULL:%-5.6s\n", NULL);
+	ft_printf("NULL:%-.8s\n", NULL);
+	ft_printf("NULL:%.12s\n", NULL);
+	ft_printf("empty:%-.5s\n", "");
+	ft_printf("empty:%-1.32s\n", "");
+	ft_printf("empty:%1.4s\n", "");
+	ft_printf("empty:%23s\n", "");
+
+	dprintf(2, "test basique:%s\n", str);
+	dprintf(2, "precision / zero:%.0s\n", str);
+	dprintf(2, "precision / petite:%.5s\n", str);
+	dprintf(2, "precision / grande:%.15s\n", str);
+	dprintf(2, "prec + minus:%-.5s\n", str);
+	dprintf(2, "size / petite:%5s\n", str);
+	dprintf(2, "size / grande:%15s\n", str);
+	dprintf(2, "Minus + size / petite:%-5s\n", str);
+	dprintf(2, "Minus + size / grande:%-15s\n", str);
+	dprintf(2, "Minus + size + prec:%-15.5s\n", str);
+	dprintf(2, "NULL:%12s\n", NULL);
+	dprintf(2, "NULL:%1s\n", NULL);
+	dprintf(2, "NULL:%-5.6s\n", NULL);
+	dprintf(2, "NULL:%-.8s\n", NULL);
+	dprintf(2, "NULL:%.12s\n", NULL);
+	dprintf(2, "empty:%-.5s\n", "");
+	dprintf(2, "empty:%-1.32s\n", "");
+	dprintf(2, "empty:%1.4s\n", "");
+	dprintf(2, "empty:%23s\n", "");
 
 
 
-	ians = read(pipeans[0], ans, 418);
-	icor = read(pipecor[0], cor, 418);
+	ians = read(pipeans[0], ans, 700);
+	icor = read(pipecor[0], cor, 700);
 	if ((nb = close(pipeans[0])) < 0)
-		printf ("error3\n");
+		printf ("error3");
 	if ((nb = close(pipecor[0])) < 0)
 		printf ("error4\n");
 	if ((nb = close(pipeans[1])) < 0)
@@ -205,7 +126,32 @@ int main()
 		printf ("error2\n");
 	ans[ians] = 0;
 	cor[icor] = 0;
-
+	dup2(save_out, STDOUT_FILENO);
+	
+	int index = 0;
+	while (index < ians || index < icor)
+	{
+		if (ans[index] != cor[index])
+			printf ("%c",ans[index]);
+		index++;
+	}
+	index = 0;
+	printf("\n");
+	while (index < ians || index < icor)
+	{
+		if (ans[index] != cor[index])
+			printf ("%c",cor[index]);
+		index++;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	if (ft_strcmp(cor, ans) == 0)
 	{
 		printf("good\n");

@@ -6,7 +6,7 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/16 14:54:09 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/07 12:01:22 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/05/13 16:33:57 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void		struct_specifier(char *traverse)
 		 g_spec->symb = traverse[i];
 	if ( g_spec->minus == 1)
 		 g_spec->zero = 0;
-	if ( g_spec->zero == 1)
-		 g_spec->space = 0;
+	// if ( g_spec->zero == 1)	//fix
+	// 	 g_spec->space = 0;
 	return ;
 }
