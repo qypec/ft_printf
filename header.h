@@ -7,6 +7,8 @@
 # include <stdarg.h>
 # include <time.h>
 
+# define PRECISION	1
+# define WIDTH		2
 
 # define TAB  "0123456789abcdef"
 # define null "(null)"
@@ -100,14 +102,17 @@ int					*width_u(unsigned long long number, unsigned long long int index, int wi
 // l and ll 
 int					print_dl(long int num);
 
-void				read_lh_bigl(char *traverse);
 void				read_calculatesymb(char c);
-void				read_digit(char *traverse, const char *flag);
+void				read_digit(char *traverse, const int flag);
+int					read_width_or_precision(char *traverse, int i, int flag);
+int					move_after_digits(char *traverse);
+int					read_spaces(char *traverse, int i);
+
 void				parse_precision(char *traverse);
 void				parse_width(char *traverse);
 void				parse_calculatesymb(char *traverse);
 void				parse_space(char *traverse);
-void				parse_lh_bigl(char *traverse);
+int					read_lh_bigl(char *traverse, int i);
 
 void				print_date(char *traverse, va_list arg);
 void				bust_printf(int errorcode);

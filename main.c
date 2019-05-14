@@ -33,9 +33,6 @@ int main ()
 	printf ("len = |%d|",printf("space:% f\n", nb));
 	printf ("\nown\n");
 	printf("len = |%d|",ft_printf("space:% f\n", nb));
-
-
-
 	return (0);
 }
 
@@ -146,10 +143,9 @@ int main ()
 
 
 
-
-
 // 	ians = read(pipeans[0], ans, 700);
 // 	icor = read(pipecor[0], cor, 700);
+
 // 	if ((x = close(pipeans[0])) < 0)
 // 		printf ("error3");
 // 	if ((x = close(pipecor[0])) < 0)
@@ -157,6 +153,15 @@ int main ()
 // 	if ((x = close(pipeans[1])) < 0)
 // 		printf ("error1\n");
 // 	if ((x  = close(pipecor[1])) < 0)
+
+// 	if ((nb = close(pipeans[0])) < 0)
+// 		printf ("error3");
+// 	if ((nb = close(pipecor[0])) < 0)
+// 		printf ("error4\n");
+// 	if ((nb = close(pipeans[1])) < 0)
+// 		printf ("error1\n");
+// 	if ((nb  = close(pipecor[1])) < 0)
+
 // 		printf ("error2\n");
 // 	ans[ians] = 0;
 // 	cor[icor] = 0;
