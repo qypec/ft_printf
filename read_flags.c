@@ -31,15 +31,6 @@ void			read_calculatesymb(char c)
 		 g_spec->minus = 1;
 }
 
-static int			move_after_lh_bigl(void)
-{
-	if (g_spec->big_l == 1 ||  g_spec->l == 1 ||  g_spec->h == 1)
-		return (1);
-	if (g_spec->ll == 1 ||  g_spec->hh == 1)
-		return (2);
-	return (0);
-}
-
 int			read_lh_bigl(char *traverse, int i)
 {
 	if (*traverse == 'L' &&  g_spec->symb != 'd')
@@ -62,15 +53,10 @@ int			read_lh_bigl(char *traverse, int i)
 		if (*traverse == 'h')
 			nullify_llhh_bigl(4);
 	}
-	i += move_after_lh_bigl();
-	return (i);
-}
-
-int				read_spaces(char *traverse, int i)
-{
-	g_spec->space = 1;
-	while (traverse[i] == ' ')
+	if (g_spec->big_l == 1 ||  g_spec->l == 1 ||  g_spec->h == 1)
 		i++;
+	if (g_spec->ll == 1 ||  g_spec->hh == 1)
+		i += 2;
 	return (i);
 }
 
@@ -101,10 +87,18 @@ void			read_digit(char *traverse, const int flag)
 	return ;
 }
 
-int				read_precision(char *traverse, int i)
+int				read_width_or_precision(char *traverse, int i, int flag)
 {
-	g_spec->precision = 0;
-	read_digit(traverse + (++i), PRECISION);
-	i += move_after_digits(traverse + i);
+	if (flag == PRECISION)
+	{
+		g_spec->precision = 0;
+		read_digit(traverse + (++i), PRECISION);
+		i += move_after_digits(traverse + i);
+	}
+	if (flag == WIDTH)
+	{
+		read_digit(traverse + i, WIDTH);
+		i += move_after_digits(traverse + i);
+	}
 	return (i);
 }

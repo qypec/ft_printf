@@ -104,7 +104,7 @@ int					print_dl(long int num);
 
 void				read_calculatesymb(char c);
 void				read_digit(char *traverse, const int flag);
-int					read_precision(char *traverse, int i);
+int					read_width_or_precision(char *traverse, int i, int flag);
 int					move_after_digits(char *traverse);
 int					read_spaces(char *traverse, int i);
 
