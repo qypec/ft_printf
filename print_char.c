@@ -26,17 +26,27 @@ int print_s(va_list arg)
 {
 	char *str;
 	char *ptr;
-	int i;	
+	int i;
+	int index = 0;
 
 	ptr = NULL;
 	str = (char *) va_arg(arg, void *);
 	if (str == NULL)
 		str = ft_strcpy(ft_strnew(6), null);
-	if (g_spec->precision >= 0 )
+	if (g_spec->precision >= 0 && g_spec->precision < ft_strlen(str))
 	{
-		ptr = ft_strncpy(ft_strnew(g_spec->precision), str, g_spec->precision);
+		ptr = ft_strnew(g_spec->precision);
+		while (index != g_spec->precision)
+		{
+			ptr[index] = ' ';
+			index++;
+		}
+		ptr[g_spec->precision] = '\0';
+		ptr = ft_strncpy(ptr, str, g_spec->precision);
 		str = ptr;
 	}
+	
+	
 
 	width(1, str);
 	printWidth(1);

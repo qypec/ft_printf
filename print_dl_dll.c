@@ -133,7 +133,12 @@ int display_u(unsigned long long int num, int base)
 		str = ft_itoa_u(num);
 	width(num, str);
 	printWidth(num);
-	update_glbuffer(str);
+	if (num == 0 && g_spec->precision > 0) // fix
+		update_glbuffer(str);
+	if (num > 0)
+		update_glbuffer(str);
+	if (num == 0 && g_spec->precision < 0)
+		update_glbuffer(str);
 	printWidthEnd();
 	free(str);
 	return (0);
@@ -149,8 +154,6 @@ void  print_u(va_list arg, int base)
 	    num = va_arg(arg, unsigned long);
 	else if (g_spec->j == 1)
 		num = va_arg(arg, size_t);
-//	else if (g_spec->j == 1)
-//		num =(unsigned long int) va_arg(arg, uintmax_t);
 	else if ( g_spec->ll == 0 &&  g_spec->l == 0)
 	    num = va_arg(arg, unsigned int);
 	display_u(num, base);

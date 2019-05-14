@@ -44,10 +44,10 @@ void sign(long long int num)
 	if (num < 0)
 	{
 		addsymb_glbuffer('-');
-		// g_width->space_left--;
-		// g_width->space_right--;
-		// if (g_spec->precision <= 0)
-		// 	g_width->zero--;
+	}
+	if (g_spec->symb == 'p')
+	{
+		addstr_glbuffer("0x", 2);
 	}
 }
 
@@ -181,7 +181,7 @@ void	width(long long int number, char *str)
 	}
 	else if (g_spec->minus == 1 && g_spec->width > g_spec->precision)
 		g_width->space_right = g_spec->width - g_width->width; // fix +=
-	if (number != 0)
+	if (number != 0 && g_spec->symb != 's')
 	{
 		g_width->zero = number;
 		g_width->space_left -=number;
@@ -197,20 +197,18 @@ void	width(long long int number, char *str)
 	if (g_spec->space == 1 && num >= 0 && g_spec->symb != 'u' && g_spec->symb != 'c' && g_spec->symb != 'U') // fix g_spec->width <= 1 &&
 		if (g_width->space_left <= 0 )
 			g_width->space_left =g_width->space_left * 0 + 1;
-	if (g_spec->sharp == 1 && g_spec->width > 0 ) //fix new && g_spec->width > 0 
+	if ((g_spec->sharp == 1 && g_spec->width > 0) || g_spec->symb == 'p') //fix new && g_spec->width > 0 
 	{
 		if (g_spec->symb == 'x' || g_spec->symb == 'X')
 		{
 			g_width->space_left -= 2;
-			//g_width->zero -= 2;
 			g_width->space_right -= 2;
 		}
-		// if (g_spec->symb == 'o')
-		// {
-		// 	//g_width->space_left -= 1;
-		// 	// g_width->zero -= 1;
-		// 	//g_width->space_right -= 1;
-		// }
+		if (g_spec->symb == 'p')
+		{
+			g_width->space_left -= 2;
+			g_width->space_right -= 2;
+		}
 	}
 	return ;
 }
@@ -230,6 +228,7 @@ static void	printwidthtwo(long long int num)
 			index++;
 		}
 		sign(num);
+		return ;
 	}
 	if(g_spec->symb != 'x' && g_spec->symb != 'X' && g_spec->symb != 'p') //fix else
 		sign(num);
