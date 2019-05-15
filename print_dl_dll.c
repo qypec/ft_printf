@@ -85,16 +85,14 @@ char			*ft_itoa_u(unsigned long long int n)
 
 static int		ft_itoa_help_u(unsigned long long int tmp, int base, int flag)
  {
-     int			size;
+	int			size;
 
-
-     size = 0;
-     while (tmp /= base)
+	size = 0;
+	while (tmp /= base)
 		size++;
 	size = size + flag + 1;
 
-     return(size);
-    
+	return(size);
  }
 
 

@@ -98,7 +98,7 @@ int					is_cspdioux_bigx_fegbrk(char c);
 int					is_lh_bigl(char c);
 int					is_calculatesymb(char c);
 int					*width_u(unsigned long long number, unsigned long long int index, int width);
-
+char				*ft_itoa_u(unsigned long long int n);
 // l and ll 
 int					print_dl(long int num);
 

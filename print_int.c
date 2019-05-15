@@ -42,13 +42,9 @@ void sign(long long int num)
 			g_width->zero--;
 	}
 	if (num < 0)
-	{
 		addsymb_glbuffer('-');
-	}
 	if (g_spec->symb == 'p')
-	{
 		addstr_glbuffer("0x", 2);
-	}
 }
 
 void signX(long long int num)
@@ -83,10 +79,7 @@ void display_int(long long int num, int base)
 	num = reduction_signed(num);
 	num1 = num;
 	if (num < 0)
-	{
 		num = -num;
-		// g_width->width++;
-	}
 	if (num == 0 && g_spec->precision >= 0)
 		str = ft_strnew(0);
 	else
@@ -94,11 +87,11 @@ void display_int(long long int num, int base)
 	width(num1, str);
 	printWidth(num1);
 	if (g_spec->symb == 'X' ||  g_spec->symb == 'x')
-	    str = register_x(str);
+		str = register_x(str);
 	if (g_spec->precision >= 0 && num == 0)
-		{
-			printWidthEnd();
-		}
+	{
+		printWidthEnd();
+	}
 	else
 	{ 
 		update_glbuffer(str);
@@ -241,9 +234,7 @@ static void	printwidthtwo(long long int num)
 void	printWidth(long long int num)
 {
 	int index;
-	// if (g_spec->plus == 1 && num >=0){
-	// 	g_width->space_left--;
-	// 	g_width->space_right--;
+	
 	if (g_spec->symb == 's' && g_width->width == 0)
 	{
 		g_width->space_left = g_spec->width;

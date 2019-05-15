@@ -17,7 +17,7 @@
 int main ()
 {
 	double		nb;
-	nb = -12547.58;
+	nb = -125474444444444.58999999999990000008987;
 	char	*str;
 	char c = 'W';
 	str = "NULL";
@@ -30,9 +30,9 @@ int main ()
 	// printf("\n\n\n\n\n\n\n");
 	// nb = 56432;
 	printf("\nreal:\n");
-	printf ("len = |%d|",printf("space:% f\n", nb));
+	printf ("len = |%d|",printf("%089.20f",nb));
 	printf ("\nown\n");
-	printf("len = |%d|",ft_printf("space:% f\n", nb));
+	printf("len = |%d|",ft_printf("%089.20f", nb));
 	return (0);
 }
 
