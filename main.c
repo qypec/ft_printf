@@ -30,9 +30,9 @@ int main ()
 	// printf("\n\n\n\n\n\n\n");
 	// nb = 56432;
 	printf("\nreal:\n");
-	printf ("len = |%d|",printf("space: %Z\n"));
+	printf ("len = |%d|",printf("%zj", 9223372036854775807));
 	printf ("\nown\n");
-	printf("len = |%d|",ft_printf("space: %Z\n"));
+	printf("len = |%d|",ft_printf("%zj", 9223372036854775807));
 	return (0);
 }
 

@@ -16,6 +16,8 @@ void			print_struct(t_spec	*spec) /* на время отладки */
 	printf("l = %d\n",  g_spec->l);
 	printf("hh = %d\n",  g_spec->hh);
 	printf("h = %d\n",  g_spec->h);
+	printf("z = %d\n",  g_spec->z);
+	printf("j = %d\n",  g_spec->j);
 	printf("\n");
 }
 
