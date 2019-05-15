@@ -21,6 +21,11 @@ int main ()
 	char	*str;
 	char c = 'W';
 	str = "NULL";
+	// double		nb;
+	// nb = -12547.58;
+	// char	*str;
+	// char c = 'W';
+	// str = "NULL";
 	// printf("real:\n");
 	// printf("%5.5s\n\n\n", "hello world");
 	// printf("\nreal:\n");
