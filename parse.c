@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 20:44:35 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/15 21:35:01 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/15 22:42:30 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ static void				nullify_llhh_bigl(int flag)
 	g_spec->big_l = 0;
 	if (flag == 1)
 		g_spec->l = 1;
-	if (flag == 2)
+	else if (flag == 2)
 		g_spec->ll = 1;
-	if (flag == 3)
+	else if (flag == 3)
 		g_spec->big_l = 1;
-	if (flag == 4)
+	else if (flag == 4)
 		g_spec->h = 1;
-	if (flag == 5)
+	else if (flag == 5)
 		g_spec->hh = 1;
 }
 
@@ -43,19 +43,19 @@ char					*parse_lh_bigl(char *traverse)
 	{
 		if (*traverse == 'l')
 			nullify_llhh_bigl(2);
-		if (*traverse == 'h')
+		else if (*traverse == 'h')
 			nullify_llhh_bigl(5);
 	}
 	else
 	{
 		if (*traverse == 'l')
 			nullify_llhh_bigl(1);
-		if (*traverse == 'h')
+		else if (*traverse == 'h')
 			nullify_llhh_bigl(4);
 	}
 	if (g_spec->big_l == 1 ||  g_spec->l == 1 ||  g_spec->h == 1)
 		traverse++;
-	if (g_spec->ll == 1 ||  g_spec->hh == 1)
+	else if (g_spec->ll == 1 ||  g_spec->hh == 1)
 		traverse += 2;
 	return (whichsymb(traverse));
 }
@@ -67,17 +67,17 @@ char				*parse_calculatesymb(char *traverse)
 		g_spec->sharp = 1;
 		traverse++;
 	}
-	if (*traverse == '0')
+	else if (*traverse == '0')
 	{
 		g_spec->zero = 1;
 		traverse++;
 	}
-	if (*traverse == '+')
+	else if (*traverse == '+')
 	{
 		g_spec->plus = 1;
 		traverse++;
 	}
-	if (*traverse == '-')
+	else if (*traverse == '-')
 	{
 		g_spec->minus = 1;
 		traverse++;
@@ -114,7 +114,7 @@ char				*parse_digit(char *traverse, const int flag)
 	num = ft_atoi(str);
 	if (flag == WIDTH)
 		g_spec->width = num;
-	if (flag == PRECISION)
+	else if (flag == PRECISION)
 		g_spec->precision = num;
 	ft_strdel(&str);
 	return (traverse + ft_numblen(num));
@@ -127,7 +127,7 @@ char				*parse_width_or_precision(char *traverse, int flag)
 		g_spec->precision = 0;
 		traverse = parse_digit(++traverse, flag);
 	}
-	if (flag == WIDTH)
+	else if (flag == WIDTH)
 		traverse = parse_digit(traverse, flag);
 	return (whichsymb(traverse));
 }
