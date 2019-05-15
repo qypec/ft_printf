@@ -78,7 +78,6 @@ int				ft_printf(const char *format, ...)
 		traverse = struct_spec(++traverse);  /* записывает в структуру спецификатор */
 		// print_struct(&spec);
 		print_arg(traverse, arg);
-		// traverse = move_after_specifier(traverse);
 	}
 	va_end(arg);
 	size = g_output->size;
