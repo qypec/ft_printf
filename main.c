@@ -16,11 +16,11 @@
 
 int main ()
 {
-	double		nb;
-	nb = -12547.58;
-	char	*str;
-	char c = 'W';
-	str = "NULL";
+	// double		nb;
+	// nb = -12547.58;
+	// char	*str;
+	// char c = 'W';
+	// str = "NULL";
 	// printf("real:\n");
 	// printf("%5.5s\n\n\n", "hello world");
 	// printf("\nreal:\n");
@@ -30,9 +30,9 @@ int main ()
 	// printf("\n\n\n\n\n\n\n");
 	// nb = 56432;
 	printf("\nreal:\n");
-	printf ("len = |%d|",printf("space:% f\n", nb));
+	printf ("len = |%d|",printf("space: %Z\n"));
 	printf ("\nown\n");
-	printf("len = |%d|",ft_printf("space:% f\n", nb));
+	printf("len = |%d|",ft_printf("space: %Z\n"));
 	return (0);
 }
 

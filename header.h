@@ -91,6 +91,7 @@ void				assembl_int(va_list arg);
 //x - X
 char				*printX(char *str);
 void				struct_specifier(char *traverse);
+char 				*struct_spec(char *traverse);
 
  // 'c' // 's' // // 'p'  string and char and point 
 void				print_char(va_list arg);
@@ -108,10 +109,13 @@ int					read_width_or_precision(char *traverse, int i, int flag);
 int					move_after_digits(char *traverse);
 int					read_spaces(char *traverse, int i);
 
-void				parse_precision(char *traverse);
-void				parse_width(char *traverse);
-void				parse_calculatesymb(char *traverse);
-void				parse_space(char *traverse);
+char 				*parse_spaces(char *traverse);
+char				*parse_digit(char *traverse, const int flag);
+char				*parse_width_or_precision(char *traverse, int flag);
+char				*parse_calculatesymb(char *traverse);
+char				*parse_lh_bigl(char *traverse);
+char				*whichsymb(char *traverse);
+
 int					read_lh_bigl(char *traverse, int i);
 
 void				print_date(char *traverse, va_list arg);
