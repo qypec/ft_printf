@@ -5,7 +5,10 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include <stdint.h>
+# include <time.h>
 
 int					g_fd;
+FILE				*g_fdreal;
 
 #endif
