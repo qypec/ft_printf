@@ -59,7 +59,7 @@ int				ft_printf(const char *format, ...)
 	t_spec			spec;
 	char 			*traverse;
 	size_t			size;
-	g_width = malloc(sizeof(g_width));
+	g_width = malloc(sizeof(t_widt)); // fix h 
 
 	init_bufferoutput();
 	traverse = (char *)format;
@@ -83,5 +83,6 @@ int				ft_printf(const char *format, ...)
 	size = g_output->size;
 	write(1, g_output->str, g_output->size);
 	free_bufferoutput();
+	free(g_width);
 	return (size);
 }

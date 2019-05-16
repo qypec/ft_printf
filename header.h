@@ -128,7 +128,7 @@ void				addsymb_glbuffer(char c);
 void				update_glbuffer(char *str);
 void				addstr_glbuffer(char *str, size_t size);
 
-void				print_float(double num);
+void				print_float(long double num);
 void				assembl_float(va_list arg);
 
 char				*take_color(char *traverse);

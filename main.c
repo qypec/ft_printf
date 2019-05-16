@@ -17,10 +17,8 @@
 int main ()
 {
 	double		nb;
-	nb = -125474444444444.5855555555555556556565776879877776544332112456789963456787654345678976543234567898765432345678765434567898543;
-	char	*str;
+	nb = 125474444444444.58555555555555565565653;
 	char c = 'W';
-	str = "NULL";
 	// double		nb;
 	// nb = -12547.58;
 	// char	*str;
@@ -35,9 +33,14 @@ int main ()
 	// printf("\n\n\n\n\n\n\n");
 	// nb = 56432;
 	printf("\nreal:\n");
-	printf ("len = |%d|",printf("%89.200f",nb));
+	int a = 10;
+	printf ("len = |%d|",printf("%d",a));
 	printf ("\nown\n");
-	printf("len = |%d|",ft_printf("%89.200f", nb));
+	printf("len = |%d|",ft_printf("%d",a));
+
+
+
+	
 	return (0);
 }
 
@@ -157,16 +160,7 @@ int main ()
 // 		printf ("error4\n");
 // 	if ((x = close(pipeans[1])) < 0)
 // 		printf ("error1\n");
-// 	if ((x  = close(pipecor[1])) < 0)
-
-// 	if ((nb = close(pipeans[0])) < 0)
-// 		printf ("error3");
-// 	if ((nb = close(pipecor[0])) < 0)
-// 		printf ("error4\n");
-// 	if ((nb = close(pipeans[1])) < 0)
-// 		printf ("error1\n");
 // 	if ((nb  = close(pipecor[1])) < 0)
-
 // 		printf ("error2\n");
 // 	ans[ians] = 0;
 // 	cor[icor] = 0;
@@ -187,15 +181,6 @@ int main ()
 // 			printf ("%c",cor[index]);
 // 		index++;
 // 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
 // 	if (ft_strcmp(cor, ans) == 0)
 // 	{
 // 		printf("good\n");
