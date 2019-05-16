@@ -5,30 +5,27 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/05/16 19:07:01 by yquaro            #+#    #+#              #
-#    Updated: 2019/05/16 20:43:05 by yquaro           ###   ########.fr        #
+#    Created: 2019/05/16 20:05:07 by yquaro            #+#    #+#              #
+#    Updated: 2019/05/16 20:47:29 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+# SOURCE = 
+# OBJS = *.c
+OBJDIR = .obj
+NAME = libspeedtest.a
+
 all:
-	make -C ft_printf/ re
-	gcc ft_printf/main.c -L. -lftprintf -o ft_out
+# 	gcc -c $(SOURCE)
+# 	mkdir $(OBJDIR)
+# 	mv $(OBJS) $(OBJDIR)
+# 	ar rc $(NAME) $(OBJDIR)/$(OBJS)
+# 	ranlib $(NAME)
+# 	gcc main.c -L. -lftprintf -lspeedtest -o speed_out
+	gcc main.c -L. -lftprintf -o speed_out
+
+run:
+	./speed_out
 
 clean:
-	make -C ft_printf/ clean
-	make -C speedtest/ clean
-	rm -f libftprintf.a
-
-fclean: clean
-	make -C ft_printf/ fclean
-	rm -f ft_out
-
-re: fclean all
-
-speedtest: all
-	mv libftprintf.a speedtest/libftprintf.a
-	rm ft_out
-	make -C speedtest/ all
-
-run_speedtest:
-	make -C speedtest/ run
+	rm -f libftprintf.a libspeedtest.a speed_out

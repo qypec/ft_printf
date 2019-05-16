@@ -1,6 +1,7 @@
 #ifndef HEADER_H
 # define HEADER_H
 
+# include "../speedtest/speedtest.h"
 # include <stdio.h>
 # include "libft/includes/libft.h"
 # include <unistd.h>
@@ -133,5 +134,6 @@ void				assembl_float(va_list arg);
 
 char				*take_color(char *traverse);
 
+int					ft_printf(const char *format, ...);
 
 #endif
