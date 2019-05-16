@@ -8,59 +8,57 @@ static void			processing(int own, int real)
 
 static int			alltest_ftprintf(void)
 {
-	clock_t			time;
+	clock_t			ttime;
+	clock_t			start;
+	clock_t			stop;
+	int				len;
 
+	len = 0;
 	if ((g_fd = open("ft_printf_output.txt", O_RDWR)) < 0)
 	{
 		printf("open error\n");
 		exit(1);
 	}
-	time = clock();
-	while ((double)time/ CLOCKS_PER_SEC < 15)
+	start = clock();
+	ttime = start / CLOCKS_PER_SEC;
+	while (ttime < 10)
 	{
-		time = clock();
-		ft_printf("a");
+		stop = clock();
+		ttime = (stop - start) / CLOCKS_PER_SEC;
+		len += ft_printf("a");
 	}
 	close(g_fd);
-	return (0);
+	return (len);
 }
 
 static int			alltest_printf(void)
 {
-	clock_t			time;
+	clock_t			ttime;
+	clock_t			start;
+	clock_t			stop;
+	int				len;
 
+	len = 0;
 	if ((g_fdreal = fopen("printf_output.txt", "r+")) < 0)
 	{
 		printf("open error\n");
 		exit(1);
 	}
-	time = clock();
-	while ((double)time/ CLOCKS_PER_SEC < 15)
+	start = clock();
+	ttime = start / CLOCKS_PER_SEC;
+	while (ttime < 10)
 	{
-		time = clock();
-		fprintf(g_fdreal, "a");
+		stop = clock();
+		ttime = (stop - start) / CLOCKS_PER_SEC;
+		len += fprintf(g_fdreal, "a");
 	}
 	fclose(g_fdreal);
-	if ((g_fd = open("ft_printf_output.txt", O_RDWR)) < 0)
-	{
-		printf("open error\n");
-		exit(1);
-	}
-	time = clock();
-	while ((double)time/ CLOCKS_PER_SEC < 15)
-	{
-		time = clock();
-		ft_printf("a");
-	}
-	close(g_fd);
-	return (0);
+	return (len);
 }
 
 int 				main(int argc, char **argv)
 {
-	// if (argc == 1)
-		// processing(alltest_ftprintf(), alltest_printf());
-		alltest_printf();
-		// alltest_ftprintf();
+	if (argc == 1)
+		processing(alltest_ftprintf(), alltest_printf());
 	return (0);
 }
