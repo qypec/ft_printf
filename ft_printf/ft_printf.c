@@ -82,7 +82,7 @@ int				ft_printf(const char *format, ...)
 	}
 	va_end(arg);
 	size = g_output->size;
-	write(g_fd, g_output->str, g_output->size);
+	write(g_outputfile_1, g_output->str, g_output->size);
 	free_bufferoutput();
 	return (size);
 }
