@@ -8,6 +8,8 @@
 # include <stdint.h>
 # include <time.h>
 
+# define TIME_CONST		10
+
 int					g_fd;
 FILE				*g_fdreal;
 
