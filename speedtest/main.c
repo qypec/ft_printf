@@ -15,8 +15,9 @@ static void			open_files(void)
 }
 static void			processing(long long int own, long long int real)
 {
-	printf("ownn = %lld\n", own);
-	printf("real = %lld\n", real);
+	printf("symbs of ownn = %lld\n", own);
+	printf("symbs of real = %lld\n", real);
+
 }
 
 static int			alltest_ftprintf(void)
@@ -25,18 +26,25 @@ static int			alltest_ftprintf(void)
 	clock_t			start;
 	clock_t			stop;
 	long long int	len;
+	clock_t			timer;
 
 	len = 0;
-
+	timer = 0;
 	start = clock();
-	ttime = start / CLOCKS_PER_SEC;
+	ttime = 0;
 	while (ttime < TIME_CONST)
 	{
 		stop = clock();
 		ttime = (stop - start) / CLOCKS_PER_SEC;
 		len += ft_printf("a");
+		if (timer != ttime)
+		{
+			write(1, ".", 1);
+			timer = ttime;
+		}
 	}
 	close(g_fd);
+	printf("  %d sec\n", TIME_CONST);
 	return (len);
 }
 
@@ -46,16 +54,24 @@ static int			alltest_printf(void)
 	clock_t			start;
 	clock_t			stop;
 	long long int	len;
+	clock_t			timer;
 
 	len = 0;
+	timer = 0;
 	start = clock();
 	ttime = 0;
 	while (ttime < TIME_CONST)
 	{
 		ttime = (clock() - start) / CLOCKS_PER_SEC;
 		len += fprintf(g_fdreal, "a");
+		if (timer != ttime)
+		{
+			write(1, ".", 1);
+			timer = ttime;
+		}
 	}
 	fclose(g_fdreal);
+	printf("  %d sec\n", TIME_CONST);
 	return (len);
 }
 
