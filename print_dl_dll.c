@@ -9,9 +9,9 @@ long long int	reduction_signed(long long int num)
 		num = (long int)num;
 	else if (g_spec->l == 0 && g_spec->ll == 0 && g_spec->h == 0 && g_spec->hh == 0 && g_spec->j == 0 && g_spec->z == 0)
 		num = (int)num;
-	else if (g_spec->h == 1)
+	else if (g_spec->h == 1 && g_spec->z != 1 && g_spec->j != 1)
 		num = (short)(num);
-	else if (g_spec->hh == 1)
+	else if (g_spec->hh == 1 && g_spec->z != 1 && g_spec->j != 1)
 		num = (char)num;
 	else if (g_spec->j == 1)
 	{
@@ -21,8 +21,10 @@ long long int	reduction_signed(long long int num)
 	}
 	if (num < 0)
 	{
-		if (g_spec->symb == 'x' ||  g_spec->symb == 'X' || g_spec->symb == 'o')
+		if ((g_spec->symb == 'x' ||  g_spec->symb == 'X' || g_spec->symb == 'o') && g_spec->ll == 0)
 			num += 4294967296;
+		if ((g_spec->symb == 'x' ||  g_spec->symb == 'X' || g_spec->symb == 'o') && g_spec->ll == 1)
+			num += 1844674407370955161;
 	}
 	return (num);
 }
@@ -125,10 +127,16 @@ int display_u(unsigned long long int num, int base)
 	char *str;
 	
 	reduction_unsigned(num);
-	if (g_spec->j)
+	if (num == 0 && g_spec->precision >= 0)
+		str = ft_strnew(0);
+	else if (g_spec->j == 1 || g_spec->symb == 'o' || g_spec->symb == 'x' || g_spec->symb == 'X')
 		str = ft_itoa_base_u(num, base);
 	else 
 		str = ft_itoa_u(num);
+	if (num > 9223372036854775807)
+		num = 1;
+	if (g_spec->symb == 'X' ||  g_spec->symb == 'x')
+		str = register_x(str);
 	width(num, str);
 	printWidth(num);
 	if (num == 0 && g_spec->precision > 0) // fix
@@ -147,12 +155,14 @@ void  print_u(va_list arg, int base)
 	unsigned long long int num;
 
 	if ( g_spec->ll == 1)
-	    num = va_arg(arg, unsigned long long int);
+		num = va_arg(arg, unsigned long long int);
 	else if (g_spec->l == 1 || g_spec->symb == 'U')
-	    num = va_arg(arg, unsigned long);
+		num = va_arg(arg, unsigned long);
 	else if (g_spec->j == 1)
 		num = va_arg(arg, size_t);
-	else if ( g_spec->ll == 0 &&  g_spec->l == 0)
-	    num = va_arg(arg, unsigned int);
+	else if (g_spec->z == 1)
+		num = va_arg(arg, size_t);
+	else if (g_spec->ll == 0 &&  g_spec->l == 0)
+		num = va_arg(arg, unsigned int);
 	display_u(num, base);
 }

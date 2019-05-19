@@ -53,36 +53,59 @@ static char		*take_str_before_persent(char *traverse)
 	return (traverse);
 }
 
+static void init_gspec()
+{
+	if (g_spec == NULL)
+		if (!(g_spec = malloc(sizeof(t_spec))))
+			return ;
+
+	g_spec->symb = (char)48;
+	g_spec->width = 0;
+	g_spec->space = 0;
+	g_spec->sharp = 0;
+	g_spec->plus = 0;
+	g_spec->minus = 0;
+	g_spec->zero = 0;
+	g_spec->precision = -1;
+	g_spec->big_l = 0;
+	g_spec->ll = 0;
+	g_spec->l = 0;
+	g_spec->j = 0;
+	g_spec->hh = 0;
+	g_spec->h = 0;
+	g_spec->z = 0;
+	g_width->zero = 0;
+	g_width->space_left = 0;
+	g_width->space_right = 0;
+	g_width->width = 0;
+}
+
 int				ft_printf(const char *format, ...)
 {
 	va_list 		arg;
 	t_spec			spec;
 	char 			*traverse;
 	size_t			size;
-	g_width = malloc(sizeof(g_width));
-
+	
+	if (!(g_width = malloc(sizeof(t_widt))))
+		return (0);
 	init_bufferoutput();
 	traverse = (char *)format;
 	va_start(arg, (char *)format);
 	while (*traverse != '\0')
 	{
-		spec = (t_spec){(char)48, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0};
-		g_spec = &spec;
-		g_width->zero = 0;
-		g_width->space_left = 0;
-		g_width->space_right = 0;
-		g_width->width = 0;
+		init_gspec();
 		traverse = take_str_before_persent(traverse); /* берет символы до % */
 		if (*traverse == '\0')
 			break ;
 		traverse = struct_spec(++traverse);  /* записывает в структуру спецификатор */
-		// print_struct(&spec);
+		//print_struct(&spec);
 		print_arg(traverse, arg);
-		// traverse = move_after_specifier(traverse);
 	}
 	va_end(arg);
 	size = g_output->size;
 	write(1, g_output->str, g_output->size);
 	free_bufferoutput();
+	free(g_width);
 	return (size);
 }
