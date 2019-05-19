@@ -22,38 +22,32 @@ void print_c(va_list arg)
 		}
 } 
 
-int print_s(va_list arg)
+int print_s(va_list arg, char *str, char *ptr, char *point)
 {
-	char *str;
-	char *ptr;
-	int i;
-	int index = 0;
-
-	ptr = NULL;
+	int index; 
+	
+	index = 0;
 	str = (char *) va_arg(arg, void *);
 	if (str == NULL)
+	{
 		str = ft_strcpy(ft_strnew(6), null);
+		point = str;
+	}
 	if (g_spec->precision >= 0 && g_spec->precision < ft_strlen(str))
 	{
 		ptr = ft_strnew(g_spec->precision);
 		while (index != g_spec->precision)
-		{
-			ptr[index] = ' ';
-			index++;
-		}
+			ptr[index++] = ' ';
 		ptr[g_spec->precision] = '\0';
 		ptr = ft_strncpy(ptr, str, g_spec->precision);
 		str = ptr;
 	}
-	
-	
-
 	width(1, str);
 	printWidth(1);
 	update_glbuffer(str);
 	printWidthEnd();
-	if (ptr != NULL)
-		free(ptr);
+	ft_memdel((void *)&ptr);
+	ft_memdel((void *)&point);
 	return (0);
 }
 
@@ -79,7 +73,7 @@ void print_char(va_list arg)
 	if ( g_spec->symb == 'c')
 		print_c(arg);
 	if ( g_spec->symb == 's')
-		print_s(arg);
+		print_s(arg, NULL, NULL, NULL);
 	if ( g_spec->symb == 'p')
 		print_p(arg);
 	return ;

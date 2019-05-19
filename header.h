@@ -1,15 +1,12 @@
 #ifndef HEADER_H
 # define HEADER_H
-
 # include <stdio.h>
 # include "libft/includes/libft.h"
 # include <unistd.h>
 # include <stdarg.h>
 # include <time.h>
-
 # define PRECISION	1
 # define WIDTH		2
-
 # define TAB  "0123456789abcdef"
 # define null "(null)"
 # define RESERVE 15
@@ -61,15 +58,9 @@ typedef struct		s_spec
 	int				h;
 	int				z;
 }					t_spec;
-
-// global 
 struct s_width		*g_width;
 struct s_output		*g_output;
 struct s_spec		*g_spec;
-// end global
-
-/* reduction */
-
 long long int		reduction_signed(long long int num);
 unsigned long long	reduction_unsigned(unsigned long long int num);
 void				width(long long number, char *str);
@@ -87,37 +78,28 @@ int					ft_abs(int nb);
 int					isplay_u(unsigned long long int num);
 void				display_int(long long int num, int base);
 void				assembl_int(va_list arg);
-
-//x - X
 char				*printX(char *str);
 void				struct_specifier(char *traverse);
-char 				*struct_spec(char *traverse);
-
- // 'c' // 's' // // 'p'  string and char and point 
+char 				*struct_spec(char *traverse); 
 void				print_char(va_list arg);
 int					is_cspdioux_bigx_fegbrk(char c);
 int					is_lh_bigl(char c);
 int					is_calculatesymb(char c);
 int					*width_u(unsigned long long number, unsigned long long int index, int width);
 char				*ft_itoa_u(unsigned long long int n);
-// l and ll 
 int					print_dl(long int num);
-
 void				read_calculatesymb(char c);
 void				read_digit(char *traverse, const int flag);
 int					read_width_or_precision(char *traverse, int i, int flag);
 int					move_after_digits(char *traverse);
 int					read_spaces(char *traverse, int i);
-
 char 				*parse_spaces(char *traverse);
 char				*parse_digit(char *traverse, const int flag);
 char				*parse_width_or_precision(char *traverse, int flag);
 char				*parse_calculatesymb(char *traverse);
 char				*parse_lh_bigl(char *traverse);
 char				*whichsymb(char *traverse);
-
 int					read_lh_bigl(char *traverse, int i);
-
 void				print_date(char *traverse, va_list arg);
 void				bust_printf(int errorcode);
 void				init_bufferoutput(void);
@@ -127,11 +109,8 @@ void				free_bufferoutput(void);
 void				addsymb_glbuffer(char c);
 void				update_glbuffer(char *str);
 void				addstr_glbuffer(char *str, size_t size);
-
 void				print_float(long double num);
 void				assembl_float(va_list arg);
-
 char				*take_color(char *traverse);
-
-
+char				*register_x(char *str);
 #endif

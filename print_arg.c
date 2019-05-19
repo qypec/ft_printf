@@ -42,7 +42,7 @@ int		print_arg(char *traverse, va_list arg)
 		print_date(traverse, arg);
 	if ( g_spec->symb == '%')
 		width_processing("%");
-	if ( g_spec->symb == 'd' ||  g_spec->symb == 'i' ||  g_spec->symb == 'o' ||  g_spec->symb == 'u' ||  g_spec->symb == 'x' ||  g_spec->symb == 'X' || g_spec->symb == 'U')
+	if ( g_spec->symb == 'd' ||  g_spec->symb == 'i' ||  g_spec->symb == 'o' ||  g_spec->symb == 'u' ||  g_spec->symb == 'x' ||  g_spec->symb == 'X' || g_spec->symb == 'U' || g_spec->symb == 'O')
 		assembl_int(arg);
 	if ( g_spec->symb == 'c' ||  g_spec->symb == 's' ||  g_spec->symb == 'p')
 		print_char(arg);
