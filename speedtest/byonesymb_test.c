@@ -1,7 +1,6 @@
 # include "speedtest.h"
 
-
-static int			bigtest_ftprintf(void)
+static int			byonesymb_test_ftprintf(void)
 {
 	clock_t			ttime;
 	clock_t			start;
@@ -13,6 +12,9 @@ static int			bigtest_ftprintf(void)
 	timer = 0;
 	start = clock();
 	ttime = 0;
+	color_set(COLOR_YELLOW, COLOR_SIZE);
+	print_testname(BYONESYMB_STR, BYONESYMB_SIZE);
+	color_set(COLOR_RESET, COLOR_SIZE - 1);
 	color_set(COLOR_BLUE, COLOR_SIZE);
 	while (ttime < TIME_CONST)
 	{
@@ -28,7 +30,7 @@ static int			bigtest_ftprintf(void)
 	return (len);
 }
 
-static int			bigtest_printf(void)
+static int			byonesymb_test_printf(void)
 {
 	clock_t			ttime;
 	clock_t			start;
@@ -54,7 +56,7 @@ static int			bigtest_printf(void)
 	return (len);
 }
 
-void				bigtest(void)
+void				byonesymb_test(void)
 {
-	processing(bigtest_ftprintf(), bigtest_printf(), BIGTEST);
+	processing(byonesymb_test_ftprintf(), byonesymb_test_printf(), BYONESYMB_TEST);
 }

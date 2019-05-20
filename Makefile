@@ -6,7 +6,7 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/16 19:07:01 by yquaro            #+#    #+#              #
-#    Updated: 2019/05/17 16:29:48 by yquaro           ###   ########.fr        #
+#    Updated: 2019/05/20 21:21:38 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,12 +25,10 @@ fclean: clean
 
 re: fclean all
 
-speedtest: all
+speedtest: re
 	mv libftprintf.a speedtest/libftprintf.a
 	rm ft_out
 	make -C speedtest/ all
-
-speedtest_re: fclean speedtest
 
 run_speedtest:
 	make -C speedtest/ run

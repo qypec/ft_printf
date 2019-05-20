@@ -3,7 +3,7 @@
 static void			init_structtest(void)
 {
 	g_speed	= ft_memalloc(sizeof(t_speedtest));
-	g_speed->bigtest = 0;
+	g_speed->byonesymb_test = 0;
 }
 
 static void			open_files(void)
@@ -25,6 +25,6 @@ int 				main(int argc, char **argv)
 	open_files();
 	init_structtest();
 	if (argc == 1)
-		bigtest();
+		byonesymb_test();
 	return (0);
 }
