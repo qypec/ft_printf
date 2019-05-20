@@ -3,27 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_date.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 20:41:12 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/06 12:34:53 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/20 13:42:47 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "header.h"
 
-// static void			print_struct(t_cdate *date)
-// {
-// 	printf("---------------------------------------------\n");
-// 	printf("print struct:\n\n");
-// 	printf("weekday = %s\nweekday_n = %d\n\n", date->weekday, date->weekday_n);
-// 	printf("month = %s\nmonth_n = %d\n\n", date->month, date->month_n);
-// 	printf("day = %s\nday_n = %d\n\n", date->day, date->day_n);
-// 	printf("hour = %s\nhour_n = %d\n\n", date->hour, date->hour_n);
-// 	printf("min = %s\nmin = %d\n\n", date->min, date->min_n);
-// 	printf("sec = %s\nsec_n = %d\n\n", date->sec, date->sec_n);
-// 	printf("year = %s\nyear_n = %d\n\n", date->year, date->year_n);
-// 	printf("---------------------------------------------\n\n");
-// }
+#include "header.h"
 
 static char 	*whatsparam(char *str, char *buff, t_cdate *date)
 {

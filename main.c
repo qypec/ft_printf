@@ -36,9 +36,9 @@ int main ()
 			// printf("\nreal:\n");
 			//  int nb = 0;
 			// int a = 10;
-			printf ("len = |%d|",printf("%llo",USHRT_MAX));
+			printf ("len = |%d|",printf("%.2c", NULL));
 			printf ("\nown\n");
-			printf("len = |%d|",ft_printf("%llo",USHRT_MAX));
+			printf("len = |%d|",ft_printf("%.2c", NULL));
 	// unsigned long long a = (__LONG_MAX__ *2UL+1UL);
 	// printf("%llu", a);
 	return (0);

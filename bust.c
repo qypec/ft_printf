@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   bust.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 15:46:57 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/05 16:06:22 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/20 14:38:39 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,4 @@ void		bust_printf(int errorcode)
 			\nerror codes:\n|...| is too big segment of date \
 			\nx is too small segment of date\n\n");
 	}
-	// exit(-1);
 }

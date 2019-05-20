@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   header.h                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/20 15:42:27 by oargrave          #+#    #+#             */
+/*   Updated: 2019/05/20 15:55:09 by oargrave         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef HEADER_H
 # define HEADER_H
 # include <stdio.h>
@@ -8,7 +20,7 @@
 # define PRECISION	1
 # define WIDTH		2
 # define TAB  "0123456789abcdef"
-# define null "(null)"
+# define NUL "(null)"
 # define RESERVE 15
 # define CONST_WIDRTH_DOUBLE 6
 # define COLOR_RED "\x1b[31m"
@@ -20,8 +32,6 @@
 # define COLOR_RESET "\x1b[0m"
 # define COLOR_SIZE 5
 
-struct s_width		*Width;
-
 typedef struct		s_width
 {
 	int				space_left;
@@ -32,13 +42,12 @@ typedef struct		s_width
 
 typedef struct		s_output
 {
-	char 			*str;
+	char			*str;
 	size_t			size;
 	int				overflow_counter;
 	int				error;
 	int				buffsize;
 }					t_output;
-
 
 typedef struct		s_spec
 {
@@ -61,31 +70,32 @@ typedef struct		s_spec
 struct s_width		*g_width;
 struct s_output		*g_output;
 struct s_spec		*g_spec;
-long long int		reduction_signed(long long int num);
+long long int		reduction_signed(long long int num, unsigned long z);
 unsigned long long	reduction_unsigned(unsigned long long int num);
 void				width(long long number, char *str);
-int					*width_u(unsigned long long number, unsigned long long int index, int width);
+int					*width_u(unsigned long long number,
+		unsigned long long int index, int width);
 int					ft_printf(const char *format, ...);
 int					print_arg(char *traverse, va_list arg);
 void				print_int(va_list arg);
 int					print_d(int number);
 void				print_u(va_list arg, int base);
-void				printWidthEnd();
-void				printWidth(long long int num);
+void				print_width_end();
+void				print_width(long long int num);
 char				*ft_itoa_base(long long int value, int base);
 int					ft_itoa_help(long long int tmp, int base, int flag);
 int					ft_abs(int nb);
 int					isplay_u(unsigned long long int num);
 void				display_int(long long int num, int base);
-void				assembl_int(va_list arg);
-char				*printX(char *str);
+void				assembl_int(va_list arg, int base);
 void				struct_specifier(char *traverse);
-char 				*struct_spec(char *traverse); 
+char				*struct_spec(char *traverse);
 void				print_char(va_list arg);
 int					is_cspdioux_bigx_fegbrk(char c);
 int					is_lh_bigl(char c);
 int					is_calculatesymb(char c);
-int					*width_u(unsigned long long number, unsigned long long int index, int width);
+int					*width_u(unsigned long long number,
+		unsigned long long int index, int width);
 char				*ft_itoa_u(unsigned long long int n);
 int					print_dl(long int num);
 void				read_calculatesymb(char c);
@@ -93,7 +103,7 @@ void				read_digit(char *traverse, const int flag);
 int					read_width_or_precision(char *traverse, int i, int flag);
 int					move_after_digits(char *traverse);
 int					read_spaces(char *traverse, int i);
-char 				*parse_spaces(char *traverse);
+char				*parse_spaces(char *traverse);
 char				*parse_digit(char *traverse, const int flag);
 char				*parse_width_or_precision(char *traverse, int flag);
 char				*parse_calculatesymb(char *traverse);
@@ -113,4 +123,8 @@ void				print_float(long double num);
 void				assembl_float(va_list arg);
 char				*take_color(char *traverse);
 char				*register_x(char *str);
+int					ft_numblen_u(unsigned long long int n);
+int					lenbase(unsigned long long int num, int base);
+void				sign_x(long long int num);
+void				sign(long long int num);
 #endif
