@@ -58,7 +58,6 @@ static void init_gspec()
 	if (g_spec == NULL)
 		if (!(g_spec = malloc(sizeof(t_spec))))
 			return ;
-
 	g_spec->symb = (char)48;
 	g_spec->width = 0;
 	g_spec->space = 0;

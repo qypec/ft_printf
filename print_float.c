@@ -103,6 +103,8 @@ void print_float(long double num)
 		x -=(long long)x;
 		size--;	
 	}
+	if ((long long)(x * 10) >= 5)
+		g_output->str[g_output->size - 1] = g_output->str[g_output->size - 1] + 1;
 	printWidthEnd_double(num);
 	free(str);
 	str = NULL;
