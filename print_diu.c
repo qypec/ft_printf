@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_diu.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 16:58:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/20 15:27:03 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/05/20 16:56:17 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,25 +67,26 @@ int					ft_numblen_u(unsigned long long int n)
 	return (i);
 }
 
-int					lenbase(unsigned long long int num, int base)
-{
-	int			size;
+// int					lenbase(unsigned long long int num)
+// {
+// 	int			size;
 
-	size = 0;
-	while (num > 0)
-	{
-		num /= 10;
-		size++;
-	}
-	if (size == 0)
-		return (1);
-	return (size);
-}
+// 	size = 0;
+// 	while (num > 0)
+// 	{
+// 		num /= 10;
+// 		size++;
+// 	}
+// 	if (size == 0)
+// 		return (1);
+// 	return (size);
+// }
 
 void				assembl_int(va_list arg, int base)
 {
 	long long int	check;
 
+	check = 0;
 	if (g_spec->symb == 'x' || g_spec->symb == 'X')
 		base = 16;
 	if (g_spec->symb == 'o')

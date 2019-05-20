@@ -6,13 +6,13 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:44:01 by oargrave          #+#    #+#             */
-/*   Updated: 2019/05/20 16:07:12 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/20 17:01:00 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-static void	width_three(long long num, char *str)
+static void	width_three(void)
 {
 	if (g_spec->symb == 'o' && g_spec->precision <= 0)
 	{
@@ -26,7 +26,7 @@ static void	width_three(long long num, char *str)
 	}
 }
 
-static void	width_two(long long int num, char *str)
+static void	width_two(long long int num)
 {
 	if (g_spec->zero == 1 && g_spec->precision < 0)
 	{
@@ -46,7 +46,7 @@ static void	width_two(long long int num, char *str)
 			g_width->space_left -= 2;
 			g_width->space_right -= 2;
 		}
-		width_three(num, str);
+		width_three();
 	}
 }
 
@@ -73,7 +73,7 @@ void		width(long long int number, char *str)
 		g_width->space_left -= number;
 		g_width->space_right -= number;
 	}
-	width_two(num, str);
+	width_two(num);
 	return ;
 }
 

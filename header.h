@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:42:27 by oargrave          #+#    #+#             */
-/*   Updated: 2019/05/20 16:09:39 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/20 17:00:20 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct		s_output
 	size_t			size;
 	int				overflow_counter;
 	int				error;
-	int				buffsize;
+	unsigned long	buffsize;
 }					t_output;
 
 typedef struct		s_spec
@@ -67,9 +67,11 @@ typedef struct		s_spec
 	int				h;
 	int				z;
 }					t_spec;
+
 struct s_width		*g_width;
 struct s_output		*g_output;
 struct s_spec		*g_spec;
+
 long long int		reduction_signed(long long int num, unsigned long z);
 unsigned long long	reduction_unsigned(unsigned long long int num);
 void				width(long long number, char *str);
@@ -114,7 +116,7 @@ void				print_date(char *traverse, va_list arg);
 void				bust_printf(int errorcode);
 void				init_bufferoutput(void);
 void				is_it_buffer_overflow(size_t size);
-void				add_memory(size_t size);
+void				add_memory(void);
 void				free_bufferoutput(void);
 void				addsymb_glbuffer(char c);
 void				update_glbuffer(char *str);
@@ -124,7 +126,7 @@ void				assembl_float(va_list arg);
 char				*take_color(char *traverse);
 char				*register_x(char *str);
 int					ft_numblen_u(unsigned long long int n);
-int					lenbase(unsigned long long int num, int base);
+int					lenbase(unsigned long long int num);
 void				sign_x(long long int num);
 void				sign(long long int num);
 #endif

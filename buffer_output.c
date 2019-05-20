@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   buffer_output.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 17:27:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/19 19:32:00 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/05/20 16:55:29 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ void		is_it_buffer_overflow(size_t size)
 	if ((g_output->size + size) > g_output->buffsize)
 	{
 		(g_output->overflow_counter)++;
-		add_memory(size);
+		add_memory();
 	}
 }
 
-void		add_memory(size_t size)
+void		add_memory(void)
 {
 	char	*tmp;
 

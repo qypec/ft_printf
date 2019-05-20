@@ -3,35 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:58:05 by oargrave          #+#    #+#             */
-/*   Updated: 2019/05/20 15:58:06 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/05/20 16:49:01 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-void			print_struct(t_spec	*spec) /* на время отладки */
-{
-	printf("\n");
-	printf("symb = %c\n",  g_spec->symb);
-	printf("width = %d\n",  g_spec->width);
-	printf("space = %d\n",  g_spec->space);
-	printf("sharp = %d\n",  g_spec->sharp);
-	printf("plus = %d\n",  g_spec->plus);
-	printf("minus = %d\n",  g_spec->minus);
-	printf("zero = %d\n",  g_spec->zero);
-	printf("precision = %d\n",  g_spec->precision);
-	printf("L = %d\n",  g_spec->big_l);
-	printf("ll = %d\n",  g_spec->ll);
-	printf("l = %d\n",  g_spec->l);
-	printf("hh = %d\n",  g_spec->hh);
-	printf("h = %d\n",  g_spec->h);
-	printf("z = %d\n",  g_spec->z);
-	printf("j = %d\n",  g_spec->j);
-	printf("\n");
-}
+// void			print_struct(t_spec	*spec) /* на время отладки */
+// {
+// 	printf("\n");
+// 	printf("symb = %c\n",  g_spec->symb);
+// 	printf("width = %d\n",  g_spec->width);
+// 	printf("space = %d\n",  g_spec->space);
+// 	printf("sharp = %d\n",  g_spec->sharp);
+// 	printf("plus = %d\n",  g_spec->plus);
+// 	printf("minus = %d\n",  g_spec->minus);
+// 	printf("zero = %d\n",  g_spec->zero);
+// 	printf("precision = %d\n",  g_spec->precision);
+// 	printf("L = %d\n",  g_spec->big_l);
+// 	printf("ll = %d\n",  g_spec->ll);
+// 	printf("l = %d\n",  g_spec->l);
+// 	printf("hh = %d\n",  g_spec->hh);
+// 	printf("h = %d\n",  g_spec->h);
+// 	printf("z = %d\n",  g_spec->z);
+// 	printf("j = %d\n",  g_spec->j);
+// 	printf("\n");
+// }
 
 char			*move_after_specifier(char *traverse)
 {
@@ -94,7 +94,6 @@ static void init_gspec()
 int				ft_printf(const char *format, ...)
 {
 	va_list 		arg;
-	t_spec			spec;
 	char 			*traverse;
 	size_t			size;
 	
@@ -110,7 +109,6 @@ int				ft_printf(const char *format, ...)
 		if (*traverse == '\0')
 			break ;
 		traverse = struct_spec(++traverse);  /* записывает в структуру спецификатор */
-		//print_struct(&spec);
 		print_arg(traverse, arg);
 	}
 	va_end(arg);

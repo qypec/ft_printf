@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_char.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:42:07 by oargrave          #+#    #+#             */
-/*   Updated: 2019/05/20 15:51:15 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/05/20 16:57:02 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int		print_s(va_list arg, char *str, char *ptr, char *point)
 		str = ft_strcpy(ft_strnew(6), NUL);
 		point = str;
 	}
-	if (g_spec->precision >= 0 && g_spec->precision < ft_strlen(str))
+	if (g_spec->precision >= 0 && g_spec->precision < (int)ft_strlen(str))
 	{
 		ptr = ft_strnew(g_spec->precision);
 		while (index != g_spec->precision)

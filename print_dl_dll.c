@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_dl_dll.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:43:01 by oargrave          #+#    #+#             */
-/*   Updated: 2019/05/20 15:51:15 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/05/20 16:58:05 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ void		print_u(va_list arg, int base)
 {
 	unsigned long long int	num;
 
+	num = 0;
 	if (g_spec->ll == 1)
 		num = va_arg(arg, unsigned long long int);
 	else if (g_spec->l == 1 || g_spec->symb == 'U')

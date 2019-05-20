@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   print_float.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:43:54 by oargrave          #+#    #+#             */
-/*   Updated: 2019/05/20 15:51:15 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/05/20 17:03:34 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-void	width_double(long double num, char *str)
+void				width_double(long double num, char *str)
 {
 	if (g_spec->precision  > 0 || g_spec->sharp == 1)
 		g_spec->width--;
 	if (num < 0 || (g_spec->plus == 1 && num > 0))
 		g_spec->width--;
-	if (g_spec->width > (ft_strlen(str) + g_spec->precision) && g_spec->minus == 0)
+	if (g_spec->width > ((int)ft_strlen(str) + g_spec->precision) && g_spec->minus == 0)
 		g_width->space_left = g_spec->width -  (ft_strlen(str) + g_spec->precision);
-	else if (g_spec->width > (ft_strlen(str) + g_spec->precision) && g_spec->minus == 1)
+	else if (g_spec->width > ((int)ft_strlen(str) + g_spec->precision) && g_spec->minus == 1)
 		g_width->space_right = g_spec->width -  (ft_strlen(str) + g_spec->precision);
 	if (g_spec->space == 1 && g_spec->width == 0 && g_spec->precision < 0)
 		g_width->space_left++;
@@ -31,7 +31,7 @@ void	width_double(long double num, char *str)
 	}
 }
 
-void	print_width_end_double(long double num)
+static void			print_width_end_double()
 {
 	if (g_width->space_right > 0)
 	{
@@ -42,7 +42,7 @@ void	print_width_end_double(long double num)
 		}
 	}
 }
-void	print_width_double(long double num, char *str)
+void				print_width_double(long double num, char *str)
 {
 	if (g_width->space_left > 0)
 	{
@@ -87,7 +87,7 @@ void	print_width_double(long double num, char *str)
 
 	}
 }
-void print_float(long double num)
+void			 	print_float(long double num)
 {
 	unsigned long long			left;
 	char						*str;
@@ -116,16 +116,17 @@ void print_float(long double num)
 	}
 	if ((long long)(x * 10) >= 5)
 		g_output->str[g_output->size - 1] = g_output->str[g_output->size - 1] + 1;
-	print_width_end_double(num);
+	print_width_end_double();
 	free(str);
 	str = NULL;
 }
 
 
-void assembl_float(va_list arg)
+void				assembl_float(va_list arg)
 {
-	 long double  num;
+	long double  num;
 
+	num = 0;
 	if (g_spec->symb == 'f' && g_spec->big_l == 0)
 		num = va_arg(arg, double);
 	else if (g_spec->big_l == 1)
