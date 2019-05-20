@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:58:05 by oargrave          #+#    #+#             */
-/*   Updated: 2019/05/20 16:49:01 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/20 17:34:18 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 // 	printf("\n");
 // }
 
-char			*move_after_specifier(char *traverse)
+char					*move_after_specifier(char *traverse)
 {
 	while (is_cspdioux_bigx_fegbrk(*traverse) != 1 && *traverse != '\0')
 	{
@@ -51,7 +51,7 @@ char			*move_after_specifier(char *traverse)
 	return (traverse);
 }
 
-static char		*take_str_before_persent(char *traverse)
+static char				*take_str_before_persent(char *traverse)
 {
 	while (*traverse != '%' && *traverse != '\0')
 	{
@@ -65,11 +65,13 @@ static char		*take_str_before_persent(char *traverse)
 	return (traverse);
 }
 
-static void init_gspec()
+static void				init_gspec(void)
 {
 	if (g_spec == NULL)
+	{
 		if (!(g_spec = malloc(sizeof(t_spec))))
 			return ;
+	}
 	g_spec->symb = (char)48;
 	g_spec->width = 0;
 	g_spec->space = 0;
@@ -91,12 +93,12 @@ static void init_gspec()
 	g_width->width = 0;
 }
 
-int				ft_printf(const char *format, ...)
+int						ft_printf(const char *format, ...)
 {
-	va_list 		arg;
-	char 			*traverse;
+	va_list			arg;
+	char			*traverse;
 	size_t			size;
-	
+
 	if (!(g_width = malloc(sizeof(t_widt))))
 		return (0);
 	init_bufferoutput();
@@ -105,10 +107,10 @@ int				ft_printf(const char *format, ...)
 	while (*traverse != '\0')
 	{
 		init_gspec();
-		traverse = take_str_before_persent(traverse); /* берет символы до % */
+		traverse = take_str_before_persent(traverse);
 		if (*traverse == '\0')
 			break ;
-		traverse = struct_spec(++traverse);  /* записывает в структуру спецификатор */
+		traverse = struct_spec(++traverse);
 		print_arg(traverse, arg);
 	}
 	va_end(arg);

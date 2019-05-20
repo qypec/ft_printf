@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   print_date.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 20:41:12 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/20 13:42:47 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/05/20 17:29:01 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-static char 	*whatsparam(char *str, char *buff, t_cdate *date)
+static char					*whatsparam(char *str, char *buff, t_cdate *date)
 {
 	int len;
 
@@ -40,7 +40,7 @@ static char 	*whatsparam(char *str, char *buff, t_cdate *date)
 	return (str);
 }
 
-static char		*read_segment_of_date(char *traverse, char *str, t_cdate *date)
+static char					*read_segment_of_date(char *traverse, char *str, t_cdate *date)
 {
 	char	*buff;
 	int		i;
@@ -65,7 +65,7 @@ static char		*read_segment_of_date(char *traverse, char *str, t_cdate *date)
 	return (str);
 }
 
-static char		*fill_str(char *traverse, int size, t_cdate *date)
+static char					*fill_str(char *traverse, int size, t_cdate *date)
 {
 	char	*str;
 	int		i;
@@ -91,7 +91,7 @@ static char		*fill_str(char *traverse, int size, t_cdate *date)
 	return (str);
 }
 
-static int		calculate_size(char *traverse)
+static int					calculate_size(char *traverse)
 {
 	int i;
 	int	size;
@@ -118,7 +118,7 @@ static int		calculate_size(char *traverse)
 	return (size);
 }
 
-void			print_date(char *traverse, va_list arg)
+void						print_date(char *traverse, va_list arg)
 {
 	time_t		ttime;
 	t_cdate		*date;

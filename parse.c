@@ -55,7 +55,7 @@ char					*parse_lh_bigl(char *traverse)
 	}
 	if (g_spec->big_l == 1 || g_spec->l == 1 || g_spec->h == 1)
 		traverse++;
-	else if (g_spec->ll == 1 ||  g_spec->hh == 1)
+	else if (g_spec->ll == 1 || g_spec->hh == 1)
 		traverse += 2;
 	return (whichsymb(traverse));
 }

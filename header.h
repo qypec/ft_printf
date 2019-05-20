@@ -6,31 +6,32 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:42:27 by oargrave          #+#    #+#             */
-/*   Updated: 2019/05/20 17:00:20 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/20 17:27:09 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HEADER_H
 # define HEADER_H
+
 # include <stdio.h>
 # include "libft/includes/libft.h"
 # include <unistd.h>
 # include <stdarg.h>
 # include <time.h>
-# define PRECISION	1
-# define WIDTH		2
-# define TAB  "0123456789abcdef"
-# define NUL "(null)"
-# define RESERVE 15
-# define CONST_WIDRTH_DOUBLE 6
-# define COLOR_RED "\x1b[31m"
-# define COLOR_GREEN "\x1b[32m"
-# define COLOR_YELLOW "\x1b[33m"
-# define COLOR_BLUE "\x1b[34m"
-# define COLOR_MAGENTA "\x1b[35m"
-# define COLOR_CYAN "\x1b[36m"
-# define COLOR_RESET "\x1b[0m"
-# define COLOR_SIZE 5
+# define PRECISION				1
+# define WIDTH					2
+# define TAB					"0123456789abcdef"
+# define NUL					"(null)"
+# define RESERVE				15
+# define CONST_WIDRTH_DOUBLE	6
+# define COLOR_RED				"\x1b[31m"
+# define COLOR_GREEN			"\x1b[32m"
+# define COLOR_YELLOW			"\x1b[33m"
+# define COLOR_BLUE				"\x1b[34m"
+# define COLOR_MAGENTA			"\x1b[35m"
+# define COLOR_CYAN				"\x1b[36m"
+# define COLOR_RESET			"\x1b[0m"
+# define COLOR_SIZE				5
 
 typedef struct		s_width
 {
@@ -76,7 +77,7 @@ long long int		reduction_signed(long long int num, unsigned long z);
 unsigned long long	reduction_unsigned(unsigned long long int num);
 void				width(long long number, char *str);
 int					*width_u(unsigned long long number,
-		unsigned long long int index, int width);
+						unsigned long long int index, int width);
 int					ft_printf(const char *format, ...);
 int					print_arg(char *traverse, va_list arg);
 void				print_int(va_list arg);
@@ -97,7 +98,7 @@ int					is_cspdioux_bigx_fegbrk(char c);
 int					is_lh_bigl(char c);
 int					is_calculatesymb(char c);
 int					*width_u(unsigned long long number,
-		unsigned long long int index, int width);
+						unsigned long long int index, int width);
 char				*ft_itoa_u(unsigned long long int n);
 int					print_dl(long int num);
 void				read_calculatesymb(char c);
@@ -129,4 +130,5 @@ int					ft_numblen_u(unsigned long long int n);
 int					lenbase(unsigned long long int num);
 void				sign_x(long long int num);
 void				sign(long long int num);
+
 #endif

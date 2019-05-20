@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:43:54 by oargrave          #+#    #+#             */
-/*   Updated: 2019/05/20 17:03:34 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/20 17:55:39 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,18 @@
 
 void				width_double(long double num, char *str)
 {
-	if (g_spec->precision  > 0 || g_spec->sharp == 1)
+	if (g_spec->precision > 0 || g_spec->sharp == 1)
 		g_spec->width--;
 	if (num < 0 || (g_spec->plus == 1 && num > 0))
 		g_spec->width--;
-	if (g_spec->width > ((int)ft_strlen(str) + g_spec->precision) && g_spec->minus == 0)
-		g_width->space_left = g_spec->width -  (ft_strlen(str) + g_spec->precision);
-	else if (g_spec->width > ((int)ft_strlen(str) + g_spec->precision) && g_spec->minus == 1)
-		g_width->space_right = g_spec->width -  (ft_strlen(str) + g_spec->precision);
+	if (g_spec->width > ((int)ft_strlen(str) + g_spec->precision) && \
+		g_spec->minus == 0)
+		g_width->space_left = g_spec->width - (ft_strlen(str) + \
+			g_spec->precision);
+	else if (g_spec->width > ((int)ft_strlen(str) + g_spec->precision) && \
+		g_spec->minus == 1)
+		g_width->space_right = g_spec->width - (ft_strlen(str) + \
+			g_spec->precision);
 	if (g_spec->space == 1 && g_spec->width == 0 && g_spec->precision < 0)
 		g_width->space_left++;
 	if (g_spec->zero == 1)
@@ -31,7 +35,7 @@ void				width_double(long double num, char *str)
 	}
 }
 
-static void			print_width_end_double()
+static void			print_width_end_double(void)
 {
 	if (g_width->space_right > 0)
 	{
@@ -42,6 +46,7 @@ static void			print_width_end_double()
 		}
 	}
 }
+
 void				print_width_double(long double num, char *str)
 {
 	if (g_width->space_left > 0)
@@ -60,7 +65,7 @@ void				print_width_double(long double num, char *str)
 		{
 			addsymb_glbuffer('+');
 			g_spec->plus = 0;
-		}	
+		}
 		while (g_width->zero > 0)
 		{
 			addsymb_glbuffer('0');
@@ -84,10 +89,10 @@ void				print_width_double(long double num, char *str)
 			addsymb_glbuffer('+');
 		update_glbuffer(str);
 		addsymb_glbuffer('.');
-
 	}
 }
-void			 	print_float(long double num)
+
+void				print_float(long double num)
 {
 	unsigned long long			left;
 	char						*str;
@@ -95,12 +100,12 @@ void			 	print_float(long double num)
 	long double					x;
 
 	if (g_spec->precision < 0)
-		size  = CONST_WIDRTH_DOUBLE;
+		size = CONST_WIDRTH_DOUBLE;
 	else
 		size = g_spec->precision;
 	if (num < 0)
 		x = -num;
-	else 
+	else
 		x = num;
 	left = (unsigned long long)x;
 	str = ft_itoa_u(left);
@@ -111,20 +116,20 @@ void			 	print_float(long double num)
 	{
 		addsymb_glbuffer((long long)(x * 10) + 0x30);
 		x *= 10;
-		x -=(long long)x;
-		size--;	
+		x -= (long long)x;
+		size--;
 	}
 	if ((long long)(x * 10) >= 5)
-		g_output->str[g_output->size - 1] = g_output->str[g_output->size - 1] + 1;
+		g_output->str[g_output->size - 1] = \
+			g_output->str[g_output->size - 1] + 1;
 	print_width_end_double();
 	free(str);
 	str = NULL;
 }
 
-
 void				assembl_float(va_list arg)
 {
-	long double  num;
+	long double		num;
 
 	num = 0;
 	if (g_spec->symb == 'f' && g_spec->big_l == 0)

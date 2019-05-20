@@ -67,21 +67,6 @@ int					ft_numblen_u(unsigned long long int n)
 	return (i);
 }
 
-// int					lenbase(unsigned long long int num)
-// {
-// 	int			size;
-
-// 	size = 0;
-// 	while (num > 0)
-// 	{
-// 		num /= 10;
-// 		size++;
-// 	}
-// 	if (size == 0)
-// 		return (1);
-// 	return (size);
-// }
-
 void				assembl_int(va_list arg, int base)
 {
 	long long int	check;

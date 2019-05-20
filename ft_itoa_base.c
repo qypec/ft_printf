@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa_base.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 14:39:37 by oargrave          #+#    #+#             */
-/*   Updated: 2019/05/20 14:39:42 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/05/20 17:15:38 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int		ft_abs(int nb)
+int			ft_abs(int nb)
 {
 	if (nb < 0)
 		nb = -nb;
 	return (nb);
 }
 
-int	ft_itoa_help(long long int tmp, int base, int flag)
+int			ft_itoa_help(long long int tmp, int base, int flag)
 {
 	int		size;
 
