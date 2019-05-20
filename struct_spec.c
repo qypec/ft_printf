@@ -6,13 +6,13 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 20:32:44 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/15 22:49:42 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/20 16:08:54 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-# define NO		0
-# define YES	1
+#define NO 0
+#define YES 1
 
 int					is_badsymb(char c)
 {
@@ -50,7 +50,7 @@ char				*whichsymb(char *traverse)
 	return (traverse);
 }
 
-char 				*struct_spec(char *traverse)
+char				*struct_spec(char *traverse)
 {
 	if (is_badsymb(*traverse) == YES)
 	{
@@ -71,4 +71,12 @@ char 				*struct_spec(char *traverse)
 	if (g_spec->minus == 1)
 		g_spec->zero = 0;
 	return (traverse);
+}
+
+char				*parse_spaces(char *traverse)
+{
+	g_spec->space = 1;
+	while (*traverse == ' ')
+		traverse++;
+	return (whichsymb(traverse));
 }

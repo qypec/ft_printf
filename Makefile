@@ -6,7 +6,7 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/02 16:16:54 by yquaro            #+#    #+#              #
-#    Updated: 2019/05/15 22:47:27 by yquaro           ###   ########.fr        #
+#    Updated: 2019/05/20 16:07:37 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,10 @@
 # Adds a character index to the archive
 
 # FLAGS = -Wall -Wextra -Werror
-SOURCE = ft_printf.c color.c print_arg.c buffer_output.c add_in_glbuffer.c bust.c print_date.c parse.c struct_spec.c is_it_something.c read_flags.c print_diu.c ft_itoa_base.c print_char.c print_dl_dll.c parse.c print_int.c print_float.c
+SOURCE = ft_printf.c color.c print_arg.c buffer_output.c add_in_glbuffer.c \
+	bust.c print_date.c parse.c struct_spec.c is_it_something.c read_flags.c \
+	print_diu.c ft_itoa_base.c print_char.c print_dl_dll.c parse.c print_int.c \
+	print_float.c display_int.c
 OBJS = *.o
 OBJDIR = .obj
 NAME = libftprintf.a

@@ -1,36 +1,46 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_char.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/20 13:42:07 by oargrave          #+#    #+#             */
+/*   Updated: 2019/05/20 15:51:15 by oargrave         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "header.h"
 
-// // 'c' // 's' // // 'p'  string and char and point
-void print_c(va_list arg)
+void	print_c(va_list arg)
 {
 	char symbol;
 
-	symbol =(char) va_arg(arg, int);
+	symbol = (char)va_arg(arg, int);
 	if (symbol == 0)
 	{
-		width (1, " ");
-		printWidth(1);
-		// printWidthEnd();
+		width(1, " ");
+		print_width(1);
 		addsymb_glbuffer(symbol);
 	}
 	else
-		{
-			width (1, " ");
-			printWidth(1);
-			addsymb_glbuffer(symbol);
-			printWidthEnd();
-		}
-} 
+	{
+		width(1, " ");
+		print_width(1);
+		addsymb_glbuffer(symbol);
+		print_width_end();
+	}
+}
 
-int print_s(va_list arg, char *str, char *ptr, char *point)
+int		print_s(va_list arg, char *str, char *ptr, char *point)
 {
-	int index; 
-	
+	int	index;
+
 	index = 0;
-	str = (char *) va_arg(arg, void *);
+	str = (char *)va_arg(arg, void *);
 	if (str == NULL)
 	{
-		str = ft_strcpy(ft_strnew(6), null);
+		str = ft_strcpy(ft_strnew(6), NUL);
 		point = str;
 	}
 	if (g_spec->precision >= 0 && g_spec->precision < ft_strlen(str))
@@ -43,38 +53,38 @@ int print_s(va_list arg, char *str, char *ptr, char *point)
 		str = ptr;
 	}
 	width(1, str);
-	printWidth(1);
+	print_width(1);
 	update_glbuffer(str);
-	printWidthEnd();
+	print_width_end();
 	ft_memdel((void *)&ptr);
 	ft_memdel((void *)&point);
 	return (0);
 }
 
-void print_p(va_list arg)
+void	print_p(va_list arg)
 {
-	long long int num;
-	char *str;
+	long long int	num;
+	char			*str;
 
 	num = va_arg(arg, long long int);
 	if (num < 0)
 		num = -num;
 	str = ft_itoa_base(num, 16);
 	width(num, str);
-	printWidth(num);
+	print_width(num);
 	update_glbuffer(str);
-	printWidthEnd();
+	print_width_end();
 	free(str);
 	return ;
 }
 
-void print_char(va_list arg)
+void	print_char(va_list arg)
 {
-	if ( g_spec->symb == 'c')
+	if (g_spec->symb == 'c')
 		print_c(arg);
-	if ( g_spec->symb == 's')
+	if (g_spec->symb == 's')
 		print_s(arg, NULL, NULL, NULL);
-	if ( g_spec->symb == 'p')
+	if (g_spec->symb == 'p')
 		print_p(arg);
 	return ;
 }

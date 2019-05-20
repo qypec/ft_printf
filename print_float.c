@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_float.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/05/20 13:43:54 by oargrave          #+#    #+#             */
+/*   Updated: 2019/05/20 15:51:15 by oargrave         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "header.h"
-#include <limits.h>
 
 void	width_double(long double num, char *str)
 {
@@ -20,7 +31,7 @@ void	width_double(long double num, char *str)
 	}
 }
 
-void	printWidthEnd_double(long double num)
+void	print_width_end_double(long double num)
 {
 	if (g_width->space_right > 0)
 	{
@@ -31,7 +42,7 @@ void	printWidthEnd_double(long double num)
 		}
 	}
 }
-void	printWidth_double(long double num, char *str)
+void	print_width_double(long double num, char *str)
 {
 	if (g_width->space_left > 0)
 	{
@@ -94,7 +105,7 @@ void print_float(long double num)
 	left = (unsigned long long)x;
 	str = ft_itoa_u(left);
 	width_double(num, str);
-	printWidth_double(num, str);
+	print_width_double(num, str);
 	x -= left;
 	while (size > 0)
 	{
@@ -105,7 +116,7 @@ void print_float(long double num)
 	}
 	if ((long long)(x * 10) >= 5)
 		g_output->str[g_output->size - 1] = g_output->str[g_output->size - 1] + 1;
-	printWidthEnd_double(num);
+	print_width_end_double(num);
 	free(str);
 	str = NULL;
 }

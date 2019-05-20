@@ -6,7 +6,7 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 17:27:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/19 15:05:05 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/05/19 19:32:00 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		init_bufferoutput(void)
 
 void		is_it_buffer_overflow(size_t size)
 {
-	if ((g_output->size + size + 1) > g_output->buffsize) //fix + 1
+	if ((g_output->size + size) > g_output->buffsize)
 	{
 		(g_output->overflow_counter)++;
 		add_memory(size);
