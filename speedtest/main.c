@@ -24,7 +24,12 @@ int 				main(int argc, char **argv)
 {
 	open_files();
 	init_structtest();
-	if (argc == 1)
-		byonesymb_test();
+	while (*argv != NULL)
+	{
+		if ((int)*argv[0] == BYONESYMB_TEST)
+			byonesymb_test();
+		else if ((int)*argv[0] == BIGSTRING_TEST)
+			bigstring_test();
+	}
 	return (0);
 }

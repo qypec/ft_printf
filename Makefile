@@ -32,3 +32,6 @@ speedtest: re
 
 run_speedtest:
 	make -C speedtest/ run
+
+run_bigstring_speedtest:
+	make -C speedtest/ run_bigstring

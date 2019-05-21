@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-SOURCE = byonesymb_test.c processing.c color.c print.c 
+SOURCE = byonesymb_test.c bigstring_test.c processing.c color.c print.c 
 OBJS = *.o
 OBJDIR = .obj
 NAME = libspeedtest.a
@@ -28,6 +28,9 @@ all:
 
 run:
 	./speed_out
+
+run_bigstring:
+	./speed_out 2
 
 clean:
 	rm -rf .obj

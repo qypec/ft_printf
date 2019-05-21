@@ -14,7 +14,6 @@ static int			byonesymb_test_ftprintf(void)
 	ttime = 0;
 	color_set(COLOR_YELLOW, COLOR_SIZE);
 	print_testname(BYONESYMB_STR, BYONESYMB_SIZE);
-	color_set(COLOR_RESET, COLOR_SIZE - 1);
 	color_set(COLOR_BLUE, COLOR_SIZE);
 	while (ttime < TIME_CONST)
 	{

@@ -17,11 +17,13 @@ void				print_result(int persent, long long int own, \
 	else
 		color_set(COLOR_RED, COLOR_SIZE);
 	write(1, tmp3, ft_strlen(tmp3));
+	write(1, "%", 1);
 	ft_strdel(&tmp3);
 	color_set(COLOR_RESET, COLOR_SIZE - 1);
 	write(1, "\n\n", 2);
 	color_set(COLOR_CYAN, COLOR_SIZE);
 	write(1, "----------------------------\n\n", 30);
+	color_set(COLOR_RESET, COLOR_SIZE - 1);
 }
 
 void				print_testname(const char *test_name, int namesize)

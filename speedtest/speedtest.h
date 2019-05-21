@@ -28,6 +28,10 @@
 # define BYONESYMB_STR		"by_one_symb"
 # define BYONESYMB_SIZE		11
 
+# define BIGSTRING_TEST		2
+# define BIGSTRING_STR		"big_string"
+# define BIGSTRING_SIZE		10
+
 int						g_outputfile_1;
 FILE					*g_outputfile_2;
 
@@ -47,6 +51,8 @@ void					print_result(int persent, long long int own, \
 							long long int real, int flag);
 
 void					processing(long long int own, long long int real, int flag);
+
 void					byonesymb_test(void);
+void					bigstring_test(void);
 
 #endif
