@@ -6,7 +6,7 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:42:27 by oargrave          #+#    #+#             */
-/*   Updated: 2019/05/21 16:46:14 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/05/21 20:32:08 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,13 +96,12 @@ int					is_cspdioux_bigx_fegbrk(char c);
 int					is_lh_bigl(char c);
 int					is_calculatesymb(char c);
 int					*width_u(unsigned long long number,
-		unsigned long long int index, int width);
+	unsigned long long int index, int width);
 char				*ft_itoa_u(unsigned long long int n);
 int					print_dl(long int num);
 void				read_calculatesymb(char c);
 void				read_digit(char *traverse, const int flag);
 int					read_width_or_precision(char *traverse, int i, int flag);
-int					move_after_digits(char *traverse);
 int					read_spaces(char *traverse, int i);
 char				*parse_spaces(char *traverse);
 char				*parse_digit(char *traverse, const int flag);

@@ -6,7 +6,7 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:43:54 by oargrave          #+#    #+#             */
-/*   Updated: 2019/05/21 19:29:26 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/05/21 20:19:25 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ void	print_width_double(long double num, char *str)
 		else if (g_spec->plus == 1 && num > 0)
 			addsymb_glbuffer('+');
 		update_glbuffer(str);
-		addsymb_glbuffer('.');
+		if (g_spec->precision > 0)
+			addsymb_glbuffer('.');
 
 	}
 }
@@ -102,32 +103,28 @@ static char *rounding(char *left, double num, int size)
 	str[size + 1] = '\0';
 	while (size != 0 && size + 1 > index)
 	{
-		str[index] = ((long long)(num * 10) + 0x30);
+		str[index] = ((long long)(num * 10) + 0x30);		
 		num *= 10;
 		num -=(long long)num;
 		index++;
 	}
-	index = 0;
 	while (str[index] != '\0')
 	{
-		if(str[index] == '9' && str[index] == '9')
-			;
-	}
-	if (size != 0 && str[size] >= '5')
-	{
-		str[size - 1] = (int)str[size - 1] + 1;
-		str[size] = '\0';
+		if (index - 1 >= 0 && index + 1 != '\0')
+		{
+			if(str[index] >= '5' && str[index + 1] >= '5')
+				str[index] = str[index] + 1;
+		}
 	}
 	if (size == 0)
 	{
-		if ((str[index] = ((long long)(num * 10) + 0x30)) >= '5')
-			while (left[index])
+		if (((int)(num * 10)) >= 5)
+			while(left[index] != '\0')
 				index++;
-			index--;
-			left[index] = (int)left[index] + 1;
-			free(str);
-			str = NULL;
+			left[index - 1] = left[index - 1] + 1;
 	}
+	str[size] = '\0';
+	
 	return (str);
 }
 

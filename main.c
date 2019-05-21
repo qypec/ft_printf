@@ -38,11 +38,11 @@ int main ()
 			// int a = 10;
 	// printf ("len = |%d|",printf("%.2f\n", 10.125000000000000001));
 	double		nb;
-	nb = -12547.58;
+	nb = -12547.599;
 	printf ("\nreal\n");
-	printf ("len = |%d|",printf("space:% f\n", nb));
+	printf ("len = |%d|",printf("space:% .2f\n", nb));
 	printf ("\nown\n");
-	printf("len = |%d|",ft_printf("space:% f\n", nb));
+	printf("len = |%d|",ft_printf("space:% .2f\n", nb));
 	
 	return (0);
 }
