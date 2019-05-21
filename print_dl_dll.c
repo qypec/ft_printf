@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:43:01 by oargrave          #+#    #+#             */
-/*   Updated: 2019/05/20 16:58:05 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/21 19:37:33 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ int			display_u(unsigned long long int num, int base)
 {
 	char				*str;
 
-	reduction_unsigned(num);
+	num = reduction_unsigned(num);
 	if (num == 0 && g_spec->precision >= 0)
 		str = ft_strnew(0);
 	else if (g_spec->j == 1 || g_spec->symb == 'o' || g_spec->symb == 'x'

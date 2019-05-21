@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:43:54 by oargrave          #+#    #+#             */
-/*   Updated: 2019/05/20 17:55:39 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/21 19:43:22 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 void				width_double(long double num, char *str)
 {
-	if (g_spec->precision > 0 || g_spec->sharp == 1)
+	if (g_spec->precision < 0)
+		g_spec->precision = 6;
+	if (g_spec->precision  > 0 || g_spec->sharp == 1)
 		g_spec->width--;
 	if (num < 0 || (g_spec->plus == 1 && num > 0))
 		g_spec->width--;
@@ -92,7 +94,46 @@ void				print_width_double(long double num, char *str)
 	}
 }
 
-void				print_float(long double num)
+// static char *rounding(char *left, double num, int size)
+// {
+// 	char *str;
+// 	int index;
+
+// 	index = 0;
+// 	str = ft_strnew(size  + 1);
+// 	str[size + 1] = '\0';
+// 	while (size != 0 && size + 1 > index)
+// 	{
+// 		str[index] = ((long long)(num * 10) + 0x30);
+// 		num *= 10;
+// 		num -=(long long)num;
+// 		index++;
+// 	}
+// 	index = 0;
+// 	while (str[index] != '\0')
+// 	{
+// 		if(str[index] == '9' && str[index] == '9')
+// 			;
+// 	}
+// 	if (size != 0 && str[size] >= '5')
+// 	{
+// 		str[size - 1] = (int)str[size - 1] + 1;
+// 		str[size] = '\0';
+// 	}
+// 	if (size == 0)
+// 	{
+// 		if ((str[index] = ((long long)(num * 10) + 0x30)) >= '5')
+// 			while (left[index])
+// 				index++;
+// 			index--;
+// 			left[index] = (int)left[index] + 1;
+// 			free(str);
+// 			str = NULL;
+// 	}
+// 	return (str);
+// }
+
+void print_float(long double num)
 {
 	unsigned long long			left;
 	char						*str;
@@ -110,7 +151,6 @@ void				print_float(long double num)
 	left = (unsigned long long)x;
 	str = ft_itoa_u(left);
 	width_double(num, str);
-	print_width_double(num, str);
 	x -= left;
 	while (size > 0)
 	{
@@ -124,7 +164,6 @@ void				print_float(long double num)
 			g_output->str[g_output->size - 1] + 1;
 	print_width_end_double();
 	free(str);
-	str = NULL;
 }
 
 void				assembl_float(va_list arg)

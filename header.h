@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:42:27 by oargrave          #+#    #+#             */
-/*   Updated: 2019/05/20 17:27:09 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/21 19:42:01 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <time.h>
+
 # define PRECISION				1
 # define WIDTH					2
 # define TAB					"0123456789abcdef"
 # define NUL					"(null)"
+# define NULL_SIZE				6
 # define RESERVE				15
 # define CONST_WIDRTH_DOUBLE	6
 # define COLOR_RED				"\x1b[31m"

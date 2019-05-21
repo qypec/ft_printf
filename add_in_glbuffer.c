@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:32:07 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/20 15:27:37 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/21 19:40:07 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ void		update_glbuffer(char *str)
 {
 	size_t	size;
 
+	if (str == NULL)
+		return ;
 	size = ft_strlen(str);
 	if (size == 0)
 		return ;

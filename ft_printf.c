@@ -102,10 +102,13 @@ int						ft_printf(const char *format, ...)
 	if (!(g_width = malloc(sizeof(t_widt))))
 		return (0);
 	init_bufferoutput();
-	traverse = (char *)format;
+	if (!(traverse = (char *)format))
+		return (0);
 	va_start(arg, (char *)format);
 	while (*traverse != '\0')
 	{
+		if (g_output->error == -1)
+			break ; 
 		init_gspec();
 		traverse = take_str_before_persent(traverse);
 		if (*traverse == '\0')
@@ -114,9 +117,22 @@ int						ft_printf(const char *format, ...)
 		print_arg(traverse, arg);
 	}
 	va_end(arg);
-	size = g_output->size;
-	write(1, g_output->str, g_output->size);
+	if (g_output->error == -1)
+	{
+		size = -1;
+		write (1, g_output->str, g_output->size);
+	}
+	else	
+	{
+		size = g_output->size;
+		write(1, g_output->str, g_output->size);
+	}
 	free_bufferoutput();
 	free(g_width);
+	free(g_spec);
+	g_output = NULL;
+	g_width = NULL;
+	g_spec= NULL;
 	return (size);
+	
 }

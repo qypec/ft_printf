@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:42:07 by oargrave          #+#    #+#             */
-/*   Updated: 2019/05/20 16:57:02 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/21 19:43:50 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ void	print_c(va_list arg)
 	char symbol;
 
 	symbol = (char)va_arg(arg, int);
+	if (symbol < 0 || symbol > 127)
+		{
+			g_output->error = -1;
+			return ;
+		}
 	if (symbol == 0)
 	{
 		width(1, " ");
@@ -32,32 +37,66 @@ void	print_c(va_list arg)
 	}
 }
 
-int		print_s(va_list arg, char *str, char *ptr, char *point)
+int check_str(char *str)
 {
-	int	index;
+	int index;
 
 	index = 0;
+	while (str[index] != '\0')
+	{
+		if (str[index] < 0 || str[index] > 127)
+		{
+			g_output->error = -1;
+			return (-1);
+		}
+		index++;
+	}
+	return (1);
+}
+
+static int	print_else(char *str, char *ptr)
+{
+	if ((check_str(str) == -1))
+		return (-1);
+	if (g_spec->precision >= 0 && (g_spec->precision < (int)ft_strlen(str)))
+	{
+		ptr = ft_strnew(g_spec->precision);
+		ptr = ft_strncpy(ft_strnew(g_spec->precision), str, g_spec->precision);
+	}
+	else 
+		ptr = ft_strdup(str);
+	width(1, ptr);
+	print_width(1);
+	update_glbuffer(ptr);
+	print_width_end();
+	free(ptr);
+	return (0);
+}
+
+
+int		print_s(va_list arg, char *str, char *ptr)
+{
 	str = (char *)va_arg(arg, void *);
 	if (str == NULL)
 	{
-		str = ft_strcpy(ft_strnew(6), NUL);
-		point = str;
+		if (g_spec->precision >= 0 && (g_spec->precision < NULL_SIZE))
+		{
+			ptr = ft_strnew(g_spec->precision);	
+			ptr = ft_strncpy(ptr, NUL, g_spec->precision);
+		}
+		else 
+			ptr = ft_strdup(NUL);
+		width(1, ptr);
+		print_width(1);
+		update_glbuffer(ptr);
+		print_width_end();
+		free(ptr);
 	}
-	if (g_spec->precision >= 0 && g_spec->precision < (int)ft_strlen(str))
+	else
 	{
-		ptr = ft_strnew(g_spec->precision);
-		while (index != g_spec->precision)
-			ptr[index++] = ' ';
-		ptr[g_spec->precision] = '\0';
-		ptr = ft_strncpy(ptr, str, g_spec->precision);
-		str = ptr;
+		if ((print_else(str, ptr) == -1))
+			return (-1);
 	}
-	width(1, str);
-	print_width(1);
-	update_glbuffer(str);
-	print_width_end();
-	ft_memdel((void *)&ptr);
-	ft_memdel((void *)&point);
 	return (0);
 }
 
@@ -83,7 +122,7 @@ void	print_char(va_list arg)
 	if (g_spec->symb == 'c')
 		print_c(arg);
 	if (g_spec->symb == 's')
-		print_s(arg, NULL, NULL, NULL);
+		print_s(arg, NULL, NULL);
 	if (g_spec->symb == 'p')
 		print_p(arg);
 	return ;

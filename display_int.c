@@ -60,7 +60,7 @@ void					sign_x(long long int num)
 
 void					sign(long long int num)
 {
-	if (g_spec->plus == 1 && num >= 0 && g_spec->symb != 'u')
+	if (g_spec->plus == 1 && num >= 0 && g_spec->symb != 'u' && g_spec->symb != 'c' && g_spec->symb != 'o')
 	{
 		addsymb_glbuffer('+');
 		g_width->space_left--;
@@ -99,10 +99,10 @@ void					display_int(long long int num, int base)
 		str = ft_itoa_base(num, base);
 	width(num1, str);
 	print_width(num1);
-	if (g_spec->precision >= 0 && num == 0)
-	{
+	if (g_spec->precision >= 0 && num == 0) // fix <=
 		print_width_end();
-	}
+	else if (g_spec->precision <= 0 && num == 0 && g_spec->plus == 0 && g_spec->symb == 'd' && g_spec->hh == 0 && g_spec->h == 0 && g_spec->z == 0 && g_spec->l == 0 && g_spec->ll == 0 && g_spec->j == 0 && g_spec->symb != 'd')
+		print_width_end();
 	else
 	{
 		update_glbuffer(str);
