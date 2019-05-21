@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_int.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:44:01 by oargrave          #+#    #+#             */
-/*   Updated: 2019/05/20 16:07:12 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/20 16:33:25 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void	width_two(long long int num, char *str)
 		g_width->space_left = 0;
 	}
 	if (g_spec->space == 1 && num >= 0 && g_spec->symb != 'u'
-	&& g_spec->symb != 'c' && g_spec->symb != 'U')
+	&& g_spec->symb != 'c' && g_spec->symb != 'U' && g_spec->symb != 's')
 		if (g_width->space_left <= 0)
 			g_width->space_left = g_width->space_left * 0 + 1;
 	if ((g_spec->sharp == 1 && g_spec->width > 0) || g_spec->symb == 'p')

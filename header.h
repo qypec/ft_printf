@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:42:27 by oargrave          #+#    #+#             */
-/*   Updated: 2019/05/20 16:09:39 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/21 16:46:14 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define WIDTH		2
 # define TAB  "0123456789abcdef"
 # define NUL "(null)"
+# define NULL_SIZE 7
 # define RESERVE 15
 # define CONST_WIDRTH_DOUBLE 6
 # define COLOR_RED "\x1b[31m"

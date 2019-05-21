@@ -6,7 +6,7 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 17:27:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/19 19:32:00 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/05/21 18:17:31 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void		init_bufferoutput(void)
 {
-	g_output = (t_output *)ft_memalloc(sizeof(t_output));
+	g_output = (t_output *)malloc(sizeof(t_output));
 	g_output->buffsize = 50;
-	g_output->str = (char *)ft_memalloc(sizeof(char) * \
+	g_output->str = (char *)malloc(sizeof(char) * \
 		(g_output->buffsize + 1));
 	g_output->size = 0;
 	g_output->error = 0;
@@ -47,4 +47,5 @@ void			free_bufferoutput(void)
 {
 	ft_strdel(&(g_output->str));
 	free(g_output);
+	g_output = NULL;
 }

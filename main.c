@@ -37,13 +37,13 @@ int main ()
 			//  int nb = 0;
 			// int a = 10;
 	// printf ("len = |%d|",printf("%.2f\n", 10.125000000000000001));
-	// printf ("\nown\n");
-	// printf("len = |%d|",ft_printf("%.2f\n", 10.125000000000000001));
-			printf ("len = |%d|",printf("%.2c", NULL));
-			printf ("\nown\n");
-			printf("len = |%d|",ft_printf("%.2c", NULL));
-	// unsigned long long a = (__LONG_MAX__ *2UL+1UL);
-	// printf("%llu", a);
+	double		nb;
+	nb = -12547.58;
+	printf ("\nreal\n");
+	printf ("len = |%d|",printf("space:% f\n", nb));
+	printf ("\nown\n");
+	printf("len = |%d|",ft_printf("space:% f\n", nb));
+	
 	return (0);
 }
 
@@ -77,51 +77,78 @@ int main ()
 // 		return (0);
 
 // 	int x;
+// 	x = 0;
+// double		nb;
+// 	nb = -12547.58;
+
+//     ft_printf("space:% f\n", nb);
+//     // ft_printf("plus:%+f\n", nb);
+//     // ft_printf("hash:%#f\n", nb);
+//     // ft_printf("precision:%.2f\n", nb);
+//     // ft_printf("big prec:%.14f\n", nb);
+//     // ft_printf("precision + hash:%#.0f\n", nb);
+//     // ft_printf("space + prec:% .5f\n", nb);
+//     // ft_printf("space + prec + hash:%# .0f\n", nb);
+//     // ft_printf("Plus + prec / grande:%+.5f\n", nb);
+//     // ft_printf("Plus + prec / petite:%+.0f\n", nb);
+//     // ft_printf("Plus + prec + hash:%#+.0f\n", nb);
+//     // ft_printf("Prec + 0:%0.5f\n", nb);
+//     // ft_printf("Prec + minus:%-.5f\n", nb);
+//     // ft_printf("size:%5f\n", nb);
+//     // ft_printf("size + space:% 5f\n", nb);
+//     // ft_printf("size + plus:%+5f\n", nb);
+//     // ft_printf("size + space:%# 5f\n", nb);
+//     // ft_printf("size + plus:%#+5f\n", nb);
+//     // ft_printf("size + minus:%-5f\n", nb);
+//     // ft_printf("size + 0:%05f\n", nb);
+//     // ft_printf("size + 0 + plus:%+05f\n", nb);
+//     // ft_printf("size + 0 + plus:%0+5f\n", nb);
+//     // ft_printf("size + 0 + prec:%05.3f\n", nb);
+//     // ft_printf("size + 0 + prec + hash:%0#5.0f\n", nb);
+//     // ft_printf("size + minus + prec:%-5.3f\n", nb);
+//     // ft_printf("size + minus + prec + hash:%-#5.0f\n", nb);
+//     // ft_printf("size + plus + 0 + prec:%+05.3f\n", nb);
+//     // ft_printf("size + plus + 0 + prec + hash:%0+#5.0f\n", nb);
+//     // ft_printf("size + espace + zero + prec:%0 5.3f\n", nb);
+//     // ft_printf("size + espace + zero + prec:% 05.3f\n", nb);
+//     // ft_printf("size + espace + zero + prec + hash:%#0 5.0f\n", nb);
+//     // ft_printf("size + minus + plus + prec:%-+5.3f\n", nb);
+//     // ft_printf("size + minus + plus + prec + hash:%-#+5.0f\n", nb);
+
+// 	dprintf(2, "space:% f\n", nb);
+// 	// dprintf(2, "plus:%+f\n", nb);
+// 	// dprintf(2, "hash:%#f\n", nb);
+// 	// dprintf(2, "precision:%.2f\n", nb);
+// 	// dprintf(2, "big prec:%.14f\n", nb);
+// 	// dprintf(2, "precision + hash:%#.0f\n", nb);
+// 	// dprintf(2, "space + prec:% .5f\n", nb);
+// 	// dprintf(2, "space + prec + hash:%# .0f\n", nb);
+// 	// dprintf(2, "Plus + prec / grande:%+.5f\n", nb);
+// 	// dprintf(2, "Plus + prec / petite:%+.0f\n", nb);
+// 	// dprintf(2, "Plus + prec + hash:%#+.0f\n", nb);
+// 	// dprintf(2, "Prec + 0:%0.5f\n", nb);
+// 	// dprintf(2, "Prec + minus:%-.5f\n", nb);
+// 	// dprintf(2, "size:%5f\n", nb);
+// 	// dprintf(2, "size + space:% 5f\n", nb);
+// 	// dprintf(2, "size + plus:%+5f\n", nb);
+// 	// dprintf(2, "size + space:%# 5f\n", nb);
+// 	// dprintf(2, "size + plus:%#+5f\n", nb);
+// 	// dprintf(2, "size + minus:%-5f\n", nb);
+// 	// dprintf(2, "size + 0:%05f\n", nb);
+// 	// dprintf(2, "size + 0 + plus:%+05f\n", nb);
+// 	// dprintf(2, "size + 0 + plus:%0+5f\n", nb);
+// 	// dprintf(2, "size + 0 + prec:%05.3f\n", nb);
+// 	// dprintf(2, "size + 0 + prec + hash:%0#5.0f\n", nb);
+// 	// dprintf(2, "size + minus + prec:%-5.3f\n", nb);
+// 	// dprintf(2, "size + minus + prec + hash:%-#5.0f\n", nb);
+// 	// dprintf(2, "size + plus + 0 + prec:%+05.3f\n", nb);
+// 	// dprintf(2, "size + plus + 0 + prec + hash:%0+#5.0f\n", nb);
+// 	// dprintf(2, "size + espace + zero + prec:%0 5.3f\n", nb);
+// 	// dprintf(2, "size + espace + zero + prec:% 05.3f\n", nb);
+// 	// dprintf(2, "size + espace + zero + prec + hash:%#0 5.0f\n", nb);
+// 	// dprintf(2, "size + minus + plus + prec:%-+5.3f\n", nb);
+// 	// dprintf(2, "size + minus + plus + prec + hash:%-#+5.0f\n", nb);
 	
-
-	
-// 	char	*str;
-// 	str = "ASD ASDqw ldmj23oi4j32o u89usadjjals j238ujh4 2ojasd  ijo238e 9juasido 8123ue aklnsdk jalhdls";
-
-// 	ft_printf("test basique:%s", str);
-// 	ft_printf("precision / zero:%.0s", str);
-// 	ft_printf("precision / petite:%.5s", str);
-// 	ft_printf("precision / grande:%.15s", str);
-// 	ft_printf("prec + minus:%-.5s", str);
-// 	ft_printf("size / petite:%5s", str);
-// 	ft_printf("size / grande:%15s", str);
-// 	ft_printf("Minus + size / petite:%-5s", str);
-// 	ft_printf("Minus + size / grande:%-15s", str);
-// 	ft_printf("Minus + size + prec:%-15.5s", str);
-// 	ft_printf("NULL:%12s", NULL);
-// 	ft_printf("NULL:%1s", NULL);
-// 	ft_printf("NULL:%-5.6s", NULL);
-// 	ft_printf("NULL:%-.8s", NULL);
-// 	ft_printf("NULL:%.12s", NULL);
-// 	ft_printf("empty:%-.5s", "");
-// 	ft_printf("empty:%-1.32s", "");
-// 	ft_printf("empty:%1.4s", "");
-// 	ft_printf("empty:%23s", "");
-
-// 	dprintf(2, "test basique:%s", str);
-// 	dprintf(2, "precision / zero:%.0s", str);
-// 	dprintf(2, "precision / petite:%.5s", str);
-// 	dprintf(2, "precision / grande:%.15s", str);
-// 	dprintf(2, "prec + minus:%-.5s", str);
-// 	dprintf(2, "size / petite:%5s", str);
-// 	dprintf(2, "size / grande:%15s", str);
-// 	dprintf(2, "Minus + size / petite:%-5s", str);
-// 	dprintf(2, "Minus + size / grande:%-15s", str);
-// 	dprintf(2, "Minus + size + prec:%-15.5s", str);
-// 	dprintf(2, "NULL:%12s", NULL);
-// 	dprintf(2, "NULL:%1s", NULL);
-// 	dprintf(2, "NULL:%-5.6s", NULL);
-// 	dprintf(2, "NULL:%-.8s", NULL);
-// 	dprintf(2, "NULL:%.12s", NULL);
-// 	dprintf(2, "empty:%-.5s", "");
-// 	dprintf(2, "empty:%-1.32s", "");
-// 	dprintf(2, "empty:%1.4s", "");
-// 	dprintf(2, "empty:%23s", "");
 
 // 	ians = read(pipeans[0], ans, 700);
 // 	icor = read(pipecor[0], cor, 700);

@@ -6,7 +6,7 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 16:58:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/20 15:27:03 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/05/20 16:39:34 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,17 @@ unsigned long long	reduction_unsigned(unsigned long long int num)
 {
 	if (g_spec->l == 1)
 		num = (unsigned long int)num;
-	if (g_spec->ll == 0 && g_spec->l == 0 && g_spec->j == 0 && g_spec->h == 0
-			&& g_spec->hh == 0)
+	else if (g_spec->symb == 'U')
+		num = (unsigned long)num;
+	else if (g_spec->ll == 0 && g_spec->l == 0 && g_spec->j == 0 && g_spec->h == 0
+			&& g_spec->hh == 0 && g_spec->z == 0)
 		num = (unsigned int)num;
-	if (g_spec->h == 1)
+	else if (g_spec->h == 1)
 		num = (unsigned short)num;
-	if (g_spec->hh == 1)
+	else if (g_spec->hh == 1)
 		num = (unsigned char)num;
+	else if (g_spec->z == 1)
+		num = (size_t)num;
 	return (num);
 }
 

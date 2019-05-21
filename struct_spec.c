@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_spec.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 20:32:44 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/20 16:08:54 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/20 17:35:50 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,30 @@ char				*whichsymb(char *traverse)
 	return (traverse);
 }
 
+static void	lowercase()
+{
+	if (g_spec->symb == 'O')
+	{
+		g_spec->l = 1;
+		g_spec->symb = 'o';
+	}
+	else if (g_spec->symb == 'S')
+	{
+		g_spec->l = 1;
+		g_spec->symb = 's';
+	}
+	else if (g_spec->symb == 'C')
+		g_spec->symb = 'c';
+	else if (g_spec->symb == 'Z')
+		g_spec->symb = 'z';
+	else if (g_spec->symb == 'D')
+	{
+		g_spec->l = 1;
+		g_spec->symb = 'd';
+	}
+	
+}
+
 char				*struct_spec(char *traverse)
 {
 	if (is_badsymb(*traverse) == YES)
@@ -57,6 +81,7 @@ char				*struct_spec(char *traverse)
 		if (is_cspdioux_bigx_fegbrk(*traverse) == YES)
 		{
 			g_spec->symb = *traverse;
+			lowercase();
 			return (traverse + 1);
 		}
 		return (traverse);
@@ -66,6 +91,7 @@ char				*struct_spec(char *traverse)
 	if (is_cspdioux_bigx_fegbrk(*traverse) == YES)
 	{
 		g_spec->symb = *traverse;
+		lowercase();
 		traverse++;
 	}
 	if (g_spec->minus == 1)
