@@ -85,7 +85,6 @@ void				print_width_end();
 void				print_width(long long int num);
 char				*ft_itoa_base(long long int value, int base);
 int					ft_itoa_help(long long int tmp, int base, int flag);
-int					ft_abs(int nb);
 int					isplay_u(unsigned long long int num);
 void				display_int(long long int num, int base);
 void				assembl_int(va_list arg, int base);

@@ -85,7 +85,7 @@ void				ft_lstadd(t_list **alst, t_list *new);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int					ft_height(char *s, char c);
-int					ft_abs(int num);
+int					ft_abs(long long int num);
 int					ft_pow(int num, int power);
 int					ft_isspace(int c);
 int					ft_numblen(int n);

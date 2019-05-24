@@ -12,13 +12,6 @@
 
 #include "header.h"
 
-int		ft_abs(int nb)
-{
-	if (nb < 0)
-		nb = -nb;
-	return (nb);
-}
-
 int	ft_itoa_help(long long int tmp, int base, int flag)
 {
 	int		size;

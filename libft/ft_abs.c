@@ -12,7 +12,7 @@
 
 #include "includes/libft.h"
 
-int		ft_abs(int num)
+int		ft_abs( long long int num) // fix denis int -> long long int
 {
 	if (num == -2147483648)
 		return (-1);
