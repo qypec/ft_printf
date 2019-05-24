@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../includes/header.h"
 
 long long int		reduction_signed(long long int num, unsigned long z)
 {

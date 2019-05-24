@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../includes/header.h"
 
 void		addsymb_glbuffer(char c)
 {

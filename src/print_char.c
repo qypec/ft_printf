@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../includes/header.h"
 
 void	print_c(va_list arg)
 {

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   header.h                                           :+:      :+:    :+:   */
+/*   ../includes/header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,7 +13,7 @@
 #ifndef HEADER_H
 # define HEADER_H
 # include <stdio.h>
-# include "libft/includes/libft.h"
+# include "../libft/includes/libft.h"
 # include <unistd.h>
 # include <stdarg.h>
 # include <time.h>

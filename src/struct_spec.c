@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../includes/header.h"
 #define NO 0
 #define YES 1
 

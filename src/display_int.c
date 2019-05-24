@@ -1,4 +1,4 @@
-#include "header.h"
+#include "../includes/header.h"
 
 char *register_x(char *str)
 {

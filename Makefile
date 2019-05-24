@@ -18,10 +18,10 @@
 # Adds a character index to the archive
 
 # FLAGS = -Wall -Wextra -Werror
-SOURCE = ft_printf.c color.c print_arg.c buffer_output.c add_in_glbuffer.c \
-	bust.c print_date.c parse.c struct_spec.c is_it_something.c \
-	print_diu.c ft_itoa_base.c print_char.c print_dl_dll.c parse.c print_int.c \
-	print_float.c display_int.c
+SOURCE = src/ft_printf.c src/color.c src/print_arg.c src/buffer_output.c src/add_in_glbuffer.c \
+	src/bust.c src/print_date.c src/parse.c src/struct_spec.c src/is_it_something.c \
+	src/print_diu.c src/ft_itoa_base.c src/print_char.c src/print_dl_dll.c src/parse.c src/print_int.c \
+	src/print_float.c src/display_int.c
 OBJS = *.o
 OBJDIR = .obj
 NAME = libftprintf.a
