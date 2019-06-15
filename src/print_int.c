@@ -6,7 +6,7 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:44:01 by oargrave          #+#    #+#             */
-/*   Updated: 2019/06/15 14:31:55 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/06/15 18:05:13 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,16 @@
 
 static void	width_three(long long num, char *str)
 {
-	if (g_spec->symb == 'o' && num > 0)// fix && g_spec->precision <= 0)
+	if (g_spec->symb == 'o')// fix && g_spec->precision <= 0)
 	{
-		g_width->space_left -= 1;
-		g_width->space_right -= 1;
+		if (num >= 0 && g_spec->precision <= g_width->width)
+		{
+			if (str[0] == '0')
+			 	return ;
+			g_width->space_right -= 1;
+			g_width->space_left -= 1;
+		}
+		
 	}
 	if (g_spec->symb == 'p')
 	{
@@ -31,13 +37,13 @@ static void	width_two(long long int num, char *str)
 	if (g_spec->zero == 1 && g_spec->precision < 0)
 	{
 		g_width->zero = g_width->space_left;
-		if (g_spec->sharp == 1 && (g_spec->symb == 'x' || g_spec->symb == 'X'))
+		if (g_spec->sharp == 1 && (g_spec->symb == 'x' || g_spec->symb == 'X') && num != 0)
 			g_width->zero -= 2;
 		g_width->space_left = 0;
 	}
 	if (g_spec->space == 1 && num >= 0 && g_spec->symb != 'u'
 	&& g_spec->symb != 'c' && g_spec->symb != 'U' && g_spec->symb != 's' )
-		if (g_spec->width <= g_width->width || (g_spec->precision >= g_spec->width) || (g_spec->minus == 1 && g_spec->plus != 1) || (g_spec->zero == 1 && (g_width->zero == g_spec->width || g_width->zero == g_spec->width - g_width->width)))
+		if ((g_spec->width <= g_width->width || (g_spec->precision >= g_spec->width) || (g_spec->minus == 1 && g_spec->plus != 1) || (g_spec->zero == 1 && (g_width->zero == g_spec->width || g_width->zero == g_spec->width - g_width->width))) && g_spec->precision <= g_width->width)
 		{
 			if (g_spec->zero == 1 && g_spec->precision < 0)
 			{
