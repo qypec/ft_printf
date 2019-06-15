@@ -50,7 +50,7 @@ void sign(long long int num)
 {
 	if (g_spec->plus == 1 && num >= 0 && g_spec->symb != 'u' && g_spec->symb != 'c' && g_spec->symb != 'o')
 	{
-	    addsymb_glbuffer('+');
+		addsymb_glbuffer('+');
 		g_width->space_left--;
 		g_width->space_right--;
 		if (g_spec->precision <= 0)

@@ -18,32 +18,12 @@
 
 int main ()
 {
-	// double		nb;
-	// nb = 125474444444444.58555555555555565565653;
-	// char c = 'W';
-	// double		nb;
-	// nb = -12547.58;
-	// char	*str;
-	// char c = 'W';
-	// str = "NULL";
-	// printf("real:\n");
-	// printf("%5.5s\n\n\n", "hello world");
-	// printf("\nreal:\n");
-	// printf ("len = |%d|\n\n\n",printf("%+10.3d\n\n\n",48));
-	// printf ("\nown\n");
-	// printf("len = |%d|\n\n\n",ft_printf("%+10.3d\n\n\n", 48));
-	// printf("\n\n\n\n\n\n\n");
-			// printf("\nreal:\n");
-			//  int nb = 0;
-			// int a = 10;
-	// printf ("len = |%d|",printf("%.2f\n", 10.125000000000000001));
 	double		nb;
 	nb = -12547.599;
 	printf ("\nreal\n");
-	printf ("len = |%d|",printf("space:% .2f\n", nb));
+	printf ("len = |%d|",printf ("%01.o", 0U, 0U, 0U, 0U));
 	printf ("\nown\n");
-	printf("len = |%d|",ft_printf("space:% .2f\n", nb));
-	
+	printf ("len = |%d|",ft_printf ("%01.o", 0U, 0U, 0U, 0U));
 	return (0);
 }
 
