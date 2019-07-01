@@ -21,9 +21,9 @@ int main ()
 	double		nb;
 	nb = -12547.599;
 	printf ("\nreal\n");
-	printf ("len = |%d|",printf ("% #1.10ho", 9223372036854775807));
+	printf ("len = |%d|",printf ("% +0#10.2zo", 127));// "%-19.53s", NULL
 	printf ("\nown\n");
-	printf ("len = |%d|",ft_printf ("% #1.10ho", 9223372036854775807));
+	printf ("len = |%d|",ft_printf ("% +0#10.2zo", 127));
 	return (0);
 }
 

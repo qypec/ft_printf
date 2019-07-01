@@ -6,7 +6,7 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:44:01 by oargrave          #+#    #+#             */
-/*   Updated: 2019/06/15 18:05:13 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/07/01 17:11:15 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ static void	width_two(long long int num, char *str)
 		g_width->space_left = 0;
 	}
 	if (g_spec->space == 1 && num >= 0 && g_spec->symb != 'u'
-	&& g_spec->symb != 'c' && g_spec->symb != 'U' && g_spec->symb != 's' )
-		if ((g_spec->width <= g_width->width || (g_spec->precision >= g_spec->width) || (g_spec->minus == 1 && g_spec->plus != 1) || (g_spec->zero == 1 && (g_width->zero == g_spec->width || g_width->zero == g_spec->width - g_width->width))) && g_spec->precision <= g_width->width)
+	&& g_spec->symb != 'c' && g_spec->symb != 'U' && g_spec->symb != 's' && g_spec->symb != 'o' )
+		if (g_width->space_left <= 0 && g_spec->plus != 1) // fix g_spec->width <= g_width->width || (g_spec->precision >= g_spec->width) 
 		{
 			if (g_spec->zero == 1 && g_spec->precision < 0)
 			{
@@ -107,7 +107,7 @@ static void	print_widthtwo(long long int num)
 	index = 0;
 	if (g_width->space_left > 0)
 	{
-		if (g_spec->plus == 1 && num >= 0)
+		if (g_spec->plus == 1 && num >= 0 && g_spec->symb != 'o')
 			g_width->space_left = g_width->space_left - 1;
 		while (index < g_width->space_left)
 		{
