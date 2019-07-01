@@ -6,7 +6,7 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:42:07 by oargrave          #+#    #+#             */
-/*   Updated: 2019/05/21 17:30:01 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/07/01 20:17:44 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,16 @@ void	print_c(va_list arg)
 	char symbol;
 
 	symbol = (char)va_arg(arg, int);
-	if (symbol < 0 || symbol > 127)
-		{
-			g_output->error = -1;
-			return ;
-		}
+	// if (symbol < 0 || symbol > 127)
+	// 	{
+	// 		g_output->error = -1;
+	// 		return ;
+	// 	}
 	if (symbol == 0)
 	{
 		width(1, " ");
 		print_width(1);
+		print_width_end();
 		addsymb_glbuffer(symbol);
 	}
 	else

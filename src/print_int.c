@@ -6,7 +6,7 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:44:01 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/01 17:11:15 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/07/01 19:54:26 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void		width(long long int number, char *str)
 	{
 		g_width->space_left = g_spec->width - g_width->width;
 	}
-	else if (g_spec->minus == 1 && g_spec->width > g_spec->precision)
+	else if (g_spec->minus == 1 && (g_spec->width > g_spec->precision || g_spec->symb == 's'))
 		g_width->space_right = g_spec->width - g_width->width;
 	if (number != 0 && g_spec->symb != 's')
 	{
