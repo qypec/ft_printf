@@ -48,7 +48,7 @@ void sign_x(long long int num)
 
 void sign(long long int num)
 {
-	if (g_spec->plus == 1 && num >= 0 && g_spec->symb != 'u' && g_spec->symb != 'c' && g_spec->symb != 'o')
+	if (g_spec->plus == 1 && num >= 0 && g_spec->symb != 'u' && g_spec->symb != 'c' && g_spec->symb != 'o' && g_spec->symb != 'p')
 	{
 		addsymb_glbuffer('+');
 		g_width->space_left--;
@@ -56,7 +56,7 @@ void sign(long long int num)
 		if (g_spec->precision <= 0)
 			g_width->zero--;
 	}
-	if (num < 0)
+	if (num < 0 && g_spec->symb != 'p')
 		addsymb_glbuffer('-');
 	if (g_spec->symb == 'p')
 		addstr_glbuffer("0x", 2);

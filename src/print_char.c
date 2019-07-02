@@ -6,7 +6,7 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:42:07 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/01 20:17:44 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/07/02 15:28:24 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@ void	print_c(va_list arg)
 	{
 		width(1, " ");
 		print_width(1);
-		print_width_end();
 		addsymb_glbuffer(symbol);
+		print_width_end();
+		
 	}
 	else
 	{
@@ -105,14 +106,24 @@ void	print_p(va_list arg)
 {
 	long long int	num;
 	char			*str;
+	unsigned long long a;
 
 	num = va_arg(arg, long long int);
 	if (num < 0)
-		num = -num;
-	str = ft_itoa_base(num, 16);
-	width(num, str);
-	print_width(num);
-	update_glbuffer(str);
+	{
+		a = (unsigned long long) num;
+		str = ft_itoa_base(a, 16);
+		width(a, str);
+		print_width(a);
+	}
+	else
+	{
+		str = ft_itoa_base(num, 16);
+		width(num, str);
+		print_width(num);
+	}
+	if (g_spec->precision != 0 || str[0] != '0')
+		update_glbuffer(str);
 	print_width_end();
 	free(str);
 	return ;
