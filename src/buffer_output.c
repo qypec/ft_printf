@@ -6,7 +6,7 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 17:27:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/21 18:17:31 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/07/11 12:16:54 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,11 @@ void		add_memory(size_t size)
 	char	*tmp;
 
 	g_output->buffsize *= g_output->overflow_counter; /* dynamic buffer */
-	tmp = (char *)ft_memalloc(sizeof(char) * g_output->buffsize);
+	//tmp = (char *)ft_memalloc(sizeof(char) * g_output->buffsize);
+		/* fix oargarve */
+	tmp = (char *)malloc(sizeof(char) * (g_output->buffsize + 1));
+	tmp[g_output->buffsize] = '\0';
+		/*  */
 	tmp = ft_memcpy(tmp, g_output->str, g_output->buffsize);
 	ft_strdel(&(g_output->str));
 	g_output->str = tmp;

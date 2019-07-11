@@ -6,7 +6,7 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:44:01 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/02 15:51:12 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/07/11 11:23:50 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,14 @@ static void	width_three(long long num, char *str)
 	if (g_spec->precision == 0 && str[0] == '0' && g_spec->symb == 'p')
 	{
 		g_width->space_left -= 1;
+		g_width->zero -= 1;
 		g_width->space_right -= 1;
 	}
 	else if (g_spec->symb == 'p')
 	{
 		g_width->space_left -= 2;
+		if (g_spec->precision < 0)
+			g_width->zero -= 2;
 		g_width->space_right -= 2;
 	}
 }
@@ -88,9 +91,9 @@ void		width(long long int number, char *str)
 	g_width->width = ft_strlen(str);
 	// if (number == 0)
 	// 	g_width->width = 0;
+	number = (g_spec->precision - g_width->width);
 	if (num < 0)
 		g_width->width++;
-	number = (g_spec->precision - g_width->width);
 	if (number < 0)
 		number = 0;
 	if (g_spec->width > g_width->width && g_spec->minus == 0)
@@ -114,7 +117,8 @@ static void	print_widthtwo(long long int num)
 	index = 0;
 	if (g_width->space_left > 0)
 	{
-		if (g_spec->plus == 1 && num >= 0 && g_spec->symb != 'o' && g_spec->symb != 'c' && g_spec->symb != 'p')
+		if (g_spec->plus == 1 && num >= 0 && g_spec->symb != 'o' && g_spec->symb != 'c'
+		&& g_spec->symb != 'p' && g_spec->symb != 'u' && g_spec->symb != 's')
 			g_width->space_left = g_width->space_left - 1;
 		while (index < g_width->space_left)
 		{
@@ -132,7 +136,7 @@ static void	print_widthtwo(long long int num)
 
 void		print_width(long long int num)
 {
-	if (g_spec->symb == 's' && g_width->width == 0)
+	if (g_spec->symb == 's' && g_width->width == 0 && g_spec->zero == 0)
 	{
 		g_width->space_left = g_spec->width;
 		g_width->space_right = 0;
