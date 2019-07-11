@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_diu.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 16:58:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/21 19:37:39 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/20 16:39:34 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../includes/header.h"
 
 long long int		reduction_signed(long long int num, unsigned long z)
 {
@@ -71,11 +71,25 @@ int					ft_numblen_u(unsigned long long int n)
 	return (i);
 }
 
+int					lenbase(unsigned long long int num, int base)
+{
+	int			size;
+
+	size = 0;
+	while (num > 0)
+	{
+		num /= 10;
+		size++;
+	}
+	if (size == 0)
+		return (1);
+	return (size);
+}
+
 void				assembl_int(va_list arg, int base)
 {
 	long long int	check;
 
-	check = 0;
 	if (g_spec->symb == 'x' || g_spec->symb == 'X')
 		base = 16;
 	if (g_spec->symb == 'o')

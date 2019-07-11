@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_dl_dll.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:43:01 by oargrave          #+#    #+#             */
-/*   Updated: 2019/05/21 19:37:33 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/20 16:24:21 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../includes/header.h"
 
 char		*ft_itoa_u(unsigned long long int n)
 {
@@ -107,7 +107,6 @@ void		print_u(va_list arg, int base)
 {
 	unsigned long long int	num;
 
-	num = 0;
 	if (g_spec->ll == 1)
 		num = va_arg(arg, unsigned long long int);
 	else if (g_spec->l == 1 || g_spec->symb == 'U')

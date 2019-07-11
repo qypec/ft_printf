@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_flags.c                                       :+:      :+:    :+:   */
+/*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/20 13:44:06 by oargrave          #+#    #+#             */
-/*   Updated: 2019/05/20 16:07:20 by yquaro           ###   ########.fr       */
+/*   Created: 2019/05/15 20:44:35 by yquaro            #+#    #+#             */
+/*   Updated: 2019/05/20 16:08:38 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../includes/header.h"
 
-static void	nullify_llhh_bigl(int flag)
+static void				nullify_llhh_bigl(int flag)
 {
 	g_spec->l = 0;
 	g_spec->h = 0;
@@ -21,58 +21,71 @@ static void	nullify_llhh_bigl(int flag)
 	g_spec->big_l = 0;
 	if (flag == 1)
 		g_spec->l = 1;
-	if (flag == 2)
+	else if (flag == 2)
 		g_spec->ll = 1;
-	if (flag == 3)
+	else if (flag == 3)
 		g_spec->big_l = 1;
-	if (flag == 4)
+	else if (flag == 4)
 		g_spec->h = 1;
-	if (flag == 5)
+	else if (flag == 5)
 		g_spec->hh = 1;
 }
 
-void		read_calculatesymb(char c)
-{
-	if (c == '#')
-		g_spec->sharp = 1;
-	if (c == '0')
-		g_spec->zero = 1;
-	if (c == '+')
-		g_spec->plus = 1;
-	if (c == '-')
-		g_spec->minus = 1;
-}
-
-int			read_lh_bigl(char *traverse, int i)
+char					*parse_lh_bigl(char *traverse)
 {
 	if (*traverse == 'L' && g_spec->symb != 'd')
 	{
 		nullify_llhh_bigl(3);
-		i++;
-		return (i);
+		traverse++;
+		return (traverse);
 	}
 	if (*(traverse + 1) == *traverse)
 	{
 		if (*traverse == 'l')
 			nullify_llhh_bigl(2);
-		if (*traverse == 'h')
+		else if (*traverse == 'h')
 			nullify_llhh_bigl(5);
 	}
 	else
 	{
 		if (*traverse == 'l')
 			nullify_llhh_bigl(1);
-		if (*traverse == 'h')
+		else if (*traverse == 'h')
 			nullify_llhh_bigl(4);
 	}
 	if (g_spec->big_l == 1 || g_spec->l == 1 || g_spec->h == 1)
-		i++;
-	if (g_spec->ll == 1 || g_spec->hh == 1)
-		i += 2;
-	return (i);
+		traverse++;
+	else if (g_spec->ll == 1 ||  g_spec->hh == 1)
+		traverse += 2;
+	return (whichsymb(traverse));
 }
 
-void		read_digit(char *traverse, const int flag)
+char					*parse_calculatesymb(char *traverse)
+{
+	if (*traverse == '#')
+	{
+		g_spec->sharp = 1;
+		traverse++;
+	}
+	else if (*traverse == '0')
+	{
+		g_spec->zero = 1;
+		traverse++;
+	}
+	else if (*traverse == '+')
+	{
+		g_spec->plus = 1;
+		traverse++;
+	}
+	else if (*traverse == '-')
+	{
+		g_spec->minus = 1;
+		traverse++;
+	}
+	return (whichsymb(traverse));
+}
+
+char					*parse_digit(char *traverse, const int flag)
 {
 	int		num;
 	int		i;
@@ -82,7 +95,7 @@ void		read_digit(char *traverse, const int flag)
 	i = 0;
 	j = 0;
 	if (ft_isdigit(*traverse) != 1)
-		return ;
+		return (traverse);
 	while (ft_isdigit(traverse[j]) == 1)
 	{
 		i++;
@@ -93,24 +106,20 @@ void		read_digit(char *traverse, const int flag)
 	num = ft_atoi(str);
 	if (flag == WIDTH)
 		g_spec->width = num;
-	if (flag == PRECISION)
+	else if (flag == PRECISION)
 		g_spec->precision = num;
 	ft_strdel(&str);
-	return ;
+	return (traverse + ft_numblen(num));
 }
 
-int			read_width_or_precision(char *traverse, int i, int flag)
+char					*parse_width_or_precision(char *traverse, int flag)
 {
 	if (flag == PRECISION)
 	{
 		g_spec->precision = 0;
-		read_digit(traverse + (++i), PRECISION);
-		i += move_after_digits(traverse + i);
+		traverse = parse_digit(++traverse, flag);
 	}
-	if (flag == WIDTH)
-	{
-		read_digit(traverse + i, WIDTH);
-		i += move_after_digits(traverse + i);
-	}
-	return (i);
+	else if (flag == WIDTH)
+		traverse = parse_digit(traverse, flag);
+	return (whichsymb(traverse));
 }

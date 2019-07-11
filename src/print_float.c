@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   print_float.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/23 19:18:31 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/11 12:02:16 by oargrave         ###   ########.fr       */
+/*   Created: 2019/05/20 13:43:54 by oargrave          #+#    #+#             */
+/*   Updated: 2019/07/11 08:59:17 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "../includes/header.h"
+#include "../includes/ft_float.h"
 
-void	*ft_memalloc(size_t size)
+void assembl_float(va_list arg)
 {
-	void *arr;
+	long double  num;
 
-	arr = malloc(size);
-	if (arr == NULL)
-		return (NULL);
-	else
-		return (ft_memset(arr, 0, size));
+	if (g_spec->symb == 'f' && g_spec->big_l == 0)
+		num = va_arg(arg, double);
+	else if (g_spec->big_l == 1)
+		num = va_arg(arg, long double);
+	// print_float(num);
 }

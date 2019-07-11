@@ -6,11 +6,11 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 20:32:44 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/20 17:31:44 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/05/20 17:35:50 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../includes/header.h"
 #define NO 0
 #define YES 1
 

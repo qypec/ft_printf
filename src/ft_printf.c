@@ -3,37 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:58:05 by oargrave          #+#    #+#             */
-/*   Updated: 2019/05/20 17:34:18 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/11 15:35:32 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../includes/header.h"
 
-// void			print_struct(t_spec	*spec) /* на время отладки */
-// {
-// 	printf("\n");
-// 	printf("symb = %c\n",  g_spec->symb);
-// 	printf("width = %d\n",  g_spec->width);
-// 	printf("space = %d\n",  g_spec->space);
-// 	printf("sharp = %d\n",  g_spec->sharp);
-// 	printf("plus = %d\n",  g_spec->plus);
-// 	printf("minus = %d\n",  g_spec->minus);
-// 	printf("zero = %d\n",  g_spec->zero);
-// 	printf("precision = %d\n",  g_spec->precision);
-// 	printf("L = %d\n",  g_spec->big_l);
-// 	printf("ll = %d\n",  g_spec->ll);
-// 	printf("l = %d\n",  g_spec->l);
-// 	printf("hh = %d\n",  g_spec->hh);
-// 	printf("h = %d\n",  g_spec->h);
-// 	printf("z = %d\n",  g_spec->z);
-// 	printf("j = %d\n",  g_spec->j);
-// 	printf("\n");
-// }
+void			print_struct(t_spec	*spec) /* на время отладки */
+{
+	printf("\n");
+	printf("symb = %c\n",  g_spec->symb);
+	printf("width = %d\n",  g_spec->width);
+	printf("space = %d\n",  g_spec->space);
+	printf("sharp = %d\n",  g_spec->sharp);
+	printf("plus = %d\n",  g_spec->plus);
+	printf("minus = %d\n",  g_spec->minus);
+	printf("zero = %d\n",  g_spec->zero);
+	printf("precision = %d\n",  g_spec->precision);
+	printf("L = %d\n",  g_spec->big_l);
+	printf("ll = %d\n",  g_spec->ll);
+	printf("l = %d\n",  g_spec->l);
+	printf("hh = %d\n",  g_spec->hh);
+	printf("h = %d\n",  g_spec->h);
+	printf("z = %d\n",  g_spec->z);
+	printf("j = %d\n",  g_spec->j);
+	printf("\n");
+}
 
-char					*move_after_specifier(char *traverse)
+char			*move_after_specifier(char *traverse)
 {
 	while (is_cspdioux_bigx_fegbrk(*traverse) != 1 && *traverse != '\0')
 	{
@@ -51,7 +51,7 @@ char					*move_after_specifier(char *traverse)
 	return (traverse);
 }
 
-static char				*take_str_before_persent(char *traverse)
+static char		*take_str_before_persent(char *traverse)
 {
 	while (*traverse != '%' && *traverse != '\0')
 	{
@@ -65,13 +65,11 @@ static char				*take_str_before_persent(char *traverse)
 	return (traverse);
 }
 
-static void				init_gspec(void)
+static void init_gspec()
 {
 	if (g_spec == NULL)
-	{
 		if (!(g_spec = malloc(sizeof(t_spec))))
 			return ;
-	}
 	g_spec->symb = (char)48;
 	g_spec->width = 0;
 	g_spec->space = 0;
@@ -93,12 +91,13 @@ static void				init_gspec(void)
 	g_width->width = 0;
 }
 
-int						ft_printf(const char *format, ...)
+int				ft_printf(const char *format, ...)
 {
-	va_list			arg;
-	char			*traverse;
+	va_list 		arg;
+	t_spec			spec;
+	char 			*traverse;
 	size_t			size;
-
+	
 	if (!(g_width = malloc(sizeof(t_widt))))
 		return (0);
 	init_bufferoutput();
@@ -110,10 +109,11 @@ int						ft_printf(const char *format, ...)
 		if (g_output->error == -1)
 			break ; 
 		init_gspec();
-		traverse = take_str_before_persent(traverse);
+		traverse = take_str_before_persent(traverse); /* берет символы до % */
 		if (*traverse == '\0')
 			break ;
-		traverse = struct_spec(++traverse);
+		traverse = struct_spec(++traverse);  /* записывает в структуру спецификатор */
+		print_struct(&spec);
 		print_arg(traverse, arg);
 	}
 	va_end(arg);

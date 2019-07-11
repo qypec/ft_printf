@@ -3,30 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   print_char.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:42:07 by oargrave          #+#    #+#             */
-/*   Updated: 2019/05/21 19:43:50 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/02 15:28:24 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "header.h"
+#include "../includes/header.h"
 
 void	print_c(va_list arg)
 {
 	char symbol;
 
 	symbol = (char)va_arg(arg, int);
-	if (symbol < 0 || symbol > 127)
-		{
-			g_output->error = -1;
-			return ;
-		}
+	// if (symbol < 0 || symbol > 127)
+	// 	{
+	// 		g_output->error = -1;
+	// 		return ;
+	// 	}
 	if (symbol == 0)
 	{
 		width(1, " ");
 		print_width(1);
 		addsymb_glbuffer(symbol);
+		print_width_end();
+		
 	}
 	else
 	{
@@ -54,11 +56,11 @@ int check_str(char *str)
 	return (1);
 }
 
-static int	print_else(char *str, char *ptr)
+static int	print_else(char *str, char *ptr, char *point)
 {
 	if ((check_str(str) == -1))
 		return (-1);
-	if (g_spec->precision >= 0 && (g_spec->precision < (int)ft_strlen(str)))
+	if (g_spec->precision >= 0 && (g_spec->precision < ft_strlen(str)))
 	{
 		ptr = ft_strnew(g_spec->precision);
 		ptr = ft_strncpy(ft_strnew(g_spec->precision), str, g_spec->precision);
@@ -74,7 +76,7 @@ static int	print_else(char *str, char *ptr)
 }
 
 
-int		print_s(va_list arg, char *str, char *ptr)
+int		print_s(va_list arg, char *str, char *ptr, char *point)
 {
 	str = (char *)va_arg(arg, void *);
 	if (str == NULL)
@@ -94,7 +96,7 @@ int		print_s(va_list arg, char *str, char *ptr)
 	}
 	else
 	{
-		if ((print_else(str, ptr) == -1))
+		if ((print_else(str, ptr, point) == -1))
 			return (-1);
 	}
 	return (0);
@@ -104,14 +106,24 @@ void	print_p(va_list arg)
 {
 	long long int	num;
 	char			*str;
+	unsigned long long a;
 
 	num = va_arg(arg, long long int);
 	if (num < 0)
-		num = -num;
-	str = ft_itoa_base(num, 16);
-	width(num, str);
-	print_width(num);
-	update_glbuffer(str);
+	{
+		a = (unsigned long long) num;
+		str = ft_itoa_base(a, 16);
+		width(a, str);
+		print_width(a);
+	}
+	else
+	{
+		str = ft_itoa_base(num, 16);
+		width(num, str);
+		print_width(num);
+	}
+	if (g_spec->precision != 0 || str[0] != '0')
+		update_glbuffer(str);
 	print_width_end();
 	free(str);
 	return ;
@@ -122,7 +134,7 @@ void	print_char(va_list arg)
 	if (g_spec->symb == 'c')
 		print_c(arg);
 	if (g_spec->symb == 's')
-		print_s(arg, NULL, NULL);
+		print_s(arg, NULL, NULL, NULL);
 	if (g_spec->symb == 'p')
 		print_p(arg);
 	return ;
