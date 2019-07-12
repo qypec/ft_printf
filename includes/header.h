@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ../includes/header.h                                           :+:      :+:    :+:   */
+/*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:42:27 by oargrave          #+#    #+#             */
-/*   Updated: 2019/05/21 20:32:08 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/07/12 15:42:53 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int					print_d(int number);
 void				print_u(va_list arg, int base);
 void				print_width_end();
 void				print_width(long long int num);
+char				*ft_itoa_unbase(unsigned long long value, int base);
 char				*ft_itoa_base(long long int value, int base);
 int					ft_itoa_help(long long int tmp, int base, int flag);
 int					isplay_u(unsigned long long int num);

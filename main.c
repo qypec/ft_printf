@@ -10,20 +10,42 @@
 #include <unistd.h>
 #include <string.h>
 #include <limits.h>
+#include <math.h>
+#include "includes/ft_float.h"
 
 
 //fix parse size + espace + zero + prec:% 05.3d \n\n\n", nb
 
-
-
 int main ()
 {
+<<<<<<< HEAD
 	double		nb;
 	nb = -12547.599;
 	printf ("\nreal\n");
 	printf ("len = |%d|",printf ("%.01s", "")); // "fix parse "%.01s", ""
 	printf ("\nown\n");
 	printf ("len = |%d|",ft_printf ("%.01s", ""));
+=======
+	t_charlnum			*double_ch;
+
+	lnum num;
+	float vaarg = -3.14;
+	long double tmp = vaarg;
+	num.ldouble = tmp;
+	printf("sign = %u\n", num.components.sign);
+	printf("exponent = %llu\n", num.components.exponent);
+	printf("mantisa = %llu\n",	num.components.mantissa);
+	// tmp = pow(2,num.components.exponent - 16383) * (1+(num.components.mantissa / pow(2, 63)));
+	if ((double_ch = (t_charlnum *)malloc(sizeof(t_charlnum))) == NULL)
+		exit(-1);
+	double_ch->mantissa = ft_itoa_unbase(num.components.mantissa, 2);
+	double_ch->exponent = ft_itoa_unbase(num.components.exponent, 2);
+	double_ch->sign = num.components.sign;
+	printf("mantissa_str = %s\n", double_ch->mantissa);
+	printf("expon_str = %s\n", double_ch->exponent);
+	printf("sign = %d\n", double_ch->sign);
+	// printf("total %Lf", tmp);
+>>>>>>> denis
 	return (0);
 }
 
