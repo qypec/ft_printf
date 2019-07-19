@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 15:56:48 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/01 19:04:34 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/02 22:03:29 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strdup(const char *str)
 	int		i;
 
 	i = 0;
+	if (str == NULL)
+		return (NULL);
 	length = ft_strlen(str);
 	new_str = (char *)malloc(sizeof(char) * (length + 1));
 	if (new_str == NULL)

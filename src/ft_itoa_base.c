@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 14:39:37 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/12 15:42:23 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/12 15:44:18 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ static int	ft_itoa_unhelp(unsigned long long tmp, int base, int flag)
 }
 
 char					*ft_itoa_unbase(unsigned long long value, int base)
->>>>>>> denis:src/ft_itoa_base.c
 {
 	int					size;
 	int					flag;

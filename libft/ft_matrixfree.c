@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/08 15:13:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/01 19:04:23 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/11 05:51:30 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	**ft_matrixfree(char ***ret)
 	char	**tmp;
 	int		i;
 
+	if (*ret == NULL)
+		return (NULL);
 	tmp = *ret;
 	i = 0;
 	while (tmp[i] != NULL)

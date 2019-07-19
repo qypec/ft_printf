@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 17:06:02 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/01 19:04:16 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/06/18 00:20:22 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ char		*ft_addsymb(char *str, char c, int num)
 	if (num < 0)
 		return (NULL);
 	len = ft_strlen(str) + num;
-	newstr = (char *)ft_memalloc(len);
+	newstr = (char *)ft_memalloc(sizeof(char) * len);
 	while (i < num)
 	{
 		newstr[i] = c;

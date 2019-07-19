@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 22:33:05 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/01 19:04:17 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/19 18:08:49 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ void	*ft_bzero(void *s, size_t n)
 
 	str = (unsigned char *)s;
 	while (n--)
-		*str++ = '\0';
+		*str++ = '0';
 	return ((void *)str);
 }
