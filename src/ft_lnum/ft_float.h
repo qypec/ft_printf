@@ -1,6 +1,9 @@
 #ifndef FT_FLOAT_H
 # define FT_FLOAT_H
 
+#define LOBYTE(x) ((unsigned char) ((x) & 0xff))
+#define HIBYTE(x) ((unsigned char) ((x) » 8 & 0xff))
+
 typedef union
 {
 	long double		ldouble;
