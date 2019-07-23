@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lnum.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/19 16:28:57 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/19 18:15:09 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/22 16:09:21 by qypec            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ unsigned char			*ft_ldoubleconvert(long double dnum);
 
 void					ft_lnumsub(unsigned char *w, unsigned char *u, \
 							unsigned char *v, int n);
-void					ft_lnumadd(unsigned char *w, unsigned char *u, \
-							unsigned char *v, int n);
+void				ft_lnumadd(unsigned char *w, unsigned char *u, \
+	unsigned char *v, int n);
 void					ft_lnumsmult(unsigned char *w, unsigned char *v, \
 										int num, int n);
 

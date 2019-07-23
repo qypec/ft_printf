@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ldoubleconvert.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 15:59:52 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/19 18:09:37 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/22 16:12:23 by qypec            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ static char				*ldouble_formula(t_charldouble *double_ch)
 {
 	unsigned char		*calculated;
 
-	calculated = (unsigned char *)malloc(sizeof(unsigned char) * (ft_strlen(double_ch->)))
+	if ((calculated = (unsigned char *)ft_memalloc(sizeof(unsigned char) * 500)) == NULL)
+		exit(-1);
+	
 }
 
 // (-1)^sign * 2^(exp - 16383) * (1 + (mantissa / 2^63))
@@ -39,7 +41,7 @@ unsigned char					*ft_ldoubleconvert(long double dnum)
 	double_ch->sign = extend.components.sign;
 	printf("mantissa = %s\n", double_ch->mantissa);
 	printf("exponent = %s\n", double_ch->exponent);
-	calculated = ldouble_formula(double_ch);
+	// calculated = ldouble_formula(double_ch);
 	// ft_ldoubledel(&double_ch);
 	// total_num = bin_to_dec(calculated);
 	// ft_strdel(&calculated);
