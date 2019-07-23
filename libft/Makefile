@@ -6,7 +6,7 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/20 19:26:56 by yquaro            #+#    #+#              #
-#    Updated: 2019/07/23 14:23:17 by yquaro           ###   ########.fr        #
+#    Updated: 2019/07/23 19:25:38 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,20 +59,26 @@ print_echo:
 	$(CC) $(CFLAGS) $< -o $@
 
 $(NAME): $(OBJECTS)
-	make -C ft_list/ all
-	make -C ft_ctime/ all
-	make -C ft_alloc/ all
-	make -C ft_math/ all
-	make -C ft_map/ all
-	make -C ft_buffer/ all
-	ar rc $(NAME) $(OBJECTS)
-	ranlib $(NAME)
-	mv $(NAME) lib/$(NAME)
-	make -C lib/ all
+	@make -C ft_list/ all
+	@make -C ft_ctime/ all
+	@make -C ft_alloc/ all
+	@make -C ft_math/ all
+	@make -C ft_map/ all
+	@make -C ft_buffer/ all
+	@ar rc $(NAME) $(OBJECTS)
+	@ranlib $(NAME)
+	@mv $(NAME) lib/$(NAME)
+	@make -C lib/ all
 
 clean:
-	make -C lib/ clean
-	rm *.o
+	@make -C lib/ clean
+	@make -C ft_list/ clean
+	@make -C ft_ctime/ clean
+	@make -C ft_alloc/ clean
+	@make -C ft_math/ clean
+	@make -C ft_map/ clean
+	@make -C ft_buffer/ clean
+	rm $(OBJECTS)
 
 fclean:
 	@make -C ft_ctime/ fclean
@@ -82,6 +88,7 @@ fclean:
 	@make -C ft_list/ fclean
 	@make -C ft_buffer/ fclean
 	@make -C lib/ clean
-# 	@rm *.o
+	rm $(OBJECTS)
+	rm ../lib/$(NAME)
 
 re: fclean all

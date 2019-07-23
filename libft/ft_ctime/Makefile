@@ -6,7 +6,7 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/01 17:26:14 by yquaro            #+#    #+#              #
-#    Updated: 2019/06/18 02:27:35 by yquaro           ###   ########.fr        #
+#    Updated: 2019/07/23 15:04:08 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,6 +39,8 @@ $(NAME): $(OBJECTS)
 	@ranlib $(NAME)
 	@mv $(NAME) ../lib/$(NAME)
 
+clean:
+	rm $(OBJECTS)
+
 fclean: 
-	@rm ../lib/$(NAME)
-	@rm *.o
+	rm ../lib/$(NAME)
