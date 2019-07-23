@@ -65,7 +65,6 @@ $(NAME): $(OBJECTS)
 	@make -C ft_math/ all
 	@make -C ft_map/ all
 	@make -C ft_buffer/ all
-	@make -C ft_lnum/ all
 	@ar rc $(NAME) $(OBJECTS)
 	@ranlib $(NAME)
 	@mv $(NAME) lib/$(NAME)
@@ -78,7 +77,6 @@ fclean:
 	@make -C ft_map/ fclean
 	@make -C ft_list/ fclean
 	@make -C ft_buffer/ fclean
-	@make -C ft_lnum/ fclean
 	@make -C lib/ fclean
 	@rm *.o
 

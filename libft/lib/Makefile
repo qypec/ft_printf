@@ -6,7 +6,7 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/18 01:54:46 by yquaro            #+#    #+#              #
-#    Updated: 2019/07/12 15:50:35 by yquaro           ###   ########.fr        #
+#    Updated: 2019/07/23 13:50:32 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,6 @@ all:
 	@ar -x libmath.a
 	@ar -x liblist.a
 	@ar -x libbuff.a
-	@ar -x liblnum.a
 	@ar rc $(NAME) *.o
 	@ranlib $(NAME)
 	@rm __.SYMDEF\ SORTED
