@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_buffreload.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/05 14:49:39 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/01 19:04:22 by yquaro           ###   ########.fr       */
+/*   Created: 2019/07/09 13:44:41 by qypec             #+#    #+#             */
+/*   Updated: 2019/07/09 13:50:28 by qypec            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "ft_buffer.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(t_list *elem))
+void					ft_buffreload(t_buff *buff)
 {
-	if (lst == NULL || f == NULL)
-		return ;
-	else
+	if (buff->i == buff->totalsize - 1)
 	{
-		ft_lstiter(lst->next, f);
-		(*f)(lst);
+		buff->totalsize += buff->additional_size;
+		if ((buff->str = ft_realloc(buff->str, buff->totalsize)) == NULL)
+			exit(1);
 	}
 }

@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
+/*   ft_buffdel.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/05 13:51:33 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/01 19:04:22 by yquaro           ###   ########.fr       */
+/*   Created: 2019/07/09 13:51:26 by qypec             #+#    #+#             */
+/*   Updated: 2019/07/09 14:00:20 by qypec            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "ft_buffer.h"
 
-void	ft_lstdelone(t_list **alst, void (*del)(void*, size_t))
+void					ft_buffdel(t_buff **buff)
 {
-	if (alst == NULL)
-		return ;
-	if (del != NULL)
-		del((*alst)->content, (*alst)->content_size);
-	free(*alst);
-	*alst = NULL;
+	ft_strdel(&((*buff)->str));
+	(*buff)->i = 0;
+	(*buff)->totalsize = 0;
+	(*buff)->additional_size = 0;
+	free(*buff);
+	buff = NULL;
 }

@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_realloc.c                                       :+:      :+:    :+:   */
+/*   ft_lstpushback.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 14:55:09 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/01 19:04:31 by yquaro           ###   ########.fr       */
+/*   Created: 2019/07/03 15:23:33 by yquaro            #+#    #+#             */
+/*   Updated: 2019/07/07 06:28:29 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "ft_list.h"
 
-void	*ft_realloc(void *str, size_t size)
+void				ft_lstpushback(t_list **head, t_list *new)
 {
-	unsigned char	*new_str;
-	size_t			length;
-	size_t			i;
+	t_list			*tmp;
 
-	i = 0;
-	new_str = (unsigned char *)str;
-	length = ft_strlen(str) + size + 1;
-	new_str = (unsigned char *)malloc(sizeof(unsigned char) * length);
-	while (new_str[i] != '\0')
-		i++;
-	while (i < length)
+	if (new == NULL)
+		return ;
+	tmp = *head;
+	if (tmp == NULL)
 	{
-		new_str[i] = '\0';
-		i++;
+		*head = new;
+		return ;
 	}
-	new_str[i] = '\0';
-	return (new_str);
+	while (tmp->next != NULL)
+		tmp = tmp->next;
+	tmp->next = new;
 }

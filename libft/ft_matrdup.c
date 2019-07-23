@@ -1,40 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   ft_matrdup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/05 13:10:06 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/01 19:04:23 by yquaro           ###   ########.fr       */
+/*   Created: 2019/06/13 20:30:01 by yquaro            #+#    #+#             */
+/*   Updated: 2019/07/07 06:15:19 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-t_list		*ft_lstnew(void const *content, size_t content_size)
+char					**ft_matrdup(const char **matr)
 {
-	t_list	*new;
+	char				**new;
+	int					i;
 
-	new = (t_list*)malloc(sizeof(t_list));
-	if (new == NULL)
+	i = 0;
+	if ((new = (char **)malloc(sizeof(char *) * \
+			(ft_matrlen(matr) + 1))) == NULL)
 		return (NULL);
-	if (content == NULL)
+	while (matr[i] != NULL)
 	{
-		new->content = NULL;
-		new->content_size = 0;
+		new[i] = ft_strdup(matr[i]);
+		i++;
 	}
-	else
-	{
-		new->content = malloc(content_size);
-		if (content == NULL)
-		{
-			free(new);
-			return (NULL);
-		}
-		ft_memcpy(new->content, content, content_size);
-		new->content_size = content_size;
-	}
-	new->next = NULL;
+	new[i] = NULL;
 	return (new);
 }

@@ -1,23 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.c                                           :+:      :+:    :+:   */
+/*   ft_memdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
+/*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/08 13:38:22 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/02 13:28:34 by oargrave         ###   ########.fr       */
+/*   Created: 2018/12/02 11:35:38 by yquaro            #+#    #+#             */
+/*   Updated: 2019/06/12 10:58:56 by qypec            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "ft_alloc.h"
 
-int		ft_abs(long long int num) // fix denis int -> long long int
+void	ft_memdel(void **ap)
 {
-	if (num == -2147483648)
-		return (-1);
-	else if (num < 0)
-		return (-num);
-	else
-		return (num);
+	if (!ap)
+		return ;
+	free(*ap);
+	*ap = NULL;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 12:29:42 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/11 12:12:15 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/05/05 18:35:54 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	while (i < n)
 	{
 		if (str_src[i] == '\0')
-		{
 			str_dst[i] = '\0';
-			return (str_dst);  // fix  read of size 1
-		}
 		str_dst[i] = str_src[i];
 		i++;
 	}

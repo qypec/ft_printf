@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd.c                                        :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/05 14:14:15 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/03 18:28:44 by yquaro           ###   ########.fr       */
+/*   Created: 2019/07/02 21:30:23 by yquaro            #+#    #+#             */
+/*   Updated: 2019/07/09 15:48:56 by qypec            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "ft_list.h"
 
-void	ft_lstadd(t_list **alst, t_list *new)
+t_list				*ft_lstnew(const char *content)
 {
-	if (alst == NULL || new == NULL)
-		return ;
-	else
-	{
-		new->next = *alst;
-		*alst = new;
-	}
+	t_list				*list;
+
+	if ((list = (t_list *)malloc(sizeof(t_list))) == NULL)
+		return (NULL);
+	list->content = ft_strdup(content);
+	list->next = NULL;
+	return (list);
 }
