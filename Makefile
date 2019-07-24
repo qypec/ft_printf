@@ -6,15 +6,14 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/02 16:16:54 by yquaro            #+#    #+#              #
-#    Updated: 2019/07/24 17:04:14 by yquaro           ###   ########.fr        #
+#    Updated: 2019/07/24 21:27:18 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-
 
 CC = gcc
 CFLAGS = -g -c
 LIBNAME = libftprintf.a
+# PRINTF_H =	-I includes/
 
 all:
 	@make -C libft/ all

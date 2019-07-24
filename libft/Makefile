@@ -5,10 +5,12 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/04/20 19:26:56 by yquaro            #+#    #+#              #
-#    Updated: 2019/07/23 19:25:38 by yquaro           ###   ########.fr        #
+#    Created: 2019/07/24 21:41:43 by yquaro            #+#    #+#              #
+#    Updated: 2019/07/24 21:53:09 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+include make_includes/libft.mk
 
 # (ar rc)
 # The c option makes you create a library if it is not available,
@@ -17,8 +19,6 @@
 # (ranlib)
 # Adds a character index to the archive
 
-CC = gcc
-CFLAGS = -g -c -Wall -Wextra -Werror
 SOURCES = ft_addsymb.c ft_addsymbend.c ft_atoi.c ft_bzero.c ft_matrdup.c \
 			ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c \
 			ft_isspace.c ft_itoa.c ft_matrixfree.c ft_memccpy.c \
@@ -48,15 +48,13 @@ OBJECTS = ft_addsymb.o ft_addsymbend.o ft_atoi.o ft_bzero.o ft_matrdup.o \
 			ft_strsub.o ft_strswap.o ft_strtrim.o ft_tolower.o ft_toupper.o \
 			ft_matrlen.o ft_isempty.o ft_alnumstr.o
 
-NAME = libft.a
+all: print $(SOURCES) $(NAME)
 
-all: $(SOURCES) print_echo $(NAME)
-
-print_echo:
+print:
 	@echo \*\*\* Compiling libft
 
 .c.o:
-	$(CC) $(CFLAGS) $< -o $@
+	$(COMPILING) $< -o $@
 
 $(NAME): $(OBJECTS)
 	@make -C ft_list/ all
