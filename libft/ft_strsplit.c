@@ -3,16 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 14:13:16 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/01 19:04:42 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/06/27 02:09:03 by qypec            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-static const char	*ft_str_find_next(const char *str, char c, int skip)
+static size_t			get_height(const char *str, char c)
+{
+	size_t				height;
+
+	height = 0;
+	while (*str != '\0')
+	{
+		if (*str == c)
+			height++;
+		str++;
+	}
+	return (height + 1);
+}
+
+static const char		*ft_str_find_next(const char *str, char c, int skip)
 {
 	if (skip)
 		while (*str != '\0' && *str == c)
@@ -23,7 +37,7 @@ static const char	*ft_str_find_next(const char *str, char c, int skip)
 	return (str);
 }
 
-char				**ft_strsplit(char const *str, char c)
+char					**ft_strsplit(char const *str, char c)
 {
 	char		**ret;
 	int			i;
@@ -31,7 +45,7 @@ char				**ft_strsplit(char const *str, char c)
 
 	if (str == NULL)
 		return (NULL);
-	ret = (char**)malloc(sizeof(char*) * (ft_height((char *)str, c) + 1));
+	ret = (char**)malloc(sizeof(char*) * (get_height((char *)str, c) + 1));
 	if (ret == NULL)
 		return (NULL);
 	i = 0;

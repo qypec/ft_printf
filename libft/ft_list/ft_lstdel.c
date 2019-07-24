@@ -3,28 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/05 14:01:43 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/01 19:04:21 by yquaro           ###   ########.fr       */
+/*   Created: 2019/07/02 21:38:19 by yquaro            #+#    #+#             */
+/*   Updated: 2019/07/09 15:50:38 by qypec            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "ft_list.h"
 
-void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
+void				default_lstdel(t_list *list)
 {
-	t_list	*tmp;
-	t_list	*lst;
+	list->next = NULL;
+	ft_strdel(&(list->content));
+	free(list);
+	list = NULL;
+}
 
-	if (alst == NULL)
+void					ft_lstdel(t_list **head)
+{
+	t_list				*tmp;
+
+	if (*head == NULL)
 		return ;
-	lst = *alst;
-	while (lst != NULL)
+	tmp = *head;
+	while (tmp->next != NULL)
 	{
-		tmp = lst->next;
-		ft_lstdelone(&lst, del);
-		lst = tmp;
+		if ((*head = ft_lstdelone(*head, tmp)) == NULL)
+			return ;
+		tmp = (*head);
 	}
-	*alst = NULL;
+	default_lstdel(*head);
 }

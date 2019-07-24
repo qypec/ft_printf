@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdel.c                                        :+:      :+:    :+:   */
+/*   ft_mapdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/02 11:44:34 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/01 19:04:33 by yquaro           ###   ########.fr       */
+/*   Created: 2019/06/18 17:18:00 by yquaro            #+#    #+#             */
+/*   Updated: 2019/07/07 06:19:56 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "ft_map.h"
 
-void	ft_strdel(char **as)
+void					ft_mapdel(t_map **map)
 {
-	if (!as)
-		return ;
-	free(*as);
-	*as = NULL;
+	int					i;
+
+	i = 0;
+	while (i < (*map)->size)
+		ht_listdel(&((*map)->head[i++]));
+	free((*map)->head);
+	free(*map);
+	map = NULL;
 }

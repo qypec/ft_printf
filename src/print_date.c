@@ -6,7 +6,7 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 20:41:12 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/20 13:42:47 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/07/24 15:55:23 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,24 @@ static char 	*whatsparam(char *str, char *buff, t_cdate *date)
 
 	len = 0;
 	if (ft_strcmp(buff, "WDA") == 0)
-		str = ft_strglue(str, date->weekday, "\0");
+		ft_strglue(&str, date->weekday, "\0");
 	else if (ft_strcmp(buff, "MNH") == 0)
-		str = ft_strglue(str, date->month, "\0");
+		ft_strglue(&str, date->month, "\0");
 	else if (ft_strcmp(buff, "DD") == 0)
-		str = ft_strglue(str, date->day, "\0");
+		ft_strglue(&str, date->day, "\0");
 	else if (ft_strcmp(buff, "hh") == 0)
-		str = ft_strglue(str, date->hour, "\0");
+		ft_strglue(&str, date->hour, "\0");
 	else if (ft_strcmp(buff, "mm") == 0)
-		str = ft_strglue(str, date->min, "\0");
+		ft_strglue(&str, date->min, "\0");
 	else if (ft_strcmp(buff, "ss") == 0)
-		str = ft_strglue(str, date->sec, "\0");
+		ft_strglue(&str, date->sec, "\0");
 	else if (ft_strcmp(buff, "YYYY") == 0)
-		str = ft_strglue(str, date->year, "\0");
+		ft_strglue(&str, date->year, "\0");
 	else
 	{
 		len = ft_strlen(buff);
 		while (len--)
-			str = ft_strglue(str, "x", "\0");
+			ft_strglue(&str, "x", "\0");
 	}
 	return (str);
 }
@@ -54,7 +54,7 @@ static char		*read_segment_of_date(char *traverse, char *str, t_cdate *date)
 		if (i >= 5)
 		{
 			buff = ft_memcpy(buff, "|...|", 6);
-			str = ft_strglue(str, buff, "\0");
+			ft_strglue(&str, buff, "\0");
 			ft_strdel(&buff);
 			bust_printf(1);
 			return (str);
@@ -130,7 +130,7 @@ void			print_date(char *traverse, va_list arg)
 	date = ft_uctime(&ttime);
 	if ((size = calculate_size(traverse)) > 256)
 	{
-		ft_puterror("ERROR: too big argument with flag %k");
+		ft_putstr("ERROR: too big argument with flag %k");
 		free_uctime(date);
 		return ;
 	}

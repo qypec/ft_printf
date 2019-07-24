@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   ft_buffinit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/08 14:33:56 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/09 14:21:14 by qypec            ###   ########.fr       */
+/*   Created: 2019/07/09 13:11:41 by qypec             #+#    #+#             */
+/*   Updated: 2019/07/09 13:22:04 by qypec            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "ft_buffer.h"
 
-int		ft_isspace(int c)
+t_buff					*ft_buffinit(int size)
 {
-	if (c == 9 || c == 32)
-		return (1);
-	return (0);
+	t_buff				*buff;
+
+	if ((buff = (t_buff *)malloc(sizeof(t_buff))) == NULL)
+		exit(-1);
+	buff->additional_size = size;
+	buff->totalsize = size;
+	if ((buff->str = (char *)ft_memalloc(sizeof(char) * buff->totalsize)) == NULL)
+		exit(-1);
+	buff->i = 0;
+	return (buff);
 }

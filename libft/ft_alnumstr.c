@@ -1,37 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_height.c                                        :+:      :+:    :+:   */
+/*   ft_alnumstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/05 19:57:17 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/01 19:04:17 by yquaro           ###   ########.fr       */
+/*   Created: 2019/07/16 18:08:52 by yquaro            #+#    #+#             */
+/*   Updated: 2019/07/17 17:26:41 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-int		ft_height(char *s, char c)
+int						ft_alnumstr(const char *str)
 {
-	int i;
-	int y;
+	int					i;
 
 	i = 0;
-	y = 0;
-	while (s[i] == c)
-		i++;
-	while (s[i++] != '\0')
+	while (str[i] != '\0')
 	{
-		if (s[i] == c)
-		{
-			y++;
-			while (s[i] == c)
-				i++;
-		}
+		if (!ft_isalnum(str[i]))
+			return (0);
+		i++;
 	}
-	i--;
-	if (s[i - 1] != c)
-		y++;
-	return (y);
+	return (1);
 }

@@ -5,31 +5,24 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/05/01 17:26:14 by yquaro            #+#    #+#              #
-#    Updated: 2019/07/23 15:04:08 by yquaro           ###   ########.fr        #
+#    Created: 2019/06/14 13:54:33 by yquaro            #+#    #+#              #
+#    Updated: 2019/07/23 15:04:15 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# (ar rc)
-# The c option makes you create a library if it is not available,
-# and the r (replace) option replaces old object files with new versions.
-
-# (ranlib)
-# adds a character index to the archive
-
 CC = gcc
 CFLAGS = -g -c -Wall -Wextra -Werror
-SOURCES = ft_uctime.c ft_ctime.c getdata.c getmonth.c get_temporarydata.c \
-			struct_to_str.c
-OBJECTS = ft_uctime.o ft_ctime.o getdata.o getmonth.o get_temporarydata.o \
-			struct_to_str.o
+SOURCES = ft_lstadd.c ft_lstdel.c ft_lstdelone.c ft_lstnew.c ft_lstpushback.c \
+			ft_listsize.c
+OBJECTS = ft_lstadd.o ft_lstdel.o ft_lstdelone.o ft_lstnew.o ft_lstpushback.o \
+			ft_listsize.o
 
-NAME = libctime.a
+NAME = liblist.a
 
 all: $(SOURCES) print_echo $(NAME)
 	
 print_echo:
-	@echo \*\*\* Compiling ft_ctime
+	@echo \*\*\* Compiling ft_list
 
 .c.o:
 	$(CC) $(CFLAGS) $< -o $@

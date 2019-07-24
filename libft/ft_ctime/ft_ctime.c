@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ctime.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 18:59:43 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/04 19:32:48 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/24 15:54:17 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 static char			*glue_str(t_cdate *date, char *str)
 {
-	str = ft_strglue(str, date->weekday, " ");
+	ft_strglue(&str, date->weekday, " ");
 	if (ft_strlen(date->day) == 1)
-		str = ft_strglue(str, date->month, "  ");
+		ft_strglue(&str, date->month, "  ");
 	else
-		str = ft_strglue(str, date->month, " ");
-	str = ft_strglue(str, date->day, " ");
-	str = ft_strglue(str, date->hour, ":");
-	str = ft_strglue(str, date->min, ":");
-	str = ft_strglue(str, date->sec, " ");
-	str = ft_strglue(str, date->year, "\0");
+		ft_strglue(&str, date->month, " ");
+	ft_strglue(&str, date->day, " ");
+	ft_strglue(&str, date->hour, ":");
+	ft_strglue(&str, date->min, ":");
+	ft_strglue(&str, date->sec, " ");
+	ft_strglue(&str, date->year, "\0");
 	return (str);
 }
 
@@ -53,7 +53,7 @@ char				*ft_ctime(const time_t *ttime)
 
 	if (*ttime < 0)
 	{
-		ft_puterror("ERROR: ft_ctime does not work with negative numbers\n");
+		ft_putstr("ERROR: ft_ctime does not work with negative numbers\n");
 		exit(-1);
 	}
 	date = ft_uctime(ttime);

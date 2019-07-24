@@ -1,34 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_matrlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 12:29:42 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/05 18:35:54 by yquaro           ###   ########.fr       */
+/*   Created: 2019/06/13 20:24:22 by yquaro            #+#    #+#             */
+/*   Updated: 2019/07/07 06:15:02 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+size_t					ft_matrlen(const char **matr)
 {
-	unsigned char	*str_dst;
-	unsigned char	*str_src;
-	size_t			i;
+	size_t				len;
 
-	i = 0;
-	str_dst = (unsigned char *)dst;
-	str_src = (unsigned char *)src;
-	if (str_dst == str_src)
-		return (str_dst);
-	while (i < n)
+	len = 0;
+	while (*matr != NULL)
 	{
-		if (str_src[i] == '\0')
-			str_dst[i] = '\0';
-		str_dst[i] = str_src[i];
-		i++;
+		len++;
+		matr++;
 	}
-	return (str_dst);
+	return (len);
 }

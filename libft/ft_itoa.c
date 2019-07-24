@@ -12,7 +12,7 @@
 
 #include "includes/libft.h"
 
-static char		*ft_itoa_neg(int nn)
+static char		*ft_itoa_neg(long long nn)
 {
 	int			len;
 	char		*str;
@@ -37,7 +37,7 @@ static char		*ft_itoa_neg(int nn)
 	return (str);
 }
 
-char			*ft_itoa(int n)
+char			*ft_itoa(long long n)
 {
 	int		len;
 	char	*str;

@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isspace.c                                       :+:      :+:    :+:   */
+/*   ft_buffer.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/08 14:33:56 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/09 14:21:14 by qypec            ###   ########.fr       */
+/*   Created: 2019/07/09 13:10:59 by qypec             #+#    #+#             */
+/*   Updated: 2019/07/09 14:00:11 by qypec            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#ifndef FT_BUFFER_H
+# define FT_BUFFER_H
 
-int		ft_isspace(int c)
+# include "../includes/libft.h"
+
+typedef struct			s_buff
 {
-	if (c == 9 || c == 32)
-		return (1);
-	return (0);
-}
+	char				*str;
+	int					i;
+	int					totalsize;
+	int					additional_size;
+}						t_buff;
+
+t_buff					*ft_buffinit(int size);
+void					ft_buffreload(t_buff *buff);
+void					ft_buffdel(t_buff **buff);
+
+#endif

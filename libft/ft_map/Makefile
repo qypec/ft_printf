@@ -5,31 +5,24 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/05/01 17:26:14 by yquaro            #+#    #+#              #
-#    Updated: 2019/07/23 15:04:08 by yquaro           ###   ########.fr        #
+#    Created: 2019/06/14 13:54:33 by yquaro            #+#    #+#              #
+#    Updated: 2019/07/23 15:04:18 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# (ar rc)
-# The c option makes you create a library if it is not available,
-# and the r (replace) option replaces old object files with new versions.
-
-# (ranlib)
-# adds a character index to the archive
-
 CC = gcc
 CFLAGS = -g -c -Wall -Wextra -Werror
-SOURCES = ft_uctime.c ft_ctime.c getdata.c getmonth.c get_temporarydata.c \
-			struct_to_str.c
-OBJECTS = ft_uctime.o ft_ctime.o getdata.o getmonth.o get_temporarydata.o \
-			struct_to_str.o
+SOURCES = ft_hashfunc.c ft_mapinsert.c ft_mapnew.c ft_putmap.c ht_list.c \
+			ft_mapdelone.c ft_ismapitem.c ft_getvalue.c ft_mapdel.c
+OBJECTS = ft_hashfunc.o ft_mapinsert.o ft_mapnew.o ft_putmap.o ht_list.o \
+			ft_mapdelone.o ft_ismapitem.o ft_getvalue.o ft_mapdel.o
 
-NAME = libctime.a
+NAME = libhashtab.a
 
 all: $(SOURCES) print_echo $(NAME)
 	
 print_echo:
-	@echo \*\*\* Compiling ft_ctime
+	@echo \*\*\* Compiling ft_hashtab
 
 .c.o:
 	$(CC) $(CFLAGS) $< -o $@

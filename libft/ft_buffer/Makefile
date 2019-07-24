@@ -5,31 +5,22 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/05/01 17:26:14 by yquaro            #+#    #+#              #
-#    Updated: 2019/07/23 15:04:08 by yquaro           ###   ########.fr        #
+#    Created: 2019/07/09 13:11:11 by qypec             #+#    #+#              #
+#    Updated: 2019/07/23 19:25:57 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# (ar rc)
-# The c option makes you create a library if it is not available,
-# and the r (replace) option replaces old object files with new versions.
-
-# (ranlib)
-# adds a character index to the archive
-
 CC = gcc
 CFLAGS = -g -c -Wall -Wextra -Werror
-SOURCES = ft_uctime.c ft_ctime.c getdata.c getmonth.c get_temporarydata.c \
-			struct_to_str.c
-OBJECTS = ft_uctime.o ft_ctime.o getdata.o getmonth.o get_temporarydata.o \
-			struct_to_str.o
+SOURCES = ft_buffinit.c ft_buffdel.c ft_buffreload.c
+OBJECTS = ft_buffinit.o ft_buffdel.o ft_buffreload.o
 
-NAME = libctime.a
+NAME = libbuff.a
 
 all: $(SOURCES) print_echo $(NAME)
 	
 print_echo:
-	@echo \*\*\* Compiling ft_ctime
+	@echo \*\*\* Compiling ft_buffer
 
 .c.o:
 	$(CC) $(CFLAGS) $< -o $@
@@ -41,6 +32,6 @@ $(NAME): $(OBJECTS)
 
 clean:
 	rm $(OBJECTS)
-
+	
 fclean: 
 	rm ../lib/$(NAME)

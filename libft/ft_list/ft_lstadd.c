@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memalloc.c                                      :+:      :+:    :+:   */
+/*   ft_lstadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/23 19:18:31 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/11 12:02:16 by oargrave         ###   ########.fr       */
+/*   Created: 2019/07/02 21:29:25 by yquaro            #+#    #+#             */
+/*   Updated: 2019/07/07 06:28:18 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "ft_list.h"
 
-void	*ft_memalloc(size_t size)
+void				ft_lstadd(t_list **alst, t_list *new)
 {
-	void *arr;
-
-	arr = malloc(size);
-	if (arr == NULL)
-		return (NULL);
+	if (new == NULL)
+		return ;
 	else
-		return (ft_memset(arr, 0, size));
+	{
+		new->next = *alst;
+		*alst = new;
+	}
 }

@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_matrixfree.c                                    :+:      :+:    :+:   */
+/*   ft_getvalue.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/08 15:13:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/11 05:51:30 by yquaro           ###   ########.fr       */
+/*   Created: 2019/06/23 18:03:18 by yquaro            #+#    #+#             */
+/*   Updated: 2019/07/07 06:21:45 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "ft_map.h"
 
-char	**ft_matrixfree(char ***ret)
+const char			*ft_getvalue(const t_map *map, const char *key)
 {
-	char	**tmp;
-	int		i;
+	int					hash;
+	int					(*hash_func)(const char *, int);
+	ht_list				*tmp;
 
-	if (*ret == NULL)
+	hash_func = map->hashfunc;
+	hash = hash_func(key, map->size);
+	tmp = map->head[hash];
+	if (tmp == NULL)
 		return (NULL);
-	tmp = *ret;
-	i = 0;
-	while (tmp[i] != NULL)
+	while (tmp != NULL)
 	{
-		free(tmp[i]);
-		i++;
+		if (ft_strcmp((const char *)tmp->key, key) == 0)
+			return ((const char *)tmp->value);
+		if (tmp->next == NULL)
+			break ;
+		tmp = tmp->next;
 	}
-	free(tmp);
-	tmp = NULL;
-	*ret = tmp;
 	return (NULL);
 }

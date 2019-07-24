@@ -3,33 +3,35 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+         #
+#    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/05/02 16:16:54 by yquaro            #+#    #+#              #
-#    Updated: 2019/07/24 15:45:21 by oargrave         ###   ########.fr        #
+#    Created: 2019/06/12 09:44:11 by qypec             #+#    #+#              #
+#    Updated: 2019/07/23 15:04:21 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
-
 CC = gcc
-CFLAGS = -g -c
-LIBNAME = libftprintf.a
+CFLAGS = -g -c -Wall -Wextra -Werror
+SOURCES = ft_abs.c ft_pow.c
+OBJECTS = ft_abs.o ft_pow.o
 
-all:
-	@make -C libft/ all
-	@make -C src/ all
-	@make -C lib/ all
+NAME = libmath.a
+
+all: $(SOURCES) print_echo $(NAME)
+	
+print_echo:
+	@echo \*\*\* Compiling ft_math
+
+.c.o:
+	$(CC) $(CFLAGS) $< -o $@
+
+$(NAME): $(OBJECTS)
+	@ar rc $(NAME) $(OBJECTS)
+	@ranlib $(NAME)
+	@mv $(NAME) ../lib/$(NAME)
 
 clean:
-	@make -C lib/ clean
-	@make -C libft/ clean
-	@make -C src/ clean
+	rm $(OBJECTS)
 
-fclean:
-	@make -C libft/ fclean
-	@make -C src/ fclean
-	@make -C lib/ clean
-	rm $(LIBNAME)
-
-re: fclean all
+fclean: 
+	rm ../lib/$(NAME)

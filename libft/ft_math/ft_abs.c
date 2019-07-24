@@ -1,28 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_numblen.c                                       :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/08 14:41:41 by yquaro            #+#    #+#             */
-/*   Updated: 2019/06/13 15:47:23 by yquaro           ###   ########.fr       */
+/*   Created: 2018/12/08 13:38:22 by yquaro            #+#    #+#             */
+/*   Updated: 2019/06/12 10:58:27 by qypec            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "ft_math.h"
 
-int		ft_numblen(long long n)
+int		ft_abs(int num)
 {
-	int i;
-
-	i = 0;
-	if (n == 0)
-		return (1);
-	while (n != 0)
-	{
-		n /= 10;
-		i++;
-	}
-	return (i);
+	if (num == -2147483648)
+		return (-1);
+	else if (num < 0)
+		return (-num);
+	else
+		return (num);
 }

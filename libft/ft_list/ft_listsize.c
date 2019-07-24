@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memdel.c                                        :+:      :+:    :+:   */
+/*   ft_listsize.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/02 11:35:38 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/01 19:04:26 by yquaro           ###   ########.fr       */
+/*   Created: 2019/07/03 20:30:00 by yquaro            #+#    #+#             */
+/*   Updated: 2019/07/07 06:28:15 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "ft_list.h"
 
-void	ft_memdel(void **ap)
+int					ft_listsize(t_list *head)
 {
-	if (!ap)
-		return ;
-	free(*ap);
-	*ap = NULL;
+	t_list			*tmp;
+	int				len;
+
+	tmp = head;
+	len = 0;
+	while (tmp != NULL)
+	{
+		len++;
+		tmp = tmp->next;
+	}
+	return (len);
 }

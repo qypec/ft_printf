@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_alloc.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 12:29:42 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/05 18:35:54 by yquaro           ###   ########.fr       */
+/*   Created: 2019/06/12 09:13:41 by qypec             #+#    #+#             */
+/*   Updated: 2019/07/07 06:39:55 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#ifndef FT_ALLOC_H
+# define FT_ALLOC_H
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
-{
-	unsigned char	*str_dst;
-	unsigned char	*str_src;
-	size_t			i;
+# include "../includes/libft.h"
 
-	i = 0;
-	str_dst = (unsigned char *)dst;
-	str_src = (unsigned char *)src;
-	if (str_dst == str_src)
-		return (str_dst);
-	while (i < n)
-	{
-		if (str_src[i] == '\0')
-			str_dst[i] = '\0';
-		str_dst[i] = str_src[i];
-		i++;
-	}
-	return (str_dst);
-}
+void							*ft_realloc(void *ptr, size_t newsize);
+void							*ft_memalloc(size_t size);
+void							ft_memdel(void **ap);
+void							ft_strdel(char **as);
+
+#endif
