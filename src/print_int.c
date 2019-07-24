@@ -6,7 +6,7 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:44:01 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/11 11:23:50 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/07/24 14:25:36 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ static void	print_widthtwo(long long int num)
 	if (g_width->space_left > 0)
 	{
 		if (g_spec->plus == 1 && num >= 0 && g_spec->symb != 'o' && g_spec->symb != 'c'
-		&& g_spec->symb != 'p' && g_spec->symb != 'u' && g_spec->symb != 's')
+		&& g_spec->symb != 'p' && g_spec->symb != 'u' && g_spec->symb != 's' && g_spec->symb != 'f')
 			g_width->space_left = g_width->space_left - 1;
 		while (index < g_width->space_left)
 		{
