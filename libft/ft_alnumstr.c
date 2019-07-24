@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_bzero.c                                         :+:      :+:    :+:   */
+/*   ft_alnumstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/27 22:33:05 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/01 19:04:17 by yquaro           ###   ########.fr       */
+/*   Created: 2019/07/16 18:08:52 by yquaro            #+#    #+#             */
+/*   Updated: 2019/07/17 17:26:41 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-void	*ft_bzero(void *s, size_t n)
+int						ft_alnumstr(const char *str)
 {
-	unsigned char *str;
+	int					i;
 
-	str = (unsigned char *)s;
-	while (n--)
-		*str++ = '\0';
-	return ((void *)str);
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (!ft_isalnum(str[i]))
+			return (0);
+		i++;
+	}
+	return (1);
 }

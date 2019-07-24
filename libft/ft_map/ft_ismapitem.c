@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 04:45:31 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/07 06:27:12 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/16 17:07:40 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int						ft_ismapitem(t_map *map, const char *key)
 	int					(*hash_func)(const char *, int);
 	ht_list				**tmp;
 
+	if (key == NULL)
+		return (-1);
 	hash_func = map->hashfunc;
 	hash = hash_func(key, map->size);
 	tmp = &(map->head[hash]);

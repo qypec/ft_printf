@@ -5,27 +5,22 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/06/18 01:54:46 by yquaro            #+#    #+#              #
-#    Updated: 2019/07/23 19:27:07 by yquaro           ###   ########.fr        #
+#    Created: 2019/07/23 14:13:04 by yquaro            #+#    #+#              #
+#    Updated: 2019/07/23 15:04:39 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+NAME = libftprintf.a
 
 all:
-	@echo \*\*\* Reassemblage 
+	@echo \*\*\* Reassemblage
 	@ar -x libft.a
-	@ar -x liballoc.a
-	@ar -x libctime.a
-	@ar -x libhashtab.a
-	@ar -x libmath.a
-	@ar -x liblist.a
-	@ar -x libbuff.a
+	@ar -x printf.a
 	@ar rc $(NAME) *.o
 	@ranlib $(NAME)
-	@rm __.SYMDEF\ SORTED
-	@mv $(NAME) ../../lib/$(NAME)
-	@echo \*\*\* LIBFT COMPLETE!
+	@rm __.SYMDEF*
+	@mv $(NAME) ../$(NAME)
+	@echo \*\*\* LIBFTPRINTF COMPLETE!
 
 clean:
 	rm *.o

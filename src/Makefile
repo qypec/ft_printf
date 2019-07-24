@@ -5,24 +5,30 @@
 #                                                     +:+ +:+         +:+      #
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/06/14 13:54:33 by yquaro            #+#    #+#              #
-#    Updated: 2019/07/23 15:04:15 by yquaro           ###   ########.fr        #
+#    Created: 2019/07/23 14:07:18 by yquaro            #+#    #+#              #
+#    Updated: 2019/07/23 19:24:19 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
-CFLAGS = -g -c -Wall -Wextra -Werror
-SOURCES = ft_lstadd.c ft_lstdel.c ft_lstdelone.c ft_lstnew.c ft_lstpushback.c \
-			ft_listsize.c
-OBJECTS = ft_lstadd.o ft_lstdel.o ft_lstdelone.o ft_lstnew.o ft_lstpushback.o \
-			ft_listsize.o
+CFLAGS = -g -c # -Wall -Wextra -Werror
 
-NAME = liblist.a
+SOURCES = ft_printf.c add_in_glbuffer.c color.c print_arg.c buffer_output.c \
+	print_date.c parse.c struct_spec.c is_it_something.c \
+	print_diu.c ft_itoa_base.c print_char.c print_dl_dll.c print_int.c \
+	print_float.c display_int.c
+
+OBJECTS = ft_printf.o add_in_glbuffer.o color.o print_arg.o buffer_output.o  \
+	print_date.o parse.o struct_spec.o is_it_something.o \
+	print_diu.o ft_itoa_base.o print_char.o print_dl_dll.o print_int.o \
+	print_float.o display_int.o
+
+NAME = printf.a
 
 all: $(SOURCES) print_echo $(NAME)
-	
+
 print_echo:
-	@echo \*\*\* Compiling ft_list
+	@echo \*\*\* Compiling ft_printf
 
 .c.o:
 	$(CC) $(CFLAGS) $< -o $@
@@ -35,5 +41,8 @@ $(NAME): $(OBJECTS)
 clean:
 	rm $(OBJECTS)
 
-fclean: 
+fclean: clean
 	rm ../lib/$(NAME)
+
+
+

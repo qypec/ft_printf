@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: qypec <qypec@student.42.fr>                +#+  +:+       +#+         #
+#    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/09 13:11:11 by qypec             #+#    #+#              #
-#    Updated: 2019/07/09 13:55:19 by qypec            ###   ########.fr        #
+#    Updated: 2019/07/23 19:25:57 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,8 @@ $(NAME): $(OBJECTS)
 	@ranlib $(NAME)
 	@mv $(NAME) ../lib/$(NAME)
 
+clean:
+	rm $(OBJECTS)
+	
 fclean: 
-	@rm ../lib/$(NAME)
-	@rm *.o
+	rm ../lib/$(NAME)

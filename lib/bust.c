@@ -24,3 +24,10 @@ void		bust_printf(int errorcode)
 			\nx is too small segment of date\n\n");
 	}
 }
+
+
+
+
+
+
+
