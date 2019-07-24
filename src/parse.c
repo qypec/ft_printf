@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 20:44:35 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/20 16:08:38 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/24 19:41:05 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ char					*parse_digit(char *traverse, const int flag)
 		i++;
 		j++;
 	}
-	str = (char *)ft_memalloc(i + 1);
+	str = (char *)ft_memalloc(sizeof(char) * (i + 1));
 	str = ft_strncpy(str, traverse, i);
 	num = ft_atoi(str);
 	if (flag == WIDTH)
@@ -109,7 +109,7 @@ char					*parse_digit(char *traverse, const int flag)
 	else if (flag == PRECISION)
 		g_spec->precision = num;
 	ft_strdel(&str);
-	return (traverse + ft_numblen(num));
+	return (traverse + i);
 }
 
 char					*parse_width_or_precision(char *traverse, int flag)

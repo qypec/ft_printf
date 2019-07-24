@@ -6,21 +6,19 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 20:32:44 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/24 17:11:26 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/24 20:20:27 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/header.h"
-#define NO 0
-#define YES 1
 
 int					is_badsymb(char c)
 {
 	if (c == ' ' || c == '.' || c == '0' || c == '+' || c == '-' || \
 		c == '#' ||	c == 'h' || c == 'l' || c == 'L' || c == 'z' || \
 		c == 'j' || ft_isdigit(c) == 1)
-		return (NO);
-	return (YES);
+		return (0);
+	return (1);
 }
 
 char				*whichsymb(char *traverse)
@@ -50,7 +48,7 @@ char				*whichsymb(char *traverse)
 	return (traverse);
 }
 
-static void	lowercase()
+static void			lowercase()
 {
 	if (g_spec->symb == 'O')
 	{
@@ -71,32 +69,37 @@ static void	lowercase()
 		g_spec->l = 1;
 		g_spec->symb = 'd';
 	}
-	
 }
 
-char				*struct_spec(char *traverse)
+void				struct_spec(char **traverse)
 {
-	if (is_badsymb(*traverse))
+	char			*trav;
+
+	trav = *traverse + 1;
+	init_gspec();
+	if (is_badsymb(*trav))
 	{
-		if (is_cspdioux_bigx_fegbrk(*traverse))
+		if (is_cspdioux_bigx_fegbrk(*trav))
 		{
-			g_spec->symb = *traverse;
+			g_spec->symb = *trav;
 			lowercase();
-			return (traverse + 1);
+			*traverse = trav + 1;
+			return ;
 		}
-		return (traverse);
+		*traverse = trav;
+		return ;
 	}
 	else
-		traverse = whichsymb(traverse);
-	if (is_cspdioux_bigx_fegbrk(*traverse))
+		trav = whichsymb(trav);
+	if (is_cspdioux_bigx_fegbrk(*trav))
 	{
-		g_spec->symb = *traverse;
+		g_spec->symb = *trav;
 		lowercase();
-		traverse++;
+		trav++;
 	}
 	if (g_spec->minus == 1)
 		g_spec->zero = 0;
-	return (traverse);
+	*traverse = trav;
 }
 
 char				*parse_spaces(char *traverse)

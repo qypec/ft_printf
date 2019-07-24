@@ -16,7 +16,9 @@
 int main()
 {
 	int nb = 1;
-	printf("%.05d\n", nb);
-	ft_printf("%.05d\n", nb);
+	printf("original:\n");
+	printf("| size = %d |\n", printf("1 -> %.05d\n", nb));
+	printf("my:\n");
+	printf("| size = %d |\n", ft_printf("1 -> %.05d\n", nb));
 	return (0)	;
 }
