@@ -6,7 +6,7 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:58:05 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/11 15:35:32 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/07/23 14:01:51 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int				ft_printf(const char *format, ...)
 		if (*traverse == '\0')
 			break ;
 		traverse = struct_spec(++traverse);  /* записывает в структуру спецификатор */
-		print_struct(&spec);
+		// print_struct(&spec);
 		print_arg(traverse, arg);
 	}
 	va_end(arg);

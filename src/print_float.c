@@ -6,7 +6,7 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:43:54 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/23 13:55:16 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/07/24 10:07:38 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,17 @@
 
 void	print_float(long double num)
 {
-	
+	unsigned long long number;
+	char *str;
+
+	number = (unsigned long long)num;
+	str = ft_itoa_u(number);
+	// printf ("%s", str);
+	printf ("%Lf\n", num);
+	// num = num - number;
+	// printf ("%f\n", num);
+	// printf ("%lu\n", number);
+	// printf ("%lf\n", num);
 }
 
 void assembl_float(va_list arg)
