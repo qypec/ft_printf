@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:58:05 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/11 15:35:32 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/07/24 17:07:17 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,20 +113,15 @@ int				ft_printf(const char *format, ...)
 		if (*traverse == '\0')
 			break ;
 		traverse = struct_spec(++traverse);  /* записывает в структуру спецификатор */
-		print_struct(&spec);
+		// print_struct(&spec);
 		print_arg(traverse, arg);
 	}
 	va_end(arg);
 	if (g_output->error == -1)
-	{
 		size = -1;
-		write (1, g_output->str, g_output->size);
-	}
 	else	
-	{
 		size = g_output->size;
-		write(1, g_output->str, g_output->size);
-	}
+	write (1, g_output->str, g_output->size);
 	free_bufferoutput();
 	free(g_width);
 	free(g_spec);
@@ -134,5 +129,4 @@ int				ft_printf(const char *format, ...)
 	g_width = NULL;
 	g_spec= NULL;
 	return (size);
-	
 }

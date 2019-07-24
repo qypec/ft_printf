@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 19:06:13 by yquaro            #+#    #+#             */
-/*   Updated: 2019/06/10 21:25:20 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/24 16:56:31 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ t_cdate				*ft_uctime(const time_t *ttime)
 
 	if (*ttime < 0)
 	{
-		ft_puterror("ERROR: ft_uctime does not work with negative numbers\n");
+		ft_putstr("ERROR: ft_uctime does not work with negative numbers\n");
 		exit(-1);
 	}
 	res = 0;

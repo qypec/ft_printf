@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 20:41:12 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/23 14:32:40 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/24 16:57:02 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ void			print_date(char *traverse, va_list arg)
 	date = ft_uctime(&ttime);
 	if ((size = calculate_size(traverse)) > 256)
 	{
-		ft_puterror("ERROR: too big argument with flag %k");
+		ft_putstr("ERROR: too big argument with flag %k");
 		free_uctime(date);
 		return ;
 	}

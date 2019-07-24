@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_spec.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 20:32:44 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/20 17:35:50 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/07/24 17:11:26 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,17 @@ int					is_badsymb(char c)
 
 char				*whichsymb(char *traverse)
 {
-	if (is_badsymb(*traverse) == YES)
+	if (is_badsymb(*traverse))
 		return (traverse);
 	else if (*traverse == ' ')
 		traverse = parse_spaces(traverse);
 	else if (*traverse == '.')
 		traverse = parse_width_or_precision(traverse, PRECISION);
-	else if (is_calculatesymb(*traverse) == YES)
+	else if (is_calculatesymb(*traverse))
 		traverse = parse_calculatesymb(traverse);
-	else if (ft_isdigit(*traverse) == YES)
+	else if (ft_isdigit(*traverse))
 		traverse = parse_width_or_precision(traverse, WIDTH);
-	else if (is_lh_bigl(*traverse) == YES)
+	else if (is_lh_bigl(*traverse))
 		traverse = parse_lh_bigl(traverse);
 	else if (*traverse == 'j')
 	{
@@ -76,9 +76,9 @@ static void	lowercase()
 
 char				*struct_spec(char *traverse)
 {
-	if (is_badsymb(*traverse) == YES)
+	if (is_badsymb(*traverse))
 	{
-		if (is_cspdioux_bigx_fegbrk(*traverse) == YES)
+		if (is_cspdioux_bigx_fegbrk(*traverse))
 		{
 			g_spec->symb = *traverse;
 			lowercase();
@@ -88,7 +88,7 @@ char				*struct_spec(char *traverse)
 	}
 	else
 		traverse = whichsymb(traverse);
-	if (is_cspdioux_bigx_fegbrk(*traverse) == YES)
+	if (is_cspdioux_bigx_fegbrk(*traverse))
 	{
 		g_spec->symb = *traverse;
 		lowercase();

@@ -15,8 +15,8 @@
 
 int main()
 {
-	char one[] = "3.140000";
-	char two[] = "3.149999";
-	printf("%.3f\n",3.149999);
+	int nb = 1;
+	printf("%.05d\n", nb);
+	ft_printf("%.05d\n", nb);
 	return (0)	;
 }
