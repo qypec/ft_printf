@@ -6,7 +6,7 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:44:01 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/24 14:25:36 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/07/25 12:32:02 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	width_two(long long int num, char *str)
 	}
 	if (g_spec->space == 1 && num >= 0 && g_spec->symb != 'u'
 	&& g_spec->symb != 'c' && g_spec->symb != 'U' && g_spec->symb != 's' && g_spec->symb != 'o' && g_spec->symb != 'p')
-		if (g_width->space_left <= 0 && g_spec->plus != 1) // fix g_spec->width <= g_width->width || (g_spec->precision >= g_spec->width) 
+		if (g_width->space_left <= 0 && g_spec->plus != 1) 
 		{
 			if (g_spec->zero == 1 && g_spec->precision < 0)
 			{
@@ -89,8 +89,6 @@ void		width(long long int number, char *str)
 
 	num = number;
 	g_width->width = ft_strlen(str);
-	// if (number == 0)
-	// 	g_width->width = 0;
 	number = (g_spec->precision - g_width->width);
 	if (num < 0)
 		g_width->width++;

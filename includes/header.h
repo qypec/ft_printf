@@ -6,7 +6,7 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:42:27 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/25 13:37:30 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/07/25 13:47:19 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ void				free_bufferoutput(void);
 void				addsymb_glbuffer(char c);
 void				update_glbuffer(char *str);
 void				addstr_glbuffer(char *str, size_t size);
-void				print_float(long double num);
+void				print_float(long double num, int i, int j, int size_str);
 void				assembl_float(va_list arg);
 char				*take_color(char *traverse);
 char				*register_x(char *str);
