@@ -6,20 +6,18 @@
 #    By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/02 16:16:54 by yquaro            #+#    #+#              #
-#    Updated: 2019/07/24 15:45:21 by oargrave         ###   ########.fr        #
+#    Updated: 2019/07/25 13:38:59 by oargrave         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-
-CC = gcc
-CFLAGS = -g -c
-LIBNAME = libftprintf.a
+include make_includes/printf.mk
 
 all:
 	@make -C libft/ all
 	@make -C src/ all
 	@make -C lib/ all
+	gcc -g main.c -L. -lftprintf -o ft_printf 
 
 clean:
 	@make -C lib/ clean
@@ -29,7 +27,8 @@ clean:
 fclean:
 	@make -C libft/ fclean
 	@make -C src/ fclean
-	@make -C lib/ clean
-	rm $(LIBNAME)
+	@make -C lib/ fclean
+	rm *.o
+	rm *.a
 
 re: fclean all

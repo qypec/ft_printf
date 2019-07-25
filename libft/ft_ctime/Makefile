@@ -6,19 +6,12 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/01 17:26:14 by yquaro            #+#    #+#              #
-#    Updated: 2019/07/23 15:04:08 by yquaro           ###   ########.fr        #
+#    Updated: 2019/07/25 03:43:29 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# (ar rc)
-# The c option makes you create a library if it is not available,
-# and the r (replace) option replaces old object files with new versions.
+include ../make_includes/libft.mk
 
-# (ranlib)
-# adds a character index to the archive
-
-CC = gcc
-CFLAGS = -g -c -Wall -Wextra -Werror
 SOURCES = ft_uctime.c ft_ctime.c getdata.c getmonth.c get_temporarydata.c \
 			struct_to_str.c
 OBJECTS = ft_uctime.o ft_ctime.o getdata.o getmonth.o get_temporarydata.o \
@@ -26,13 +19,13 @@ OBJECTS = ft_uctime.o ft_ctime.o getdata.o getmonth.o get_temporarydata.o \
 
 NAME = libctime.a
 
-all: $(SOURCES) print_echo $(NAME)
+all: print $(SOURCES) $(NAME)
 	
-print_echo:
+print:
 	@echo \*\*\* Compiling ft_ctime
 
 .c.o:
-	$(CC) $(CFLAGS) $< -o $@
+	$(COMPILING) $< -o $@
 
 $(NAME): $(OBJECTS)
 	@ar rc $(NAME) $(OBJECTS)
@@ -40,7 +33,4 @@ $(NAME): $(OBJECTS)
 	@mv $(NAME) ../lib/$(NAME)
 
 clean:
-	rm $(OBJECTS)
-
-fclean: 
-	rm ../lib/$(NAME)
+	rm *.o

@@ -6,7 +6,7 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:42:27 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/24 13:03:15 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/07/25 13:37:30 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <time.h>
+# define END_OF_STRING 1
 # define PRECISION	1
 # define WIDTH		2
 # define TAB  "0123456789abcdef"
@@ -71,6 +72,7 @@ typedef struct		s_spec
 struct s_width		*g_width;
 struct s_output		*g_output;
 struct s_spec		*g_spec;
+
 long long int		reduction_signed(long long int num, unsigned long z);
 unsigned long long	reduction_unsigned(unsigned long long int num);
 void				width(long long number, char *str);
@@ -90,7 +92,7 @@ int					isplay_u(unsigned long long int num);
 void				display_int(long long int num, int base);
 void				assembl_int(va_list arg, int base);
 void				struct_specifier(char *traverse);
-char				*struct_spec(char *traverse);
+void				struct_spec(char **traverse);
 void				print_char(va_list arg);
 int					is_cspdioux_bigx_fegbrk(char c);
 int					is_lh_bigl(char c);
@@ -128,4 +130,6 @@ int					lenbase(unsigned long long int num, int base);
 void				sign_x(long long int num);
 void				sign(long long int num);
 void				ft_rounding(char *number, int size_result);
+void				init_gspec(void);
+void				gspecfree(void);
 #endif

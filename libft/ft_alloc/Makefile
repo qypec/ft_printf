@@ -6,24 +6,24 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/12 09:13:41 by qypec             #+#    #+#              #
-#    Updated: 2019/07/23 19:25:49 by yquaro           ###   ########.fr        #
+#    Updated: 2019/07/25 03:45:02 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
-CFLAGS = -g -c -Wall -Wextra -Werror
+include ../make_includes/libft.mk
+
 SOURCES = ft_realloc.c ft_memalloc.c ft_memdel.c ft_strdel.c
 OBJECTS = ft_realloc.o ft_memalloc.o ft_memdel.o ft_strdel.o
 
 NAME = liballoc.a
 
-all: $(SOURCES) print_echo $(NAME)
+all: print $(SOURCES) $(NAME)
 	
-print_echo:
+print:
 	@echo \*\*\* Compiling ft_alloc
 
 .c.o:
-	$(CC) $(CFLAGS) $< -o $@
+	$(COMPILING) $< -o $@
 
 $(NAME): $(OBJECTS)
 	@ar rc $(NAME) $(OBJECTS)
@@ -31,7 +31,4 @@ $(NAME): $(OBJECTS)
 	@mv $(NAME) ../lib/$(NAME)
 
 clean:
-	rm $(OBJECTS)
-
-fclean: clean
-	rm ../lib/$(NAME)
+	rm *.o

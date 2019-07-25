@@ -6,24 +6,24 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/12 09:44:11 by qypec             #+#    #+#              #
-#    Updated: 2019/07/23 15:04:21 by yquaro           ###   ########.fr        #
+#    Updated: 2019/07/25 03:45:26 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
-CFLAGS = -g -c -Wall -Wextra -Werror
+include ../make_includes/libft.mk
+
 SOURCES = ft_abs.c ft_pow.c
 OBJECTS = ft_abs.o ft_pow.o
 
 NAME = libmath.a
 
-all: $(SOURCES) print_echo $(NAME)
+all: print $(SOURCES) $(NAME)
 	
-print_echo:
+print:
 	@echo \*\*\* Compiling ft_math
 
 .c.o:
-	$(CC) $(CFLAGS) $< -o $@
+	$(COMPILING) $< -o $@
 
 $(NAME): $(OBJECTS)
 	@ar rc $(NAME) $(OBJECTS)
@@ -31,7 +31,4 @@ $(NAME): $(OBJECTS)
 	@mv $(NAME) ../lib/$(NAME)
 
 clean:
-	rm $(OBJECTS)
-
-fclean: 
-	rm ../lib/$(NAME)
+	rm *.o

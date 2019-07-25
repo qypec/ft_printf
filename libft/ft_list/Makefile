@@ -6,12 +6,12 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/14 13:54:33 by yquaro            #+#    #+#              #
-#    Updated: 2019/07/23 15:04:15 by yquaro           ###   ########.fr        #
+#    Updated: 2019/07/25 03:44:06 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
-CFLAGS = -g -c -Wall -Wextra -Werror
+include ../make_includes/libft.mk
+
 SOURCES = ft_lstadd.c ft_lstdel.c ft_lstdelone.c ft_lstnew.c ft_lstpushback.c \
 			ft_listsize.c
 OBJECTS = ft_lstadd.o ft_lstdel.o ft_lstdelone.o ft_lstnew.o ft_lstpushback.o \
@@ -19,13 +19,13 @@ OBJECTS = ft_lstadd.o ft_lstdel.o ft_lstdelone.o ft_lstnew.o ft_lstpushback.o \
 
 NAME = liblist.a
 
-all: $(SOURCES) print_echo $(NAME)
+all: print $(SOURCES) $(NAME)
 	
-print_echo:
+print:
 	@echo \*\*\* Compiling ft_list
 
 .c.o:
-	$(CC) $(CFLAGS) $< -o $@
+	$(COMPILING) $< -o $@
 
 $(NAME): $(OBJECTS)
 	@ar rc $(NAME) $(OBJECTS)
@@ -33,7 +33,4 @@ $(NAME): $(OBJECTS)
 	@mv $(NAME) ../lib/$(NAME)
 
 clean:
-	rm $(OBJECTS)
-
-fclean: 
-	rm ../lib/$(NAME)
+	rm *.o
