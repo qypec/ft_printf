@@ -11,12 +11,12 @@
 #include <math.h>
 
 
-//fix parse size + espace + zero + prec:% 05.3d \n\n\n", nb
-
 int main()
 {
 	char one[] = "3.140000";
-	char two[] = "3.149999";
-	printf("%.3f\n",3.149999);
+	char two[] = "333333333333333333.14999964745545456";
+	ft_printf("%f\n", -1.42);
+	printf("\n");
+	printf("%f\n", -1.42);
 	return (0)	;
 }

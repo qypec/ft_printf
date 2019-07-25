@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ctime.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 18:59:43 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/07 06:30:57 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/25 10:57:29 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ char				*ft_ctime(const time_t *ttime)
 
 	if (*ttime < 0)
 	{
-		ft_puterror("ERROR: ft_ctime does not work with negative numbers\n");
+		ft_putstr("ERROR: ft_ctime does not work with negative numbers\n");
 		exit(-1);
 	}
 	date = ft_uctime(ttime);

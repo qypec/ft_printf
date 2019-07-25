@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:42:27 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/11 18:44:03 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/24 13:03:15 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,4 +127,5 @@ int					ft_numblen_u(unsigned long long int n);
 int					lenbase(unsigned long long int num, int base);
 void				sign_x(long long int num);
 void				sign(long long int num);
+void				ft_rounding(char *number, int size_result);
 #endif
