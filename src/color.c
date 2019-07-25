@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 14:23:51 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 22:45:42 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/25 23:07:52 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void			take_color(char **traverse)
 	int		n;
 	int		i;
 
+	init_color();
 	trav = *traverse;
 	if ((n = check_param(trav)) == 0)
 		return ;
@@ -63,4 +64,5 @@ void			take_color(char **traverse)
 	}
 	update_glbuffer(ft_mapvalue(g_color, buff));
 	*traverse = trav + n + 1;
+	ft_mapdel(&g_color);
 }

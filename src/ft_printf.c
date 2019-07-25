@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:58:05 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/25 22:31:55 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/25 23:07:57 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,6 @@ static void			totalfree(void)
 	free_bufferoutput();
 	widthfree();
 	gspecfree();
-	ft_mapdel(&g_color);
 }
 
 int					ft_printf(const char *format, ...)
@@ -81,7 +80,6 @@ int					ft_printf(const char *format, ...)
 	
 	if (!(traverse = (char *)format))
 		return (0);
-	init_color();
 	init_bufferoutput();
 	va_start(arg, (char *)format);
 	while (*traverse != '\0')
