@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/14 16:30:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/07 06:14:55 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/25 22:15:24 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 static void				default_del(ht_list *list)
 {
 	list->next = NULL;
-	ft_strdel(&(list->key));
-	ft_strdel((char **)&(list->value));
+	// ft_strdel(&(list->key));
+	// ft_strdel((char **)&(list->value));
+	list->key = NULL;
+	list->value = NULL;
 	free(list);
 	list = NULL;
 }

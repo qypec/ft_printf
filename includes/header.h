@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:42:27 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/25 19:52:40 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/25 22:29:59 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,15 @@
 # define NULL_SIZE 7
 # define RESERVE 15
 # define CONST_WIDRTH_DOUBLE 6
-# define COLOR_RED "\x1b[31m"
-# define COLOR_GREEN "\x1b[32m"
-# define COLOR_YELLOW "\x1b[33m"
-# define COLOR_BLUE "\x1b[34m"
-# define COLOR_MAGENTA "\x1b[35m"
-# define COLOR_CYAN "\x1b[36m"
-# define COLOR_RESET "\x1b[0m"
-# define COLOR_SIZE 5
+# define RED_COLOR_CODE "\x1b[31m"
+# define GREEN_COLOR_CODE "\x1b[32m"
+# define YELLOW_COLOR_CODE "\x1b[33m"
+# define BLUE_COLOR_CODE "\x1b[34m"
+# define MAGENTA_COLOR_CODE "\x1b[35m"
+# define CYAN_COLOR_CODE "\x1b[36m"
+# define RESET_COLOR_CODE "\x1b[0m"
+# define COLOR_CODE_SIZE 5
+# define MAX_COLOR_NAME_SIZE 8
 
 typedef struct		s_width
 {
@@ -73,6 +74,7 @@ typedef struct		s_spec
 struct s_width		*g_width;
 struct s_output		*g_output;
 struct s_spec		*g_spec;
+t_map				*g_color;
 
 long long int		reduction_signed(long long int num, unsigned long z);
 unsigned long long	reduction_unsigned(unsigned long long int num);
@@ -121,11 +123,11 @@ void				is_it_buffer_overflow(size_t size);
 void				add_memory(size_t size);
 void				free_bufferoutput(void);
 void				addsymb_glbuffer(char c);
-void				update_glbuffer(char *str);
+void				update_glbuffer(const char *str);
 void				addstr_glbuffer(char *str, size_t size);
 void				print_float(long double num, int i, int j, int size_str);
 void				assembl_float(va_list arg);
-char				*take_color(char *traverse);
+void				take_color(char **traverse);
 char				*register_x(char *str);
 int					ft_numblen_u(unsigned long long int n);
 int					lenbase(unsigned long long int num, int base);
@@ -138,5 +140,7 @@ void				gspecfree(void);
 
 void				init_width(void);
 void				widthfree(void);
+
+void				init_color(void);
 
 #endif

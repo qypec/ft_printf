@@ -41,7 +41,7 @@ int						ft_hashfunc(const char *str, int size);
 
 t_map					*ft_mapnew(void *hashfunc_ptr, int size);
 int						ft_ismapitem(t_map *map, const char *key);
-const char				*ft_getvalue(const t_map *map, const char *key);
+const char				*ft_mapvalue(const t_map *map, const char *key);
 void					ft_mapinsert(t_map *map, const char *key, \
 										const void *value);
 void					ft_mapdelone(t_map *map, const char *key);

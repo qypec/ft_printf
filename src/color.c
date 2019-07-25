@@ -6,11 +6,23 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 14:23:51 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:39:09 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/25 22:45:42 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
+
+void				init_color(void)
+{
+	g_color = ft_mapnew(NULL, 20);
+	ft_mapinsert(g_color, "reset", RESET_COLOR_CODE);
+	ft_mapinsert(g_color, "red", RED_COLOR_CODE);
+	ft_mapinsert(g_color, "green", GREEN_COLOR_CODE);
+	ft_mapinsert(g_color, "yellow", YELLOW_COLOR_CODE);
+	ft_mapinsert(g_color, "blue", BLUE_COLOR_CODE);
+	ft_mapinsert(g_color, "magenta", MAGENTA_COLOR_CODE);
+	ft_mapinsert(g_color, "cyan", CYAN_COLOR_CODE);
+}
 
 static int		check_param(char *traverse)
 {
@@ -23,63 +35,32 @@ static int		check_param(char *traverse)
 	{
 		counter++;
 		i++;
-		if (counter > 8)
+		if (counter > MAX_COLOR_NAME_SIZE)
 			return (0);
 	}
 	if (traverse[i] == '\0')
 		return (0);
-	return (1);
+	return (counter);
 }
 
-char			*take_color(char *traverse)
+void			take_color(char **traverse)
 {
-	char	buff[8];
+	char	*trav;
+	char	buff[MAX_COLOR_NAME_SIZE];
 	int		counter;
+	int		n;
 	int		i;
 
-	i = 1;
-	if (check_param(traverse) == 0)
-		return (traverse);
-	counter = 0;
-	ft_bzero(&buff, 8);
-	while (traverse[i] != '}')
-		buff[counter++] = traverse[i++];
-	if (ft_strcmp((const char *)&buff, "reset") == 0)
+	trav = *traverse;
+	if ((n = check_param(trav)) == 0)
+		return ;
+	ft_strncpy(buff, trav + 1, n - 1);
+	if (ft_ismapitem(g_color, buff) == -1)
 	{
-		addstr_glbuffer(COLOR_RESET, COLOR_SIZE - 1);
-		return (traverse + i + 1);
+		addsymb_glbuffer('{');
+		*traverse = trav + 1;
+		return ;
 	}
-	else if (ft_strcmp((const char *)&buff, "red") == 0)
-	{
-		addstr_glbuffer(COLOR_RED, COLOR_SIZE);
-		return (traverse + i + 1);
-	}
-	else if (ft_strcmp((const char *)&buff, "blue") == 0)
-	{
-		addstr_glbuffer(COLOR_BLUE, COLOR_SIZE);
-		return (traverse + i + 1);
-	}
-	else if (ft_strcmp((const char *)&buff, "green") == 0)
-	{
-		addstr_glbuffer(COLOR_GREEN, COLOR_SIZE);
-		return (traverse + i + 1);
-	}
-	else if (ft_strcmp((const char *)&buff, "yellow") == 0)
-	{
-		addstr_glbuffer(COLOR_YELLOW, COLOR_SIZE);
-		return (traverse + i + 1);
-	}
-	else if (ft_strcmp((const char *)&buff, "magenta") == 0)
-	{
-		addstr_glbuffer(COLOR_MAGENTA, COLOR_SIZE);
-		return (traverse + i + 1);
-	}
-	else if (ft_strcmp((const char *)&buff, "cyan") == 0)
-	{
-		addstr_glbuffer(COLOR_CYAN, COLOR_SIZE);
-		return (traverse + i + 1);
-	}
-	else
-		return (traverse);
-	return (traverse + i + 1);
+	update_glbuffer(ft_mapvalue(g_color, buff));
+	*traverse = trav + n + 1;
 }

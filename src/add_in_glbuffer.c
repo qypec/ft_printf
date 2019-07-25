@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:32:07 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:39:07 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/25 22:06:05 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void		addsymb_glbuffer(char c)
 	g_output->size += 1;
 }
 
-void		update_glbuffer(char *str)
+void		update_glbuffer(const char *str)
 {
 	size_t	size;
 
