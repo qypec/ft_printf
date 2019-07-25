@@ -7,9 +7,8 @@ void ft_rounding(char *result, int size_result)
 	int transfer;
 
 	transfer = 0;
-
 	index = 0;
-	if (result[size_result - 2] >= 54 || (result[size_result - 2] == 53 && result[size_result - 1] >= 54 ))
+	if (result[size_result - 2] >= 53 || (result[size_result - 2] == 53 && result[size_result - 1] >= 54))
 			transfer = 1;
 	result[size_result - 2] = '\0';
 	size_result -= 3;
@@ -22,16 +21,16 @@ void ft_rounding(char *result, int size_result)
 				result[size_result] = 48;
 				transfer = 1;
 			}
-			else if (result[size_result] != 46)
+			else if (result[size_result] >= 48 && result[size_result] <= 57)
 			{
 				result[size_result] = result[size_result] + transfer;
 				transfer = 0;
 			}
-		
+			if (result[size_result] == 46 && g_spec->precision == 0)
+				result[size_result] = '\0';
 		}
 		size_result--;
 	}
 	if (transfer == 1)
-		addsymb_glbuffer(49);
-
+			addsymb_glbuffer(49);
 }

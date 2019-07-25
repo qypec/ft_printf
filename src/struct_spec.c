@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_spec.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 20:32:44 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/24 21:23:21 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/25 17:49:59 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ void				struct_spec(char **traverse)
 	char			*trav;
 
 	trav = *traverse + 1;
-	init_gspec();
 	if (is_badsymb(*trav))
 	{
 		if (is_cspdioux_bigx_fegbrk(*trav))

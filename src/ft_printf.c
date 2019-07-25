@@ -6,7 +6,7 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:58:05 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/25 13:38:18 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/07/25 19:02:22 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,14 +77,16 @@ int					ft_printf(const char *format, ...)
 	char 			*traverse;
 	size_t			size;
 	
-	if (!(g_width = malloc(sizeof(t_widt))))
+	if (!(g_width = malloc(sizeof(t_widt)))) // otdel funs
 		return (0);
 	if (!(traverse = (char *)format))
 		return (0);
 	init_bufferoutput();
+	g_spec = NULL;
 	va_start(arg, (char *)format);
 	while (*traverse != '\0')
 	{
+		init_gspec();
 		if (g_output->error == -1)
 			break ; 
 		if (take_str_before_persent(&traverse) == END_OF_STRING) /* берет символы до % */

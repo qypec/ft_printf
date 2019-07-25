@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gspec.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 20:00:19 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/24 20:03:55 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/25 17:54:47 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void 		init_gspec(void)
 
 void		gspecfree(void)
 {
+	if (g_spec == NULL)
+		return ;
 	g_spec->symb = 0;
 	g_spec->width = 0;
 	g_spec->space = 0;
