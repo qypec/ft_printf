@@ -6,11 +6,11 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/09 13:11:11 by qypec             #+#    #+#              #
-#    Updated: 2019/07/25 03:42:48 by yquaro           ###   ########.fr        #
+#    Updated: 2019/07/25 17:30:15 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-include ../make_includes/libft.mk
+include ../includes/libft.mk
 
 SOURCES = ft_buffinit.c ft_buffdel.c ft_buffreload.c
 OBJECTS = ft_buffinit.o ft_buffdel.o ft_buffreload.o
@@ -31,5 +31,8 @@ $(NAME): $(OBJECTS)
 	@mv $(NAME) ../lib/$(NAME)
 
 clean:
-	rm *.o
+	@rm -f $(OBJECTS)
+
+fclean: clean
+	@rm -f ../lib/$(NAME)
 	

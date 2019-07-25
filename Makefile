@@ -3,15 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+         #
+#    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/02 16:16:54 by yquaro            #+#    #+#              #
-#    Updated: 2019/07/25 13:38:59 by oargrave         ###   ########.fr        #
+#    Updated: 2019/07/25 17:19:33 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-
-include make_includes/printf.mk
+include includes/printf.mk
 
 all:
 	@make -C libft/ all
@@ -24,11 +23,11 @@ clean:
 	@make -C libft/ clean
 	@make -C src/ clean
 
-fclean:
+fclean: clean
 	@make -C libft/ fclean
 	@make -C src/ fclean
 	@make -C lib/ fclean
-	rm *.o
-	rm *.a
+	@rm -f $(NAME)
+	@rm -f $(EXECUTABLE)
 
 re: fclean all

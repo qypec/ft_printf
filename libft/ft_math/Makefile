@@ -6,11 +6,11 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/12 09:44:11 by qypec             #+#    #+#              #
-#    Updated: 2019/07/25 03:45:26 by yquaro           ###   ########.fr        #
+#    Updated: 2019/07/25 17:10:30 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-include ../make_includes/libft.mk
+include ../includes/libft.mk
 
 SOURCES = ft_abs.c ft_pow.c
 OBJECTS = ft_abs.o ft_pow.o
@@ -31,4 +31,7 @@ $(NAME): $(OBJECTS)
 	@mv $(NAME) ../lib/$(NAME)
 
 clean:
-	rm *.o
+	@rm -f $(OBJECTS)
+
+fclean: clean
+	@rm -f ../lib/$(NAME)

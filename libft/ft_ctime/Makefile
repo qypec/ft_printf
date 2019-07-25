@@ -6,11 +6,11 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/01 17:26:14 by yquaro            #+#    #+#              #
-#    Updated: 2019/07/25 03:43:29 by yquaro           ###   ########.fr        #
+#    Updated: 2019/07/25 17:30:14 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-include ../make_includes/libft.mk
+include ../includes/libft.mk
 
 SOURCES = ft_uctime.c ft_ctime.c getdata.c getmonth.c get_temporarydata.c \
 			struct_to_str.c
@@ -33,4 +33,7 @@ $(NAME): $(OBJECTS)
 	@mv $(NAME) ../lib/$(NAME)
 
 clean:
-	rm *.o
+	@rm -f $(OBJECTS)
+
+fclean: clean
+	@rm -f ../lib/$(NAME)

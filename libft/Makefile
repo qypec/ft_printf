@@ -6,11 +6,11 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/24 21:41:43 by yquaro            #+#    #+#              #
-#    Updated: 2019/07/25 03:51:19 by yquaro           ###   ########.fr        #
+#    Updated: 2019/07/25 17:30:19 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-include make_includes/libft.mk
+include includes/libft.mk
 
 # (ar rc)
 # The c option makes you create a library if it is not available,
@@ -76,9 +76,16 @@ clean:
 	@make -C ft_math/ clean
 	@make -C ft_map/ clean
 	@make -C ft_buffer/ clean
-	rm *.o
+	@rm -f $(OBJECTS)
 
 fclean: clean
 	@make -C lib/ fclean
+	@make -C ft_list/ fclean
+	@make -C ft_ctime/ fclean
+	@make -C ft_alloc/ fclean
+	@make -C ft_math/ fclean
+	@make -C ft_map/ fclean
+	@make -C ft_buffer/ fclean
+	@rm -f ../lib/$(NAME)
 
 re: fclean all

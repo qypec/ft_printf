@@ -5,3 +5,4 @@ test*.c
 /a.out
 /ft_printf
 /libftprintf.a
+/*.dSYM

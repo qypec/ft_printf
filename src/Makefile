@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+         #
+#    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/23 14:07:18 by yquaro            #+#    #+#              #
-#    Updated: 2019/07/25 13:42:28 by oargrave         ###   ########.fr        #
+#    Updated: 2019/07/25 17:04:50 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-include ../make_includes/printf.mk
+include ../includes/printf.mk
 
 SOURCES = ft_printf.c add_in_glbuffer.c color.c print_arg.c buffer_output.c \
 	print_date.c parse.c struct_spec.c is_it_something.c \
@@ -38,9 +38,10 @@ $(NAME): $(OBJECTS)
 	@mv $(NAME) ../lib/$(NAME)
 
 clean:
-	@rm *.o
+	@rm -f $(OBJECTS)
 
 fclean: clean
+	@rm -f ../lib/$(NAME)
 
 
 

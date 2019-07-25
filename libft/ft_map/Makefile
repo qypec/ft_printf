@@ -6,11 +6,11 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/14 13:54:33 by yquaro            #+#    #+#              #
-#    Updated: 2019/07/25 03:44:55 by yquaro           ###   ########.fr        #
+#    Updated: 2019/07/25 17:30:12 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-include ../make_includes/libft.mk
+include ../includes/libft.mk
 
 SOURCES = ft_hashfunc.c ft_mapinsert.c ft_mapnew.c ft_putmap.c ht_list.c \
 			ft_mapdelone.c ft_ismapitem.c ft_getvalue.c ft_mapdel.c
@@ -33,4 +33,7 @@ $(NAME): $(OBJECTS)
 	@mv $(NAME) ../lib/$(NAME)
 
 clean:
-	rm *.o
+	@rm -f $(OBJECTS)
+
+fclean: clean
+	@rm -f ../lib/$(NAME)

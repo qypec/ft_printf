@@ -1,4 +1,3 @@
-
 # Base variables for libft library
 
 CC = gcc
