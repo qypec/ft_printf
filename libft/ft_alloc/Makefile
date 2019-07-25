@@ -6,7 +6,7 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/12 09:13:41 by qypec             #+#    #+#              #
-#    Updated: 2019/07/24 21:53:20 by yquaro           ###   ########.fr        #
+#    Updated: 2019/07/25 03:45:02 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,9 +17,9 @@ OBJECTS = ft_realloc.o ft_memalloc.o ft_memdel.o ft_strdel.o
 
 NAME = liballoc.a
 
-all: $(SOURCES) print_echo $(NAME)
+all: print $(SOURCES) $(NAME)
 	
-print_echo:
+print:
 	@echo \*\*\* Compiling ft_alloc
 
 .c.o:
@@ -31,7 +31,4 @@ $(NAME): $(OBJECTS)
 	@mv $(NAME) ../lib/$(NAME)
 
 clean:
-	rm $(OBJECTS)
-
-fclean: clean
-	rm ../lib/$(NAME)
+	rm *.o

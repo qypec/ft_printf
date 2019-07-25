@@ -6,7 +6,7 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/23 14:13:04 by yquaro            #+#    #+#              #
-#    Updated: 2019/07/23 15:04:39 by yquaro           ###   ########.fr        #
+#    Updated: 2019/07/25 05:07:46 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,4 +23,7 @@ all:
 	@echo \*\*\* LIBFTPRINTF COMPLETE!
 
 clean:
-	rm *.o
+	@rm *.o
+
+fclean: clean
+	@rm *.a

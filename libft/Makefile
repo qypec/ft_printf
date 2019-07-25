@@ -6,7 +6,7 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/24 21:41:43 by yquaro            #+#    #+#              #
-#    Updated: 2019/07/24 21:53:09 by yquaro           ###   ########.fr        #
+#    Updated: 2019/07/25 03:51:19 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,17 +76,9 @@ clean:
 	@make -C ft_math/ clean
 	@make -C ft_map/ clean
 	@make -C ft_buffer/ clean
-	rm $(OBJECTS)
+	rm *.o
 
-fclean:
-	@make -C ft_ctime/ fclean
-	@make -C ft_alloc/ fclean
-	@make -C ft_math/ fclean
-	@make -C ft_map/ fclean
-	@make -C ft_list/ fclean
-	@make -C ft_buffer/ fclean
-	@make -C lib/ clean
-	rm $(OBJECTS)
-	rm ../lib/$(NAME)
+fclean: clean
+	@make -C lib/ fclean
 
 re: fclean all

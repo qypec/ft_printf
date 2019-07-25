@@ -6,12 +6,11 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/23 14:07:18 by yquaro            #+#    #+#              #
-#    Updated: 2019/07/24 20:03:02 by yquaro           ###   ########.fr        #
+#    Updated: 2019/07/25 05:08:17 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = gcc
-CFLAGS = -g -c # -Wall -Wextra -Werror
+include ../make_includes/printf.mk
 
 SOURCES = ft_printf.c add_in_glbuffer.c color.c print_arg.c buffer_output.c \
 	print_date.c parse.c struct_spec.c is_it_something.c \
@@ -25,13 +24,13 @@ OBJECTS = ft_printf.o add_in_glbuffer.o color.o print_arg.o buffer_output.o  \
 
 NAME = printf.a
 
-all: $(SOURCES) print_echo $(NAME)
+all: print $(SOURCES) $(NAME)
 
-print_echo:
+print:
 	@echo \*\*\* Compiling ft_printf
 
 .c.o:
-	$(CC) $(CFLAGS) $< -o $@
+	$(COMPILING) $< -o $@
 
 $(NAME): $(OBJECTS)
 	@ar rc $(NAME) $(OBJECTS)
@@ -39,10 +38,9 @@ $(NAME): $(OBJECTS)
 	@mv $(NAME) ../lib/$(NAME)
 
 clean:
-	rm $(OBJECTS)
+	@rm *.o
 
 fclean: clean
-	rm ../lib/$(NAME)
 
 
 
