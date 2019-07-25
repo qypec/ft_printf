@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 20:00:19 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:39:02 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/25 20:03:55 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,8 @@
 void 		init_gspec(void)
 {
 	if (g_spec == NULL)
-		if (!(g_spec = malloc(sizeof(t_spec))))
-			return ;
+		if ((g_spec = malloc(sizeof(t_spec))) == NULL)
+			exit(-1);
 	g_spec->symb = (char)48;
 	g_spec->width = 0;
 	g_spec->space = 0;
@@ -32,14 +32,12 @@ void 		init_gspec(void)
 	g_spec->hh = 0;
 	g_spec->h = 0;
 	g_spec->z = 0;
-	g_width->zero = 0;
-	g_width->space_left = 0;
-	g_width->space_right = 0;
-	g_width->width = 0;
 }
 
 void		gspecfree(void)
 {
+	if (g_spec == NULL)
+		return ;
 	g_spec->symb = 0;
 	g_spec->width = 0;
 	g_spec->space = 0;
@@ -55,10 +53,6 @@ void		gspecfree(void)
 	g_spec->hh = 0;
 	g_spec->h = 0;
 	g_spec->z = 0;
-	g_width->zero = 0;
-	g_width->space_left = 0;
-	g_width->space_right = 0;
-	g_width->width = 0;
 	free(g_spec);
 	g_spec = NULL;
 }

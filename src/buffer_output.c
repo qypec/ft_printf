@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 17:27:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:39:08 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/25 19:47:03 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,10 @@ void		add_memory(size_t size)
 void			free_bufferoutput(void)
 {
 	ft_strdel(&(g_output->str));
+	g_output->size = 0;
+	g_output->overflow_counter = 0;
+	g_output->error = 0;
+	g_output->buffsize = 0;
 	free(g_output);
 	g_output = NULL;
 }

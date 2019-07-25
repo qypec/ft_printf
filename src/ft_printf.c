@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:58:05 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/25 17:39:01 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/25 19:58:19 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,8 @@ static void			output(size_t *size)
 static void			totalfree(void)
 {
 	free_bufferoutput();
-	free(g_width);
+	widthfree();
 	gspecfree();
-	g_output = NULL;
 	g_width = NULL;
 }
 
@@ -77,16 +76,16 @@ int					ft_printf(const char *format, ...)
 	char 			*traverse;
 	size_t			size;
 	
-	if (!(g_width = malloc(sizeof(t_widt))))
-		return (0);
 	if (!(traverse = (char *)format))
 		return (0);
 	init_bufferoutput();
 	va_start(arg, (char *)format);
 	while (*traverse != '\0')
 	{
+		init_gspec();
+		init_width();
 		if (g_output->error == -1)
-			break ; 
+			break ;
 		if (take_str_before_persent(&traverse) == END_OF_STRING) /* берет символы до % */
 			break ;
 		struct_spec(&traverse);  /* записывает в структуру спецификатор */

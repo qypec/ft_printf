@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:42:27 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/25 17:46:15 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/25 19:52:40 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct		s_width
 	int				zero;
 	int				space_right;
 	int				width;
-}					t_widt;
+}					t_width;
 
 typedef struct		s_output
 {
@@ -69,6 +69,7 @@ typedef struct		s_spec
 	int				h;
 	int				z;
 }					t_spec;
+
 struct s_width		*g_width;
 struct s_output		*g_output;
 struct s_spec		*g_spec;
@@ -94,6 +95,7 @@ void				assembl_int(va_list arg, int base);
 void				struct_specifier(char *traverse);
 void				struct_spec(char **traverse);
 void				print_char(va_list arg);
+int					is_badsymb(char c);
 int					is_cspdioux_bigx_fegbrk(char c);
 int					is_lh_bigl(char c);
 int					is_calculatesymb(char c);
@@ -110,7 +112,7 @@ char				*parse_digit(char *traverse, const int flag);
 char				*parse_width_or_precision(char *traverse, int flag);
 char				*parse_calculatesymb(char *traverse);
 char				*parse_lh_bigl(char *traverse);
-char				*whichsymb(char *traverse);
+char				*parsesymb(char *traverse);
 int					read_lh_bigl(char *traverse, int i);
 void				print_date(char *traverse, va_list arg);
 void				bust_printf(int errorcode);
@@ -130,6 +132,11 @@ int					lenbase(unsigned long long int num, int base);
 void				sign_x(long long int num);
 void				sign(long long int num);
 void				ft_rounding(char *number, int size_result);
+
 void				init_gspec(void);
 void				gspecfree(void);
+
+void				init_width(void);
+void				widthfree(void);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 20:44:35 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:39:03 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/25 19:44:44 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char					*parse_lh_bigl(char *traverse)
 		traverse++;
 	else if (g_spec->ll == 1 ||  g_spec->hh == 1)
 		traverse += 2;
-	return (whichsymb(traverse));
+	return (parsesymb(traverse));
 }
 
 char					*parse_calculatesymb(char *traverse)
@@ -82,7 +82,7 @@ char					*parse_calculatesymb(char *traverse)
 		g_spec->minus = 1;
 		traverse++;
 	}
-	return (whichsymb(traverse));
+	return (parsesymb(traverse));
 }
 
 char					*parse_digit(char *traverse, const int flag)
@@ -121,5 +121,5 @@ char					*parse_width_or_precision(char *traverse, int flag)
 	}
 	else if (flag == WIDTH)
 		traverse = parse_digit(traverse, flag);
-	return (whichsymb(traverse));
+	return (parsesymb(traverse));
 }

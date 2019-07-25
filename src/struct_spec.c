@@ -6,22 +6,13 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 20:32:44 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/24 21:23:21 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/25 19:44:46 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int					is_badsymb(char c)
-{
-	if (c == ' ' || c == '.' || c == '0' || c == '+' || c == '-' || \
-		c == '#' ||	c == 'h' || c == 'l' || c == 'L' || c == 'z' || \
-		c == 'j' || ft_isdigit(c) == 1)
-		return (0);
-	return (1);
-}
-
-char				*whichsymb(char *traverse)
+char				*parsesymb(char *traverse)
 {
 	if (is_badsymb(*traverse))
 		return (traverse);
@@ -38,13 +29,15 @@ char				*whichsymb(char *traverse)
 	else if (*traverse == 'j')
 	{
 		g_spec->j = 1;
-		traverse = whichsymb(++traverse);
+		traverse = parsesymb(++traverse);
 	}
 	else if (*traverse == 'z')
 	{
 		g_spec->z = 1;
-		traverse = whichsymb(++traverse);
+		traverse = parsesymb(++traverse);
 	}
+	if (g_spec->minus == 1)
+		g_spec->zero = 0;
 	return (traverse);
 }
 
@@ -76,7 +69,6 @@ void				struct_spec(char **traverse)
 	char			*trav;
 
 	trav = *traverse + 1;
-	init_gspec();
 	if (is_badsymb(*trav))
 	{
 		if (is_cspdioux_bigx_fegbrk(*trav))
@@ -90,15 +82,13 @@ void				struct_spec(char **traverse)
 		return ;
 	}
 	else
-		trav = whichsymb(trav);
-	if (is_cspdioux_bigx_fegbrk(*trav))
+		trav = parsesymb(trav);
+	if (is_cspdioux_bigx_fegbrk(*trav)) 
 	{
 		g_spec->symb = *trav;
 		lowercase();
 		trav++;
 	}
-	if (g_spec->minus == 1)
-		g_spec->zero = 0;
 	*traverse = trav;
 }
 
@@ -107,5 +97,5 @@ char				*parse_spaces(char *traverse)
 	g_spec->space = 1;
 	while (*traverse == ' ')
 		traverse++;
-	return (whichsymb(traverse));
+	return (parsesymb(traverse));
 }
