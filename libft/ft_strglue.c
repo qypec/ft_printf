@@ -6,11 +6,11 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 18:43:32 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:33:17 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/25 17:38:50 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
 void						ft_strglue(char **puthere, const char *left, \
 											const char *right)

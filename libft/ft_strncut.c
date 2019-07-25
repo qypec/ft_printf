@@ -6,11 +6,11 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/13 18:23:29 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:33:23 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/25 17:38:55 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
 static char		*first(char *str, int n)
 {

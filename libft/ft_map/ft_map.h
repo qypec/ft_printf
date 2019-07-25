@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_map.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 19:58:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/16 14:03:35 by qypec            ###   ########.fr       */
+/*   Updated: 2019/07/25 17:42:46 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_MAP
 # define FT_MAP
 
-# include "../includes/libft.h"
+#include "../includes/libft.h"
 # include <stdarg.h>
 
 # define DEFAULT_MAP_SIZE 100

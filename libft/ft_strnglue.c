@@ -6,11 +6,11 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 18:59:24 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:32:58 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/25 17:38:56 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
 char	*ft_strnglue(char *str, const char *left, const char *right, size_t n)
 {

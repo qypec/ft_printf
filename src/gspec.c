@@ -6,11 +6,11 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 20:00:19 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:03:28 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/25 17:39:02 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/header.h"
+#include "header.h"
 
 void 		init_gspec(void)
 {

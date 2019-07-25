@@ -6,11 +6,11 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/27 22:33:05 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:33:03 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/25 17:38:33 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
 void	*ft_bzero(void *s, size_t n)
 {

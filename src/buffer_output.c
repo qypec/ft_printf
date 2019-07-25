@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   buffer_output.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/05 17:27:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/11 12:16:54 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/07/25 17:39:08 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/header.h"
+#include "header.h"
 
 void		init_bufferoutput(void)
 {

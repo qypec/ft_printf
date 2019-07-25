@@ -6,7 +6,7 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/12 09:13:41 by qypec             #+#    #+#              #
-#    Updated: 2019/07/25 17:30:18 by yquaro           ###   ########.fr        #
+#    Updated: 2019/07/25 17:38:29 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SOURCES = ft_realloc.c ft_memalloc.c ft_memdel.c ft_strdel.c
 OBJECTS = ft_realloc.o ft_memalloc.o ft_memdel.o ft_strdel.o
 
 NAME = liballoc.a
+
 
 all: print $(SOURCES) $(NAME)
 	

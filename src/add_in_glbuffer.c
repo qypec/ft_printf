@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   add_in_glbuffer.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:32:07 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/21 19:17:15 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/07/25 17:39:07 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/header.h"
+#include "header.h"
 
 void		addsymb_glbuffer(char c)
 {

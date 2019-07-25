@@ -6,11 +6,11 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 14:13:16 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:32:56 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/25 17:38:58 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
 static size_t			get_height(const char *str, char c)
 {

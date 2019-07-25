@@ -6,11 +6,11 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/03 21:26:11 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:33:06 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/25 17:38:35 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
 int							ft_isempty(const char *str)
 {

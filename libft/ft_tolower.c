@@ -6,11 +6,11 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/01 23:43:35 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:32:53 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/25 17:39:00 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
 int		ft_tolower(int c)
 {

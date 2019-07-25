@@ -6,11 +6,11 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 21:17:17 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:33:21 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/25 17:38:53 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
 char	*ft_strnadd(char *str, char c, size_t n)
 {

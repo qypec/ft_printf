@@ -6,11 +6,11 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 20:44:35 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/24 19:41:05 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/25 17:39:03 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/header.h"
+#include "header.h"
 
 static void				nullify_llhh_bigl(int flag)
 {

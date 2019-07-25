@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_buffer.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 13:10:59 by qypec             #+#    #+#             */
-/*   Updated: 2019/07/09 14:00:11 by qypec            ###   ########.fr       */
+/*   Updated: 2019/07/25 17:42:37 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_BUFFER_H
 # define FT_BUFFER_H
 
-# include "../includes/libft.h"
+#include "../includes/libft.h"
 
 typedef struct			s_buff
 {

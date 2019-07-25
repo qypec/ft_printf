@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_diu.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 16:58:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/05/20 16:39:34 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/07/25 17:39:04 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/header.h"
+#include "header.h"
 
 long long int		reduction_signed(long long int num, unsigned long z)
 {

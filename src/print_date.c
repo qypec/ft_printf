@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   print_date.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 20:41:12 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 13:38:33 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/07/25 17:39:04 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/header.h"
+#include "header.h"
 
 static char 	*whatsparam(char *str, char *buff, t_cdate *date)
 {

@@ -6,11 +6,11 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/01 20:40:44 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:33:03 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/25 17:38:33 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
 int			ft_atoi(const char *str)
 {

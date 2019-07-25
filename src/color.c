@@ -6,11 +6,11 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 14:23:51 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/24 19:59:15 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/25 17:39:09 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/header.h"
+#include "header.h"
 
 static int		check_param(char *traverse)
 {

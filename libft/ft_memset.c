@@ -6,11 +6,11 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 11:07:58 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:33:11 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/25 17:38:39 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
 void	*ft_memset(void *destination, int c, size_t n)
 {

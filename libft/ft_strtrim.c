@@ -6,11 +6,11 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 12:33:27 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:32:54 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/25 17:39:00 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
 static int	ft_without_spaces(char *s)
 {

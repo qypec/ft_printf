@@ -6,11 +6,11 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/18 17:50:41 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:33:02 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/25 17:38:32 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
+#include "libft.h"
 
 char		*ft_addsymbend(char *str, char c, int num)
 {
