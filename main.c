@@ -15,8 +15,8 @@ int main()
 {
 	char one[] = "3.140000";
 	char two[] = "333333333333333333.14999964745545456";
-	ft_printf("%f\n", -1.42);
+	printf ("ft_size = %d", ft_printf("42% 017f42", -1.42));
 	printf("\n");
-	printf("%f\n", -1.42);
+	printf ("size = %d",printf("42% 017f42", -1.42));
 	return (0)	;
 }
