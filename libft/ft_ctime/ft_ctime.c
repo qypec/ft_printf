@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_ctime.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 18:59:43 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 13:40:04 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/07/26 17:58:40 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static char			*like_original_ctime(t_cdate *date)
 		ft_strlen(date->min) + ft_strlen(date->sec) + \
 		ft_strlen(date->year) + 1 + spaces;
 	str = (char *)ft_memalloc(sizeof(char) * len);
-	str[len] = '\0';
+	str[len - 1] = '\0';
 	str = glue_str(date, str);
 	return (str);
 }

@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:58:05 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/25 23:07:57 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/26 17:18:15 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ static int			take_str_before_persent(char **traverse)
 			take_color(&trav);
 			continue ;
 		}
-		if (*trav == '\0')
-			break ;
 		addsymb_glbuffer(*trav);
 		trav++;
 	}

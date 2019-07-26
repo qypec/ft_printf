@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:42:27 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/25 22:29:59 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/26 18:03:39 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,8 +116,7 @@ char				*parse_calculatesymb(char *traverse);
 char				*parse_lh_bigl(char *traverse);
 char				*parsesymb(char *traverse);
 int					read_lh_bigl(char *traverse, int i);
-void				print_date(char *traverse, va_list arg);
-void				bust_printf(int errorcode);
+void				print_date(char *traverse);
 void				init_bufferoutput(void);
 void				is_it_buffer_overflow(size_t size);
 void				add_memory(size_t size);

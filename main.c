@@ -13,6 +13,7 @@
 
 int main()
 {
-	ft_printf("{red}red{green}green{yellow}yellow{blue}blue{magenta}magenta{cyan}cyan{reset}\n");
+	// ft_printf("{red}red{green}green{yellow}yellow{blue}blue{magenta}magenta{cyan}cyan{reset}\n");
+	ft_printf("date: %k");
 	return (0);
 }
