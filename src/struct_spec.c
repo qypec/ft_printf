@@ -6,7 +6,7 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 20:32:44 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:49:59 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/07/30 11:08:17 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,11 @@ static void			lowercase()
 	{
 		g_spec->l = 1;
 		g_spec->symb = 'd';
+	}
+	else if (g_spec->symb == 'F')
+	{
+		g_spec->l = 1;
+		g_spec->symb = 'f';
 	}
 }
 

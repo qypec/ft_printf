@@ -26,7 +26,7 @@ void ft_rounding(char *result, int size_result)
 				result[size_result] = result[size_result] + transfer;
 				transfer = 0;
 			}
-			if (result[size_result] == 46 && g_spec->precision == 0)
+			if (result[size_result] == 46 && g_spec->precision < 0)
 				result[size_result] = '\0';
 		}
 		size_result--;

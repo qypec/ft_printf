@@ -15,16 +15,138 @@ int main()
 {
 	// char one[] = "3.140000";
 	// char two[] = "333333333333333333.14999964745545456";
-	
-	ft_printf("%#+-33.4lf", 0.0);
-	printf("\n");
-	printf("%#+-33.4lf",  0.0);
-	// int nb = 1;
-	// printf("original:\n");cd 
+	int size_own = 0;
+	int size_real = 0;
+		
+	size_own = ft_printf("!% 52.3lf!", 0.000000);
+		printf("\n");
+	size_real =	printf("!% 52.3lf!", 0.000000);
 
-	// printf("| size = %d |\n", printf("1 -> %.05d\n", nb));
-	// printf("my:\n");
-	// printf("| size = %d |\n", ft_printf("1 -> %.05d\n", nb));
-	// printf ("size = %d",printf("42% 017f42", -1.42));
+	printf ("own = %d\nreal = %d\n", size_own, size_real);
+
+
+
+	// double		nb;
+	// nb = -12547.58;
+
+	// ft_printf("test basique:");
+	// printf ("\n");
+	// dprintf(2, "test basique:");
+	// printf ("\n");
+	// int size_own = 0;
+	// int size_real = 0;
+    
+	// size_own = ft_printf("% 20f", nb);
+	// printf ("\n");
+    // size_real= printf("% 20f", nb);
+	// printf ("\n");
+	// printf ("own = %d\nreal = %d\n",size_own, size_real);
+	
+	// ft_printf("plus:%+f\n", nb);
+	// dprintf(2, "plus:%+f\n", nb);
+	
+	// ft_printf("hash:%#f\n", nb);
+	// dprintf(2, "hash:%#f\n", nb);
+	
+	// ft_printf("precision:%.2f\n", nb);
+	// dprintf(2, "precision:%.2f\n", nb);
+	
+	// ft_printf("big prec:%.14f\n", nb);
+	// dprintf(2, "big prec:%.14f\n", nb);
+	
+
+	// ft_printf("precision + hash:%#.0f\n", nb);
+	// dprintf(2, "precision + hash:%#.0f\n", nb);
+	
+	// ft_printf("space + prec:% .5f\n", nb);
+	// dprintf(2, "space + prec:% .5f\n", nb);
+	
+	
+	// ft_printf("space + prec + hash:%# .0f\n", nb);
+    // dprintf(2, "space + prec + hash:%# .0f\n", nb);
+	
+	
+	// ft_printf("space + prec + hash:% #.0f\n", nb);
+    // dprintf(2, "space + prec + hash:% #.0f\n", nb);
+	
+	// ft_printf("Plus + prec / grande:%+.5f\n", nb);
+   	// dprintf(2, "Plus + prec / grande:%+.5f\n", nb);
+	
+	
+	// ft_printf("Plus + prec / petite:%+.0f\n", nb);
+	// dprintf(2, "Plus + prec / petite:%+.0f\n", nb);
+
+	
+	// ft_printf("Plus + prec + hash:%#+.0f\n", nb);
+    // dprintf(2, "Plus + prec + hash:%#+.0f\n", nb);
+
+	
+	// ft_printf("Prec + 0:%0.5f\n", nb);
+    // dprintf(2, "Prec + 0:%0.5f\n", nb);
+	
+	
+	// ft_printf("Prec + minus:%-.5f\n", nb);
+   	// dprintf(2, "Prec + minus:%-.5f\n", nb);
+	
+	
+	// ft_printf("size:%5f\n", nb);
+    // dprintf(2, "size:%5f\n", nb);
+	
+	
+	// ft_printf("size + space:% 5f\n", nb);
+    // dprintf(2, "size + space:% 5f\n", nb);
+	
+	// ft_printf("size + plus:%+5f\n", nb);
+    // 	dprintf(2, "size + plus:%+5f\n", nb);
+	
+	// ft_printf("size + space:%# 5f\n", nb);
+    // 	dprintf(2, "size + space:%# 5f\n", nb);
+	
+	// ft_printf("size + plus:%#+5f\n", nb);
+    // 	dprintf(2, "size + plus:%#+5f\n", nb);
+	
+	// ft_printf("size + minus:%-5f\n", nb);
+    // 	dprintf(2, "size + minus:%-5f\n", nb);
+	
+	// ft_printf("size + 0:%05f\n", nb);
+    // 	dprintf(2, "size + 0:%05f\n", nb);
+	
+	// ft_printf("size + 0 + plus:%+05f\n", nb);
+    // 	dprintf(2, "size + 0 + plus:%+05f\n", nb);
+	
+	// ft_printf("size + 0 + plus:%0+5f\n", nb);
+    // 	dprintf(2, "size + 0 + plus:%0+5f\n", nb);
+	
+	// ft_printf("size + 0 + prec:%05.3f\n", nb);
+ 	// dprintf(2, "size + 0 + prec:%05.3f\n", nb);
+ 
+    // ft_printf("size + 0 + prec + hash:%0#5.0f\n", nb);
+ 	// dprintf(2, "size + 0 + prec + hash:%0#5.0f\n", nb);
+
+ 
+    // ft_printf("size + minus + prec + hash:%-#5.0f\n", nb);
+ 	// dprintf(2, "size + minus + prec + hash:%-#5.0f\n", nb);
+ 
+    // ft_printf("size + plus + 0 + prec:%+05.3f\n", nb);
+ 	// dprintf(2, "size + plus + 0 + prec:%+05.3f\n", nb);
+ 
+    // ft_printf("size + plus + 0 + prec + hash:%0+#5.0f\n", nb);
+ 	// dprintf(2, "size + plus + 0 + prec + hash:%0+#5.0f\n", nb);
+ 
+    // ft_printf("size + espace + zero + prec:%0 5.3f\n", nb);
+ 	// dprintf(2, "size + espace + zero + prec:%0 5.3f\n", nb);
+ 
+    // ft_printf("size + espace + zero + prec:% 05.3f\n", nb);
+ 	// dprintf(2, "size + espace + zero + prec:% 05.3f\n", nb);
+ 
+    // ft_printf("size + espace + zero + prec + hash:%#0 5.0f\n", nb);
+ 	// dprintf(2, "size + espace + zero + prec + hash:%#0 5.0f\n", nb);
+ 
+    // ft_printf("size + minus + plus + prec:%-+5.3f\n", nb);
+ 	// dprintf(2, "size + minus + plus + prec:%-+5.3f\n", nb);
+   
+    // ft_printf("size + minus + plus + prec + hash:%-#+5.0f\n", nb);
+	// dprintf(2, "size + minus + plus + prec + hash:%-#+5.0f\n", nb);
+	
 	return (0)	;
 }
