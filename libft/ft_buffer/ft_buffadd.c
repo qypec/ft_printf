@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_buffinit.c                                      :+:      :+:    :+:   */
+/*   ft_buffadd.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/09 13:11:41 by qypec             #+#    #+#             */
-/*   Updated: 2019/07/30 21:48:04 by yquaro           ###   ########.fr       */
+/*   Created: 2019/07/30 21:40:58 by yquaro            #+#    #+#             */
+/*   Updated: 2019/07/30 22:21:34 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_buffer.h"
 
-t_buff					*ft_buffinit(int size)
+void					ft_buffadd(t_buff *buff, const char *str)
 {
-	t_buff				*buff;
+	int					size_of_new_str;
+	int					remaining_size;
 
-	if (size == 0)
-		return (NULL);
-	if ((buff = (t_buff *)malloc(sizeof(t_buff))) == NULL)
-		exit(-1);
-	buff->additional_size = size;
-	buff->totalsize = size;
-	if ((buff->str = (char *)ft_memalloc(sizeof(char) * buff->totalsize)) == NULL)
-		exit(-1);
-	buff->i = 0;
-	return (buff);
+	if (str == NULL)
+		return ;
+	remaining_size = buff->totalsize - buff->i;
+	size_of_new_str = ft_strlen(str);
+	if (remaining_size <= size_of_new_str)
+	{
+		buff->totalsize += size_of_new_str + buff->additional_size;
+		if ((buff->str = ft_realloc(buff->str, buff->totalsize)) == NULL)
+			exit(1);
+	}
+	ft_strglue(&(buff->str))
 }

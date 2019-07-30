@@ -1,39 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnglue.c                                      :+:      :+:    :+:   */
+/*   ft_strlglue.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/05 18:59:24 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/15 18:21:43 by yquaro           ###   ########.fr       */
+/*   Created: 2019/07/30 22:18:35 by yquaro            #+#    #+#             */
+/*   Updated: 2019/07/30 22:23:47 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-char	*ft_strnglue(char *str, const char *left, const char *right, size_t n)
+void						ft_strlglue(int start, char *puthere, ...)
 {
-	int i;
-	int	counter;
+	va_list 		arg;
+	int				counter;
+	int				i;
+	char			*str;
 
-	if (str == NULL || left == NULL || right == NULL)
-		return (NULL);
-	i = 0;
-	counter = n;
-	while (left[i] != '\0')
+	if (puthere == NULL)
+		return ;
+	va_start(arg, (char *)puthere);
+	counter = start;
+	while (1)
 	{
-		str[counter] = left[i];
-		i++;
-		counter++;
+		if ((str = va_arg(arg, char*)) == NULL)
+			break ;
+		i = 0;
+		while (str[i] != '\0')
+			puthere[counter++] = str[i++];
 	}
-	i = 0;
-	while (right[i] != '\0')
-	{
-		str[counter] = right[i];
-		i++;
-		counter++;
-	}
-	str[counter] = '\0';
-	return (str);
+	va_end(arg);
 }

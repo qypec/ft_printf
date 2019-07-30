@@ -6,36 +6,30 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/04 18:43:32 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/07 06:14:15 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/30 22:18:11 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "includes/libft.h"
 
-void						ft_strglue(char **puthere, const char *left, \
-											const char *right)
+void						ft_strglue(char *puthere, ...)
 {
-	int		i;
-	int		counter;
-	char	*str;
+	va_list 		arg;
+	int				counter;
+	int				i;
+	char			*str;
 
-	str = *puthere;
-	i = 0;
-	counter = 0;
-	while (str[counter] != '\0')
-		counter++;
-	while (left != NULL && left[i] != '\0')
+	if (puthere == NULL)
+		return ;
+	va_start(arg, (char *)puthere);
+	counter = ft_strlen(puthere);
+	while (1)
 	{
-		str[counter] = left[i];
-		i++;
-		counter++;
+		if ((str = va_arg(arg, char*)) == NULL)
+			break ;
+		i = 0;
+		while (str[i] != '\0')
+			puthere[counter++] = str[i++];
 	}
-	i = 0;
-	while (right != NULL && right[i] != '\0')
-	{
-		str[counter] = right[i];
-		i++;
-		counter++;
-	}
-	str[counter] = '\0';
+	va_end(arg);
 }
