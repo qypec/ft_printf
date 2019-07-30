@@ -6,12 +6,18 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:43:54 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/30 22:21:14 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/07/30 22:29:30 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../includes/header.h"
+
+void  fill_parts_float(t_part *part, long double num)
+{
+
+	
+}
 
 void	getnumber(t_part *part, long double num)
 {
