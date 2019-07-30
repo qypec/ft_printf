@@ -6,7 +6,7 @@
 /*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 13:10:59 by qypec             #+#    #+#             */
-/*   Updated: 2019/07/31 00:56:22 by qypec            ###   ########.fr       */
+/*   Updated: 2019/07/31 01:01:40 by qypec            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 typedef struct			s_buff
 {
 	char				*str;
-	int					i;
-	int					totalsize;
-	int					additional_size;
+	int					i; // номер позиции первого '/0' или размер
+	int					totalsize; // размер выделенной памяти
+	int					additional_size; // количество добавляемой памяти, когда буфер переполняется
 }						t_buff;
 
 t_buff					*ft_buffinit(int size);
