@@ -25,7 +25,7 @@ int main()
 	matr[1][0] = 'a';
 	matr[1][1] = 'b';
 	matr[2] = NULL;
-	ft_printf("%w", matr);
+	ft_printf("matr: \n%w\n", matr);
 
 	
 	return (0);
