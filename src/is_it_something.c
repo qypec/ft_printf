@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_it_something.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:40:01 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/25 19:43:28 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/31 01:28:29 by qypec            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,13 @@ int					is_lh_bigl(char c)
 	return (0);
 }
 
-int					is_cspdioux_bigx_fegbrk(char c)
+int					is_specifier(char c)
 {
 	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'o' ||
 			c == 'u' || c == 'x' || c == 'X' || c == 'f' || c == 'e' ||
 			c == 'g' || c == 'b' || c == 'r' || c == 'k' || c == '%' ||
-			c == 'U' || c == 'O'  || c == 'S' || c == 'C' || c == 'D')
+			c == 'U' || c == 'O'  || c == 'S' || c == 'C' || c == 'D' ||
+			c == 'w')
 		return (1);
 	else
 		return (0);

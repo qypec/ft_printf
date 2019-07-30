@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_spec.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 20:32:44 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 19:44:46 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/31 01:28:04 by qypec            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void				struct_spec(char **traverse)
 	trav = *traverse + 1;
 	if (is_badsymb(*trav))
 	{
-		if (is_cspdioux_bigx_fegbrk(*trav))
+		if (is_specifier(*trav))
 		{
 			g_spec->symb = *trav;
 			lowercase();
@@ -83,7 +83,7 @@ void				struct_spec(char **traverse)
 	}
 	else
 		trav = parsesymb(trav);
-	if (is_cspdioux_bigx_fegbrk(*trav)) 
+	if (is_specifier(*trav)) 
 	{
 		g_spec->symb = *trav;
 		lowercase();

@@ -14,6 +14,19 @@
 int main()
 {
 	// ft_printf("{red}red{green}green{yellow}yellow{blue}blue{magenta}magenta{cyan}cyan{reset}\n");
-	ft_printf("date: %k");
+	// ft_printf("date: %k");
+	
+	char	**matr;
+
+	matr = (char **)malloc(sizeof(char *) * 3);
+	matr[0] = (char *)ft_memalloc(sizeof(char) * 2);
+	matr[1] = (char *)ft_memalloc(sizeof(char) * 3);
+	matr[0][0] = '1';
+	matr[1][0] = 'a';
+	matr[1][1] = 'b';
+	matr[2] = NULL;
+	ft_printf("%w", matr);
+
+	
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:42:27 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/26 18:03:39 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/31 01:33:15 by qypec            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ int					print_d(int number);
 void				print_u(va_list arg, int base);
 void				print_width_end();
 void				print_width(long long int num);
+void				print_matrix(va_list arg);
 char				*ft_itoa_unbase(unsigned long long value, int base);
 char				*ft_itoa_base(long long int value, int base);
 int					ft_itoa_help(long long int tmp, int base, int flag);
@@ -98,7 +99,7 @@ void				struct_specifier(char *traverse);
 void				struct_spec(char **traverse);
 void				print_char(va_list arg);
 int					is_badsymb(char c);
-int					is_cspdioux_bigx_fegbrk(char c);
+int					is_specifier(char c);
 int					is_lh_bigl(char c);
 int					is_calculatesymb(char c);
 int					*width_u(unsigned long long number,

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:41:45 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/26 18:01:13 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/31 01:31:17 by qypec            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,9 @@ void	width_processing(char *str)
 
 int		print_arg(char *traverse, va_list arg)
 {
-	if (g_spec->symb == 'k')
+	if (g_spec->symb == 'w')
+		print_matrix(arg);
+	else if (g_spec->symb == 'k')
 		print_date(traverse);
 	else if (g_spec->symb == '%')
 		width_processing("%");
