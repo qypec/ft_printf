@@ -15,19 +15,19 @@ int main()
 {
 	// char one[] = "3.140000";
 	// char two[] = "333333333333333333.14999964745545456";
-	int size_own = 0;
-	int size_real = 0;
+	// int size_own = 0;
+	// int size_real = 0;
 		
-	size_own = ft_printf("!% 52.3lf!", 0.000000);
-		printf("\n");
-	size_real =	printf("!% 52.3lf!", 0.000000);
+	// size_own = ft_printf("^.^/%58.32lf^.^", 1065815232,000000);
+	// 	printf("\n");
+	// size_real =	printf("^.^/%58.32lf^.^", 1065815232,000000);
 
-	printf ("own = %d\nreal = %d\n", size_own, size_real);
+	// printf ("own = %d\nreal = %d\n", size_own, size_real);
+	printf ("%14.15f", 123452.3456788);
 
 
-
-	// double		nb;
-	// nb = -12547.58;
+	double		nb;
+	nb = -12547.58;
 
 	// ft_printf("test basique:");
 	// printf ("\n");
@@ -142,9 +142,12 @@ int main()
     // ft_printf("size + espace + zero + prec + hash:%#0 5.0f\n", nb);
  	// dprintf(2, "size + espace + zero + prec + hash:%#0 5.0f\n", nb);
  
-    // ft_printf("size + minus + plus + prec:%-+5.3f\n", nb);
- 	// dprintf(2, "size + minus + plus + prec:%-+5.3f\n", nb);
-   
+	// int size1 = 0;
+	// int size2 = 0;
+    // size1 = ft_printf("size + minus + plus + prec:%-+15.3f\n", nb);
+ 	// size2 = dprintf(2, "size + minus + plus + prec:%-+15.3f\n", nb);
+	
+	// printf("own = %d\n real  = %d", size1, size2 );
     // ft_printf("size + minus + plus + prec + hash:%-#+5.0f\n", nb);
 	// dprintf(2, "size + minus + plus + prec + hash:%-#+5.0f\n", nb);
 	

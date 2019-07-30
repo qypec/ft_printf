@@ -6,7 +6,7 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:41:45 by oargrave          #+#    #+#             */
-/*   Updated: 2019/05/20 15:32:54 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/07/30 20:11:19 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ void	width_processing(char *str)
 		addstr_glbuffer(str, size);
 }
 
+
+
+
 int		print_arg(char *traverse, va_list arg)
 {
 	if (g_spec->symb == 'k')
@@ -50,6 +53,6 @@ int		print_arg(char *traverse, va_list arg)
 	if (g_spec->symb == 'c' || g_spec->symb == 's' || g_spec->symb == 'p')
 		print_char(arg);
 	if (g_spec->symb == 'f' || g_spec->symb == 'e' || g_spec->symb == 'g')
-		assembl_float(arg);
+		print_float(arg);
 	return (0);
 }

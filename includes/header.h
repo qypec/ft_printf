@@ -6,7 +6,7 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:42:27 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/25 13:47:19 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/07/30 20:15:52 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,15 @@ typedef struct		s_spec
 	int				h;
 	int				z;
 }					t_spec;
+
+typedef struct 		s_part
+{
+	char			*first;
+	t_buff			*middle;
+	char			*last;
+	int				is_neg;
+}					t_part;
+
 struct s_width		*g_width;
 struct s_output		*g_output;
 struct s_spec		*g_spec;
