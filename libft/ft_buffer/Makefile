@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
+#    By: qypec <qypec@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/09 13:11:11 by qypec             #+#    #+#              #
-#    Updated: 2019/07/25 03:42:48 by yquaro           ###   ########.fr        #
+#    Updated: 2019/07/30 23:09:15 by qypec            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 include ../make_includes/libft.mk
 
-SOURCES = ft_buffinit.c ft_buffdel.c ft_buffreload.c
-OBJECTS = ft_buffinit.o ft_buffdel.o ft_buffreload.o
+SOURCES = ft_buffinit.c ft_buffdel.c ft_buffadd.c
+OBJECTS = ft_buffinit.o ft_buffdel.o ft_buffadd.o
 
 NAME = libbuff.a
 
