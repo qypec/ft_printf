@@ -18,24 +18,24 @@ static char 	*whatsparam(char *str, char *buff, t_cdate *date)
 
 	len = 0;
 	if (ft_strcmp(buff, "WDA") == 0)
-		ft_strglue(&str, date->weekday, "\0");
+		ft_strglue(str, date->weekday, NULL);
 	else if (ft_strcmp(buff, "MNH") == 0)
-		ft_strglue(&str, date->month, "\0");
+		ft_strglue(str, date->month, NULL);
 	else if (ft_strcmp(buff, "DD") == 0)
-		ft_strglue(&str, date->day, "\0");
+		ft_strglue(str, date->day, NULL);
 	else if (ft_strcmp(buff, "hh") == 0)
-		ft_strglue(&str, date->hour, "\0");
+		ft_strglue(str, date->hour, NULL);
 	else if (ft_strcmp(buff, "mm") == 0)
-		ft_strglue(&str, date->min, "\0");
+		ft_strglue(str, date->min, NULL);
 	else if (ft_strcmp(buff, "ss") == 0)
-		ft_strglue(&str, date->sec, "\0");
+		ft_strglue(str, date->sec, NULL);
 	else if (ft_strcmp(buff, "YYYY") == 0)
-		ft_strglue(&str, date->year, "\0");
+		ft_strglue(str, date->year, NULL);
 	else
 	{
 		len = ft_strlen(buff);
 		while (len--)
-			ft_strglue(&str, "x", "\0");
+			ft_strglue(str, "x", NULL);
 	}
 	return (str);
 }
@@ -54,7 +54,7 @@ static char		*read_segment_of_date(char *traverse, char *str, t_cdate *date)
 		if (i >= 5)
 		{
 			buff = ft_memcpy(buff, "|...|", 6);
-			ft_strglue(&str, buff, "\0");
+			ft_strglue(str, buff, NULL);
 			ft_strdel(&buff);
 			bust_printf(1);
 			return (str);
