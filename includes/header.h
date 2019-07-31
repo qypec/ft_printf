@@ -6,9 +6,10 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:42:27 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/30 20:15:52 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/07/31 17:19:22 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #ifndef HEADER_H
 # define HEADER_H
@@ -130,7 +131,7 @@ void				free_bufferoutput(void);
 void				addsymb_glbuffer(char c);
 void				update_glbuffer(char *str);
 void				addstr_glbuffer(char *str, size_t size);
-void				print_float(long double num, int i, int j, int size_str);
+void				print_float(va_list arg);
 void				assembl_float(va_list arg);
 char				*take_color(char *traverse);
 char				*register_x(char *str);
@@ -138,7 +139,7 @@ int					ft_numblen_u(unsigned long long int n);
 int					lenbase(unsigned long long int num, int base);
 void				sign_x(long long int num);
 void				sign(long long int num);
-void				ft_rounding(char *number, int size_result);
+void				ft_rounding(char *number, int size_result, t_part *part);
 void				init_gspec(void);
 void				gspecfree(void);
 #endif

@@ -23,8 +23,23 @@ int main()
 	// size_real =	printf("^.^/%58.32lf^.^", 1065815232,000000);
 
 	// printf ("own = %d\nreal = %d\n", size_own, size_real);
-	printf ("%14.15f", 123452.3456788);
+	// ft_printf ("%8lf\n", 0.00);
+	// printf ("%8lf\n", 0.00);
 
+	// ft_printf ("%0+lf\n", 0.00);
+	// printf ("%0+lf\n", 0.00);
+
+	// ft_printf ("% f\n", 0.00);
+	// printf ("% f\n", 0.00);
+
+	// ft_printf ("% #26.8lf\n", 0.00);
+	// printf ("% #26.8lf\n", 0.00);
+
+	// ft_printf ("%#0 32lf\n", 0.00);
+	// printf ("%#0 32lf\n", 0.00);
+
+	ft_printf ("%#- 42f\n", 0.00);
+	printf ("%#- 42f\n", 0.00);
 
 	double		nb;
 	nb = -12547.58;

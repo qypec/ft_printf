@@ -6,7 +6,7 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:43:54 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/30 22:29:30 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/07/31 19:43:44 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,21 @@ void	getnumber(t_part *part, long double num)
 {
 	unsigned long long number;
 	int i;
+	char str[2];
 
+	str[1] = '\0';
 	i = 0;
 	number = (unsigned long long)num;
-	ft_buff_addstr (part->middle, ft_itoa_u(number));
-	ft_buff_addsymb(part->middle, '.');
+	num -= number;
+	ft_buffadd(part->middle, ft_itoa_u(number));
+	ft_buffadd(part->middle, ".");
 	while (i < g_spec->precision + 3)
 	{
 		number = (double)num * 10;
 		num *= 10;
 		num -= number;
-		ft_buff_addsymb(part->middle, number + 48);
+		str[0] = number + 48;
+		ft_buffadd(part->middle, str);
 		i++;
 	}
 }
@@ -45,18 +49,37 @@ void getfirst(t_part *part)
 	int i;
  
 	i = 0;
+	size_middle = ft_strlen(part->middle->str);
+	size_zero = g_spec->width - size_middle;
+	if (size_zero <= 0)
+	{	
+		if ((part->first = (char *)malloc(sizeof(char) * 1)) == NULL)
+			return ;
+	}
+	else if (size_zero > 0)
+	{
+		if ((part->first = (char *)malloc(sizeof(char) * size_zero + 1)) == NULL)
+			return ;
+	}
+	if ((size_zero <= 0 || (size_zero && g_spec->zero == 1) || g_spec->minus == 1)
+		&& !(g_spec->plus) && !(part->is_neg) && g_spec->space == 1)
+		part->first[i++] = ' ';
+	
+	if (g_spec->minus == 1)
+	{
+		if (g_spec->plus && !(part->is_neg))
+				part->first[i++] = '+';
+			if (part->is_neg)
+				part->first[i++] = '-';
+	}
 	if (g_spec->minus == 0)
 	{
 		if (g_spec->zero)
 		{
 			if (g_spec->plus && !(part->is_neg))
-				part->first[i++] = '-';
+				part->first[i++] = '+';
 			if (part->is_neg)
 				part->first[i++] = '-';
-			size_middle = ft_strlen(part->middle->str);
-			size_zero = g_spec->width - size_middle;
-			if ((part->first = (char *)malloc(sizeof(char) * size_zero)) == NULL)
-				exit(-1);
 			while (i < size_zero)
 			{
 				part->first[i] =  '0';
@@ -65,22 +88,21 @@ void getfirst(t_part *part)
 		}
 		else
 		{
-			size_middle = ft_strlen(part->middle->str);
-			size_zero = g_spec->width + 1 - size_middle;
-			if ((part->first = (char *)malloc(sizeof(char) * size_zero)) == NULL)
-				exit(-1);
+			if ((g_spec->plus && !(part->is_neg)) || (part->is_neg))
+				size_zero--;
 			while (i < size_zero)
 			{
 				part->first[i] =  ' ';
 				i++;
 			}
 			if (g_spec->plus && !(part->is_neg))
-				part->first[i++] = '-';
+				part->first[i++] = '+';
 			if (part->is_neg)
 				part->first[i++] = '-';
 		}
 		
 	}
+	part->first[i] = '\0';
 }
 
 void getend(t_part *part)
@@ -91,6 +113,11 @@ void getend(t_part *part)
 
 	size_buff = ft_strlen(part->middle->str) + ft_strlen(part->first);
 	num_indents = g_spec->width - size_buff;
+
+	part->last = (char *)malloc(sizeof(char) * num_indents + 1);
+	if (!(part->last))
+		return ;
+	part->last[num_indents] = '\0';
 	i = 0;
 	if (g_spec->minus == 0)
 		part->last = NULL;
@@ -98,19 +125,32 @@ void getend(t_part *part)
 	{
 		while (i < num_indents)
 		{
-			ft_buff_addsymb(part->middle, ' ');
+			part->last[i] = ' ';
 			i++;
 		}
 	}
 	
 }
 
-void	print_float1(va_list arg)
+t_part *init_part(t_part *part)
+{
+	part = (t_part *)malloc(sizeof(t_part));
+	if (!part)
+		exit(-1);
+	part->is_neg = 0;
+	part->first = NULL;
+	part->last = NULL;
+	part->middle = NULL;
+	return (part);
+}
+
+void	print_float(va_list arg)
 {
 	long double  num;
 	t_part			*part;
 
-	init_part(part);	
+	part = init_part(part);
+	part->middle = ft_buffinit(10);
 	if (g_spec->precision  == -1)
 		g_spec->precision = 6;
 	if (g_spec->big_l == 0)
@@ -123,7 +163,10 @@ void	print_float1(va_list arg)
 		part->is_neg = 1;
 	}
 	getnumber(part, num);
-	ft_rounding(part->middle->str, ft_strlen(part->middle->str));
+	ft_rounding(part->middle->str, ft_strlen(part->middle->str) - 1 , part);
 	getfirst(part);
 	getend(part);
+	update_glbuffer(part->first);
+	update_glbuffer(part->middle->str);
+	update_glbuffer(part->last);
 }

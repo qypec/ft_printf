@@ -1,7 +1,7 @@
 
 #include "../includes/header.h"
 
-void ft_rounding(char *result, int size_result)
+void ft_rounding(char *result, int size_result, t_part *part)
 {
 	int index;
 	int transfer;
@@ -32,5 +32,8 @@ void ft_rounding(char *result, int size_result)
 		size_result--;
 	}
 	if (transfer == 1)
-			addsymb_glbuffer(49);
+			ft_buffadd(part->middle, "1"); //fix bag
+	if (g_spec->sharp == 1)
+		ft_buffadd(part->middle, ".");
+
 }
