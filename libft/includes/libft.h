@@ -6,7 +6,7 @@
 /*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 12:05:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/31 01:50:53 by qypec            ###   ########.fr       */
+/*   Updated: 2019/07/31 16:15:21 by qypec            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include "../ft_map/ft_map.h"
 # include "../ft_list/ft_list.h"
 # include "../ft_buffer/ft_buffer.h"
+# include "../ft_matr/ft_matr.h"
 
 void				*ft_memset (void *destination, int c, size_t n);
 void				*ft_bzero (void *s, size_t n);
@@ -76,7 +77,6 @@ void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
 int					ft_isspace(int c);
 int					ft_numblen(long long n);
-char				**ft_matrixfree(char ***ret);
 char				**ft_strswap(char **matrix, int first, int second);
 char				*ft_strncut(char *str, int n, char *choice);
 char				*ft_strencut(char *str, int n, char *choice);
@@ -88,7 +88,6 @@ char				*ft_strnglue(char *str, const char *left, \
 										const char *right, size_t n);
 char				*ft_stradd(char *str, char c);
 char				*ft_strnadd(char *str, char c, size_t n);
-char				**ft_matrdup(const char **matr);
 size_t				ft_matrlen(const char **matr);
 int					ft_isempty(const char *str);
 int					ft_alnumstr(const char *str);

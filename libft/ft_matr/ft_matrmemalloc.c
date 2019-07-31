@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_matr.h                                          :+:      :+:    :+:   */
+/*   ft_matrmemalloc.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/31 15:32:02 by qypec             #+#    #+#             */
-/*   Updated: 2019/07/31 16:17:14 by qypec            ###   ########.fr       */
+/*   Created: 2019/07/31 15:50:35 by qypec             #+#    #+#             */
+/*   Updated: 2019/07/31 16:17:38 by qypec            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_MATR_H
-# define FT_MATR_H
+#include "ft_matr.h"
 
-#include "../includes/libft.h"
+char				**ft_matrmemalloc(size_t size)
+{
+	char			**matr;
+	int				i;
 
-char					**ft_matrnew(size_t matr_size, ...);
-char					**ft_matrmemalloc(size_t size);
-char					**ft_matrdup(const char *first_str, ...);
-void					*ft_matrdel(char ***ret);
-
-#endif
+	if ((matr = (char **)malloc(sizeof(char *) * (size + 1))) == NULL)
+		return (NULL);
+	i = 0;
+	while (i <= (int)size)
+		matr[i++] = NULL;
+	return (matr);
+}
