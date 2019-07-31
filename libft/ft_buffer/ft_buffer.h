@@ -6,7 +6,7 @@
 /*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/09 13:10:59 by qypec             #+#    #+#             */
-/*   Updated: 2019/07/31 01:01:40 by qypec            ###   ########.fr       */
+/*   Updated: 2019/07/31 13:01:33 by qypec            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct			s_buff
 }						t_buff;
 
 t_buff					*ft_buffinit(int size);
+void					ft_buffaddsymb(t_buff *buff, char c);
 void					ft_buffadd(t_buff *buff, const char *str);
 void					ft_buffladd(t_buff *buff, const char *str, int len);
 void					ft_buffdel(t_buff **buff);

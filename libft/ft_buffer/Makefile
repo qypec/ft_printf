@@ -6,14 +6,14 @@
 #    By: qypec <qypec@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/09 13:11:11 by qypec             #+#    #+#              #
-#    Updated: 2019/07/30 23:09:15 by qypec            ###   ########.fr        #
+#    Updated: 2019/07/31 13:01:54 by qypec            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 include ../make_includes/libft.mk
 
-SOURCES = ft_buffinit.c ft_buffdel.c ft_buffadd.c
-OBJECTS = ft_buffinit.o ft_buffdel.o ft_buffadd.o
+SOURCES = ft_buffinit.c ft_buffdel.c ft_buffadd.c ft_buffaddsymb.c
+OBJECTS = ft_buffinit.o ft_buffdel.o ft_buffadd.o ft_buffaddsymb.o
 
 NAME = libbuff.a
 
