@@ -5,31 +5,34 @@
 #                                                     +:+ +:+         +:+      #
 #    By: qypec <qypec@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/06/18 01:54:46 by yquaro            #+#    #+#              #
-#    Updated: 2019/07/31 15:35:06 by qypec            ###   ########.fr        #
+#    Created: 2019/07/09 13:11:11 by qypec             #+#    #+#              #
+#    Updated: 2019/07/31 15:33:02 by qypec            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
+include ../includes/libft.mk
 
-all:
-	@echo \*\*\* Reassembly libraries from libft
-	ar -x libft.a
-	ar -x liballoc.a
-	ar -x libctime.a
-	ar -x libhashtab.a
-	ar -x libmath.a
-	ar -x liblist.a
-	ar -x libbuff.a
-	ar -x libmatr.a
-	@ar rc $(NAME) *.o
+SOURCES = 
+OBJECTS = 
+
+NAME = libmatr.a
+
+all: print $(SOURCES) $(NAME)
+	
+print:
+	@echo \*\*\* Compiling ft_matr
+
+.c.o:
+	$(COMPILING) $< -o $@
+
+$(NAME): $(OBJECTS)
+	@ar rc $(NAME) $(OBJECTS)
 	@ranlib $(NAME)
-	@rm -f __.SYMDEF\ SORTED
-	@mv $(NAME) ../../lib/$(NAME)
-	@echo \*\*\* LIBFT COMPILED!
+	@mv $(NAME) ../lib/$(NAME)
 
 clean:
-	@rm -f *.o
+	@rm -f $(OBJECTS)
 
 fclean: clean
-	@rm -f $(NAME)
+	@rm -f ../lib/$(NAME)
+	

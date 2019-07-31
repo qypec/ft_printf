@@ -6,7 +6,7 @@
 #    By: qypec <qypec@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/24 21:41:43 by yquaro            #+#    #+#              #
-#    Updated: 2019/07/31 01:51:11 by qypec            ###   ########.fr        #
+#    Updated: 2019/07/31 15:35:44 by qypec            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -63,6 +63,7 @@ $(NAME): $(OBJECTS)
 	@make -C ft_math/ all
 	@make -C ft_map/ all
 	@make -C ft_buffer/ all
+	@make -C ft_matr/ all
 	@ar rc $(NAME) $(OBJECTS)
 	@ranlib $(NAME)
 	@mv $(NAME) lib/$(NAME)
@@ -76,6 +77,7 @@ clean:
 	@make -C ft_math/ clean
 	@make -C ft_map/ clean
 	@make -C ft_buffer/ clean
+	@make -C ft_matr/ clean
 	@rm -f $(OBJECTS)
 
 fclean: clean
@@ -86,6 +88,7 @@ fclean: clean
 	@make -C ft_math/ fclean
 	@make -C ft_map/ fclean
 	@make -C ft_buffer/ fclean
+	@make -C ft_matr/ fclean
 	@rm -f ../lib/$(NAME)
 
 re: fclean all
