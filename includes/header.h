@@ -6,7 +6,7 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:42:27 by oargrave          #+#    #+#             */
-/*   Updated: 2019/08/01 15:19:43 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/08/01 20:02:50 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,4 +153,8 @@ void				sign(long long int num);
 void				ft_rounding(char *number, int size_result, t_part *part);
 void				init_gspec(void);
 void				gspecfree(void);
+void				getnumber(t_part *part, long double num);
+void				getfirst(t_part *part, int size_middle);
+void				getend(t_part *part);
+void				del_part(t_part *part);
 #endif

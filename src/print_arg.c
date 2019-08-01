@@ -6,7 +6,7 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:41:45 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/31 19:02:50 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/08/01 19:27:08 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	width_processing(char *str)
 {
-	int	size;
-	int	width;
+	int		size;
+	int		width;
 
 	width = 0;
 	size = ft_strlen(str);
@@ -36,9 +36,6 @@ void	width_processing(char *str)
 	if (g_spec->minus != 1)
 		addstr_glbuffer(str, size);
 }
-
-
-
 
 int		print_arg(char *traverse, va_list arg)
 {
