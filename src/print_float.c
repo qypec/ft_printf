@@ -6,18 +6,12 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:43:54 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/31 19:43:44 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/08/01 15:46:46 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "../includes/header.h"
-
-void  fill_parts_float(t_part *part, long double num)
-{
-
-	
-}
 
 void	getnumber(t_part *part, long double num)
 {
@@ -30,7 +24,8 @@ void	getnumber(t_part *part, long double num)
 	number = (unsigned long long)num;
 	num -= number;
 	ft_buffadd(part->middle, ft_itoa_u(number));
-	ft_buffadd(part->middle, ".");
+	if (g_spec->precision != 0 || g_spec->sharp == 1)
+		ft_buffadd(part->middle, ".");
 	while (i < g_spec->precision + 3)
 	{
 		number = (double)num * 10;
@@ -42,25 +37,45 @@ void	getnumber(t_part *part, long double num)
 	}
 }
 
-void getfirst(t_part *part)
+static void getfirst_min(t_part *part, int *i, int size_zero)
+{
+	if (g_spec->minus == 0)
+	{
+		if (g_spec->zero)
+		{
+			if (g_spec->plus && !(part->is_neg))
+				part->first[(*i)++] = '+';
+			if (part->is_neg)
+				part->first[(*i)++] = '-';
+			while (*i < size_zero)
+				part->first[(*i)++] =  '0';
+		}
+		else
+		{
+			if ((g_spec->plus && !(part->is_neg)) || (part->is_neg))
+				size_zero--;
+			while (*i < size_zero)
+				part->first[(*i)++] =  ' ';
+			if (g_spec->plus && !(part->is_neg))
+				part->first[(*i)++] = '+';
+			if (part->is_neg)
+				part->first[(*i)++] = '-';
+		}
+		
+	}
+}
+
+void getfirst(t_part *part, int size_middle)
 {
 	int size_zero;
-	int size_middle;
 	int i;
  
 	i = 0;
-	size_middle = ft_strlen(part->middle->str);
 	size_zero = g_spec->width - size_middle;
 	if (size_zero <= 0)
-	{	
-		if ((part->first = (char *)malloc(sizeof(char) * 1)) == NULL)
-			return ;
-	}
-	else if (size_zero > 0)
-	{
-		if ((part->first = (char *)malloc(sizeof(char) * size_zero + 1)) == NULL)
-			return ;
-	}
+		part->first = ft_strnew(1);
+	else
+		part->first = ft_strnew(size_zero + 1);
 	if ((size_zero <= 0 || (size_zero && g_spec->zero == 1) || g_spec->minus == 1)
 		&& !(g_spec->plus) && !(part->is_neg) && g_spec->space == 1)
 		part->first[i++] = ' ';
@@ -72,36 +87,7 @@ void getfirst(t_part *part)
 			if (part->is_neg)
 				part->first[i++] = '-';
 	}
-	if (g_spec->minus == 0)
-	{
-		if (g_spec->zero)
-		{
-			if (g_spec->plus && !(part->is_neg))
-				part->first[i++] = '+';
-			if (part->is_neg)
-				part->first[i++] = '-';
-			while (i < size_zero)
-			{
-				part->first[i] =  '0';
-				i++;
-			}
-		}
-		else
-		{
-			if ((g_spec->plus && !(part->is_neg)) || (part->is_neg))
-				size_zero--;
-			while (i < size_zero)
-			{
-				part->first[i] =  ' ';
-				i++;
-			}
-			if (g_spec->plus && !(part->is_neg))
-				part->first[i++] = '+';
-			if (part->is_neg)
-				part->first[i++] = '-';
-		}
-		
-	}
+	getfirst_min(part, &i, size_zero);
 	part->first[i] = '\0';
 }
 
@@ -144,10 +130,35 @@ t_part *init_part(t_part *part)
 	return (part);
 }
 
+void del_part(t_part *part)
+{
+	if (part->first != NULL)
+		free(part->first);
+	if(part->last != NULL)
+		free(part->last);
+	if(part->middle != NULL)
+		ft_buffdel(&part->middle);
+	free(part);
+	part = NULL;
+}
+
+void  fill_parts_float(t_part *part, long double num)
+{
+	getnumber(part, num);
+	ft_rounding(part->middle->str, ft_strlen(part->middle->str) - 1 , part);
+	getfirst(part, ft_strlen(part->middle->str));
+	getend(part);
+	update_glbuffer(part->first);
+	update_glbuffer(part->middle->str);
+	update_glbuffer(part->last);
+	del_part(part);
+}
+
 void	print_float(va_list arg)
 {
-	long double  num;
+	long double 	 num;
 	t_part			*part;
+	lnum 			 bit;
 
 	part = init_part(part);
 	part->middle = ft_buffinit(10);
@@ -157,16 +168,11 @@ void	print_float(va_list arg)
 		num = va_arg(arg, double);
 	else 
 		num = va_arg(arg, long double);
-	if (num < 0)
+	bit.f = num;
+	if (bit.t_bit_float.sign == 1)
 	{
 		num *= -1;
 		part->is_neg = 1;
 	}
-	getnumber(part, num);
-	ft_rounding(part->middle->str, ft_strlen(part->middle->str) - 1 , part);
-	getfirst(part);
-	getend(part);
-	update_glbuffer(part->first);
-	update_glbuffer(part->middle->str);
-	update_glbuffer(part->last);
+	fill_parts_float(part, num);
 }

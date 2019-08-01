@@ -6,7 +6,7 @@
 /*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:42:27 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/31 17:19:22 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/08/01 15:19:43 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,17 @@ typedef struct		s_width
 	int				space_right;
 	int				width;
 }					t_widt;
+
+typedef union un_float
+{
+	long double f;
+	struct s_bit_float
+	{
+		unsigned long mantissa : 63;
+		unsigned long exponent : 15;
+		unsigned long sign : 1;	
+	}	t_bit_float;
+}	lnum;
 
 typedef struct		s_output
 {
