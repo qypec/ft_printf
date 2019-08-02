@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_int.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 19:19:20 by oargrave          #+#    #+#             */
-/*   Updated: 2019/08/02 13:23:19 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 14:54:32 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,10 +103,9 @@ void	display_int(long long int num, int base)
 	print_width(num1);
 	if (g_spec->precision >= 0 && num == 0)
 		print_width_end();
-	else if (g_spec->precision <= 0 && num == 0 && g_spec->plus == 0
-		&& g_spec->symb == 'd' && g_spec->hh == 0 && g_spec->h == 0
-		&& g_spec->z == 0 && g_spec->l == 0 && g_spec->ll == 0
-		&& g_spec->j == 0 && g_spec->symb != 'd')
+	else if (g_spec->precision <= 0 && g_spec->symb != 'd' && !g_spec->plus
+		&& !g_spec->hh && !g_spec->h && !g_spec->z
+		&& !g_spec->l && !g_spec->ll && !g_spec->j && !num)
 		print_width_end();
 	else
 	{

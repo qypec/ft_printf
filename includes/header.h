@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:42:27 by oargrave          #+#    #+#             */
-/*   Updated: 2019/08/02 13:26:34 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 15:22:19 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,4 +152,6 @@ void				getend(t_part *part);
 void				del_part(t_part *part);
 void				init_width(void);
 void				widthfree(void);
+int					check_str(char *str);
+void				width_four(void);
 #endif

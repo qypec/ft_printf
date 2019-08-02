@@ -6,13 +6,13 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:43:54 by oargrave          #+#    #+#             */
-/*   Updated: 2019/08/02 13:26:39 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 15:14:57 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/header.h"
 
-void	getnumber(t_part *part, long double num)
+void			getnumber(t_part *part, long double num)
 {
 	unsigned long long		number;
 	int						i;
@@ -36,7 +36,6 @@ void	getnumber(t_part *part, long double num)
 	}
 }
 
-
 static t_part	*init_part(t_part *part)
 {
 	part = (t_part *)malloc(sizeof(t_part));
@@ -49,7 +48,7 @@ static t_part	*init_part(t_part *part)
 	return (part);
 }
 
-void		del_part(t_part *part)
+void			del_part(t_part *part)
 {
 	if (part->first != NULL)
 		free(part->first);
@@ -61,7 +60,7 @@ void		del_part(t_part *part)
 	part = NULL;
 }
 
-void	fill_parts_float(t_part *part, long double num)
+void			fill_parts_float(t_part *part, long double num)
 {
 	getnumber(part, num);
 	ft_rounding(part->middle->str, ft_strlen(part->middle->str) - 1, part);
@@ -73,7 +72,7 @@ void	fill_parts_float(t_part *part, long double num)
 	del_part(part);
 }
 
-void	print_float(va_list arg)
+void			print_float(va_list arg)
 {
 	long double		num;
 	t_part			*part;

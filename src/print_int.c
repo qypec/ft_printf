@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_int.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: oargrave <oargrave@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:44:01 by oargrave          #+#    #+#             */
-/*   Updated: 2019/08/02 13:18:38 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 16:12:19 by oargrave         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,25 +53,9 @@ static void		width_two(long long int num, char *str)
 		g_width->space_left = 0;
 	}
 	if (g_spec->space == 1 && num >= 0 && g_spec->symb != 'u'
-	&& g_spec->symb != 'c' && g_spec->symb != 'U' && g_spec->symb
-	!= 's' && g_spec->symb != 'o' && g_spec->symb != 'p')
-		if (g_width->space_left <= 0 && g_spec->plus != 1)
-		{
-			if (g_spec->zero == 1 && g_spec->precision < 0)
-			{
-				g_width->space_left = 1;
-				g_width->zero--;
-			}
-			if (g_spec->zero == 1 && g_spec->precision > 0)
-				g_width->space_left = 1;
-			else if (g_spec->minus == 1)
-			{
-				g_width->space_right--;
-				g_width->space_left = 1;
-			}
-			else
-				g_width->space_left = 1;
-		}
+		&& g_spec->symb != 'c' && g_spec->symb != 'U' && g_spec->symb
+		!= 's' && g_spec->symb != 'o' && g_spec->symb != 'p')
+		width_four();
 	if ((g_spec->sharp == 1 && g_spec->width > 0) || g_spec->symb == 'p')
 	{
 		if ((g_spec->symb == 'x' || g_spec->symb == 'X') && num > 0)
@@ -83,9 +67,9 @@ static void		width_two(long long int num, char *str)
 	}
 }
 
-void		width(long long int number, char *str)
+void			width(long long int number, char *str)
 {
-	long long int num;
+	long long int	num;
 
 	num = number;
 	g_width->width = ft_strlen(str);
@@ -109,15 +93,16 @@ void		width(long long int number, char *str)
 	return ;
 }
 
-static void	print_widthtwo(long long int num)
+static void		print_widthtwo(long long int num)
 {
-	int index;
+	int			index;
 
 	index = 0;
 	if (g_width->space_left > 0)
 	{
-		if (g_spec->plus == 1 && num >= 0 && g_spec->symb != 'o' && g_spec->symb != 'c'
-		&& g_spec->symb != 'p' && g_spec->symb != 'u' && g_spec->symb != 's' && g_spec->symb != 'f')
+		if (g_spec->plus == 1 && num >= 0 && g_spec->symb != 'o'
+		&& g_spec->symb != 'c' && g_spec->symb != 'p' && g_spec->symb != 'u'
+		&& g_spec->symb != 's' && g_spec->symb != 'f')
 			g_width->space_left = g_width->space_left - 1;
 		while (index < g_width->space_left)
 		{
@@ -133,7 +118,7 @@ static void	print_widthtwo(long long int num)
 		sign_x(num);
 }
 
-void		print_width(long long int num)
+void			print_width(long long int num)
 {
 	if (g_spec->symb == 's' && g_width->width == 0 && g_spec->zero == 0)
 	{
