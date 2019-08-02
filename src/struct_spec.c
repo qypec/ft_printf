@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 20:32:44 by yquaro            #+#    #+#             */
-/*   Updated: 2019/08/02 12:37:10 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 14:49:51 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char				*parsesymb(char *traverse)
 	return (traverse);
 }
 
-static void			lowercase()
+static void			lowercase(void)
 {
 	if (g_spec->symb == 'O')
 	{
@@ -88,7 +88,7 @@ void				struct_spec(char **traverse)
 	}
 	else
 		trav = parsesymb(trav);
-	if (is_specifier(*trav)) 
+	if (is_specifier(*trav))
 	{
 		g_spec->symb = *trav;
 		lowercase();

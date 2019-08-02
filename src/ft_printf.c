@@ -6,32 +6,11 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:58:05 by oargrave          #+#    #+#             */
-/*   Updated: 2019/08/02 14:31:15 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 15:17:59 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-
-void				print_struct(t_spec	*spec) /* на время отладки */
-{
-	printf("\n");
-	printf("symb = %c\n",  g_spec->symb);
-	printf("width = %d\n",  g_spec->width);
-	printf("space = %d\n",  g_spec->space);
-	printf("sharp = %d\n",  g_spec->sharp);
-	printf("plus = %d\n",  g_spec->plus);
-	printf("minus = %d\n",  g_spec->minus);
-	printf("zero = %d\n",  g_spec->zero);
-	printf("precision = %d\n",  g_spec->precision);
-	printf("L = %d\n",  g_spec->big_l);
-	printf("ll = %d\n",  g_spec->ll);
-	printf("l = %d\n",  g_spec->l);
-	printf("hh = %d\n",  g_spec->hh);
-	printf("h = %d\n",  g_spec->h);
-	printf("z = %d\n",  g_spec->z);
-	printf("j = %d\n",  g_spec->j);
-	printf("\n");
-}
 
 static int			take_str_before_persent(char **traverse)
 {
@@ -57,7 +36,7 @@ static int			take_str_before_persent(char **traverse)
 static void			output(size_t *size)
 {
 	*size = g_output->i;
-	write (1, g_output->str, g_output->i);
+	write(1, g_output->str, g_output->i);
 }
 
 static void			totalfree(void)
@@ -69,10 +48,10 @@ static void			totalfree(void)
 
 int					ft_printf(const char *format, ...)
 {
-	va_list 		arg;	
-	char 			*traverse;
+	va_list			arg;
+	char			*traverse;
 	size_t			size;
-	
+
 	if (!(traverse = (char *)format))
 		return (0);
 	g_output = ft_buffinit(40);
@@ -85,8 +64,7 @@ int					ft_printf(const char *format, ...)
 		if (take_str_before_persent(&traverse) == END_OF_STRING)
 			break ;
 		struct_spec(&traverse);
-		// print_struct(g_spec);
-		print_arg(traverse, arg);
+		print_arg(arg);
 	}
 	output(&size);
 	totalfree();

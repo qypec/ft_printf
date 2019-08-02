@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 12:36:28 by yquaro            #+#    #+#             */
-/*   Updated: 2019/08/02 13:18:36 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 15:13:50 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,11 @@ int			check_str(char *str)
 	return (1);
 }
 
-static int	print_else(char *str, char *ptr, char *point)
+static int	print_else(char *str, char *ptr)
 {
 	if ((check_str(str) == -1))
 		return (-1);
-	if (g_spec->precision >= 0 && (g_spec->precision < ft_strlen(str)))
+	if (g_spec->precision >= 0 && (g_spec->precision < (int)ft_strlen(str)))
 	{
 		ptr = ft_strnew(g_spec->precision);
 		ptr = ft_strncpy(ft_strnew(g_spec->precision), str, g_spec->precision);
@@ -68,7 +68,7 @@ static int	print_else(char *str, char *ptr, char *point)
 	return (0);
 }
 
-int			print_s(va_list arg, char *str, char *ptr, char *point)
+int			print_s(va_list arg, char *str, char *ptr)
 {
 	str = (char *)va_arg(arg, void *);
 	if (str == NULL)
@@ -88,7 +88,7 @@ int			print_s(va_list arg, char *str, char *ptr, char *point)
 	}
 	else
 	{
-		if ((print_else(str, ptr, point) == -1))
+		if ((print_else(str, ptr) == -1))
 			return (-1);
 	}
 	return (0);
@@ -126,7 +126,7 @@ void		print_char(va_list arg)
 	if (g_spec->symb == 'c')
 		print_c(arg);
 	else if (g_spec->symb == 's')
-		print_s(arg, NULL, NULL, NULL);
+		print_s(arg, NULL, NULL);
 	else if (g_spec->symb == 'p')
 		print_p(arg);
 	return ;

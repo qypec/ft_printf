@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 14:23:51 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 23:07:52 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 15:08:07 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void				init_color(void)
 	ft_mapinsert(g_color, "cyan", CYAN_COLOR_CODE);
 }
 
-static int		check_param(char *traverse)
+static int			check_param(char *traverse)
 {
 	int i;
 	int counter;
@@ -43,13 +43,11 @@ static int		check_param(char *traverse)
 	return (counter);
 }
 
-void			take_color(char **traverse)
+void				take_color(char **traverse)
 {
 	char	*trav;
 	char	buff[MAX_COLOR_NAME_SIZE];
-	int		counter;
 	int		n;
-	int		i;
 
 	init_color();
 	trav = *traverse;

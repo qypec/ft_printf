@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 19:49:21 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/07 06:19:53 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 15:01:57 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void					ft_mapdelone(t_map *map, const char *key)
 {
 	int					hash;
 	int					(*hash_func)(const char *, int);
-	ht_list				**tmp;
+	t_hlist				**tmp;
 
 	hash_func = map->hashfunc;
 	hash = hash_func(key, map->size);

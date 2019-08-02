@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:43:54 by oargrave          #+#    #+#             */
-/*   Updated: 2019/08/02 13:26:39 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 16:20:47 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,31 +36,6 @@ void	getnumber(t_part *part, long double num)
 	}
 }
 
-
-static t_part	*init_part(t_part *part)
-{
-	part = (t_part *)malloc(sizeof(t_part));
-	if (!part)
-		exit(-1);
-	part->is_neg = 0;
-	part->first = NULL;
-	part->last = NULL;
-	part->middle = NULL;
-	return (part);
-}
-
-void		del_part(t_part *part)
-{
-	if (part->first != NULL)
-		free(part->first);
-	if (part->last != NULL)
-		free(part->last);
-	if (part->middle != NULL)
-		ft_buffdel(&part->middle);
-	free(part);
-	part = NULL;
-}
-
 void	fill_parts_float(t_part *part, long double num)
 {
 	getnumber(part, num);
@@ -70,16 +45,16 @@ void	fill_parts_float(t_part *part, long double num)
 	ft_buffadd(g_output, part->first);
 	ft_buffadd(g_output, part->middle->str);
 	ft_buffadd(g_output, part->last);
-	del_part(part);
+	partdel(&part);
 }
 
 void	print_float(va_list arg)
 {
 	long double		num;
 	t_part			*part;
-	lnum			bit;
+	t_lnum			bit;
 
-	part = init_part(part);
+	part = init_part();
 	part->middle = ft_buffinit(10);
 	if (g_spec->precision == -1)
 		g_spec->precision = 6;
@@ -88,7 +63,7 @@ void	print_float(va_list arg)
 	else
 		num = va_arg(arg, long double);
 	bit.f = num;
-	if (bit.t_bit_float.sign == 1)
+	if (bit.t_bitfloat.sign == 1)
 	{
 		num *= -1;
 		part->is_neg = 1;

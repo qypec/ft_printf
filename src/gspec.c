@@ -6,13 +6,13 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 20:00:19 by yquaro            #+#    #+#             */
-/*   Updated: 2019/08/02 12:41:14 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 14:43:13 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-void 		init_gspec(void)
+void				init_gspec(void)
 {
 	if (g_spec == NULL)
 		if ((g_spec = malloc(sizeof(t_spec))) == NULL)
@@ -34,7 +34,7 @@ void 		init_gspec(void)
 	g_spec->z = 0;
 }
 
-void		gspecfree(void)
+void				gspecfree(void)
 {
 	if (g_spec == NULL)
 		return ;

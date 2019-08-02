@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 16:58:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/08/02 12:39:30 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 15:11:09 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int					ft_numblen_u(unsigned long long int n)
 	return (i);
 }
 
-int					lenbase(unsigned long long int num, int base)
+int					lenbase(unsigned long long int num)
 {
 	int			size;
 
@@ -90,6 +90,7 @@ void				assembl_int(va_list arg, int base)
 {
 	long long int	check;
 
+	check = 0;
 	if (g_spec->symb == 'x' || g_spec->symb == 'X')
 		base = 16;
 	if (g_spec->symb == 'o')

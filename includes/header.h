@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:42:27 by oargrave          #+#    #+#             */
-/*   Updated: 2019/08/02 13:26:34 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 16:21:48 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 # include <stdarg.h>
 # include <time.h>
 # define END_OF_STRING 1
-# define PRECISION	1
-# define WIDTH		2
-# define TAB  "0123456789abcdef"
+# define PRECISION 1
+# define WIDTH 2
+# define TAB "0123456789abcdef"
 # define NUL "(null)"
 # define NULL_SIZE 7
 # define RESERVE 15
@@ -43,16 +43,16 @@ typedef struct		s_width
 	int				width;
 }					t_width;
 
-typedef union un_float
+typedef union		s_unfloat
 {
-	long double f;
-	struct s_bit_float
+	long double		f;
+	struct			s_bitfloat
 	{
 		unsigned long mantissa : 63;
 		unsigned long exponent : 15;
-		unsigned long sign : 1;	
-	}	t_bit_float;
-}	lnum;
+		unsigned long sign : 1;
+	}				t_bitfloat;
+}					t_lnum;
 
 typedef struct		s_spec
 {
@@ -73,7 +73,7 @@ typedef struct		s_spec
 	int				z;
 }					t_spec;
 
-typedef struct 		s_part
+typedef struct		s_part
 {
 	char			*first;
 	t_buff			*middle;
@@ -92,7 +92,7 @@ void				width(long long number, char *str);
 int					*width_u(unsigned long long number,
 		unsigned long long int index, int width);
 int					ft_printf(const char *format, ...);
-int					print_arg(char *traverse, va_list arg);
+int					print_arg(va_list arg);
 void				print_int(va_list arg);
 int					print_d(int number);
 void				print_u(va_list arg, int base);
@@ -127,7 +127,6 @@ char				*parse_calculatesymb(char *traverse);
 char				*parse_lh_bigl(char *traverse);
 char				*parsesymb(char *traverse);
 int					read_lh_bigl(char *traverse, int i);
-void				print_date(char *traverse);
 void				init_bufferoutput(void);
 void				is_it_buffer_overflow(size_t size);
 void				add_memory(size_t size);
@@ -140,7 +139,7 @@ void				assembl_float(va_list arg);
 void				take_color(char **traverse);
 char				*register_x(char *str);
 int					ft_numblen_u(unsigned long long int n);
-int					lenbase(unsigned long long int num, int base);
+int					lenbase(unsigned long long int num);
 void				sign_x(long long int num);
 void				sign(long long int num);
 void				ft_rounding(char *number, int size_result, t_part *part);
@@ -152,4 +151,8 @@ void				getend(t_part *part);
 void				del_part(t_part *part);
 void				init_width(void);
 void				widthfree(void);
+void				print_date(void);
+t_part				*init_part(void);
+void				partdel(t_part **part);
+
 #endif

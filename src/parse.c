@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 20:44:35 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 19:44:44 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 14:47:34 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ char					*parse_lh_bigl(char *traverse)
 	}
 	if (g_spec->big_l == 1 || g_spec->l == 1 || g_spec->h == 1)
 		traverse++;
-	else if (g_spec->ll == 1 ||  g_spec->hh == 1)
+	else if (g_spec->ll == 1 || g_spec->hh == 1)
 		traverse += 2;
 	return (parsesymb(traverse));
 }

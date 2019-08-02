@@ -6,27 +6,25 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/14 16:30:10 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 22:15:24 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 15:02:54 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_map.h"
 
-static void				default_del(ht_list *list)
+static void				default_del(t_hlist *list)
 {
 	list->next = NULL;
-	// ft_strdel(&(list->key));
-	// ft_strdel((char **)&(list->value));
 	list->key = NULL;
 	list->value = NULL;
 	free(list);
 	list = NULL;
 }
 
-ht_list					*ht_listdelone(ht_list *head, ht_list *dellist)
+t_hlist					*ht_listdelone(t_hlist *head, t_hlist *dellist)
 {
-	ht_list				*tmp;
-	ht_list				*lst;
+	t_hlist				*tmp;
+	t_hlist				*lst;
 
 	if (dellist == NULL)
 		return (NULL);
@@ -49,9 +47,9 @@ ht_list					*ht_listdelone(ht_list *head, ht_list *dellist)
 	return (head);
 }
 
-void					ht_listdel(ht_list **head)
+void					ht_listdel(t_hlist **head)
 {
-	ht_list				*tmp;
+	t_hlist				*tmp;
 
 	if (*head == NULL)
 		return ;
@@ -65,11 +63,11 @@ void					ht_listdel(ht_list **head)
 	default_del(*head);
 }
 
-ht_list					*ht_listnew(const char *key, const void *value)
+t_hlist					*ht_listnew(const char *key, const void *value)
 {
-	ht_list				*list;
+	t_hlist				*list;
 
-	if ((list = (ht_list *)malloc(sizeof(ht_list))) == NULL)
+	if ((list = (t_hlist *)malloc(sizeof(t_hlist))) == NULL)
 		return (NULL);
 	list->key = (char *)key;
 	list->value = (void *)value;

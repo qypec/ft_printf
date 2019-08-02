@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/18 17:04:28 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/07 06:18:54 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 14:56:22 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_map					*ft_mapnew(void *hashfunc_ptr, int size)
 		map->size = DEFAULT_MAP_SIZE;
 	else
 		map->size = size;
-	map->head = (ht_list **)malloc(sizeof(ht_list *) * map->size);
+	map->head = (t_hlist **)malloc(sizeof(t_hlist *) * map->size);
 	while (i < map->size)
 		map->head[i++] = NULL;
 	return (map);

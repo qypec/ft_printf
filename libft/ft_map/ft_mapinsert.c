@@ -17,7 +17,7 @@ void					ft_mapinsert(t_map *map, const char *key, \
 {
 	int					hash;
 	int					(*hash_func)(const char *, int);
-	ht_list				**tmp;
+	t_hlist				**tmp;
 
 	hash_func = map->hashfunc;
 	hash = hash_func(key, map->size);

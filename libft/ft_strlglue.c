@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/30 22:18:35 by yquaro            #+#    #+#             */
-/*   Updated: 2019/08/02 12:43:35 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 15:04:43 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void						ft_strlglue(int start, char *puthere, ...)
 {
-	va_list 		arg;
+	va_list			arg;
 	int				counter;
 	int				i;
 	char			*str;

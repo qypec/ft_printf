@@ -6,14 +6,14 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/02 21:22:52 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:43:09 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 14:52:46 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_LIST
-# define FT_LIST
+#ifndef FT_LIST_H
+# define FT_LIST_H
 
-#include "../includes/libft.h"
+# include "../includes/libft.h"
 
 typedef struct					s_list
 {
