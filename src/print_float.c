@@ -6,84 +6,92 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:43:54 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/25 17:39:05 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 12:39:00 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/header.h"
 
-#include "header.h"
-
-
-static void	float_copy(char *numb, char *str, int i, int size_str)
+void	getnumber(t_part *part, long double num)
 {
-	int j;
-	char *result;
+	unsigned long long		number;
+	int						i;
+	char					str[2];
 
-	j = 0;
-	if (!(result = (char *)malloc(sizeof(char) * (i + size_str + 3))))
-		return ;
+	str[1] = '\0';
 	i = 0;
-	if (g_spec->minus == 2)
-		result[i++] = '-';
-	while (str[j] != '\0')
-		result[i++] = str[j++];
-	j = 0;
-	while (numb[j] != '\0')
-		result[i++] = numb[j++];
-	
-	result[i] = '\0';
-	width(0, result);
-	print_width(0);
-	ft_rounding(result, i);
-	update_glbuffer(result);
-	free(str);
-	free(numb);
-	free(result);
-}
-
-void	print_float(long double num, int i, int j, int size_str)
-{
-	unsigned long long number;
-	char *str;
-	char *numb;
-	char *result;
-
 	number = (unsigned long long)num;
-	str = ft_itoa_u(number);
-	size_str = ft_strlen(str);
 	num -= number;
-	numb = (char *)malloc(sizeof(char) * (size_str + g_spec->precision + 3));
-	if (g_spec->precision > 0 || g_spec->sharp == 1)
-	{
-		numb[i] = '.';
-		i++;
-	}
+	ft_buffadd(part->middle, ft_itoa_u(number));
+	if (g_spec->precision != 0 || g_spec->sharp == 1)
+		ft_buffadd(part->middle, ".");
 	while (i < g_spec->precision + 3)
 	{
 		number = (double)num * 10;
 		num *= 10;
 		num -= number;
-		numb[i] = number + 48;
+		str[0] = number + 48;
+		ft_buffadd(part->middle, str);
 		i++;
 	}
-	numb[i] = '\0';
-	float_copy(numb, str, i, size_str);
 }
 
-void assembl_float(va_list arg)
+
+static t_part	*init_part(t_part *part)
 {
-	long double  num;
-	
-	if (g_spec->precision < 0)
+	part = (t_part *)malloc(sizeof(t_part));
+	if (!part)
+		exit(-1);
+	part->is_neg = 0;
+	part->first = NULL;
+	part->last = NULL;
+	part->middle = NULL;
+	return (part);
+}
+
+void		del_part(t_part *part)
+{
+	if (part->first != NULL)
+		free(part->first);
+	if (part->last != NULL)
+		free(part->last);
+	if (part->middle != NULL)
+		ft_buffdel(&part->middle);
+	free(part);
+	part = NULL;
+}
+
+void	fill_parts_float(t_part *part, long double num)
+{
+	getnumber(part, num);
+	ft_rounding(part->middle->str, ft_strlen(part->middle->str) - 1, part);
+	getfirst(part, ft_strlen(part->middle->str));
+	getend(part);
+	update_glbuffer(part->first);
+	update_glbuffer(part->middle->str);
+	update_glbuffer(part->last);
+	del_part(part);
+}
+
+void	print_float(va_list arg)
+{
+	long double		num;
+	t_part			*part;
+	lnum			bit;
+
+	part = init_part(part);
+	part->middle = ft_buffinit(10);
+	if (g_spec->precision == -1)
 		g_spec->precision = 6;
-	if (g_spec->symb == 'f' && g_spec->big_l == 0)
+	if (g_spec->big_l == 0)
 		num = va_arg(arg, double);
-	else if (g_spec->big_l == 1)
+	else
 		num = va_arg(arg, long double);
-	if (num < 0)
+	bit.f = num;
+	if (bit.t_bit_float.sign == 1)
 	{
 		num *= -1;
-		g_spec->minus = 2;
+		part->is_neg = 1;
 	}
-	print_float(num, 0, 0, 0);
+	fill_parts_float(part, num);
 }

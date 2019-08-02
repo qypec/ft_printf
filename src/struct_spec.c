@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct_spec.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 20:32:44 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/31 01:28:04 by qypec            ###   ########.fr       */
+/*   Updated: 2019/08/02 12:37:10 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,11 @@ static void			lowercase()
 	{
 		g_spec->l = 1;
 		g_spec->symb = 'd';
+	}
+	else if (g_spec->symb == 'F')
+	{
+		g_spec->l = 1;
+		g_spec->symb = 'f';
 	}
 }
 

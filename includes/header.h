@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:42:27 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/31 01:33:15 by qypec            ###   ########.fr       */
+/*   Updated: 2019/08/02 12:47:09 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,17 @@ typedef struct		s_width
 	int				width;
 }					t_width;
 
+typedef union un_float
+{
+	long double f;
+	struct s_bit_float
+	{
+		unsigned long mantissa : 63;
+		unsigned long exponent : 15;
+		unsigned long sign : 1;	
+	}	t_bit_float;
+}	lnum;
+
 typedef struct		s_output
 {
 	char			*str;
@@ -70,6 +81,14 @@ typedef struct		s_spec
 	int				h;
 	int				z;
 }					t_spec;
+
+typedef struct 		s_part
+{
+	char			*first;
+	t_buff			*middle;
+	char			*last;
+	int				is_neg;
+}					t_part;
 
 struct s_width		*g_width;
 struct s_output		*g_output;
@@ -125,7 +144,7 @@ void				free_bufferoutput(void);
 void				addsymb_glbuffer(char c);
 void				update_glbuffer(const char *str);
 void				addstr_glbuffer(char *str, size_t size);
-void				print_float(long double num, int i, int j, int size_str);
+void				print_float(va_list arg);
 void				assembl_float(va_list arg);
 void				take_color(char **traverse);
 char				*register_x(char *str);
@@ -133,14 +152,13 @@ int					ft_numblen_u(unsigned long long int n);
 int					lenbase(unsigned long long int num, int base);
 void				sign_x(long long int num);
 void				sign(long long int num);
-void				ft_rounding(char *number, int size_result);
-
+void				ft_rounding(char *number, int size_result, t_part *part);
 void				init_gspec(void);
 void				gspecfree(void);
-
+void				getnumber(t_part *part, long double num);
+void				getfirst(t_part *part, int size_middle);
+void				getend(t_part *part);
+void				del_part(t_part *part);
 void				init_width(void);
 void				widthfree(void);
-
-void				init_color(void);
-
 #endif

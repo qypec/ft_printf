@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/01 16:58:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:39:04 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 12:39:30 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ unsigned long long	reduction_unsigned(unsigned long long int num)
 		num = (unsigned long int)num;
 	else if (g_spec->symb == 'U')
 		num = (unsigned long)num;
-	else if (g_spec->ll == 0 && g_spec->l == 0 && g_spec->j == 0 && g_spec->h == 0
-			&& g_spec->hh == 0 && g_spec->z == 0)
+	else if (g_spec->ll == 0 && g_spec->l == 0 && g_spec->j == 0
+		&& g_spec->h == 0 && g_spec->hh == 0 && g_spec->z == 0)
 		num = (unsigned int)num;
 	else if (g_spec->h == 1)
 		num = (unsigned short)num;

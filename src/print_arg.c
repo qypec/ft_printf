@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_arg.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:41:45 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/31 01:31:17 by qypec            ###   ########.fr       */
+/*   Updated: 2019/08/02 12:40:48 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	width_processing(char *str)
 {
-	int	size;
-	int	width;
+	int		size;
+	int		width;
 
 	width = 0;
 	size = ft_strlen(str);
@@ -51,7 +51,7 @@ int		print_arg(char *traverse, va_list arg)
 		assembl_int(arg, 10);
 	else if (g_spec->symb == 'c' || g_spec->symb == 's' || g_spec->symb == 'p')
 		print_char(arg);
-	else if (g_spec->symb == 'f' || g_spec->symb == 'e' || g_spec->symb == 'g')
-		assembl_float(arg);
+	if (g_spec->symb == 'f' || g_spec->symb == 'e' || g_spec->symb == 'g')
+		print_float(arg);
 	return (0);
 }

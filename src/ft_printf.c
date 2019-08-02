@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:58:05 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/26 17:18:15 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 12:41:41 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int					ft_printf(const char *format, ...)
 	if (!(traverse = (char *)format))
 		return (0);
 	init_bufferoutput();
+	g_spec = NULL;
 	va_start(arg, (char *)format);
 	while (*traverse != '\0')
 	{

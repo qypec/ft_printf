@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/06 12:32:07 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/26 18:01:06 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 12:42:39 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ void		update_glbuffer(const char *str)
 	if ((size = ft_strlen(str)) == 0)
 		return ;
 	is_it_buffer_overflow(size);
-	g_output->str = ft_strnglue(g_output->str, str, "\0", g_output->size);
+	ft_strlglue(g_output->size, g_output->str, str, NULL);
 	g_output->size += size;
 }
 
 void		addstr_glbuffer(char *str, size_t size)
 {
 	is_it_buffer_overflow(size);
-	g_output->str = ft_strnglue(g_output->str, str, "\0", g_output->size);
+	ft_strlglue(g_output->size, g_output->str, str, NULL);
 	g_output->size += size;
 }

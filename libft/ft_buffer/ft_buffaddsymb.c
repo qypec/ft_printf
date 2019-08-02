@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_buffreload.c                                    :+:      :+:    :+:   */
+/*   ft_buffaddsymb.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/09 13:44:41 by qypec             #+#    #+#             */
-/*   Updated: 2019/07/09 13:50:28 by qypec            ###   ########.fr       */
+/*   Created: 2019/07/31 12:54:17 by qypec             #+#    #+#             */
+/*   Updated: 2019/07/31 13:00:23 by qypec            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_buffer.h"
 
-void					ft_buffreload(t_buff *buff)
+void					ft_buffaddsymb(t_buff *buff, char c)
 {
-	if (buff->i == buff->totalsize - 1)
+	int					size_of_new_str;
+	int					remaining_size;
+
+	remaining_size = buff->totalsize - buff->i;
+	size_of_new_str = 1;
+	if (remaining_size <= size_of_new_str)
 	{
-		buff->totalsize += buff->additional_size;
+		buff->totalsize += size_of_new_str + buff->additional_size;
 		if ((buff->str = ft_realloc(buff->str, buff->totalsize)) == NULL)
 			exit(1);
 	}
+	buff->str[buff->i] = c;
+	buff->i += size_of_new_str;
 }

@@ -30,7 +30,7 @@ SOURCES = ft_addsymb.c ft_addsymbend.c ft_atoi.c ft_bzero.c ft_matrdup.c \
 			ft_strglue.c ft_striter.c ft_striteri.c ft_strjoin.c ft_strlcat.c \
 			ft_strlen.c ft_strmap.c ft_strmapi.c ft_strnadd.c ft_strncat.c \
 			ft_strncmp.c ft_strncpy.c ft_strncut.c ft_strnequ.c ft_strnew.c \
-			ft_strnglue.c ft_strnstr.c ft_strrchr.c ft_strsplit.c ft_strstr.c \
+			ft_strlglue.c ft_strnstr.c ft_strrchr.c ft_strsplit.c ft_strstr.c \
 			ft_strsub.c ft_strswap.c ft_strtrim.c ft_tolower.c ft_toupper.c \
 			ft_matrlen.c ft_isempty.c ft_alnumstr.c
 OBJECTS = ft_addsymb.o ft_addsymbend.o ft_atoi.o ft_bzero.o ft_matrdup.o \
@@ -44,7 +44,7 @@ OBJECTS = ft_addsymb.o ft_addsymbend.o ft_atoi.o ft_bzero.o ft_matrdup.o \
 			ft_strglue.o ft_striter.o ft_striteri.o ft_strjoin.o ft_strlcat.o \
 			ft_strlen.o ft_strmap.o ft_strmapi.o ft_strnadd.o ft_strncat.o \
 			ft_strncmp.o ft_strncpy.o ft_strncut.o ft_strnequ.o ft_strnew.o \
-			ft_strnglue.o ft_strnstr.o ft_strrchr.o ft_strsplit.o ft_strstr.o \
+			ft_strlglue.o ft_strnstr.o ft_strrchr.o ft_strsplit.o ft_strstr.o \
 			ft_strsub.o ft_strswap.o ft_strtrim.o ft_tolower.o ft_toupper.o \
 			ft_matrlen.o ft_isempty.o ft_alnumstr.o
 

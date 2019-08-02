@@ -6,15 +6,15 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 14:39:37 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/25 17:39:01 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 12:41:51 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int	ft_itoa_help(long long int tmp, int base, int flag)
+int			ft_itoa_help(long long int tmp, int base, int flag)
 {
-	int		size;
+	int					size;
 
 	size = 0;
 	while (tmp /= base)
@@ -25,7 +25,7 @@ int	ft_itoa_help(long long int tmp, int base, int flag)
 
 static int	ft_itoa_unhelp(unsigned long long tmp, int base, int flag)
 {
-	int		size;
+	int					size;
 
 	size = 0;
 	while (tmp /= base)
@@ -34,7 +34,7 @@ static int	ft_itoa_unhelp(unsigned long long tmp, int base, int flag)
 	return (size);
 }
 
-char					*ft_itoa_unbase(unsigned long long value, int base)
+char		*ft_itoa_unbase(unsigned long long value, int base)
 {
 	int					size;
 	int					flag;
