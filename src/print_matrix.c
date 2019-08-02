@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 13:18:23 by yquaro            #+#    #+#             */
-/*   Updated: 2019/08/02 16:27:59 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 17:14:50 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void				print_matrix(va_list arg)
 	int				i;
 	char			*number_of_str;
 
-	matr = va_arg(arg, char**);
+	if ((matr = va_arg(arg, char**)) == NULL)
+		return ;
 	i = 0;
 	while (matr[i] != NULL)
 	{

@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 19:30:17 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:38:36 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 17:17:26 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static char		*ft_itoa_neg(long long nn)
 	n = nn;
 	n = -n;
 	len = ft_numblen(n);
-	str = (char *)malloc(sizeof(char) * (len + 2));
+	str = (char *)malloc(sizeof(char) * (len + 1));
 	if (str == NULL)
 		return (NULL);
 	i = len;
@@ -46,7 +46,7 @@ char			*ft_itoa(long long n)
 	if (n < 0)
 		return (str = ft_itoa_neg(n));
 	len = ft_numblen(n);
-	str = (char *)malloc(sizeof(char) * (len + 2));
+	str = (char *)ft_memalloc(sizeof(char) * (len + 1));
 	if (str == NULL)
 		return (NULL);
 	if (n == 0)
@@ -55,7 +55,6 @@ char			*ft_itoa(long long n)
 		return (str);
 	}
 	i = len - 1;
-	str[len] = '\0';
 	while (n != 0)
 	{
 		str[i] = n % 10 + 48;

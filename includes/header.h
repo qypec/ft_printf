@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:42:27 by oargrave          #+#    #+#             */
-/*   Updated: 2019/08/02 16:21:48 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 16:36:04 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,5 +154,7 @@ void				widthfree(void);
 void				print_date(void);
 t_part				*init_part(void);
 void				partdel(t_part **part);
+int					check_str(char *str);
+void				width_four(void);
 
 #endif

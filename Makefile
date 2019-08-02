@@ -6,7 +6,7 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/02 12:36:28 by yquaro            #+#    #+#              #
-#    Updated: 2019/08/02 12:45:01 by yquaro           ###   ########.fr        #
+#    Updated: 2019/08/02 16:39:45 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ all:
 	@make -C libft/ all
 	@make -C src/ all
 	@make -C lib/ all
-	gcc main.c -L. -lftprintf -o ft_printf
+	gcc -g main.c -L. -lftprintf -o ft_printf
 
 clean:
 	@make -C lib/ clean

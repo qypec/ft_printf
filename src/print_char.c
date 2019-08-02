@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 12:36:28 by yquaro            #+#    #+#             */
-/*   Updated: 2019/08/02 15:13:50 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 16:36:40 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,6 @@ void		print_c(va_list arg)
 		ft_buffaddsymb(g_output, symbol);
 		print_width_end();
 	}
-}
-
-int			check_str(char *str)
-{
-	int			index;
-
-	index = 0;
-	while (str[index] != '\0')
-	{
-		if (str[index] < 0 || str[index] > 127)
-		{
-			return (-1);
-		}
-		index++;
-	}
-	return (1);
 }
 
 static int	print_else(char *str, char *ptr)
@@ -96,9 +80,9 @@ int			print_s(va_list arg, char *str, char *ptr)
 
 void		print_p(va_list arg)
 {
-	long long int	num;
-	char			*str;
-	unsigned long long a;
+	long long int		num;
+	char				*str;
+	unsigned long long	a;
 
 	num = va_arg(arg, long long int);
 	if (num < 0)

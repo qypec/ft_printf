@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/15 20:32:44 by yquaro            #+#    #+#             */
-/*   Updated: 2019/08/02 14:49:51 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 17:20:02 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,5 +102,8 @@ char				*parse_spaces(char *traverse)
 	g_spec->space = 1;
 	while (*traverse == ' ')
 		traverse++;
-	return (parsesymb(traverse));
+	traverse = parsesymb(traverse);
+	if (g_spec->symb == 'i')
+		g_spec->symb = 'd';
+	return (traverse);
 }

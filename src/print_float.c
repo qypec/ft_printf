@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/05/20 13:43:54 by oargrave          #+#    #+#             */
-/*   Updated: 2019/08/02 16:20:47 by yquaro           ###   ########.fr       */
+/*   Created: 2019/08/02 16:32:41 by yquaro            #+#    #+#             */
+/*   Updated: 2019/08/02 16:33:40 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/header.h"
 
-void	getnumber(t_part *part, long double num)
+void			getnumber(t_part *part, long double num)
 {
 	unsigned long long		number;
 	int						i;
@@ -48,7 +48,7 @@ void	fill_parts_float(t_part *part, long double num)
 	partdel(&part);
 }
 
-void	print_float(va_list arg)
+void			print_float(va_list arg)
 {
 	long double		num;
 	t_part			*part;

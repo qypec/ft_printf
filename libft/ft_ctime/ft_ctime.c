@@ -37,8 +37,8 @@ static char			*like_original_ctime(t_cdate *date)
 	len = 3 + 3 + ft_strlen(date->day) + ft_strlen(date->hour) + \
 		ft_strlen(date->min) + ft_strlen(date->sec) + \
 		ft_strlen(date->year) + 1 + spaces;
-	str = (char *)ft_memalloc(sizeof(char) * len);
-	str[len - 1] = '\0';
+	str = (char *)ft_memalloc(sizeof(char) * (len + 1));
+	str[len] = '\0';
 	str = glue_str(date, str);
 	return (str);
 }
