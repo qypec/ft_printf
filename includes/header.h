@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:42:27 by oargrave          #+#    #+#             */
-/*   Updated: 2019/08/02 12:47:09 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 13:26:34 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,6 @@ typedef union un_float
 	}	t_bit_float;
 }	lnum;
 
-typedef struct		s_output
-{
-	char			*str;
-	size_t			size;
-	int				overflow_counter;
-	int				error;
-	int				buffsize;
-}					t_output;
-
 typedef struct		s_spec
 {
 	char			symb;
@@ -91,7 +82,7 @@ typedef struct 		s_part
 }					t_part;
 
 struct s_width		*g_width;
-struct s_output		*g_output;
+t_buff				*g_output;
 struct s_spec		*g_spec;
 t_map				*g_color;
 

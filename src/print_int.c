@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:44:01 by oargrave          #+#    #+#             */
-/*   Updated: 2019/08/02 12:38:17 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 13:18:38 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,7 +121,7 @@ static void	print_widthtwo(long long int num)
 			g_width->space_left = g_width->space_left - 1;
 		while (index < g_width->space_left)
 		{
-			addsymb_glbuffer(' ');
+			ft_buffaddsymb(g_output, ' ');
 			index++;
 		}
 		sign(num);
@@ -157,6 +157,6 @@ void		print_width(long long int num)
 	print_widthtwo(num);
 	if (g_width->zero > 0)
 		while (g_width->zero-- > 0)
-			addsymb_glbuffer('0');
+			ft_buffaddsymb(g_output, '0');
 	return ;
 }

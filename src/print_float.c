@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:43:54 by oargrave          #+#    #+#             */
-/*   Updated: 2019/08/02 12:39:00 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 13:26:39 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,9 @@ void	fill_parts_float(t_part *part, long double num)
 	ft_rounding(part->middle->str, ft_strlen(part->middle->str) - 1, part);
 	getfirst(part, ft_strlen(part->middle->str));
 	getend(part);
-	update_glbuffer(part->first);
-	update_glbuffer(part->middle->str);
-	update_glbuffer(part->last);
+	ft_buffadd(g_output, part->first);
+	ft_buffadd(g_output, part->middle->str);
+	ft_buffadd(g_output, part->last);
 	del_part(part);
 }
 

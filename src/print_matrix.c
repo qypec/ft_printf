@@ -22,13 +22,13 @@ void				print_matrix(va_list arg)
 	i = 0;
 	while (matr[i] != NULL)
 	{
-		addsymb_glbuffer('[');
+		ft_buffaddsymb(g_output, '[');
 		number_of_str = ft_itoa(i);
-		update_glbuffer(number_of_str);
+		ft_buffadd(g_output, number_of_str);
 		ft_strdel(&number_of_str);
-		addstr_glbuffer("] ", 2);
-		update_glbuffer(matr[i++]);
+		ft_buffladd(g_output, "] ", 2);
+		ft_buffadd(g_output, matr[i++]);
 		if (matr[i] != NULL)
-			addsymb_glbuffer('\n');
+			ft_buffaddsymb(g_output, '\n');
 	}
 }

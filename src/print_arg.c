@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:41:45 by oargrave          #+#    #+#             */
-/*   Updated: 2019/08/02 12:40:48 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 13:18:35 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,19 @@ void	width_processing(char *str)
 	if (g_spec->width - size >= 0)
 		width = g_spec->width - size;
 	if (g_spec->minus == 1)
-		addstr_glbuffer(str, size);
+		ft_buffladd(g_output, str, size);
 	if (g_spec->zero == 1)
 	{
 		while (width--)
-			addsymb_glbuffer('0');
+			ft_buffaddsymb(g_output, '0');
 	}
 	else
 	{
 		while (width--)
-			addsymb_glbuffer(' ');
+			ft_buffaddsymb(g_output, ' ');
 	}
 	if (g_spec->minus != 1)
-		addstr_glbuffer(str, size);
+		ft_buffladd(g_output, str, size);
 }
 
 int		print_arg(char *traverse, va_list arg)

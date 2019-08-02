@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/25 17:55:46 by yquaro            #+#    #+#             */
-/*   Updated: 2019/08/02 12:40:07 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 13:18:37 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ void				print_date(char *traverse)
 
 	ttime = time(NULL);
 	time_str = ft_ctime(&ttime);
-	update_glbuffer(time_str);
+	ft_buffadd(g_output, time_str);
 	ft_strdel(&time_str);
 }

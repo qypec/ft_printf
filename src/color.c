@@ -58,11 +58,11 @@ void			take_color(char **traverse)
 	ft_strncpy(buff, trav + 1, n - 1);
 	if (ft_ismapitem(g_color, buff) == -1)
 	{
-		addsymb_glbuffer('{');
+		ft_buffaddsymb(g_output, '{');
 		*traverse = trav + 1;
 		return ;
 	}
-	update_glbuffer(ft_mapvalue(g_color, buff));
+	ft_buffadd(g_output, ft_mapvalue(g_color, buff));
 	*traverse = trav + n + 1;
 	ft_mapdel(&g_color);
 }

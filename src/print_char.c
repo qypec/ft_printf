@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 12:36:28 by yquaro            #+#    #+#             */
-/*   Updated: 2019/08/02 12:40:32 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 13:18:36 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ void		print_c(va_list arg)
 	{
 		width(1, " ");
 		print_width(1);
-		addsymb_glbuffer(symbol);
+		ft_buffaddsymb(g_output, symbol);
 		print_width_end();
 	}
 	else
 	{
 		width(1, " ");
 		print_width(1);
-		addsymb_glbuffer(symbol);
+		ft_buffaddsymb(g_output, symbol);
 		print_width_end();
 	}
 }
@@ -42,7 +42,6 @@ int			check_str(char *str)
 	{
 		if (str[index] < 0 || str[index] > 127)
 		{
-			g_output->error = -1;
 			return (-1);
 		}
 		index++;
@@ -63,7 +62,7 @@ static int	print_else(char *str, char *ptr, char *point)
 		ptr = ft_strdup(str);
 	width(1, ptr);
 	print_width(1);
-	update_glbuffer(ptr);
+	ft_buffadd(g_output, ptr);
 	print_width_end();
 	free(ptr);
 	return (0);
@@ -83,7 +82,7 @@ int			print_s(va_list arg, char *str, char *ptr, char *point)
 			ptr = ft_strdup(NUL);
 		width(1, ptr);
 		print_width(1);
-		update_glbuffer(ptr);
+		ft_buffadd(g_output, ptr);
 		print_width_end();
 		free(ptr);
 	}
@@ -116,7 +115,7 @@ void		print_p(va_list arg)
 		print_width(num);
 	}
 	if (g_spec->precision != 0 || str[0] != '0')
-		update_glbuffer(str);
+		ft_buffadd(g_output, str);
 	print_width_end();
 	free(str);
 	return ;
@@ -126,9 +125,9 @@ void		print_char(va_list arg)
 {
 	if (g_spec->symb == 'c')
 		print_c(arg);
-	if (g_spec->symb == 's')
+	else if (g_spec->symb == 's')
 		print_s(arg, NULL, NULL, NULL);
-	if (g_spec->symb == 'p')
+	else if (g_spec->symb == 'p')
 		print_p(arg);
 	return ;
 }

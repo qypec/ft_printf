@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:58:05 by oargrave          #+#    #+#             */
-/*   Updated: 2019/08/02 12:41:41 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 14:31:15 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static int			take_str_before_persent(char **traverse)
 			take_color(&trav);
 			continue ;
 		}
-		addsymb_glbuffer(*trav);
+		ft_buffaddsymb(g_output, *trav);
 		trav++;
 	}
 	*traverse = trav;
@@ -56,40 +56,35 @@ static int			take_str_before_persent(char **traverse)
 
 static void			output(size_t *size)
 {
-	if (g_output->error == -1)
-		*size = -1;
-	else
-		*size = g_output->size;
-	write (1, g_output->str, g_output->size);
+	*size = g_output->i;
+	write (1, g_output->str, g_output->i);
 }
 
 static void			totalfree(void)
 {
-	free_bufferoutput();
+	ft_buffdel(&g_output);
 	widthfree();
 	gspecfree();
 }
 
 int					ft_printf(const char *format, ...)
 {
-	va_list 		arg;
+	va_list 		arg;	
 	char 			*traverse;
 	size_t			size;
 	
 	if (!(traverse = (char *)format))
 		return (0);
-	init_bufferoutput();
+	g_output = ft_buffinit(40);
 	g_spec = NULL;
 	va_start(arg, (char *)format);
 	while (*traverse != '\0')
 	{
 		init_gspec();
 		init_width();
-		if (g_output->error == -1)
+		if (take_str_before_persent(&traverse) == END_OF_STRING)
 			break ;
-		if (take_str_before_persent(&traverse) == END_OF_STRING) /* берет символы до % */
-			break ;
-		struct_spec(&traverse);  /* записывает в структуру спецификатор */
+		struct_spec(&traverse);
 		// print_struct(g_spec);
 		print_arg(traverse, arg);
 	}

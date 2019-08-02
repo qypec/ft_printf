@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 13:43:01 by oargrave          #+#    #+#             */
-/*   Updated: 2019/07/25 17:39:04 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 13:18:37 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,11 @@ int			display_u(unsigned long long int num, int base)
 	width(num, str);
 	print_width(num);
 	if (num == 0 && g_spec->precision > 0)
-		update_glbuffer(str);
+		ft_buffadd(g_output, str);
 	if (num > 0)
-		update_glbuffer(str);
+		ft_buffadd(g_output, str);
 	if (num == 0 && g_spec->precision < 0)
-		update_glbuffer(str);
+		ft_buffadd(g_output, str);
 	print_width_end();
 	free(str);
 	return (0);

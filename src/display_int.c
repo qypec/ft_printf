@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 19:19:20 by oargrave          #+#    #+#             */
-/*   Updated: 2019/08/02 12:42:05 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 13:23:19 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,19 +41,19 @@ void	sign_x(long long int num)
 		if (g_spec->sharp == 1 && num > 0)
 		{
 			if (g_spec->symb == 'x')
-				addstr_glbuffer("0x", 2);
+				ft_buffladd(g_output, "0x", 2);
 			else if (g_spec->symb == 'X')
-				addstr_glbuffer("0X", 2);
+				ft_buffladd(g_output, "0X", 2);
 		}
 		if (g_spec->symb == 'p')
-			addstr_glbuffer("0x", 2);
+			ft_buffladd(g_output, "0x", 2);
 	}
 	else if (g_spec->symb == 'o')
 	{
 		if (g_spec->sharp == 1 && (num != 0 || g_spec->precision == 0))
 		{
 			g_width->zero--;
-			addsymb_glbuffer('0');
+			ft_buffaddsymb(g_output, '0');
 		}
 	}
 }
@@ -64,22 +64,22 @@ void	sign(long long int num)
 		&& g_spec->symb != 'c' && g_spec->symb != 'o'
 		&& g_spec->symb != 'p' && g_spec->symb != 's')
 	{
-		addsymb_glbuffer('+');
+		ft_buffaddsymb(g_output, '+');
 		g_width->space_left--;
 		g_width->space_right--;
 		if (g_spec->precision <= 0)
 			g_width->zero--;
 	}
 	if (num < 0 && g_spec->symb != 'p')
-		addsymb_glbuffer('-');
+		ft_buffaddsymb(g_output, '-');
 	if (g_spec->symb == 'p')
-		addstr_glbuffer("0x", 2);
+		ft_buffladd(g_output, "0x", 2);
 	if (g_spec->symb == 'o')
 	{
 		if (g_spec->sharp == 1 && (num != 0 || g_spec->precision == 0))
 		{
 			g_width->zero--;
-			addsymb_glbuffer('0');
+			ft_buffaddsymb(g_output, '0');
 		}
 	}
 	if (g_spec->symb == 'x' || g_spec->symb == 'X')
@@ -110,7 +110,7 @@ void	display_int(long long int num, int base)
 		print_width_end();
 	else
 	{
-		update_glbuffer(str);
+		ft_buffadd(g_output, str);
 		print_width_end();
 	}
 	free(str);
@@ -125,7 +125,7 @@ void	print_width_end(void)
 	{
 		while (index < g_width->space_right)
 		{
-			addsymb_glbuffer(' ');
+			ft_buffaddsymb(g_output, ' ');
 			index++;
 		}
 	}
