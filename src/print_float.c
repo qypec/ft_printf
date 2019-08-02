@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/02 16:32:41 by yquaro            #+#    #+#             */
-/*   Updated: 2019/08/02 16:33:40 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 19:23:20 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,15 @@ void			getnumber(t_part *part, long double num)
 	unsigned long long		number;
 	int						i;
 	char					str[2];
+	char					*tmp;
 
 	str[1] = '\0';
 	i = 0;
 	number = (unsigned long long)num;
 	num -= number;
-	ft_buffadd(part->middle, ft_itoa_u(number));
+	tmp = ft_itoa_u(number);
+	ft_buffadd(part->middle, tmp);
+	ft_strdel(&tmp);
 	if (g_spec->precision != 0 || g_spec->sharp == 1)
 		ft_buffadd(part->middle, ".");
 	while (i < g_spec->precision + 3)
@@ -36,11 +39,11 @@ void			getnumber(t_part *part, long double num)
 	}
 }
 
-void	fill_parts_float(t_part *part, long double num)
+void			fill_parts_float(t_part *part, long double num)
 {
 	getnumber(part, num);
-	ft_rounding(part->middle->str, ft_strlen(part->middle->str) - 1, part);
-	getfirst(part, ft_strlen(part->middle->str));
+	ft_rounding(part->middle->str, part->middle->i - 1, part);
+	getfirst(part, part->middle->i);
 	getend(part);
 	ft_buffadd(g_output, part->first);
 	ft_buffadd(g_output, part->middle->str);

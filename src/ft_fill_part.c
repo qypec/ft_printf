@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fill_part.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oargrave <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/01 20:08:03 by oargrave          #+#    #+#             */
-/*   Updated: 2019/08/01 20:09:34 by oargrave         ###   ########.fr       */
+/*   Updated: 2019/08/02 18:14:42 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,11 @@ void			getend(t_part *part)
 	int			size_buff;
 	int			i;
 
-	size_buff = ft_strlen(part->middle->str) + ft_strlen(part->first);
-	num_indents = g_spec->width - size_buff;
-	part->last = (char *)malloc(sizeof(char) * num_indents + 1);
+	size_buff = part->middle->i + ft_strlen(part->first);
+	if ((num_indents = g_spec->width - size_buff) < 0)
+		return ;
+	if ((part->last = (char *)malloc(sizeof(char) * (num_indents + 1))) == NULL)
+		exit(-1);
 	if (!(part->last))
 		return ;
 	part->last[num_indents] = '\0';

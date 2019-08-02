@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/05/20 15:42:27 by oargrave          #+#    #+#             */
-/*   Updated: 2019/08/02 16:36:04 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 19:22:32 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct		s_width
 	int				width;
 }					t_width;
 
-typedef union		s_unfloat
+typedef union		u_nfloat
 {
 	long double		f;
 	struct			s_bitfloat

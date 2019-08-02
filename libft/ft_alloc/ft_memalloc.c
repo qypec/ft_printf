@@ -6,7 +6,7 @@
 /*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/23 19:18:31 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:43:23 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/08/02 18:09:42 by yquaro           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ void	*ft_memalloc(size_t size)
 	if (arr == NULL)
 		return (NULL);
 	else
-		return (ft_memset(arr, 0, size));
+		return (ft_memset(arr, '\0', size));
 }
