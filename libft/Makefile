@@ -6,7 +6,7 @@
 #    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/02 12:36:28 by yquaro            #+#    #+#              #
-#    Updated: 2019/08/02 16:26:23 by yquaro           ###   ########.fr        #
+#    Updated: 2019/08/03 19:39:34 by yquaro           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,9 @@ include includes/libft.mk
 # (ranlib)
 # Adds a character index to the archive
 
-SOURCES = ft_addsymb.c ft_addsymbend.c ft_atoi.c ft_bzero.c ft_matrdup.c \
+SOURCES = ft_addsymb.c ft_addsymbend.c ft_atoi.c ft_bzero.c \
 			ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c \
-			ft_isspace.c ft_itoa.c ft_matrixfree.c ft_memccpy.c \
+			ft_isspace.c ft_itoa.c ft_memccpy.c \
 			ft_memchr.c ft_memcmp.c ft_memcpy.c ft_memmove.c ft_memset.c \
 			ft_numblen.c ft_putchar.c ft_putchar_fd.c ft_putendl.c \
 			ft_putendl_fd.c	ft_putnbr.c ft_putnbr_fd.c \
@@ -33,9 +33,9 @@ SOURCES = ft_addsymb.c ft_addsymbend.c ft_atoi.c ft_bzero.c ft_matrdup.c \
 			ft_strlglue.c ft_strnstr.c ft_strrchr.c ft_strsplit.c ft_strstr.c \
 			ft_strsub.c ft_strswap.c ft_strtrim.c ft_tolower.c ft_toupper.c \
 			ft_matrlen.c ft_isempty.c ft_alnumstr.c
-OBJECTS = ft_addsymb.o ft_addsymbend.o ft_atoi.o ft_bzero.o ft_matrdup.o \
+OBJECTS = ft_addsymb.o ft_addsymbend.o ft_atoi.o ft_bzero.o \
 			ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o \
-			ft_isspace.o ft_itoa.o ft_matrixfree.o ft_memccpy.o \
+			ft_isspace.o ft_itoa.o ft_memccpy.o \
 			ft_memchr.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o \
 			ft_numblen.o ft_putchar.o ft_putchar_fd.o ft_putendl.o \
 			ft_putendl_fd.o	ft_putnbr.o ft_putnbr_fd.o \
@@ -63,6 +63,7 @@ $(NAME): $(OBJECTS)
 	@make -C ft_math/ all
 	@make -C ft_map/ all
 	@make -C ft_buffer/ all
+	@make -C ft_matr/ all
 	@ar rc $(NAME) $(OBJECTS)
 	@ranlib $(NAME)
 	@mv $(NAME) lib/$(NAME)
@@ -76,6 +77,7 @@ clean:
 	@make -C ft_math/ clean
 	@make -C ft_map/ clean
 	@make -C ft_buffer/ clean
+	@make -C ft_matr/ clean
 	@rm -f $(OBJECTS)
 
 fclean: clean
@@ -86,6 +88,7 @@ fclean: clean
 	@make -C ft_math/ fclean
 	@make -C ft_map/ fclean
 	@make -C ft_buffer/ fclean
+	@make -C ft_matr/ fclean
 	@rm -f ../lib/$(NAME)
 
 re: fclean all

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_matrixfree.c                                    :+:      :+:    :+:   */
+/*   ft_matrdel.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/08 15:13:08 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:38:37 by yquaro           ###   ########.fr       */
+/*   Created: 2019/07/31 16:11:07 by qypec             #+#    #+#             */
+/*   Updated: 2019/07/31 16:16:11 by qypec            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_matr.h"
 
-char	**ft_matrixfree(char ***ret)
+void				*ft_matrdel(char ***ret)
 {
 	char	**tmp;
 	int		i;
@@ -23,7 +23,7 @@ char	**ft_matrixfree(char ***ret)
 	i = 0;
 	while (tmp[i] != NULL)
 	{
-		free(tmp[i]);
+		ft_strdel(&tmp[i]);
 		i++;
 	}
 	free(tmp);

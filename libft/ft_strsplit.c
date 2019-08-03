@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+        */
+/*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/02 14:13:16 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/25 17:38:58 by yquaro           ###   ########.fr       */
+/*   Updated: 2019/07/31 16:15:02 by qypec            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ char					**ft_strsplit(char const *str, char c)
 			next = ft_str_find_next(str, c, 0);
 			ret[i] = ft_strsub(str, 0, next - str);
 			if (ret[i] == NULL)
-				return (ft_matrixfree(&ret));
+				return (ft_matrdel(&ret));
 			i++;
 			str = next;
 		}

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
+#    By: qypec <qypec@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/18 01:54:46 by yquaro            #+#    #+#              #
-#    Updated: 2019/07/25 17:23:48 by yquaro           ###   ########.fr        #
+#    Updated: 2019/07/31 15:35:06 by qypec            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ all:
 	ar -x libmath.a
 	ar -x liblist.a
 	ar -x libbuff.a
+	ar -x libmatr.a
 	@ar rc $(NAME) *.o
 	@ranlib $(NAME)
 	@rm -f __.SYMDEF\ SORTED
