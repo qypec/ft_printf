@@ -6,7 +6,7 @@
 /*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/06/13 20:30:01 by yquaro            #+#    #+#             */
-/*   Updated: 2019/07/31 16:16:46 by qypec            ###   ########.fr       */
+/*   Updated: 2019/08/03 18:33:22 by qypec            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ char					**ft_matrdup(const char *first_str, ...)
 		return (NULL);
 	matr[number_of_elements] = NULL;
 	va_start(arg, first_str);
-	i = 0;
+	matr[0] = ft_strdup(first_str);
+	i = 1;
 	while (--number_of_elements)
 		matr[i++] = ft_strdup(va_arg(arg, char *));
 	va_end(arg);

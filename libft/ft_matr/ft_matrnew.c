@@ -6,7 +6,7 @@
 /*   By: qypec <qypec@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 15:38:46 by qypec             #+#    #+#             */
-/*   Updated: 2019/07/31 16:18:02 by qypec            ###   ########.fr       */
+/*   Updated: 2019/08/03 18:15:18 by qypec            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char				**ft_matrnew(size_t matr_size, ...)
 	va_start(arg, matr_size);
 	if ((matr = (char **)malloc(sizeof(char *) * (matr_size + 1))) == NULL)
 		return (NULL);
-	i = 0;
+	i = 1;
 	while (i < (int)matr_size)
 	{
 		str_size = va_arg(arg, size_t);

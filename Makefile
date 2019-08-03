@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yquaro <yquaro@student.42.fr>              +#+  +:+       +#+         #
+#    By: qypec <qypec@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/05/02 16:16:54 by yquaro            #+#    #+#              #
-#    Updated: 2019/07/25 17:19:33 by yquaro           ###   ########.fr        #
+#    Updated: 2019/08/03 18:18:21 by qypec            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ all:
 	@make -C libft/ all
 	@make -C src/ all
 	@make -C lib/ all
-	gcc -g main.c -L. -lftprintf -o ft_printf 
+	gcc -g main.c -I includes/ -L. -lftprintf -o ft_printf 
 
 clean:
 	@make -C lib/ clean
